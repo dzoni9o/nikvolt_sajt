@@ -2,7 +2,7 @@ export const site = {
   name: "nik volt",
   city: "Beograd",
   country: "Srbija",
-  url: "https://nikvolt.example.com",
+  url: "https://nikvolt.com",
   phone: "+381603539985",
   phoneDisplay: "+381 60 353 9985",
   phoneTel: "+381603539985",
