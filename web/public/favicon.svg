@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="nik volt favicon">
+  <rect width="32" height="32" rx="6" fill="#0A0A0A"/>
+
+  <!-- Prongs -->
+  <rect x="11.5" y="5.2" width="2.4" height="7" rx="1" fill="#FFD60A"/>
+  <rect x="18.1" y="5.2" width="2.4" height="7" rx="1" fill="#FFD60A"/>
+
+  <!-- Plug body -->
+  <rect x="8.5" y="11.6" width="15" height="13" rx="3.5" fill="#FFD60A"/>
+
+  <!-- Cable curl -->
+  <path d="M16 24.6 Q16 28.6 12.5 28.6 Q9 28.6 9 26.2"
+        fill="none" stroke="#FFD60A" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

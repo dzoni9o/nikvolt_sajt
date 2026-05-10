@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<title>Nick Wolt — logo (HTML reference)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--nw-font); padding: 40px; background: var(--nw-paper); color: var(--nw-ink); }
+  .row { display:flex; gap:48px; align-items:center; flex-wrap:wrap; margin-bottom:32px; }
+  .row.dark { background: var(--nw-ink); padding:32px; border-radius:12px; color: var(--nw-paper); }
+  .row.dark .nw-logo { color: var(--nw-paper); }
+</style>
+</head>
+<body>
+
+  <!-- ============ Horizontal lockup (light bg) ============ -->
+  <div class="row">
+    <a href="/" class="nw-logo" style="font-size:40px;" aria-label="Nick Wolt — početna">
+      <svg style="width:1.6em; height:auto;" viewBox="0 0 100 110" aria-hidden="true">
+        <rect x="20" y="38" width="60" height="50" rx="14" fill="#0A0A0A"/>
+        <rect x="32" y="14" width="9" height="26" rx="3" fill="#0A0A0A"/>
+        <rect x="59" y="14" width="9" height="26" rx="3" fill="#0A0A0A"/>
+        <path d="M50 88 Q50 104 36 104 Q22 104 22 92" fill="none" stroke="#0A0A0A" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="38" cy="55" r="3.2" fill="#FFFFFF"/>
+        <path d="M64 49 L57 58 L62 58 L60 65 L68 56 L63.5 56 L66 49 Z" fill="#FFD60A"/>
+        <path d="M40 74 Q50 80 60 74" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span>nick<span class="nw-logo__dot">·</span>wolt</span>
+    </a>
+  </div>
+
+  <!-- ============ On dark ============ -->
+  <div class="row dark">
+    <a href="/" class="nw-logo" style="font-size:40px;">
+      <svg style="width:1.6em; height:auto;" viewBox="0 0 100 110" aria-hidden="true">
+        <rect x="20" y="38" width="60" height="50" rx="14" fill="#FFFFFF"/>
+        <rect x="32" y="14" width="9" height="26" rx="3" fill="#FFFFFF"/>
+        <rect x="59" y="14" width="9" height="26" rx="3" fill="#FFFFFF"/>
+        <path d="M50 88 Q50 104 36 104 Q22 104 22 92" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="38" cy="55" r="3.2" fill="#0A0A0A"/>
+        <path d="M64 49 L57 58 L62 58 L60 65 L68 56 L63.5 56 L66 49 Z" fill="#FFD60A"/>
+        <path d="M40 74 Q50 80 60 74" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span>nick<span class="nw-logo__dot">·</span>wolt</span>
+    </a>
+  </div>
+</body>
+</html>

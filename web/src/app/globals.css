@@ -1,0 +1,304 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-space-grotesk);
+  --font-display: var(--font-space-grotesk);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-soft: var(--brand-soft);
+  --color-emergency: var(--emergency);
+  --color-emergency-foreground: var(--emergency-foreground);
+  --color-emergency-soft: var(--emergency-soft);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --shadow-cta: 0 14px 30px -12px rgba(255, 214, 10, 0.55);
+  --shadow-emergency: 0 14px 30px -12px oklch(0.62 0.22 28 / 0.55);
+}
+
+:root {
+  /* nik volt brand */
+  --paper: #FFFFFF;
+  --background: #FFFFFF;
+  --foreground: #0A0A0A;
+  --ink: #0A0A0A;
+  --ink-soft: rgba(10, 10, 10, 0.55);
+
+  --card: #FFFFFF;
+  --card-foreground: #0A0A0A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0A0A0A;
+
+  --primary: #0A0A0A;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #FAFAF7;            /* nw-cream — soft alt section */
+  --secondary-foreground: #0A0A0A;
+
+  --muted: #F4F4EF;
+  --muted-foreground: rgba(10, 10, 10, 0.55);
+
+  --accent: #FFF6CC;
+  --accent-foreground: #0A0A0A;
+
+  --destructive: oklch(0.62 0.22 28);
+
+  --border: rgba(10, 10, 10, 0.10);
+  --input: rgba(10, 10, 10, 0.14);
+  --ring: #FFD60A;
+
+  --brand: #FFD60A;                /* nw-yellow */
+  --brand-foreground: #0A0A0A;     /* nw-ink on yellow */
+  --brand-soft: #FFF6CC;           /* soft yellow tint */
+
+  --emergency: oklch(0.62 0.22 28);
+  --emergency-foreground: #FFFFFF;
+  --emergency-soft: oklch(0.96 0.04 28);
+
+  --chart-1: #FFD60A;
+  --chart-2: oklch(0.62 0.22 28);
+  --chart-3: #0A0A0A;
+  --chart-4: oklch(0.6 0.14 160);
+  --chart-5: rgba(10, 10, 10, 0.55);
+
+  --radius: 0.875rem;
+
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0A0A0A;
+  --sidebar-primary: #0A0A0A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FFF6CC;
+  --sidebar-accent-foreground: #0A0A0A;
+  --sidebar-border: rgba(10, 10, 10, 0.10);
+  --sidebar-ring: #FFD60A;
+}
+
+.dark {
+  --paper: #0A0A0A;
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
+  --ink: #FFFFFF;
+  --ink-soft: rgba(255, 255, 255, 0.55);
+
+  --card: #141414;
+  --card-foreground: #FFFFFF;
+  --popover: #141414;
+  --popover-foreground: #FFFFFF;
+
+  --primary: #FFFFFF;
+  --primary-foreground: #0A0A0A;
+
+  --secondary: #141414;
+  --secondary-foreground: #FFFFFF;
+
+  --muted: #1B1B1B;
+  --muted-foreground: rgba(255, 255, 255, 0.55);
+
+  --accent: #2A2207;               /* deep yellow-tinted dark */
+  --accent-foreground: #FFD60A;
+
+  --destructive: oklch(0.7 0.2 22);
+
+  --border: rgba(255, 255, 255, 0.10);
+  --input: rgba(255, 255, 255, 0.16);
+  --ring: #FFD60A;
+
+  --brand: #FFD60A;                /* yellow stays the same on dark */
+  --brand-foreground: #0A0A0A;
+  --brand-soft: rgba(255, 214, 10, 0.16);
+
+  --emergency: oklch(0.68 0.22 28);
+  --emergency-foreground: #FFFFFF;
+  --emergency-soft: oklch(0.32 0.1 28);
+
+  --sidebar: #141414;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #FFD60A;
+  --sidebar-primary-foreground: #0A0A0A;
+  --sidebar-accent: rgba(255, 214, 10, 0.16);
+  --sidebar-accent-foreground: #FFD60A;
+  --sidebar-border: rgba(255, 255, 255, 0.10);
+  --sidebar-ring: #FFD60A;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  ::selection {
+    background: var(--brand);
+    color: var(--brand-foreground);
+  }
+}
+
+@layer utilities {
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+    max-width: 80rem;
+  }
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, color-mix(in oklch, var(--ink) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklch, var(--ink) 6%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+}
+
+.prose-electric {
+  color: var(--color-foreground);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  max-width: 68ch;
+}
+.prose-electric > * + * { margin-top: 1.1em; }
+.prose-electric h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  font-size: 1.625rem;
+  margin-top: 2.4em;
+  margin-bottom: 0.4em;
+  line-height: 1.2;
+}
+.prose-electric h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  font-size: 1.25rem;
+  margin-top: 1.8em;
+  margin-bottom: 0.3em;
+  line-height: 1.3;
+}
+.prose-electric p { color: var(--color-foreground); }
+.prose-electric strong { font-weight: 600; color: var(--color-foreground); }
+.prose-electric em { font-style: italic; }
+.prose-electric a {
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-decoration-color: var(--brand);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.prose-electric a:hover { background: var(--brand-soft); }
+.prose-electric ul, .prose-electric ol {
+  padding-left: 1.4em;
+}
+.prose-electric ul > li { list-style: disc; padding-left: 0.4em; }
+.prose-electric ol > li { list-style: decimal; padding-left: 0.4em; }
+.prose-electric li + li { margin-top: 0.4em; }
+.prose-electric blockquote {
+  border-left: 3px solid var(--brand);
+  padding-left: 1.1em;
+  font-style: italic;
+  color: var(--color-ink-soft);
+}
+.prose-electric code {
+  background: var(--muted);
+  border-radius: 0.4em;
+  padding: 0.15em 0.4em;
+  font-size: 0.92em;
+  font-family: var(--font-mono);
+}
+.prose-electric pre {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+}
+.prose-electric pre code { background: transparent; padding: 0; }
+.prose-electric table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.prose-electric th, .prose-electric td {
+  padding: 0.65em 1em;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.prose-electric th {
+  background: var(--paper);
+  font-size: 0.78em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-soft);
+}
+.prose-electric tr:last-child td { border-bottom: none; }
+.prose-electric hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.2em 0;
+}

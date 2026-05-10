@@ -1,0 +1,77 @@
+/* ============================================================
+   Nick Wolt — Brand tokens
+   Drop this in once and reference vars across the site.
+   ============================================================ */
+
+:root {
+  /* ----- Colors ----- */
+  --nw-ink:       #0A0A0A;   /* primary — plug, headlines */
+  --nw-paper:     #FFFFFF;   /* primary background */
+  --nw-yellow:    #FFD60A;   /* accent — bolt, CTAs, hovers */
+  --nw-yellow-2:  #FFC700;   /* yellow on hover/press */
+  --nw-cream:     #FAFAF7;   /* soft alt background */
+  --nw-line:      rgba(10,10,10,.10);
+  --nw-mute:      rgba(10,10,10,.55);
+
+  /* ----- Type ----- */
+  --nw-font: "Space Grotesk", -apple-system, BlinkMacSystemFont,
+             "Segoe UI", system-ui, sans-serif;
+  --nw-font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+
+  /* ----- Radius / shadow ----- */
+  --nw-radius:   10px;
+  --nw-radius-lg: 18px;
+  --nw-shadow:  0 1px 2px rgba(10,10,10,.06), 0 8px 24px rgba(10,10,10,.08);
+}
+
+/* Optional dark surface */
+.nw-dark {
+  --nw-ink:    #FFFFFF;
+  --nw-paper:  #0A0A0A;
+  --nw-cream:  #141414;
+  --nw-line:   rgba(255,255,255,.10);
+  --nw-mute:   rgba(255,255,255,.55);
+  background: var(--nw-paper);
+  color: var(--nw-ink);
+}
+
+/* ----- Logo lockup (HTML + inline SVG) ----- */
+.nw-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--nw-font);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  color: var(--nw-ink);
+  text-decoration: none;
+  font-size: 28px; /* override per use */
+}
+.nw-logo__mark {
+  width: 1.6em;
+  height: auto;
+  color: var(--nw-ink); /* drives the plug body color via currentColor */
+  flex-shrink: 0;
+}
+.nw-logo__dot {
+  color: var(--nw-yellow);
+  font-weight: 400;
+  margin: 0 0.05em;
+}
+
+/* ----- Buttons ----- */
+.nw-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--nw-font); font-weight: 600;
+  font-size: 15px; letter-spacing: -0.005em;
+  padding: 12px 18px; border-radius: 999px;
+  border: 1.5px solid var(--nw-ink);
+  background: var(--nw-ink); color: var(--nw-paper);
+  cursor: pointer; transition: transform .12s, background .12s;
+}
+.nw-btn:hover { background: var(--nw-yellow); color: var(--nw-ink); border-color: var(--nw-yellow); }
+.nw-btn:active { transform: translateY(1px); }
+.nw-btn--ghost { background: transparent; color: var(--nw-ink); }
+.nw-btn--accent { background: var(--nw-yellow); color: var(--nw-ink); border-color: var(--nw-yellow); }
+.nw-btn--accent:hover { background: var(--nw-yellow-2); border-color: var(--nw-yellow-2); }
