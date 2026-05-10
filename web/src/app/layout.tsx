@@ -1,8 +1,8 @@
 import type { Viewport } from "next";
 import { Space_Grotesk, Geist_Mono } from "next/font/google";
-import { getLocale } from "next-intl/server";
+import { headers } from "next/headers";
 import "./globals.css";
-import { htmlLangFor } from "@/i18n/routing";
+import { routing, htmlLangFor } from "@/i18n/routing";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -24,10 +24,23 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+// Derive locale from the URL. We avoid next-intl's getLocale() here because
+// this root layout also wraps non-localized routes like /uvid where next-intl
+// has no request context to read from.
+async function detectLocale(): Promise<string> {
+  const h = await headers();
+  const pathname = h.get("x-pathname") ?? "";
+  const seg = pathname.split("/").filter(Boolean)[0];
+  if (seg && routing.locales.includes(seg as (typeof routing.locales)[number])) {
+    return seg;
+  }
+  return routing.defaultLocale;
+}
+
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const locale = await getLocale();
+  const locale = await detectLocale();
   return (
     <html
       lang={htmlLangFor(locale)}
