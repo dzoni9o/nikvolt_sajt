@@ -6,6 +6,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import imageCompression from "browser-image-compression";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import {
   Upload,
   X,
@@ -30,34 +32,42 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { assessRisk, type RiskAssessment } from "@/lib/risk";
+import { useLiveRisk, type RiskAssessment } from "@/lib/risk";
+import { propertyTypes, serviceCategories, urgencies } from "@/lib/content";
 import { site } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
-const schema = z.object({
-  name: z.string().min(2, "Reci nam svoje ime"),
-  phone: z
-    .string()
-    .min(6, "Broj telefona je prekratak")
-    .regex(/^[+\d][\d\s\-/]+$/, "Samo brojevi, razmaci i +"),
-  location: z.string().min(2, "Grad ili kvart"),
-  propertyType: z.enum(["apartment", "house", "shop", "office"]),
-  category: z.enum([
-    "no-power",
-    "fuse-trip",
-    "new-install",
-    "short-circuit",
-    "panel-replacement",
-    "other",
-  ]),
-  urgency: z.enum(["not-urgent", "today", "urgent"]),
-  description: z.string().max(2000).optional(),
-  burningSmell: z.boolean(),
-  hotPanel: z.boolean(),
-  sparking: z.boolean(),
-});
+function buildSchema(messages: {
+  name: string;
+  phoneShort: string;
+  phoneShape: string;
+  location: string;
+}) {
+  return z.object({
+    name: z.string().min(2, messages.name),
+    phone: z
+      .string()
+      .min(6, messages.phoneShort)
+      .regex(/^[+\d][\d\s\-/]+$/, messages.phoneShape),
+    location: z.string().min(2, messages.location),
+    propertyType: z.enum(["apartment", "house", "shop", "office"]),
+    category: z.enum([
+      "no-power",
+      "fuse-trip",
+      "new-install",
+      "short-circuit",
+      "panel-replacement",
+      "other",
+    ]),
+    urgency: z.enum(["not-urgent", "today", "urgent"]),
+    description: z.string().max(2000).optional(),
+    burningSmell: z.boolean(),
+    hotPanel: z.boolean(),
+    sparking: z.boolean(),
+  });
+}
 
-type FormValues = z.infer<typeof schema>;
+type FormValues = z.infer<ReturnType<typeof buildSchema>>;
 
 type LocalFile = {
   id: string;
@@ -66,20 +76,31 @@ type LocalFile = {
   kind: "image" | "video";
 };
 
-const categoryLabels: Record<FormValues["category"], string> = {
-  "no-power": "Nema struje",
-  "fuse-trip": "Iskače osigurač",
-  "new-install": "Nova instalacija",
-  "short-circuit": "Kratak spoj",
-  "panel-replacement": "Zamena table",
-  other: "Ostalo",
-};
-
 export function FaultAssessmentForm() {
+  const t = useTranslations("Form");
+  const tFields = useTranslations("Form.fields");
+  const tValidation = useTranslations("Form.validation");
+  const tProperty = useTranslations("Form.property");
+  const tCategory = useTranslations("Form.category");
+  const tUrgency = useTranslations("Form.urgency");
+  const schema = useMemo(
+    () =>
+      buildSchema({
+        name: tValidation("name"),
+        phoneShort: tValidation("phoneShort"),
+        phoneShape: tValidation("phoneShape"),
+        location: tValidation("location"),
+      }),
+    [tValidation],
+  );
+
   const [files, setFiles] = useState<LocalFile[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<RiskAssessment | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const captchaRef = useRef<HCaptcha | null>(null);
+  const hcaptchaSiteKey = process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY ?? "";
 
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
@@ -98,23 +119,13 @@ export function FaultAssessmentForm() {
   });
 
   const watched = form.watch();
-  const livePreview = useMemo(
-    () =>
-      assessRisk({
-        category: watched.category,
-        urgency: watched.urgency,
-        burningSmell: watched.burningSmell,
-        hotPanel: watched.hotPanel,
-        sparking: watched.sparking,
-      }),
-    [
-      watched.category,
-      watched.urgency,
-      watched.burningSmell,
-      watched.hotPanel,
-      watched.sparking,
-    ],
-  );
+  const livePreview = useLiveRisk({
+    category: watched.category,
+    urgency: watched.urgency,
+    burningSmell: watched.burningSmell,
+    hotPanel: watched.hotPanel,
+    sparking: watched.sparking,
+  });
 
   async function handleFiles(list: FileList | null) {
     if (!list) return;
@@ -133,7 +144,7 @@ export function FaultAssessmentForm() {
           });
         }
         if (prepared.size > 25 * 1024 * 1024) {
-          toast.error(`${file.name} je veći od 25 MB — pošalji kraći snimak.`);
+          toast.error(t("fileTooBig", { name: file.name }));
           continue;
         }
         next.push({
@@ -144,7 +155,7 @@ export function FaultAssessmentForm() {
         });
       } catch (err) {
         console.error(err);
-        toast.error(`Ne mogu da pročitam ${file.name}`);
+        toast.error(t("fileUnreadable", { name: file.name }));
       }
     }
     setFiles((prev) => [...prev, ...next].slice(0, 8));
@@ -159,32 +170,54 @@ export function FaultAssessmentForm() {
   }
 
   async function onSubmit(values: FormValues) {
+    if (!captchaToken) {
+      toast.error(tValidation.has("captcha")
+        ? tValidation("captcha")
+        : "Captcha required");
+      return;
+    }
     setSubmitting(true);
     try {
-      const assessment = assessRisk(values);
+      const fd = new FormData();
+      fd.set("name", values.name);
+      fd.set("phone", values.phone);
+      fd.set("location", values.location);
+      fd.set("propertyType", values.propertyType);
+      fd.set("category", values.category);
+      fd.set("urgency", values.urgency);
+      fd.set("description", values.description ?? "");
+      fd.set("burningSmell", String(values.burningSmell));
+      fd.set("hotPanel", String(values.hotPanel));
+      fd.set("sparking", String(values.sparking));
+      fd.set("hcaptchaToken", captchaToken);
+      for (const f of files) {
+        fd.append("photos", f.file, f.file.name);
+      }
 
-      // Stubbed submit — wire to /api/leads when backend is live.
-      console.info("[lead] submission", {
-        ...values,
-        attachments: files.map((f) => ({
-          name: f.file.name,
-          size: f.file.size,
-          type: f.file.type,
-        })),
-        assessment,
-      });
-      await new Promise((r) => setTimeout(r, 900));
+      const res = await fetch("/api/submissions", { method: "POST", body: fd });
+      const json = (await res.json().catch(() => null)) as
+        | { ok: true; id: string; assessment: RiskAssessment }
+        | { error: string }
+        | null;
 
-      setResult(assessment);
-      toast.success("Poslato — javljamo se u roku od 30 minuta.", {
+      if (!res.ok || !json || "error" in json) {
+        const msg = json && "error" in json ? json.error : t("submitFailed");
+        throw new Error(msg);
+      }
+
+      setResult(json.assessment);
+      toast.success(t("submitSuccess"), {
         description:
-          assessment.level === "high"
-            ? "Zahtev sa visokim rizikom — odmah te zovemo nazad."
-            : "Proveri telefon za naš odgovor.",
+          json.assessment.level === "high"
+            ? t("submitSuccessHigh")
+            : t("submitSuccessNormal"),
       });
     } catch (err) {
       console.error(err);
-      toast.error("Slanje nije uspelo. Probaj ponovo ili nas direktno pozovi.");
+      const msg = err instanceof Error ? err.message : t("submitFailed");
+      toast.error(msg);
+      captchaRef.current?.resetCaptcha();
+      setCaptchaToken(null);
     } finally {
       setSubmitting(false);
     }
@@ -194,6 +227,8 @@ export function FaultAssessmentForm() {
     files.forEach((f) => URL.revokeObjectURL(f.url));
     setFiles([]);
     setResult(null);
+    setCaptchaToken(null);
+    captchaRef.current?.resetCaptcha();
     form.reset();
   }
 
@@ -210,38 +245,40 @@ export function FaultAssessmentForm() {
       <div className="container-page py-20 md:py-28">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div className="lg:pr-4">
-            <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">Procena</p>
-            <h2 className="mt-3 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
-              Pošalji problem.
-              <br />
-              Dobij okvirnu cenu u roku od sat vremena.
-            </h2>
-            <p className="mt-5 max-w-md text-md text-ink-soft">
-              Slike vrede više od opisa. Slikaj tablu, utičnicu, sve što se dimi — mi ćemo sve ostalo.
+            <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+              {t("kicker")}
             </p>
+            <h2 className="mt-3 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
+              {t("title1")}
+              <br />
+              {t("title2")}
+            </h2>
+            <p className="mt-5 max-w-md text-md text-ink-soft">{t("lead")}</p>
 
             <ul className="mt-8 space-y-4">
               <RailItem
                 icon={ShieldCheck}
-                title="Bez iznenađenja u ponudi"
-                body="Okvirna cena pre dolaska. Konačna cena nakon što vidimo instalaciju."
+                title={t("rail.noSurprise.title")}
+                body={t("rail.noSurprise.body")}
               />
               <RailItem
                 icon={AlertTriangle}
-                title="Hitni slučajevi imaju prioritet"
-                body="Ako simptomi ukazuju na opasnost od požara, automatski menjamo redosled."
+                title={t("rail.priority.title")}
+                body={t("rail.priority.body")}
               />
               <RailItem
                 icon={CheckCircle2}
-                title="Dokumentovan rad"
-                body="Svaki izlazak završavamo merenjima i fotografijama onoga što je urađeno."
+                title={t("rail.documented.title")}
+                body={t("rail.documented.body")}
               />
             </ul>
 
             <div className="mt-10 rounded-2xl border border-border bg-card p-5">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-widest text-ink-soft">Procena rizika uživo</div>
+                  <div className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+                    {t("liveRiskKicker")}
+                  </div>
                   <div className="mt-1 text-sm font-semibold text-foreground">{livePreview.callout}</div>
                 </div>
                 <RiskPill level={livePreview.level} />
@@ -261,19 +298,19 @@ export function FaultAssessmentForm() {
               ) : (
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-6 sm:p-8">
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <Field label="Tvoje ime" error={form.formState.errors.name?.message}>
-                      <Input placeholder="Marko" {...form.register("name")} />
+                    <Field label={tFields("name")} error={form.formState.errors.name?.message}>
+                      <Input placeholder={tFields("namePlaceholder")} {...form.register("name")} />
                     </Field>
-                    <Field label="Telefon" error={form.formState.errors.phone?.message}>
-                      <Input placeholder="+381 60 ..." inputMode="tel" {...form.register("phone")} />
+                    <Field label={tFields("phone")} error={form.formState.errors.phone?.message}>
+                      <Input placeholder={tFields("phonePlaceholder")} inputMode="tel" {...form.register("phone")} />
                     </Field>
                   </div>
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <Field label="Lokacija" hint="Grad / kvart" error={form.formState.errors.location?.message}>
-                      <Input placeholder={`${site.city}, Vračar`} {...form.register("location")} />
+                    <Field label={tFields("location")} hint={tFields("locationHint")} error={form.formState.errors.location?.message}>
+                      <Input placeholder={tFields("locationPlaceholder", { city: site.city })} {...form.register("location")} />
                     </Field>
-                    <Field label="Tip objekta">
+                    <Field label={tFields("propertyType")}>
                       <Controller
                         name="propertyType"
                         control={form.control}
@@ -281,10 +318,11 @@ export function FaultAssessmentForm() {
                           <Select value={field.value} onValueChange={field.onChange}>
                             <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="apartment">Stan</SelectItem>
-                              <SelectItem value="house">Kuća</SelectItem>
-                              <SelectItem value="shop">Lokal</SelectItem>
-                              <SelectItem value="office">Kancelarija</SelectItem>
+                              {propertyTypes.map((p) => (
+                                <SelectItem key={p} value={p}>
+                                  {tProperty(p)}
+                                </SelectItem>
+                              ))}
                             </SelectContent>
                           </Select>
                         )}
@@ -292,13 +330,13 @@ export function FaultAssessmentForm() {
                     </Field>
                   </div>
 
-                  <Field label="U čemu je problem?">
+                  <Field label={tFields("category")}>
                     <Controller
                       name="category"
                       control={form.control}
                       render={({ field }) => (
                         <div className="flex flex-wrap gap-2">
-                          {(Object.keys(categoryLabels) as Array<keyof typeof categoryLabels>).map((key) => (
+                          {serviceCategories.map((key) => (
                             <button
                               type="button"
                               key={key}
@@ -310,7 +348,7 @@ export function FaultAssessmentForm() {
                                   : "border-border bg-background text-foreground hover:bg-muted",
                               )}
                             >
-                              {categoryLabels[key]}
+                              {tCategory(key)}
                             </button>
                           ))}
                         </div>
@@ -318,32 +356,30 @@ export function FaultAssessmentForm() {
                     />
                   </Field>
 
-                  <Field label="Koliko je hitno?">
+                  <Field label={tFields("urgency")}>
                     <Controller
                       name="urgency"
                       control={form.control}
                       render={({ field }) => (
                         <div className="grid grid-cols-3 gap-2">
-                          {[
-                            { v: "not-urgent", label: "Nije hitno", hint: "1–2 dana" },
-                            { v: "today", label: "Danas", hint: "isti dan" },
-                            { v: "urgent", label: "Hitno", hint: "u roku od sat" },
-                          ].map((opt) => (
+                          {urgencies.map((v) => (
                             <button
                               type="button"
-                              key={opt.v}
-                              onClick={() => field.onChange(opt.v)}
+                              key={v}
+                              onClick={() => field.onChange(v)}
                               className={cn(
                                 "rounded-xl border px-3 py-2.5 text-left transition-colors",
-                                field.value === opt.v
-                                  ? opt.v === "urgent"
+                                field.value === v
+                                  ? v === "urgent"
                                     ? "border-emergency bg-emergency text-emergency-foreground"
                                     : "border-foreground bg-foreground text-background"
                                   : "border-border bg-background hover:bg-muted",
                               )}
                             >
-                              <div className="text-sm font-semibold">{opt.label}</div>
-                              <div className={cn("text-[11px]", field.value === opt.v ? "opacity-80" : "text-ink-soft")}>{opt.hint}</div>
+                              <div className="text-sm font-semibold">{tUrgency(`${v}.label`)}</div>
+                              <div className={cn("text-[11px]", field.value === v ? "opacity-80" : "text-ink-soft")}>
+                                {tUrgency(`${v}.hint`)}
+                              </div>
                             </button>
                           ))}
                         </div>
@@ -351,7 +387,7 @@ export function FaultAssessmentForm() {
                     />
                   </Field>
 
-                  <Field label="Slike i video" hint="do 8 fajlova, kompresija u pregledaču">
+                  <Field label={tFields("files")} hint={tFields("filesHint")}>
                     <div
                       className={cn(
                         "rounded-xl border border-dashed border-border bg-paper/60 p-4 transition-colors",
@@ -380,14 +416,19 @@ export function FaultAssessmentForm() {
                           <span className="grid h-10 w-10 place-items-center rounded-full bg-muted text-foreground">
                             <Upload className="h-4 w-4" />
                           </span>
-                          <span><span className="font-semibold text-foreground">Dodirni za upload</span> ili prevuci ovde</span>
-                          <span className="text-xs">JPG, HEIC, MP4 do 25 MB</span>
+                          <span>
+                            <span className="font-semibold text-foreground">
+                              {tFields("filesUploadLabel")}
+                            </span>{" "}
+                            {tFields("filesUploadOrDrop")}
+                          </span>
+                          <span className="text-xs">{tFields("filesAccept")}</span>
                         </button>
                       ) : (
                         <div className="space-y-3">
                           <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
                             {files.map((f) => (
-                              <FilePreview key={f.id} file={f} onRemove={() => removeFile(f.id)} />
+                              <FilePreview key={f.id} file={f} onRemove={() => removeFile(f.id)} ariaLabel={tFields("removeFile")} />
                             ))}
                             {files.length < 8 && (
                               <button
@@ -400,46 +441,61 @@ export function FaultAssessmentForm() {
                             )}
                           </div>
                           <div className="flex items-center justify-between text-xs text-ink-soft">
-                            <span>{files.length} file{files.length === 1 ? "" : "s"}</span>
-                            <button type="button" onClick={() => { files.forEach((f) => URL.revokeObjectURL(f.url)); setFiles([]); }} className="font-semibold text-foreground hover:underline">Clear all</button>
+                            <span>{tFields("filesCount", { count: files.length })}</span>
+                            <button type="button" onClick={() => { files.forEach((f) => URL.revokeObjectURL(f.url)); setFiles([]); }} className="font-semibold text-foreground hover:underline">{tFields("filesClear")}</button>
                           </div>
                         </div>
                       )}
                     </div>
                   </Field>
 
-                  <Field label="Anything we should know?">
-                    <Textarea rows={3} placeholder="When did it start, what changed in the apartment, anything you've already tried..." {...form.register("description")} />
+                  <Field label={tFields("description")}>
+                    <Textarea rows={3} placeholder={tFields("descriptionPlaceholder")} {...form.register("description")} />
                   </Field>
 
                   <div>
-                    <Label className="mb-2 block text-sm font-semibold">Symptoms (helps us prioritize)</Label>
+                    <Label className="mb-2 block text-sm font-semibold">
+                      {tFields("symptomsLabel")}
+                    </Label>
                     <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-                      <SymptomToggle name="burningSmell" label="Burning smell" control={form.control} />
-                      <SymptomToggle name="hotPanel" label="Panel overheating" control={form.control} />
-                      <SymptomToggle name="sparking" label="Sparking" control={form.control} />
+                      <SymptomToggle name="burningSmell" label={tFields("symBurning")} control={form.control} />
+                      <SymptomToggle name="hotPanel" label={tFields("symHot")} control={form.control} />
+                      <SymptomToggle name="sparking" label={tFields("symSparking")} control={form.control} />
                     </div>
                   </div>
+
+                  {hcaptchaSiteKey && (
+                    <div className="flex justify-center pt-2">
+                      <HCaptcha
+                        ref={captchaRef}
+                        sitekey={hcaptchaSiteKey}
+                        onVerify={(token) => setCaptchaToken(token)}
+                        onExpire={() => setCaptchaToken(null)}
+                        onError={() => setCaptchaToken(null)}
+                      />
+                    </div>
+                  )}
 
                   <div className="flex flex-col-reverse items-stretch gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
                     <a
                       href={`tel:${site.phoneTel}`}
                       className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-4 py-3 text-sm font-semibold text-foreground hover:bg-muted"
                     >
-                      <Phone className="h-4 w-4" /> Or call {site.phoneDisplay}
+                      <Phone className="h-4 w-4" />{" "}
+                      {t("callInstead", { phone: site.phoneDisplay })}
                     </a>
                     <button
                       type="submit"
-                      disabled={submitting}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background shadow-cta transition-all hover:-translate-y-0.5 disabled:opacity-70"
+                      disabled={submitting || (!!hcaptchaSiteKey && !captchaToken)}
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background shadow-cta transition-all hover:-translate-y-0.5 hover:bg-brand hover:text-brand-foreground disabled:opacity-70 disabled:hover:bg-foreground disabled:hover:text-background"
                     >
                       {submitting ? (
                         <>
-                          <Loader2 className="h-4 w-4 animate-spin" /> Sending
+                          <Loader2 className="h-4 w-4 animate-spin" /> {t("submitting")}
                         </>
                       ) : (
                         <>
-                          <Send className="h-4 w-4" /> Send request
+                          <Send className="h-4 w-4" /> {t("submit")}
                         </>
                       )}
                     </button>
@@ -527,7 +583,7 @@ function SymptomToggle({
   );
 }
 
-function FilePreview({ file, onRemove }: { file: LocalFile; onRemove: () => void }) {
+function FilePreview({ file, onRemove, ariaLabel }: { file: LocalFile; onRemove: () => void; ariaLabel: string }) {
   return (
     <div className="group relative aspect-square overflow-hidden rounded-xl border border-border bg-muted">
       {file.kind === "image" ? (
@@ -546,7 +602,7 @@ function FilePreview({ file, onRemove }: { file: LocalFile; onRemove: () => void
         type="button"
         onClick={onRemove}
         className="absolute right-1.5 top-1.5 grid h-6 w-6 place-items-center rounded-full bg-background/85 text-foreground opacity-0 transition-opacity hover:bg-background group-hover:opacity-100"
-        aria-label="Remove file"
+        aria-label={ariaLabel}
       >
         <X className="h-3.5 w-3.5" />
       </button>
@@ -555,43 +611,50 @@ function FilePreview({ file, onRemove }: { file: LocalFile; onRemove: () => void
 }
 
 function RiskPill({ level }: { level: RiskAssessment["level"] }) {
+  const t = useTranslations("Form.risk");
   const cls =
     level === "high"
       ? "bg-emergency text-emergency-foreground"
       : level === "medium"
       ? "bg-brand text-brand-foreground"
       : "bg-muted text-foreground";
-  const label = level === "high" ? "High" : level === "medium" ? "Medium" : "Low";
+  const label = t(level);
   return (
     <span className={cn("rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider", cls)}>
-      {label} risk
+      {label} {t("riskLabel")}
     </span>
   );
 }
 
 function SuccessPanel({ result, onReset }: { result: RiskAssessment; onReset: () => void }) {
+  const t = useTranslations("Form.success");
+  const tReasons = useTranslations("Risk.reasons");
+  const tGuidance = useTranslations("Risk.guidance");
+  const tCallout = useTranslations("Risk.callout");
+  const callout = tCallout(result.level);
+  const guidance = tGuidance(result.level);
   return (
     <div className="space-y-6 p-6 sm:p-8">
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="inline-flex items-center gap-1.5 rounded-full bg-foreground/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-foreground">
-            <CheckCircle2 className="h-3.5 w-3.5" /> Sent
+            <CheckCircle2 className="h-3.5 w-3.5" /> {t("sent")}
           </div>
-          <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{result.callout}</h3>
+          <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{callout}</h3>
         </div>
         <RiskPill level={result.level} />
       </div>
 
-      <p className="text-sm text-ink-soft">{result.guidance}</p>
+      <p className="text-sm text-ink-soft">{guidance}</p>
 
-      {result.reasons.length > 0 && (
+      {result.reasonKeys.length > 0 && (
         <div className="rounded-2xl border border-border bg-paper p-4">
-          <div className="text-xs font-semibold uppercase tracking-widest text-ink-soft">Why this rating</div>
+          <div className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{t("whyHeading")}</div>
           <ul className="mt-2 space-y-1.5 text-sm text-foreground">
-            {result.reasons.map((r) => (
-              <li key={r} className="flex items-start gap-2">
+            {result.reasonKeys.map((k) => (
+              <li key={k} className="flex items-start gap-2">
                 <span className={cn("mt-2 h-1.5 w-1.5 shrink-0 rounded-full", result.level === "high" ? "bg-emergency" : "bg-foreground")} />
-                <span>{r}</span>
+                <span>{tReasons(k)}</span>
               </li>
             ))}
           </ul>
@@ -599,21 +662,21 @@ function SuccessPanel({ result, onReset }: { result: RiskAssessment; onReset: ()
       )}
 
       <div className="rounded-2xl bg-foreground p-5 text-background">
-        <div className="text-xs font-semibold uppercase tracking-widest text-background/60">What happens next</div>
+        <div className="text-xs font-semibold uppercase tracking-widest text-background/60">{t("nextHeading")}</div>
         <ol className="mt-3 space-y-2 text-sm">
-          <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" /> We review your photos within 30 minutes.</li>
-          <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" /> You get an indicative price + earliest visit slot.</li>
-          <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" /> Confirm and we&apos;re on the way.</li>
+          <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" /> {t("next1")}</li>
+          <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" /> {t("next2")}</li>
+          <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" /> {t("next3")}</li>
         </ol>
       </div>
 
       <div className="flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <button type="button" onClick={onReset} className="text-sm font-semibold text-ink-soft hover:text-foreground">Send another</button>
+        <button type="button" onClick={onReset} className="text-sm font-semibold text-ink-soft hover:text-foreground">{t("another")}</button>
         <a
           href={`tel:${site.phoneTel}`}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-emergency px-5 py-3 text-sm font-semibold text-emergency-foreground"
         >
-          <Phone className="h-4 w-4" /> Call us now
+          <Phone className="h-4 w-4" /> {t("callNow")}
         </a>
       </div>
     </div>

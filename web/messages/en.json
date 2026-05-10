@@ -1,0 +1,452 @@
+{
+  "Brand": {
+    "logoAriaLabel": "nik volt — home",
+    "menuOpen": "Open menu",
+    "siteName": "nik volt"
+  },
+  "Nav": {
+    "services": "Services",
+    "emergency": "Common faults",
+    "blog": "DIY tips",
+    "gallery": "Gallery",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "sr": "Serbian",
+    "en": "English",
+    "ru": "Russian"
+  },
+  "Cta": {
+    "sendProblem": "Send your problem",
+    "callNow": "Call now",
+    "callWithNumber": "Call {phone}",
+    "openConversation": "Open chat",
+    "whatsapp": "WhatsApp"
+  },
+  "Hero": {
+    "availability": "Available right now in {city} · response {responseTime}",
+    "responseTime": "under 30 minutes",
+    "h1Lead": "An electrician in {city}",
+    "h1Highlight": "without guesswork",
+    "h1Tail": "on price.",
+    "lead": "Send photos of the problem. Get a fault estimate, indicative price, and a visit slot — usually within an hour.",
+    "badgeLicensed": "Licensed · insured",
+    "badgeSameDay": "Same-day visits",
+    "badgeJobs": "{count, plural, one {# completed job} other {# completed jobs}}+",
+    "visualHeader": "Send your problem",
+    "photoTabla": "Panel",
+    "photoUticnica": "Outlet",
+    "photoKabl": "Burnt cable",
+    "symptoms": "Symptoms",
+    "symSparking": "Sparking",
+    "symBurning": "Burning smell",
+    "symHotPanel": "Hot panel",
+    "estimateLabel": "Assessment",
+    "estimateText": "High risk · likely arc on the kitchen circuit",
+    "riskHigh": "High",
+    "indicative": "Indicative",
+    "indicativeRange": "8,500 – 14,000 RSD",
+    "earliest": "Earliest slot",
+    "earliestValue": "Today, 18:30",
+    "insulationOk": "Insulation tested",
+    "insulationNote": "Calibrated megohmmeter · written record"
+  },
+  "Emergency": {
+    "kicker": "Emergency",
+    "title": "Urgent fault? Call now — don't plug anything else into the mains.",
+    "lead": "If you see smoke or smell burning plastic, switch off the main breaker and call us. We answer 24/7 across {city}.",
+    "cards": {
+      "fuse-trip": {
+        "title": "Breaker keeps tripping",
+        "description": "A breaker or RCD trips at short intervals — usually a short circuit or overload."
+      },
+      "no-power": {
+        "title": "No power",
+        "description": "The whole flat or just one circuit — we come and find the source."
+      },
+      "sparking": {
+        "title": "Outlet sparking",
+        "description": "Visible sparks or crackling — switch it off, don't plug anything in."
+      },
+      "burning-smell": {
+        "title": "Burning smell",
+        "description": "Melting plastic — usually the warning before a fire."
+      },
+      "hot-panel": {
+        "title": "Panel running hot",
+        "description": "Breakers or cables are noticeably warm to the touch."
+      },
+      "shock": {
+        "title": "Electric shock",
+        "description": "You felt a shock from a device, switch, or light fitting."
+      }
+    }
+  },
+  "HowItWorks": {
+    "kicker": "How it works",
+    "title": "From a phone snap to a quiet panel.",
+    "lead": "Four steps. No back-and-forth and no surprises when we ring the doorbell.",
+    "steps": {
+      "01": {
+        "title": "Send photos and a short description",
+        "description": "Snap the panel, the outlet, whatever's smoking. Two minutes on your phone."
+      },
+      "02": {
+        "title": "Get an assessment and indicative price",
+        "description": "We tell you what's likely wrong, what it costs, and when we can come."
+      },
+      "03": {
+        "title": "Confirm and we arrive",
+        "description": "You confirm the slot. We arrive on time with the parts your fault needs."
+      },
+      "04": {
+        "title": "Fixed, measured, documented",
+        "description": "We test insulation and grounding. You get a photo record of what was done."
+      }
+    }
+  },
+  "Services": {
+    "kicker": "Services",
+    "title": "From a single outlet to a full installation.",
+    "ctaTop": "Send your problem",
+    "cardCta": "Request a quote",
+    "fromPrice": "from {amount} RSD",
+    "items": {
+      "outlet-replacement": {
+        "title": "Outlet replacement",
+        "description": "Damaged, loose or worn-out sockets — replaced in minutes."
+      },
+      "fuse-replacement": {
+        "title": "Breaker replacement",
+        "description": "Aged breakers, faulty RCDs, wrongly sized fuses."
+      },
+      "panels": {
+        "title": "Distribution panels",
+        "description": "Modern panel rebuild with clear labeling and proper protection."
+      },
+      "new-installation": {
+        "title": "New installation",
+        "description": "Apartments, houses, shops — to current code."
+      },
+      "lighting": {
+        "title": "Lighting",
+        "description": "Chandeliers, downlights, dimmers, outdoor lights — neat and balanced."
+      },
+      "led": {
+        "title": "LED systems",
+        "description": "Strips, profiles, drivers — properly cooled and controlled."
+      },
+      "smart-home": {
+        "title": "Smart home",
+        "description": "Shelly, Sonoff, Zigbee — without breaking walls."
+      },
+      "diagnostics": {
+        "title": "Fault diagnostics",
+        "description": "Insulation, leakage, intermittent trips — we measure, not guess."
+      },
+      "industrial": {
+        "title": "Industrial wiring",
+        "description": "Three-phase distribution, motors, control panels, machine wiring."
+      },
+      "grounding": {
+        "title": "Grounding",
+        "description": "Earth resistance check with a calibrated instrument and a written record."
+      }
+    }
+  },
+  "Pricing": {
+    "kicker": "Indicative prices",
+    "title1": "Real prices.",
+    "title2Lead": "Before",
+    "title2Tail": "we ring the doorbell.",
+    "lead": "The final price depends on the actual state of the installation and scope. We tell you what we see and quote before touching a cable.",
+    "cta": "I want a precise quote",
+    "tableService": "Service",
+    "tablePriceFrom": "From",
+    "info": "The call-out fee is deducted from the repair if work is done during that visit. Materials are billed at cost with the receipt attached.",
+    "rows": {
+      "diagnostika": {
+        "label": "Diagnostics",
+        "note": "deducted from the repair price"
+      },
+      "outlet": { "label": "Outlet replacement" },
+      "fuse": { "label": "Breaker replacement" },
+      "callout": { "label": "Call-out" },
+      "panel": {
+        "label": "Panel rebuild",
+        "note": "depends on circuits and protection"
+      },
+      "newPoint": { "label": "New installation per point" }
+    },
+    "amounts": {
+      "diagnostika": "from 2,000 RSD",
+      "outlet": "from 1,500 RSD",
+      "fuse": "from 2,500 RSD",
+      "callout": "from 3,000 RSD",
+      "panel": "by assessment",
+      "newPoint": "from 1,800 RSD"
+    }
+  },
+  "Gallery": {
+    "kicker": "Before / After",
+    "title": "Real installs. No stock photos.",
+    "lead": "Drag the slider and compare what we found with what we left behind.",
+    "before": "Before",
+    "after": "After",
+    "sliderAria": "Drag to compare",
+    "items": {
+      "alu-to-cu": {
+        "title": "Aluminium → copper",
+        "description": "Old 1970s aluminium wiring replaced with PP-Y 3×2.5 cable and new protection.",
+        "location": "Voždovac, two-room flat"
+      },
+      "panel-rebuild": {
+        "title": "Panel rebuild + RCD",
+        "description": "Old porcelain fuses replaced with RCBO breakers, every circuit labeled.",
+        "location": "Stari Grad, family house"
+      },
+      "kitchen-rework": {
+        "title": "Split kitchen circuits",
+        "description": "One overloaded line split into 3 separate circuits with proper protection.",
+        "location": "Novi Beograd, flat"
+      }
+    }
+  },
+  "BlogTeaser": {
+    "kicker": "DIY & education",
+    "title": "Read before you call. Or call us straight away. Both work.",
+    "all": "All articles",
+    "readingTime": "{minutes, plural, one {# min read} other {# min read}}"
+  },
+  "Reviews": {
+    "kicker": "Reviews",
+    "title1": "Same-day repairs.",
+    "title2": "Confirmed by people in {city}.",
+    "rating": "4.9 / 5",
+    "ratingSource": "· based on Google reviews",
+    "via": "via {source}",
+    "items": {
+      "r1": "Sent photos of a burnt outlet on a Sunday — within 20 minutes I had an estimate and they came the same day.",
+      "r2": "They found an intermittent breaker trip three other electricians couldn't. No upselling, real measurements.",
+      "r3": "Panel done cleanly, every circuit labeled. The quote and final invoice match to the dinar.",
+      "r4": "Smart home installed without breaking a single tile. They know exactly which Shelly module goes where."
+    }
+  },
+  "About": {
+    "kicker": "About us",
+    "title": "Fourteen years above someone's panel — usually right before something burns out.",
+    "lead": "I started rewiring my own flat in 2010 because two electricians gave me three different problems for the same fault. Since 2012 it's been my only job. Apartments, houses, shops, light industry — work where the test report matters more than the cheapest quote.",
+    "credentials": {
+      "licensed": {
+        "title": "Licensed electrician",
+        "body": "Member of the Chamber of Engineers, certificate available on request."
+      },
+      "insurance": {
+        "title": "Liability insurance",
+        "body": "Up to 5,000,000 RSD per incident — you can ask to see the policy."
+      },
+      "instruments": {
+        "title": "Calibrated instruments",
+        "body": "Insulation, RCD, loop impedance and earth resistance — calibrated yearly."
+      }
+    },
+    "coverageTitle": "Service area",
+    "statsHeading": "By the numbers",
+    "statsYears": "Years of experience",
+    "statsJobs": "Completed jobs",
+    "statsResponse": "Average response time",
+    "statsRecurring": "Returning clients",
+    "statsRecurringValue": "62%",
+    "quote": "“Show me the panel before you give a quote.” That's the whole philosophy. If we don't see it, we don't price it."
+  },
+  "Contact": {
+    "kicker": "Contact",
+    "title": "Pick the channel that fits your moment.",
+    "lead": "Phone for emergencies. WhatsApp or Viber for photos and a quote. Email if it can wait until tomorrow.",
+    "phoneLabel": "Phone",
+    "whatsappLabel": "WhatsApp",
+    "viberLabel": "Viber",
+    "emailLabel": "Email",
+    "openConversation": "Open chat",
+    "hoursTitle": "Working hours",
+    "workshopLabel": "Workshop",
+    "mapAreaLabel": "Service area",
+    "mapAreaCity": "{city} and surrounding municipalities",
+    "mapAreaNote": "Visits are typically scheduled within 60 minutes of confirmation."
+  },
+  "Hours": {
+    "alwaysDay": "Every day",
+    "alwaysHours": "24/7"
+  },
+  "Footer": {
+    "tagline": "The electrician you call before something burns out.",
+    "siteHeading": "Site",
+    "contactHeading": "Contact",
+    "hoursHeading": "Hours",
+    "blog": "Blog",
+    "copyright": "© {year} {name}. Licensed electrician — {city}.",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use"
+  },
+  "Form": {
+    "kicker": "Assessment",
+    "title1": "Send your problem.",
+    "title2": "Get an indicative price within an hour.",
+    "lead": "Photos beat descriptions. Snap the panel, the outlet, whatever's smoking — we'll do the rest.",
+    "rail": {
+      "noSurprise": {
+        "title": "No surprises in the quote",
+        "body": "Indicative price upfront. Final price after we see the install."
+      },
+      "priority": {
+        "title": "Emergencies get priority",
+        "body": "If the symptoms suggest fire risk, we automatically reorder the queue."
+      },
+      "documented": {
+        "title": "Documented work",
+        "body": "Every visit ends with measurements and photos of what was done."
+      }
+    },
+    "liveRiskKicker": "Live risk assessment",
+    "fields": {
+      "name": "Your name",
+      "namePlaceholder": "Marko",
+      "phone": "Phone",
+      "phonePlaceholder": "+381 60 ...",
+      "location": "Location",
+      "locationHint": "City / district",
+      "locationPlaceholder": "{city}, Vračar",
+      "propertyType": "Property type",
+      "category": "What's the problem?",
+      "urgency": "How urgent is it?",
+      "files": "Photos and video",
+      "filesHint": "up to 8 files, compressed in browser",
+      "filesUploadLabel": "Tap to upload",
+      "filesUploadOrDrop": "or drag here",
+      "filesAccept": "JPG, HEIC, MP4 up to 25 MB",
+      "filesCount": "{count, plural, one {# file} other {# files}}",
+      "filesClear": "Clear all",
+      "removeFile": "Remove file",
+      "description": "Anything we should know?",
+      "descriptionPlaceholder": "When did it start, what changed in the apartment, anything you've already tried...",
+      "symptomsLabel": "Symptoms (helps us prioritize)",
+      "symBurning": "Burning smell",
+      "symHot": "Panel overheating",
+      "symSparking": "Sparking"
+    },
+    "validation": {
+      "name": "Tell us your name",
+      "phoneShort": "Phone number is too short",
+      "phoneShape": "Only digits, spaces and +",
+      "location": "City or district"
+    },
+    "property": {
+      "apartment": "Apartment",
+      "house": "House",
+      "shop": "Shop",
+      "office": "Office"
+    },
+    "category": {
+      "no-power": "No power",
+      "fuse-trip": "Breaker tripping",
+      "new-install": "New installation",
+      "short-circuit": "Short circuit",
+      "panel-replacement": "Panel replacement",
+      "other": "Other"
+    },
+    "urgency": {
+      "not-urgent": { "label": "Not urgent", "hint": "1–2 days" },
+      "today": { "label": "Today", "hint": "same day" },
+      "urgent": { "label": "Urgent", "hint": "within an hour" }
+    },
+    "submit": "Send request",
+    "submitting": "Sending",
+    "callInstead": "Or call {phone}",
+    "fileTooBig": "{name} is over 25 MB — send a shorter clip.",
+    "fileUnreadable": "Can't read {name}",
+    "submitSuccess": "Sent — we'll reply within 30 minutes.",
+    "submitSuccessHigh": "High-risk request — we're calling you back right away.",
+    "submitSuccessNormal": "Watch your phone for our reply.",
+    "submitFailed": "Sending failed. Try again or call us directly.",
+    "success": {
+      "sent": "Sent",
+      "whyHeading": "Why this rating",
+      "nextHeading": "What happens next",
+      "next1": "We review your photos within 30 minutes.",
+      "next2": "You get an indicative price + earliest visit slot.",
+      "next3": "Confirm and we're on the way.",
+      "another": "Send another",
+      "callNow": "Call us now"
+    },
+    "risk": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low",
+      "riskLabel": "risk"
+    }
+  },
+  "Risk": {
+    "reasons": {
+      "burning": "Burning smell reported",
+      "hotPanel": "Panel running hot",
+      "sparking": "Sparking reported",
+      "shortCircuit": "Suspected short circuit"
+    },
+    "guidance": {
+      "high": "If you smell burning or see smoke, switch off the main breaker. Don't switch anything else on. Your call goes to priority.",
+      "medium": "Avoid the affected circuit. We'll come as soon as a slot opens — same day where possible.",
+      "low": "We'll get back to you with an indicative price and the next available slot."
+    },
+    "callout": {
+      "high": "Recommend an emergency visit.",
+      "medium": "Book a same-day visit to be safe.",
+      "low": "Standard scheduling — usually within 1–2 days."
+    }
+  },
+  "Blog": {
+    "kicker": "Blog",
+    "title": "Things every {city} apartment should know about electricity.",
+    "lead": "Diagnostics, safe DIY, and the warning signs we see every week. Written to be skim-readable while standing in front of a panel.",
+    "all": "All",
+    "featured": "Featured",
+    "minRead": "{minutes, plural, one {# min} other {# min}}",
+    "readingTime": "{minutes, plural, one {# min read} other {# min read}}",
+    "read": "Read",
+    "allArticles": "All articles",
+    "publishedOn": "{date, date, long}",
+    "sidebar": {
+      "headline": "Got the same problem?",
+      "lead": "Send a few photos. Get an indicative price within the hour.",
+      "send": "Send your problem",
+      "tags": "Tags"
+    },
+    "readNext": "Read next"
+  },
+  "JsonLd": {
+    "businessType": "Electrician"
+  },
+  "Meta": {
+    "Home": {
+      "title": "{name} — Electrician in {city}, no guesswork on price",
+      "description": "Send photos of the problem and get a fault assessment, indicative price and visit slot. Licensed electrician for Belgrade.",
+      "ogTitle": "{name} — Electrician in {city}",
+      "ogDescription": "Photo-based fault assessment, transparent indicative pricing, fast on-site visits.",
+      "twitterDescription": "Photo-based fault assessment. Transparent prices. Fast on-site visits.",
+      "ogImageAlt": "{name} — Belgrade electrician"
+    },
+    "Blog": {
+      "title": "DIY tips & electrical education",
+      "description": "Practical, no-nonsense articles on common faults, safe DIY checks, and recognizing dangerous installations."
+    },
+    "Keywords": {
+      "k1": "electrician",
+      "k2": "Belgrade electrician",
+      "k3": "emergency electrician",
+      "k4": "fault diagnostics",
+      "k5": "panel replacement",
+      "k6": "outlet replacement"
+    }
+  }
+}

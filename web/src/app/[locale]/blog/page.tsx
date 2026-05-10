@@ -1,17 +1,42 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
+import { hasLocale } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { ArrowRight } from "lucide-react";
 import { getAllPosts, getCategories } from "@/lib/blog";
 import { CoverArt } from "@/components/blog/cover-art";
-import { ArrowRight } from "lucide-react";
+import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site-config";
 
-export const metadata: Metadata = {
-  title: "DIY tips & electrical education",
-  description:
-    "Practical, no-nonsense articles on common faults, safe DIY checks, and recognizing dangerous installations.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) return {};
+  const t = await getTranslations({ locale, namespace: "Meta.Blog" });
+  const languages = Object.fromEntries(
+    routing.locales.map((l) => [l, `/${l}/blog`]),
+  );
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: {
+      canonical: `/${locale}/blog`,
+      languages: { ...languages, "x-default": `/${routing.defaultLocale}/blog` },
+    },
+  };
+}
 
-export default function BlogIndex() {
+export default async function BlogIndex({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("Blog");
   const posts = getAllPosts();
   const categories = getCategories();
   const [feature, ...rest] = posts;
@@ -19,18 +44,19 @@ export default function BlogIndex() {
   return (
     <div className="container-page py-16 md:py-24">
       <header className="max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">Blog</p>
-        <h1 className="mt-3 font-display text-balance text-4xl font-bold tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl">
-          Things every {site.city} apartment should know about electricity.
-        </h1>
-        <p className="mt-5 text-base text-ink-soft sm:text-lg">
-          Diagnostics, safe DIY, and the warning signs we see every week. Written
-          to be skim-readable while standing in front of a panel.
+        <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+          {t("kicker")}
         </p>
+        <h1 className="mt-3 font-display text-balance text-4xl font-bold tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl">
+          {t("title", { city: site.city })}
+        </h1>
+        <p className="mt-5 text-base text-ink-soft sm:text-lg">{t("lead")}</p>
       </header>
 
       <div className="mt-10 flex flex-wrap gap-2">
-        <span className="rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold text-background">All</span>
+        <span className="rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold text-background">
+          {t("all")}
+        </span>
         {categories.map((c) => (
           <span key={c} className="rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold text-ink-soft">{c}</span>
         ))}
@@ -44,17 +70,19 @@ export default function BlogIndex() {
           <CoverArt cover={feature.cover} className="aspect-[16/10] md:aspect-auto md:h-full" />
           <div className="flex flex-col justify-center gap-4 p-8 md:p-10">
             <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
-              <span>Featured</span>
+              <span>{t("featured")}</span>
               <span>·</span>
               <span>{feature.category}</span>
               <span>·</span>
-              <span>{feature.readingTime} min</span>
+              <span>{t("minRead", { minutes: feature.readingTime })}</span>
             </div>
             <h2 className="font-display text-balance text-2xl font-bold leading-tight text-foreground sm:text-3xl md:text-4xl">
               {feature.title}
             </h2>
             <p className="max-w-md text-base text-ink-soft">{feature.description}</p>
-            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground">Read <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></span>
+            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground">
+              {t("read")} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </span>
           </div>
         </Link>
       )}
@@ -71,7 +99,7 @@ export default function BlogIndex() {
               <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
                 <span>{p.category}</span>
                 <span>·</span>
-                <span>{p.readingTime} min</span>
+                <span>{t("minRead", { minutes: p.readingTime })}</span>
               </div>
               <h3 className="mt-3 text-lg font-semibold leading-snug text-foreground group-hover:underline underline-offset-4 decoration-brand decoration-2">
                 {p.title}

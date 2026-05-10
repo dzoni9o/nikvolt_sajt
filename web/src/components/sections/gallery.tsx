@@ -1,26 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import { gallery } from "@/lib/content";
+import { useTranslations } from "next-intl";
 import { ArrowLeftRight } from "lucide-react";
+import { galleryConfig, type GalleryItemId } from "@/lib/content";
 
 export function Gallery() {
+  const t = useTranslations("Gallery");
   return (
     <section id="gallery" className="bg-paper">
       <div className="container-page py-20 md:py-28">
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">Pre / Posle</p>
-          <h2 className="mt-3 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
-            Stvarne instalacije. Bez stock fotografija.
-          </h2>
-          <p className="mt-4 text-base text-ink-soft">
-            Pomeri klizač i uporedi šta smo zatekli sa onim što smo ostavili iza sebe.
+          <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+            {t("kicker")}
           </p>
+          <h2 className="mt-3 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
+            {t("title")}
+          </h2>
+          <p className="mt-4 text-base text-ink-soft">{t("lead")}</p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {gallery.map((g) => (
-            <BeforeAfterCard key={g.id} item={g} />
+          {galleryConfig.map((g) => (
+            <BeforeAfterCard key={g.id} id={g.id} />
           ))}
         </div>
       </div>
@@ -28,8 +30,10 @@ export function Gallery() {
   );
 }
 
-function BeforeAfterCard({ item }: { item: typeof gallery[number] }) {
+function BeforeAfterCard({ id }: { id: GalleryItemId }) {
+  const t = useTranslations("Gallery");
   const [pos, setPos] = useState(50);
+  const hasLocation = t.has(`items.${id}.location`);
   return (
     <article className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
       <div
@@ -48,9 +52,9 @@ function BeforeAfterCard({ item }: { item: typeof gallery[number] }) {
           (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
         }}
       >
-        <FauxImage label="Pre" tone="warn" />
+        <FauxImage label={t("before")} tone="warn" />
         <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${pos}%)` }}>
-          <FauxImage label="Posle" tone="ok" />
+          <FauxImage label={t("after")} tone="ok" />
         </div>
 
         <div
@@ -61,19 +65,27 @@ function BeforeAfterCard({ item }: { item: typeof gallery[number] }) {
           <button
             type="button"
             className="absolute grid h-9 w-9 -translate-x-1/2 place-items-center rounded-full bg-background text-foreground shadow ring-1 ring-border"
-            aria-label="Povuci za poređenje"
+            aria-label={t("sliderAria")}
           >
             <ArrowLeftRight className="h-4 w-4" />
           </button>
         </div>
 
-        <span className="absolute left-3 top-3 rounded-full bg-background/85 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-foreground backdrop-blur">Pre</span>
-        <span className="absolute right-3 top-3 rounded-full bg-foreground px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-background">Posle</span>
+        <span className="absolute left-3 top-3 rounded-full bg-background/85 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-foreground backdrop-blur">{t("before")}</span>
+        <span className="absolute right-3 top-3 rounded-full bg-foreground px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-background">{t("after")}</span>
       </div>
       <div className="p-5">
-        <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
-        <p className="mt-1 text-sm text-ink-soft">{item.description}</p>
-        {item.location && <p className="mt-3 text-xs font-medium text-ink-soft">{item.location}</p>}
+        <h3 className="text-base font-semibold text-foreground">
+          {t(`items.${id}.title`)}
+        </h3>
+        <p className="mt-1 text-sm text-ink-soft">
+          {t(`items.${id}.description`)}
+        </p>
+        {hasLocation && (
+          <p className="mt-3 text-xs font-medium text-ink-soft">
+            {t(`items.${id}.location`)}
+          </p>
+        )}
       </div>
     </article>
   );

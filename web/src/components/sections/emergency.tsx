@@ -1,8 +1,11 @@
 import { Phone, AlertTriangle, ArrowRight } from "lucide-react";
-import { emergencyCards } from "@/lib/content";
+import { getTranslations } from "next-intl/server";
+import { emergencyCardsConfig } from "@/lib/content";
 import { site } from "@/lib/site-config";
 
-export function Emergency() {
+export async function Emergency() {
+  const t = await getTranslations("Emergency");
+  const tCta = await getTranslations("Cta");
   return (
     <section id="emergency" className="relative isolate">
       <div
@@ -13,27 +16,27 @@ export function Emergency() {
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-emergency/30 bg-emergency-soft px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emergency">
-              <AlertTriangle className="h-3.5 w-3.5" /> Hitno
+              <AlertTriangle className="h-3.5 w-3.5" /> {t("kicker")}
             </div>
             <h2 className="mt-4 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
-              Hitan kvar? Pozovi odmah — ne uključuj ništa više u struju.
+              {t("title")}
             </h2>
             <p className="mt-3 max-w-lg text-base text-ink-soft">
-              Ako vidiš dim ili osetiš miris paljevine, isključi glavni osigurač i zovi nas.
-              Javljamo se 24/7 za {site.city}.
+              {t("lead", { city: site.city })}
             </p>
           </div>
           <a
             href={`tel:${site.phoneTel}`}
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-emergency px-6 py-3.5 text-base font-semibold text-emergency-foreground shadow-emergency transition-all hover:-translate-y-0.5"
           >
-            <Phone className="h-4 w-4" /> Pozovi {site.phoneDisplay}
+            <Phone className="h-4 w-4" />{" "}
+            {tCta("callWithNumber", { phone: site.phoneDisplay })}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {emergencyCards.map((card) => {
+          {emergencyCardsConfig.map((card) => {
             const Icon = card.icon;
             return (
               <a
@@ -46,12 +49,16 @@ export function Emergency() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-base font-semibold text-foreground">{card.title}</h3>
+                    <h3 className="text-base font-semibold text-foreground">
+                      {t(`cards.${card.id}.title`)}
+                    </h3>
                     <ArrowRight className="h-4 w-4 shrink-0 text-ink-soft transition-all group-hover:translate-x-0.5 group-hover:text-emergency" />
                   </div>
-                  <p className="mt-1 text-sm text-ink-soft">{card.description}</p>
+                  <p className="mt-1 text-sm text-ink-soft">
+                    {t(`cards.${card.id}.description`)}
+                  </p>
                   <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-emergency">
-                    <Phone className="h-3.5 w-3.5" /> Pozovi odmah
+                    <Phone className="h-3.5 w-3.5" /> {tCta("callNow")}
                   </span>
                 </div>
               </a>

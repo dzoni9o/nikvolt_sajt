@@ -16,237 +16,104 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-export type EmergencyCard = {
-  id: string;
-  title: string;
-  description: string;
+export type EmergencyId =
+  | "fuse-trip"
+  | "no-power"
+  | "sparking"
+  | "burning-smell"
+  | "hot-panel"
+  | "shock";
+
+export const emergencyCardsConfig: { id: EmergencyId; icon: LucideIcon }[] = [
+  { id: "fuse-trip", icon: ZapOff },
+  { id: "no-power", icon: PlugZap },
+  { id: "sparking", icon: Sparkles },
+  { id: "burning-smell", icon: Flame },
+  { id: "hot-panel", icon: Thermometer },
+  { id: "shock", icon: AlertTriangle },
+];
+
+export type ServiceId =
+  | "outlet-replacement"
+  | "fuse-replacement"
+  | "panels"
+  | "new-installation"
+  | "lighting"
+  | "led"
+  | "smart-home"
+  | "diagnostics"
+  | "industrial"
+  | "grounding";
+
+export const servicesConfig: {
+  id: ServiceId;
   icon: LucideIcon;
-};
-
-export const emergencyCards: EmergencyCard[] = [
-  {
-    id: "fuse-trip",
-    title: "Iskače osigurač",
-    description: "Automatski osigurač ili FID iskače u kratkim razmacima — najčešće kratak spoj ili preopterećenje.",
-    icon: ZapOff,
-  },
-  {
-    id: "no-power",
-    title: "Nestala struja",
-    description: "Cela stan ili samo jedan vod — dolazimo i tražimo izvor.",
-    icon: PlugZap,
-  },
-  {
-    id: "sparking",
-    title: "Varniči utičnica",
-    description: "Vidljive iskre ili pucketanje — isključi je, ne uključuj ništa u nju.",
-    icon: Sparkles,
-  },
-  {
-    id: "burning-smell",
-    title: "Miris paljevine",
-    description: "Topljenje plastike — najčešće upozorenje pre požara.",
-    icon: Flame,
-  },
-  {
-    id: "hot-panel",
-    title: "Greje se tabla",
-    description: "Osigurači ili kablovi su osetno topli kada ih dodirneš.",
-    icon: Thermometer,
-  },
-  {
-    id: "shock",
-    title: "Udar struje",
-    description: "Osetio si strujni udar sa uređaja, prekidača ili sijalice.",
-    icon: AlertTriangle,
-  },
+  fromAmount?: number;
+}[] = [
+  { id: "outlet-replacement", icon: PlugZap, fromAmount: 1500 },
+  { id: "fuse-replacement", icon: ZapOff, fromAmount: 2500 },
+  { id: "panels", icon: CircuitBoard },
+  { id: "new-installation", icon: Cable },
+  { id: "lighting", icon: Lightbulb },
+  { id: "led", icon: Sparkles },
+  { id: "smart-home", icon: Cpu },
+  { id: "diagnostics", icon: Wrench, fromAmount: 2000 },
+  { id: "industrial", icon: Factory },
+  { id: "grounding", icon: ShieldCheck },
 ];
 
-export type Service = {
-  id: string;
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  fromPrice?: string;
-};
+export type PricingRowId =
+  | "diagnostika"
+  | "outlet"
+  | "fuse"
+  | "callout"
+  | "panel"
+  | "newPoint";
 
-export const services: Service[] = [
-  {
-    id: "outlet-replacement",
-    title: "Zamena utičnica",
-    description: "Oštećene, klimave ili dotrajale utičnice — menjamo za par minuta.",
-    icon: PlugZap,
-    fromPrice: "od 1.500 RSD",
-  },
-  {
-    id: "fuse-replacement",
-    title: "Zamena osigurača",
-    description: "Dotrajali automatici, neispravni FID-ovi, pogrešno dimenzionisani osigurači.",
-    icon: ZapOff,
-    fromPrice: "od 2.500 RSD",
-  },
-  {
-    id: "panels",
-    title: "Elektro table",
-    description: "Moderna prerada table sa preglednim obeležavanjem i pravom zaštitom.",
-    icon: CircuitBoard,
-  },
-  {
-    id: "new-installation",
-    title: "Nova instalacija",
-    description: "Stanovi, kuće, lokali — po važećim propisima.",
-    icon: Cable,
-  },
-  {
-    id: "lighting",
-    title: "Rasveta",
-    description: "Lusteri, spotovi, dimeri, spoljna rasveta — uredno i izbalansirano.",
-    icon: Lightbulb,
-  },
-  {
-    id: "led",
-    title: "LED sistemi",
-    description: "Trake, profili, drajveri — pravilno hlađeno i komandovano.",
-    icon: Sparkles,
-  },
-  {
-    id: "smart-home",
-    title: "Pametna kuća",
-    description: "Shelly, Sonoff, Zigbee — bez razbijanja zidova.",
-    icon: Cpu,
-  },
-  {
-    id: "diagnostics",
-    title: "Dijagnostika kvarova",
-    description: "Izolacija, propuštanje, povremena iskakanja — merimo, ne pogađamo.",
-    icon: Wrench,
-    fromPrice: "od 2.000 RSD",
-  },
-  {
-    id: "industrial",
-    title: "Industrijske instalacije",
-    description: "Trofazni razvod, motori, komandni ormani, ožičavanje mašina.",
-    icon: Factory,
-  },
-  {
-    id: "grounding",
-    title: "Uzemljenje",
-    description: "Provera otpora uzemljenja kalibrisanim instrumentom, sa zapisnikom.",
-    icon: ShieldCheck,
-  },
+export const pricingRowIds: PricingRowId[] = [
+  "diagnostika",
+  "outlet",
+  "fuse",
+  "callout",
+  "panel",
+  "newPoint",
 ];
 
-export type PriceRow = {
-  label: string;
-  price: string;
-  note?: string;
-};
+export type GalleryItemId = "alu-to-cu" | "panel-rebuild" | "kitchen-rework";
 
-export const pricing: PriceRow[] = [
-  { label: "Dijagnostika", price: "od 2.000 RSD", note: "umanjuje cenu popravke" },
-  { label: "Zamena utičnice", price: "od 1.500 RSD" },
-  { label: "Zamena osigurača", price: "od 2.500 RSD" },
-  { label: "Izlazak na teren", price: "od 3.000 RSD" },
-  { label: "Prerada elektro table", price: "po proceni", note: "zavisi od broja kola i zaštite" },
-  { label: "Nova instalacija po tački", price: "od 1.800 RSD" },
-];
-
-export type GalleryItem = {
-  id: string;
+export const galleryConfig: {
+  id: GalleryItemId;
   before: string;
   after: string;
-  title: string;
-  description: string;
-  location?: string;
-};
-
-export const gallery: GalleryItem[] = [
+}[] = [
   {
     id: "alu-to-cu",
-    title: "Aluminijum → bakar",
-    description: "Stara aluminijumska instalacija iz 70-ih zamenjena PP-Y 3×2,5 kablom uz novu zaštitu.",
-    location: "Voždovac, dvosoban stan",
     before: "/gallery/alu-before.svg",
     after: "/gallery/alu-after.svg",
   },
   {
     id: "panel-rebuild",
-    title: "Prerada table + FID",
-    description: "Stari porcelanski osigurači zamenjeni FID/RCBO automatima, svako kolo obeleženo.",
-    location: "Stari Grad, porodična kuća",
     before: "/gallery/panel-before.svg",
     after: "/gallery/panel-after.svg",
   },
   {
     id: "kitchen-rework",
-    title: "Razdvojena kuhinjska kola",
-    description: "Jedan preopterećen vod razdeljen na 3 zasebna kola sa pravilnom zaštitom.",
-    location: "Novi Beograd, stan",
     before: "/gallery/kitchen-before.svg",
     after: "/gallery/kitchen-after.svg",
   },
 ];
 
-export type Review = {
-  id: string;
-  author: string;
-  text: string;
-  rating: 5;
-  source?: string;
-};
+export type ReviewId = "r1" | "r2" | "r3" | "r4";
 
-export const reviews: Review[] = [
-  {
-    id: "r1",
-    author: "Marija K.",
-    text: "Poslala slike izgorele utičnice u nedelju — za 20 minuta sam dobila procenu i isti dan su izašli.",
-    rating: 5,
-    source: "Google",
-  },
-  {
-    id: "r2",
-    author: "Stefan P.",
-    text: "Pronašli povremeno iskakanje osigurača koje tri električara pre njih nisu mogla. Bez nepotrebnog dodavanja, prava merenja.",
-    rating: 5,
-    source: "Google",
-  },
-  {
-    id: "r3",
-    author: "Ivana D.",
-    text: "Tablu su uradili pregledno, svako kolo obeleženo. Ponuda i konačan račun se poklapaju do dinara.",
-    rating: 5,
-  },
-  {
-    id: "r4",
-    author: "Aleksa M.",
-    text: "Pametnu kuću ugradili bez razbijanja ijedne pločice. Tačno znaju koji Shelly modul ide gde.",
-    rating: 5,
-    source: "Google",
-  },
+export const reviewsConfig: { id: ReviewId; author: string; source?: string }[] = [
+  { id: "r1", author: "Marija K.", source: "Google" },
+  { id: "r2", author: "Stefan P.", source: "Google" },
+  { id: "r3", author: "Ivana D." },
+  { id: "r4", author: "Aleksa M.", source: "Google" },
 ];
 
-export const howItWorks = [
-  {
-    step: "01",
-    title: "Pošalji slike i kratak opis",
-    description: "Slikaj tablu, utičnicu, ono što se dimi. Dva minuta na telefonu.",
-  },
-  {
-    step: "02",
-    title: "Dobijaš procenu i okvirnu cenu",
-    description: "Odgovaramo šta je verovatno problem, koliko košta i kad možemo da izađemo.",
-  },
-  {
-    step: "03",
-    title: "Potvrdi i dolazimo",
-    description: "Ti potvrdiš termin. Stižemo na vreme sa delovima koji odgovaraju tvom kvaru.",
-  },
-  {
-    step: "04",
-    title: "Popravljeno, izmereno, dokumentovano",
-    description: "Proveravamo izolaciju i uzemljenje. Dobijaš foto-zapisnik o tome šta je urađeno.",
-  },
-];
+export const howItWorksSteps = ["01", "02", "03", "04"] as const;
+export type StepId = (typeof howItWorksSteps)[number];
 
 export type ServiceCategory =
   | "no-power"
@@ -256,8 +123,26 @@ export type ServiceCategory =
   | "panel-replacement"
   | "other";
 
+export const serviceCategories: ServiceCategory[] = [
+  "no-power",
+  "fuse-trip",
+  "new-install",
+  "short-circuit",
+  "panel-replacement",
+  "other",
+];
+
 export type Urgency = "not-urgent" | "today" | "urgent";
 
+export const urgencies: Urgency[] = ["not-urgent", "today", "urgent"];
+
 export type PropertyType = "apartment" | "house" | "shop" | "office";
+
+export const propertyTypes: PropertyType[] = [
+  "apartment",
+  "house",
+  "shop",
+  "office",
+];
 
 export const housePlugIcon = HousePlug;

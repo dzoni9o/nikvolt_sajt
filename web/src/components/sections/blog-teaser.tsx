@@ -1,21 +1,25 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { getAllPosts } from "@/lib/blog";
 import { CoverArt } from "@/components/blog/cover-art";
 
-export function BlogTeaser() {
+export async function BlogTeaser() {
+  const t = await getTranslations("BlogTeaser");
   const posts = getAllPosts().slice(0, 3);
   return (
     <section id="blog-teaser" className="container-page py-20 md:py-28">
       <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
         <div className="max-w-xl">
-          <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">DIY & edukacija</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+            {t("kicker")}
+          </p>
           <h2 className="mt-3 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
-            Pročitaj pre nego što pozoveš. Ili nas direktno zovi. Oba su u redu.
+            {t("title")}
           </h2>
         </div>
         <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:underline underline-offset-4 decoration-brand decoration-2">
-          Svi članci <ArrowRight className="h-4 w-4" />
+          {t("all")} <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
 
@@ -31,7 +35,7 @@ export function BlogTeaser() {
               <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
                 <span>{p.category}</span>
                 <span>·</span>
-                <span>{p.readingTime} min čitanja</span>
+                <span>{t("readingTime", { minutes: p.readingTime })}</span>
               </div>
               <h3 className="mt-3 text-lg font-semibold leading-snug text-foreground group-hover:underline underline-offset-4 decoration-brand decoration-2">
                 {p.title}

@@ -1,0 +1,452 @@
+{
+  "Brand": {
+    "logoAriaLabel": "nik volt — početna",
+    "menuOpen": "Otvori meni",
+    "siteName": "nik volt"
+  },
+  "Nav": {
+    "services": "Usluge",
+    "emergency": "Najčešći kvarovi",
+    "blog": "DIY saveti",
+    "gallery": "Galerija",
+    "pricing": "Cene",
+    "contact": "Kontakt"
+  },
+  "LocaleSwitcher": {
+    "label": "Jezik",
+    "sr": "Srpski",
+    "en": "Engleski",
+    "ru": "Ruski"
+  },
+  "Cta": {
+    "sendProblem": "Pošalji problem",
+    "callNow": "Pozovi odmah",
+    "callWithNumber": "Pozovi {phone}",
+    "openConversation": "Otvori razgovor",
+    "whatsapp": "WhatsApp"
+  },
+  "Hero": {
+    "availability": "Dostupni odmah u {city}u · odgovor {responseTime}",
+    "responseTime": "ispod 30 minuta",
+    "h1Lead": "Električar u {city}u",
+    "h1Highlight": "bez nagađanja",
+    "h1Tail": "oko cene.",
+    "lead": "Pošalji slike problema. Dobij procenu kvara, okvirnu cenu i vreme izlaska na teren — najčešće u roku od sat vremena.",
+    "badgeLicensed": "Licencirano · osigurano",
+    "badgeSameDay": "Izlazak istog dana",
+    "badgeJobs": "{count, plural, one {# završena intervencija} few {# završene intervencije} other {# završenih intervencija}}+",
+    "visualHeader": "Pošalji problem",
+    "photoTabla": "Tabla",
+    "photoUticnica": "Utičnica",
+    "photoKabl": "Pregoreo kabl",
+    "symptoms": "Simptomi",
+    "symSparking": "Varničenje",
+    "symBurning": "Miris paljevine",
+    "symHotPanel": "Topla tabla",
+    "estimateLabel": "Procena",
+    "estimateText": "Visok rizik · verovatno luk na kuhinjskom kolu",
+    "riskHigh": "Visok",
+    "indicative": "Okvirno",
+    "indicativeRange": "8.500 – 14.000 RSD",
+    "earliest": "Najraniji termin",
+    "earliestValue": "Danas, 18:30",
+    "insulationOk": "Izolacija proverena",
+    "insulationNote": "Kalibrisani megaomometar · zapisnik"
+  },
+  "Emergency": {
+    "kicker": "Hitno",
+    "title": "Hitan kvar? Pozovi odmah — ne uključuj ništa više u struju.",
+    "lead": "Ako vidiš dim ili osetiš miris paljevine, isključi glavni osigurač i zovi nas. Javljamo se 24/7 za {city}.",
+    "cards": {
+      "fuse-trip": {
+        "title": "Iskače osigurač",
+        "description": "Automatski osigurač ili FID iskače u kratkim razmacima — najčešće kratak spoj ili preopterećenje."
+      },
+      "no-power": {
+        "title": "Nestala struja",
+        "description": "Cela stan ili samo jedan vod — dolazimo i tražimo izvor."
+      },
+      "sparking": {
+        "title": "Varniči utičnica",
+        "description": "Vidljive iskre ili pucketanje — isključi je, ne uključuj ništa u nju."
+      },
+      "burning-smell": {
+        "title": "Miris paljevine",
+        "description": "Topljenje plastike — najčešće upozorenje pre požara."
+      },
+      "hot-panel": {
+        "title": "Greje se tabla",
+        "description": "Osigurači ili kablovi su osetno topli kada ih dodirneš."
+      },
+      "shock": {
+        "title": "Udar struje",
+        "description": "Osetio si strujni udar sa uređaja, prekidača ili sijalice."
+      }
+    }
+  },
+  "HowItWorks": {
+    "kicker": "Kako funkcioniše",
+    "title": "Od slike sa telefona do mirne table.",
+    "lead": "Četiri koraka. Bez nepotrebnog dopisivanja i bez iznenađenja kad zazvonimo na vrata.",
+    "steps": {
+      "01": {
+        "title": "Pošalji slike i kratak opis",
+        "description": "Slikaj tablu, utičnicu, ono što se dimi. Dva minuta na telefonu."
+      },
+      "02": {
+        "title": "Dobijaš procenu i okvirnu cenu",
+        "description": "Odgovaramo šta je verovatno problem, koliko košta i kad možemo da izađemo."
+      },
+      "03": {
+        "title": "Potvrdi i dolazimo",
+        "description": "Ti potvrdiš termin. Stižemo na vreme sa delovima koji odgovaraju tvom kvaru."
+      },
+      "04": {
+        "title": "Popravljeno, izmereno, dokumentovano",
+        "description": "Proveravamo izolaciju i uzemljenje. Dobijaš foto-zapisnik o tome šta je urađeno."
+      }
+    }
+  },
+  "Services": {
+    "kicker": "Usluge",
+    "title": "Od jedne utičnice do kompletne instalacije.",
+    "ctaTop": "Pošalji problem",
+    "cardCta": "Zatraži ponudu",
+    "fromPrice": "od {amount} RSD",
+    "items": {
+      "outlet-replacement": {
+        "title": "Zamena utičnica",
+        "description": "Oštećene, klimave ili dotrajale utičnice — menjamo za par minuta."
+      },
+      "fuse-replacement": {
+        "title": "Zamena osigurača",
+        "description": "Dotrajali automatici, neispravni FID-ovi, pogrešno dimenzionisani osigurači."
+      },
+      "panels": {
+        "title": "Elektro table",
+        "description": "Moderna prerada table sa preglednim obeležavanjem i pravom zaštitom."
+      },
+      "new-installation": {
+        "title": "Nova instalacija",
+        "description": "Stanovi, kuće, lokali — po važećim propisima."
+      },
+      "lighting": {
+        "title": "Rasveta",
+        "description": "Lusteri, spotovi, dimeri, spoljna rasveta — uredno i izbalansirano."
+      },
+      "led": {
+        "title": "LED sistemi",
+        "description": "Trake, profili, drajveri — pravilno hlađeno i komandovano."
+      },
+      "smart-home": {
+        "title": "Pametna kuća",
+        "description": "Shelly, Sonoff, Zigbee — bez razbijanja zidova."
+      },
+      "diagnostics": {
+        "title": "Dijagnostika kvarova",
+        "description": "Izolacija, propuštanje, povremena iskakanja — merimo, ne pogađamo."
+      },
+      "industrial": {
+        "title": "Industrijske instalacije",
+        "description": "Trofazni razvod, motori, komandni ormani, ožičavanje mašina."
+      },
+      "grounding": {
+        "title": "Uzemljenje",
+        "description": "Provera otpora uzemljenja kalibrisanim instrumentom, sa zapisnikom."
+      }
+    }
+  },
+  "Pricing": {
+    "kicker": "Okvirne cene",
+    "title1": "Realne cene.",
+    "title2Lead": "Pre",
+    "title2Tail": "nego što zazvonimo.",
+    "lead": "Konačna cena zavisi od stvarnog stanja instalacije i obima radova. Kažemo ti šta vidimo i dajemo ponudu pre nego što dotaknemo kabl.",
+    "cta": "Hoću tačnu ponudu",
+    "tableService": "Usluga",
+    "tablePriceFrom": "Cena od",
+    "info": "Naknada za izlazak na teren se odbija od cene popravke ako se radovi odrade u toj poseti. Materijal se naplaćuje po nabavnoj ceni sa priloženim računom.",
+    "rows": {
+      "diagnostika": {
+        "label": "Dijagnostika",
+        "note": "umanjuje cenu popravke"
+      },
+      "outlet": { "label": "Zamena utičnice" },
+      "fuse": { "label": "Zamena osigurača" },
+      "callout": { "label": "Izlazak na teren" },
+      "panel": {
+        "label": "Prerada elektro table",
+        "note": "zavisi od broja kola i zaštite"
+      },
+      "newPoint": { "label": "Nova instalacija po tački" }
+    },
+    "amounts": {
+      "diagnostika": "po proceni od 2.000 RSD",
+      "outlet": "od 1.500 RSD",
+      "fuse": "od 2.500 RSD",
+      "callout": "od 3.000 RSD",
+      "panel": "po proceni",
+      "newPoint": "od 1.800 RSD"
+    }
+  },
+  "Gallery": {
+    "kicker": "Pre / Posle",
+    "title": "Stvarne instalacije. Bez stock fotografija.",
+    "lead": "Pomeri klizač i uporedi šta smo zatekli sa onim što smo ostavili iza sebe.",
+    "before": "Pre",
+    "after": "Posle",
+    "sliderAria": "Povuci za poređenje",
+    "items": {
+      "alu-to-cu": {
+        "title": "Aluminijum → bakar",
+        "description": "Stara aluminijumska instalacija iz 70-ih zamenjena PP-Y 3×2,5 kablom uz novu zaštitu.",
+        "location": "Voždovac, dvosoban stan"
+      },
+      "panel-rebuild": {
+        "title": "Prerada table + FID",
+        "description": "Stari porcelanski osigurači zamenjeni FID/RCBO automatima, svako kolo obeleženo.",
+        "location": "Stari Grad, porodična kuća"
+      },
+      "kitchen-rework": {
+        "title": "Razdvojena kuhinjska kola",
+        "description": "Jedan preopterećen vod razdeljen na 3 zasebna kola sa pravilnom zaštitom.",
+        "location": "Novi Beograd, stan"
+      }
+    }
+  },
+  "BlogTeaser": {
+    "kicker": "DIY & edukacija",
+    "title": "Pročitaj pre nego što pozoveš. Ili nas direktno zovi. Oba su u redu.",
+    "all": "Svi članci",
+    "readingTime": "{minutes, plural, one {# minut čitanja} few {# minuta čitanja} other {# minuta čitanja}}"
+  },
+  "Reviews": {
+    "kicker": "Recenzije",
+    "title1": "Popravke istog dana.",
+    "title2": "Potvrđeno od ljudi iz {city}a.",
+    "rating": "4,9 / 5",
+    "ratingSource": "· na osnovu Google recenzija",
+    "via": "via {source}",
+    "items": {
+      "r1": "Poslala slike izgorele utičnice u nedelju — za 20 minuta sam dobila procenu i isti dan su izašli.",
+      "r2": "Pronašli povremeno iskakanje osigurača koje tri električara pre njih nisu mogla. Bez nepotrebnog dodavanja, prava merenja.",
+      "r3": "Tablu su uradili pregledno, svako kolo obeleženo. Ponuda i konačan račun se poklapaju do dinara.",
+      "r4": "Pametnu kuću ugradili bez razbijanja ijedne pločice. Tačno znaju koji Shelly modul ide gde."
+    }
+  },
+  "About": {
+    "kicker": "O nama",
+    "title": "Četrnaest godina iznad nečije table — najčešće tačno pre nego što nešto pregori.",
+    "lead": "Krenuo sam da menjam instalaciju u svom stanu 2010. zato što su mi dva električara dala tri različita problema za isti kvar. Od 2012. radim samo ovo. Stanovi, kuće, lokali i lakša industrija — posao u kome zapisnik znači više od najjeftinije ponude.",
+    "credentials": {
+      "licensed": {
+        "title": "Licencirani električar",
+        "body": "Upisan u Inženjersku komoru, sertifikat dostupan na zahtev."
+      },
+      "insurance": {
+        "title": "Osiguranje od odgovornosti",
+        "body": "Polisa do 5.000.000 RSD po incidentu — možeš da je tražiš na uvid."
+      },
+      "instruments": {
+        "title": "Kalibrisani instrumenti",
+        "body": "Izolacija, FID, impedansa petlje i otpor uzemljenja — kalibrisano svake godine."
+      }
+    },
+    "coverageTitle": "Teritorija pokrivanja",
+    "statsHeading": "U brojkama",
+    "statsYears": "Godina iskustva",
+    "statsJobs": "Završenih intervencija",
+    "statsResponse": "Prosečno vreme odziva",
+    "statsRecurring": "Stalnih klijenata",
+    "statsRecurringValue": "62%",
+    "quote": "„Pokaži mi tablu pre nego što daš ponudu.“ Cela filozofija. Ako ne vidimo, ne dajemo cenu."
+  },
+  "Contact": {
+    "kicker": "Kontakt",
+    "title": "Izaberi kanal koji ti najbolje odgovara u ovom trenutku.",
+    "lead": "Telefon za hitne slučajeve. WhatsApp ili Viber za slike i ponudu. Email ako može da čeka do sutra.",
+    "phoneLabel": "Telefon",
+    "whatsappLabel": "WhatsApp",
+    "viberLabel": "Viber",
+    "emailLabel": "Email",
+    "openConversation": "Otvori razgovor",
+    "hoursTitle": "Radno vreme",
+    "workshopLabel": "Radionica",
+    "mapAreaLabel": "Područje rada",
+    "mapAreaCity": "{city} i okolne opštine",
+    "mapAreaNote": "Izlasci se obično zakazuju u roku od 60 minuta od potvrde."
+  },
+  "Hours": {
+    "alwaysDay": "Svaki dan",
+    "alwaysHours": "0–24"
+  },
+  "Footer": {
+    "tagline": "Električar kojeg zoveš pre nego što nešto pregori.",
+    "siteHeading": "Sajt",
+    "contactHeading": "Kontakt",
+    "hoursHeading": "Radno vreme",
+    "blog": "Blog",
+    "copyright": "© {year} {name}. Licencirani električar — {city}.",
+    "privacy": "Politika privatnosti",
+    "terms": "Uslovi korišćenja"
+  },
+  "Form": {
+    "kicker": "Procena",
+    "title1": "Pošalji problem.",
+    "title2": "Dobij okvirnu cenu u roku od sat vremena.",
+    "lead": "Slike vrede više od opisa. Slikaj tablu, utičnicu, sve što se dimi — mi ćemo sve ostalo.",
+    "rail": {
+      "noSurprise": {
+        "title": "Bez iznenađenja u ponudi",
+        "body": "Okvirna cena pre dolaska. Konačna cena nakon što vidimo instalaciju."
+      },
+      "priority": {
+        "title": "Hitni slučajevi imaju prioritet",
+        "body": "Ako simptomi ukazuju na opasnost od požara, automatski menjamo redosled."
+      },
+      "documented": {
+        "title": "Dokumentovan rad",
+        "body": "Svaki izlazak završavamo merenjima i fotografijama onoga što je urađeno."
+      }
+    },
+    "liveRiskKicker": "Procena rizika uživo",
+    "fields": {
+      "name": "Tvoje ime",
+      "namePlaceholder": "Marko",
+      "phone": "Telefon",
+      "phonePlaceholder": "+381 60 ...",
+      "location": "Lokacija",
+      "locationHint": "Grad / kvart",
+      "locationPlaceholder": "{city}, Vračar",
+      "propertyType": "Tip objekta",
+      "category": "U čemu je problem?",
+      "urgency": "Koliko je hitno?",
+      "files": "Slike i video",
+      "filesHint": "do 8 fajlova, kompresija u pregledaču",
+      "filesUploadLabel": "Dodirni za upload",
+      "filesUploadOrDrop": "ili prevuci ovde",
+      "filesAccept": "JPG, HEIC, MP4 do 25 MB",
+      "filesCount": "{count, plural, one {# fajl} few {# fajla} other {# fajlova}}",
+      "filesClear": "Obriši sve",
+      "removeFile": "Ukloni fajl",
+      "description": "Šta još treba da znamo?",
+      "descriptionPlaceholder": "Kada je počelo, šta se promenilo u stanu, šta si već pokušao...",
+      "symptomsLabel": "Simptomi (pomažu nam u prioritizaciji)",
+      "symBurning": "Miris paljevine",
+      "symHot": "Pregreva se tabla",
+      "symSparking": "Varničenje"
+    },
+    "validation": {
+      "name": "Reci nam svoje ime",
+      "phoneShort": "Broj telefona je prekratak",
+      "phoneShape": "Samo brojevi, razmaci i +",
+      "location": "Grad ili kvart"
+    },
+    "property": {
+      "apartment": "Stan",
+      "house": "Kuća",
+      "shop": "Lokal",
+      "office": "Kancelarija"
+    },
+    "category": {
+      "no-power": "Nema struje",
+      "fuse-trip": "Iskače osigurač",
+      "new-install": "Nova instalacija",
+      "short-circuit": "Kratak spoj",
+      "panel-replacement": "Zamena table",
+      "other": "Ostalo"
+    },
+    "urgency": {
+      "not-urgent": { "label": "Nije hitno", "hint": "1–2 dana" },
+      "today": { "label": "Danas", "hint": "isti dan" },
+      "urgent": { "label": "Hitno", "hint": "u roku od sat" }
+    },
+    "submit": "Pošalji zahtev",
+    "submitting": "Šaljem",
+    "callInstead": "Ili pozovi {phone}",
+    "fileTooBig": "{name} je veći od 25 MB — pošalji kraći snimak.",
+    "fileUnreadable": "Ne mogu da pročitam {name}",
+    "submitSuccess": "Poslato — javljamo se u roku od 30 minuta.",
+    "submitSuccessHigh": "Zahtev sa visokim rizikom — odmah te zovemo nazad.",
+    "submitSuccessNormal": "Proveri telefon za naš odgovor.",
+    "submitFailed": "Slanje nije uspelo. Probaj ponovo ili nas direktno pozovi.",
+    "success": {
+      "sent": "Poslato",
+      "whyHeading": "Zašto ova procena",
+      "nextHeading": "Šta sledi",
+      "next1": "Pregledamo tvoje slike u roku od 30 minuta.",
+      "next2": "Dobijaš okvirnu cenu i prvi slobodni termin izlaska.",
+      "next3": "Potvrdiš i krećemo.",
+      "another": "Pošalji još jedan",
+      "callNow": "Pozovi nas odmah"
+    },
+    "risk": {
+      "high": "Visok",
+      "medium": "Srednji",
+      "low": "Nizak",
+      "riskLabel": "rizik"
+    }
+  },
+  "Risk": {
+    "reasons": {
+      "burning": "Prijavljen miris paljevine",
+      "hotPanel": "Tabla se greje",
+      "sparking": "Prijavljeno varničenje",
+      "shortCircuit": "Sumnja na kratak spoj"
+    },
+    "guidance": {
+      "high": "Ako osećaš miris paljevine ili vidiš dim, isključi glavni osigurač. Ne uključuj ništa drugo. Tvoj poziv ide u prioritet.",
+      "medium": "Izbegavaj kolo na kome je problem. Izlazimo čim se oslobodi termin — gde je moguće isti dan.",
+      "low": "Javljamo se sa okvirnom cenom i prvim slobodnim terminom."
+    },
+    "callout": {
+      "high": "Preporučujemo hitan izlazak na teren.",
+      "medium": "Zakaži izlazak isti dan, da budeš siguran.",
+      "low": "Standardno zakazivanje — najčešće u roku od 1–2 dana."
+    }
+  },
+  "Blog": {
+    "kicker": "Blog",
+    "title": "Stvari koje svaki stan u {city}u treba da zna o struji.",
+    "lead": "Dijagnostika, sigurni DIY koraci i upozoravajući znaci koje viđamo svake nedelje. Pisano da se brzo pročita dok stojiš ispred table.",
+    "all": "Sve",
+    "featured": "Izdvojeno",
+    "minRead": "{minutes, plural, one {# minut} few {# minuta} other {# minuta}}",
+    "readingTime": "{minutes, plural, one {# minut čitanja} few {# minuta čitanja} other {# minuta čitanja}}",
+    "read": "Pročitaj",
+    "allArticles": "Svi članci",
+    "publishedOn": "{date, date, long}",
+    "sidebar": {
+      "headline": "Imaš isti problem?",
+      "lead": "Pošalji par slika. Dobij okvirnu cenu u roku od sat vremena.",
+      "send": "Pošalji problem",
+      "tags": "Tagovi"
+    },
+    "readNext": "Pročitaj još"
+  },
+  "JsonLd": {
+    "businessType": "Electrician"
+  },
+  "Meta": {
+    "Home": {
+      "title": "{name} — Električar u {city}u, bez nagađanja oko cene",
+      "description": "Pošalji slike problema i dobij procenu kvara, okvirnu cenu i vreme izlaska na teren. Licencirani električar za Beograd.",
+      "ogTitle": "{name} — Električar u {city}u",
+      "ogDescription": "Procena kvara na osnovu slika, transparentne okvirne cene, brz izlazak na teren.",
+      "twitterDescription": "Procena kvara na osnovu slika. Transparentne cene. Brzi izlasci na teren.",
+      "ogImageAlt": "{name} — Električar Beograd"
+    },
+    "Blog": {
+      "title": "DIY saveti & edukacija o struji",
+      "description": "Praktični članci bez fluffa o najčešćim kvarovima, sigurnoj DIY proveri i prepoznavanju opasnih instalacija."
+    },
+    "Keywords": {
+      "k1": "električar",
+      "k2": "električar Beograd",
+      "k3": "hitan električar",
+      "k4": "dijagnostika kvarova",
+      "k5": "zamena elektro table",
+      "k6": "zamena utičnice"
+    }
+  }
+}
