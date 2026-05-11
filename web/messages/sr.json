@@ -31,7 +31,7 @@
     "h1Lead": "Električar u {city}u",
     "h1Highlight": "bez nagađanja",
     "h1Tail": "oko cene.",
-    "lead": "Pošalji slike problema. Dobij procenu kvara, okvirnu cenu i vreme izlaska na teren — najčešće u roku od sat vremena.",
+    "lead": "Pošalji slike problema. Dobijaš procenu rizika, okvirnu cenu popravke i vreme izlaska na teren — najčešće u roku od sat vremena.",
     "badgeLicensed": "Licencirano · osigurano",
     "badgeSameDay": "Izlazak istog dana",
     "badgeJobs": "{count, plural, one {# završena intervencija} few {# završene intervencije} other {# završenih intervencija}}+",
@@ -50,8 +50,8 @@
     "indicativeRange": "8.500 – 14.000 RSD",
     "earliest": "Najraniji termin",
     "earliestValue": "Danas, 18:30",
-    "insulationOk": "Spojeni provereni",
-    "insulationNote": "Kalibrisani alat"
+    "insulationOk": "Spojevi su provereni",
+    "insulationNote": "Električar je licenciran"
   },
   "Emergency": {
     "kicker": "Hitno",
@@ -165,7 +165,7 @@
     "cta": "Hoću tačnu ponudu",
     "tableService": "Usluga",
     "tablePriceFrom": "Cena od",
-    "info": "Naknada za izlazak na teren se odbija od cene popravke ako se radovi odrade u toj poseti. Materijal se naplaćuje po nabavnoj ceni sa priloženim računom.",
+    "info": "Naknada za izlazak na teren se odbija od cene popravke ako se radovi odrade u toj poseti.",
     "rows": {
       "diagnostika": {
         "label": "Dijagnostika",
@@ -230,7 +230,7 @@
     "items": {
       "r1": "Poslala slike izgorele utičnice u nedelju — za 20 minuta sam dobila procenu i isti dan su izašli.",
       "r2": "Pronašli povremeno iskakanje osigurača koje tri električara pre njih nisu mogla. Bez nepotrebnog dodavanja, prava merenja.",
-      "r3": "Tablu su uradili pregledno, svako kolo obeleženo. Ponuda i konačan račun se poklapaju do dinara.",
+      "r3": "Tablu su uradili pregledno, svaki osigura; obeležen. Ponuda i konačan račun se poklapaju do dinara.",
       "r4": "Pametnu kuću ugradili bez razbijanja ijedne pločice. Tačno znaju koji Shelly modul ide gde."
     }
   },
@@ -258,7 +258,7 @@
     "statsJobs": "Završenih intervencija",
     "statsResponse": "Prosečno vreme odziva",
     "statsRecurring": "Stalnih klijenata",
-    "statsRecurringValue": "62%",
+    "statsRecurringValue": "187",
     "quote": "„Pokaži mi tablu pre nego što daš ponudu.“ Cela filozofija. Ako ne vidimo, ne dajemo cenu."
   },
   "Contact": {
@@ -294,10 +294,10 @@
     "kicker": "Procena",
     "title1": "Pošalji problem.",
     "title2": "Dobij okvirnu cenu u roku od sat vremena.",
-    "lead": "Slike vrede više od opisa. Slikaj tablu, utičnicu, sve što se dimi — mi ćemo sve ostalo.",
+    "lead": "Slike vrede više od opisa. Slikaj tablu, utičnicu, sve što misliš da je važno — mi ćemo sve ostalo.",
     "rail": {
       "noSurprise": {
-        "title": "Bez iznenađenja u ponudi",
+        "title": "Bez iznenađenja u naplati",
         "body": "Okvirna cena pre dolaska. Konačna cena nakon što vidimo instalaciju."
       },
       "priority": {
@@ -312,7 +312,7 @@
     "liveRiskKicker": "Procena rizika uživo",
     "fields": {
       "name": "Tvoje ime",
-      "namePlaceholder": "Marko",
+      "namePlaceholder": "Marko Marković",
       "phone": "Telefon",
       "phonePlaceholder": "+381 60 ...",
       "location": "Lokacija",
@@ -333,7 +333,7 @@
       "descriptionPlaceholder": "Kada je počelo, šta se promenilo u stanu, šta si već pokušao...",
       "symptomsLabel": "Simptomi (pomažu nam u prioritizaciji)",
       "symBurning": "Miris paljevine",
-      "symHot": "Pregreva se tabla",
+      "symHot": "Pregreva se prekidač",
       "symSparking": "Varničenje"
     },
     "validation": {
@@ -396,7 +396,7 @@
     },
     "guidance": {
       "high": "Ako osećaš miris paljevine ili vidiš dim, isključi glavni osigurač. Ne uključuj ništa drugo. Tvoj poziv ide u prioritet.",
-      "medium": "Izbegavaj kolo na kome je problem. Izlazimo čim se oslobodi termin — gde je moguće isti dan.",
+      "medium": "Izbegavaj strujni krug na kome je problem. Izlazimo čim se oslobodi termin — gde je moguće isti dan.",
       "low": "Javljamo se sa okvirnom cenom i prvim slobodnim terminom."
     },
     "callout": {
@@ -407,7 +407,7 @@
   },
   "Blog": {
     "kicker": "Blog",
-    "title": "Stvari koje svaki stan u {city}u treba da zna o struji.",
+    "title": "Stvari koje svako treba da zna o struji.",
     "lead": "Dijagnostika, sigurni DIY koraci i upozoravajući znaci koje viđamo svake nedelje. Pisano da se brzo pročita dok stojiš ispred table.",
     "all": "Sve",
     "featured": "Izdvojeno",
@@ -438,7 +438,7 @@
     },
     "Blog": {
       "title": "DIY saveti & edukacija o struji",
-      "description": "Praktični članci bez fluffa o najčešćim kvarovima, sigurnoj DIY proveri i prepoznavanju opasnih instalacija."
+      "description": "Praktični članci o najčešćim kvarovima, sigurnoj DIY proveri i prepoznavanju opasnih instalacija."
     },
     "Keywords": {
       "k1": "električar",
