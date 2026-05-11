@@ -1,8 +1,8 @@
 {
   "Brand": {
-    "logoAriaLabel": "nik volt — početna",
+    "logoAriaLabel": "NikVolt — početna",
     "menuOpen": "Otvori meni",
-    "siteName": "nik volt"
+    "siteName": "NikVolt"
   },
   "Nav": {
     "services": "Usluge",
@@ -42,16 +42,16 @@
     "symptoms": "Simptomi",
     "symSparking": "Varničenje",
     "symBurning": "Miris paljevine",
-    "symHotPanel": "Topla tabla",
+    "symHotPanel": "Topao prekidač",
     "estimateLabel": "Procena",
-    "estimateText": "Visok rizik · verovatno luk na kuhinjskom kolu",
+    "estimateText": "Visok rizik · verovatno loš spoj u prekidaču",
     "riskHigh": "Visok",
     "indicative": "Okvirno",
     "indicativeRange": "8.500 – 14.000 RSD",
     "earliest": "Najraniji termin",
     "earliestValue": "Danas, 18:30",
-    "insulationOk": "Izolacija proverena",
-    "insulationNote": "Kalibrisani megaomometar · zapisnik"
+    "insulationOk": "Spojeni provereni",
+    "insulationNote": "Kalibrisani alat"
   },
   "Emergency": {
     "kicker": "Hitno",
@@ -60,11 +60,11 @@
     "cards": {
       "fuse-trip": {
         "title": "Iskače osigurač",
-        "description": "Automatski osigurač ili FID iskače u kratkim razmacima — najčešće kratak spoj ili preopterećenje."
+        "description": "Automatski osigurač ili FID iskače — najčešće kratak spoj ili preopterećenje."
       },
       "no-power": {
         "title": "Nestala struja",
-        "description": "Cela stan ili samo jedan vod — dolazimo i tražimo izvor."
+        "description": "Ceo stan ili samo jedan vod — dolazimo i tražimo izvor."
       },
       "sparking": {
         "title": "Varniči utičnica",
@@ -120,7 +120,7 @@
       },
       "fuse-replacement": {
         "title": "Zamena osigurača",
-        "description": "Dotrajali automatici, neispravni FID-ovi, pogrešno dimenzionisani osigurači."
+        "description": "Dotrajali osigurači, neispravni FID-ovi, pogrešno dimenzionisani osigurači."
       },
       "panels": {
         "title": "Elektro table",
@@ -144,7 +144,7 @@
       },
       "diagnostics": {
         "title": "Dijagnostika kvarova",
-        "description": "Izolacija, propuštanje, povremena iskakanja — merimo, ne pogađamo."
+        "description": "Izolacija, propuštanje, povremena iskakanja — merimo, ne nagađamo."
       },
       "industrial": {
         "title": "Industrijske instalacije",
