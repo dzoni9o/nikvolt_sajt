@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { supabaseServer } from "@/lib/supabase/server";
+import { supabaseServer, SupabaseNotConfiguredError } from "@/lib/supabase/server";
+import { ConfigNeeded } from "./config-needed";
 import {
   STATUS_LABELS,
   URGENCY_LABELS,
@@ -27,7 +28,13 @@ export default async function UvidPage({
   searchParams: Promise<Search>;
 }) {
   const sp = await searchParams;
-  const supabase = await supabaseServer();
+  let supabase;
+  try {
+    supabase = await supabaseServer();
+  } catch (err) {
+    if (err instanceof SupabaseNotConfiguredError) return <ConfigNeeded />;
+    throw err;
+  }
 
   const {
     data: { user },

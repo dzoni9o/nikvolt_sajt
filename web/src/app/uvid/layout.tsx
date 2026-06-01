@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { supabaseServer, SupabaseNotConfiguredError } from "@/lib/supabase/server";
+import { ConfigNeeded } from "./config-needed";
 
 export const metadata: Metadata = {
   title: "Uvid",
@@ -14,6 +15,7 @@ export default async function UvidLayout({
 }) {
   let user: { email?: string | null } | null = null;
   let configError = false;
+
   try {
     const supabase = await supabaseServer();
     const {
@@ -35,11 +37,11 @@ export default async function UvidLayout({
           <Link href="/uvid" className="text-sm font-bold tracking-tight">
             <span>uvid</span>
             <span className="text-brand">·</span>
-            <span className="text-ink-soft font-medium">nik volt</span>
+            <span className="font-medium text-ink-soft">nik volt</span>
           </Link>
           {user && (
             <div className="flex items-center gap-3">
-              <span className="hidden sm:inline text-xs text-ink-soft">{user.email}</span>
+              <span className="hidden text-xs text-ink-soft sm:inline">{user.email}</span>
               <form action="/uvid/logout" method="post">
                 <button
                   type="submit"
@@ -55,34 +57,6 @@ export default async function UvidLayout({
       <main className="container-page py-8">
         {configError ? <ConfigNeeded /> : children}
       </main>
-    </div>
-  );
-}
-
-function ConfigNeeded() {
-  return (
-    <div className="mx-auto max-w-xl rounded-2xl border border-border bg-card p-8 shadow-sm">
-      <h1 className="font-display text-2xl font-bold tracking-tight">
-        Admin nije konfigurisan
-      </h1>
-      <p className="mt-3 text-sm text-ink-soft">
-        Supabase varijable okruženja nedostaju na ovom okruženju. Dodaj ih u
-        Vercel → Project → Settings → Environment Variables i ponovo deployuj.
-      </p>
-      <ul className="mt-5 space-y-2 text-sm">
-        <li className="flex items-start gap-2">
-          <code className="rounded bg-muted px-1.5 py-0.5 text-xs">NEXT_PUBLIC_SUPABASE_URL</code>
-          <span className="text-ink-soft">— iz Supabase Project Settings → API</span>
-        </li>
-        <li className="flex items-start gap-2">
-          <code className="rounded bg-muted px-1.5 py-0.5 text-xs">NEXT_PUBLIC_SUPABASE_ANON_KEY</code>
-          <span className="text-ink-soft">— iz Supabase Project Settings → API</span>
-        </li>
-        <li className="flex items-start gap-2">
-          <code className="rounded bg-muted px-1.5 py-0.5 text-xs">SUPABASE_SERVICE_ROLE_KEY</code>
-          <span className="text-ink-soft">— server-only, za API rute</span>
-        </li>
-      </ul>
     </div>
   );
 }

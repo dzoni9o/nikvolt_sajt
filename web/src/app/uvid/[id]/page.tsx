@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, Phone, MessageCircle } from "lucide-react";
-import { supabaseServer } from "@/lib/supabase/server";
-import { SUBMISSIONS_BUCKET, serviceClient } from "@/lib/supabase/service";
+import { supabaseServer, SupabaseNotConfiguredError } from "@/lib/supabase/server";
+import { SUBMISSIONS_BUCKET } from "@/lib/supabase/service";
 import {
   STATUS_LABELS,
   URGENCY_LABELS,
@@ -15,6 +15,7 @@ import {
   type SubmissionRow,
 } from "@/lib/uvid-helpers";
 import { updateSubmission } from "./actions";
+import { ConfigNeeded } from "../config-needed";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +25,13 @@ export default async function SubmissionDetail({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const supabase = await supabaseServer();
+  let supabase;
+  try {
+    supabase = await supabaseServer();
+  } catch (err) {
+    if (err instanceof SupabaseNotConfiguredError) return <ConfigNeeded />;
+    throw err;
+  }
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -42,8 +49,7 @@ export default async function SubmissionDetail({
   // Generate signed URLs for photos (15-min expiry)
   let signed: { path: string; url: string }[] = [];
   if (r.photo_paths.length > 0) {
-    const svc = serviceClient();
-    const { data: urls } = await svc.storage
+    const { data: urls } = await supabase.storage
       .from(SUBMISSIONS_BUCKET)
       .createSignedUrls(r.photo_paths, 60 * 15);
     signed =
