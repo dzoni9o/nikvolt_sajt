@@ -9,6 +9,7 @@
     "emergency": "Common faults",
     "blog": "DIY tips",
     "gallery": "Gallery",
+    "tools": "Tools",
     "pricing": "Pricing",
     "contact": "Contact"
   },
@@ -405,6 +406,68 @@
       "low": "Standard scheduling — usually within 1–2 days."
     }
   },
+  "Tools": {
+    "kicker": "Equipment",
+    "title": "Tools for modern electricians",
+    "lead": "Precise diagnostics require calibrated instruments. Here's what we bring to every job — and why.",
+    "measuring": "Measuring instruments",
+    "hand": "Hand tools",
+    "safety": "Safety equipment",
+    "smart": "Smart home",
+    "items": {
+      "multimeter": {
+        "title": "Digital multimeter",
+        "description": "Measuring voltage, current, and resistance. The foundation of every site visit — we never leave without it."
+      },
+      "megohmmeter": {
+        "title": "Megohmmeter",
+        "description": "Cable insulation testing. We find damage invisible to the naked eye."
+      },
+      "clamp": {
+        "title": "Clamp meter",
+        "description": "Measuring current without breaking the circuit — ideal for diagnosing overloads."
+      },
+      "loop": {
+        "title": "Loop impedance tester",
+        "description": "Verifying protective device performance and compliance with standards."
+      },
+      "rcd": {
+        "title": "RCD tester",
+        "description": "Verifying RCD trip speed — critical for installation safety."
+      },
+      "pliers": {
+        "title": "Insulated pliers",
+        "description": "Cutting, bending, and stripping — a full set for every wiring job."
+      },
+      "screwdrivers": {
+        "title": "Insulated screwdrivers",
+        "description": "Rated to 1,000 V, for safe work under voltage."
+      },
+      "stripper": {
+        "title": "Wire stripper",
+        "description": "Precise stripping without conductor damage, for all standard cross-sections."
+      },
+      "gloves": {
+        "title": "Dielectric gloves",
+        "description": "Protection to 1,000 V, categorized and checked annually."
+      },
+      "mat": {
+        "title": "Insulating mat",
+        "description": "Protection from electric shock when working on wet or conductive surfaces."
+      },
+      "shelly": {
+        "title": "Shelly modules",
+        "description": "Wireless control of lights and outlets — without breaking walls."
+      },
+      "zigbee": {
+        "title": "Zigbee coordinator",
+        "description": "Open protocol for integrating smart devices without a cloud dependency."
+      }
+    },
+    "ctaTitle": "Curious how we use this equipment?",
+    "ctaLead": "Send us your problem and we'll diagnose it on-site with calibrated instruments.",
+    "cta": "Send your problem"
+  },
   "Blog": {
     "kicker": "Blog",
     "title": "Things every {city} apartment should know about electricity.",
@@ -439,6 +502,10 @@
     "Blog": {
       "title": "DIY tips & electrical education",
       "description": "Practical, no-nonsense articles on common faults, safe DIY checks, and recognizing dangerous installations."
+    },
+    "Tools": {
+      "title": "Tools for modern electricians",
+      "description": "Professional equipment for diagnosing and repairing electrical installations — measuring instruments, hand tools, and smart systems."
     },
     "Keywords": {
       "k1": "electrician",

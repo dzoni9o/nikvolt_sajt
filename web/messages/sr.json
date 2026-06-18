@@ -9,6 +9,7 @@
     "emergency": "Najčešći kvarovi",
     "blog": "DIY saveti",
     "gallery": "Galerija",
+    "tools": "Alati",
     "pricing": "Cene",
     "contact": "Kontakt"
   },
@@ -405,6 +406,68 @@
       "low": "Standardno zakazivanje — najčešće u roku od 1–2 dana."
     }
   },
+  "Tools": {
+    "kicker": "Oprema",
+    "title": "Alati za moderne električare",
+    "lead": "Precizna dijagnostika zahteva kalibrisane instrumente. Evo šta nosimo na svaki izlazak na teren — i zašto.",
+    "measuring": "Merni instrumenti",
+    "hand": "Ručni alati",
+    "safety": "Zaštitna oprema",
+    "smart": "Pametna kuća",
+    "items": {
+      "multimeter": {
+        "title": "Digitalni multimetar",
+        "description": "Merenje napona, struje i otpora. Osnova svakog izlaska na teren — bez njega se ne kreće."
+      },
+      "megohmmeter": {
+        "title": "Megommetar",
+        "description": "Ispitivanje izolacije kablova. Pronalazimo oštećenja koja su nevidljiva golim okom."
+      },
+      "clamp": {
+        "title": "Klešta za struju",
+        "description": "Merenje struje bez prekidanja kola — idealno za dijagnostiku preopterećenja."
+      },
+      "loop": {
+        "title": "Merač petlje impedanse",
+        "description": "Provera ispravnosti zaštitnih uređaja i usklađenosti sa normama."
+      },
+      "rcd": {
+        "title": "Tester FID zaštite",
+        "description": "Verifikacija brzine reagovanja FID-a — ključno za bezbednost instalacije."
+      },
+      "pliers": {
+        "title": "Izolaciona klešta",
+        "description": "Sečenje, savijanje i skidanje izolacije — kompletan set za svako ožičavanje."
+      },
+      "screwdrivers": {
+        "title": "Izolacioni odvijači",
+        "description": "Testirani do 1.000 V, za siguran rad pod naponom."
+      },
+      "stripper": {
+        "title": "Skidač izolacije",
+        "description": "Precizno skidanje bez oštećenja provodnika, za sve standardne preseke."
+      },
+      "gloves": {
+        "title": "Dielektrične rukavice",
+        "description": "Zaštita do 1.000 V, kategorisane i godišnje proveravane."
+      },
+      "mat": {
+        "title": "Izolaciona podloga",
+        "description": "Zaštita od strujnog udara pri radu na podu ili vlažnom terenu."
+      },
+      "shelly": {
+        "title": "Shelly moduli",
+        "description": "Bežično upravljanje osvetljenjem i utičnicama — bez razbijanja zidova."
+      },
+      "zigbee": {
+        "title": "Zigbee koordinator",
+        "description": "Otvoreni protokol za integraciju pametnih uređaja bez oblaka."
+      }
+    },
+    "ctaTitle": "Zanima te kako koristimo ovu opremu?",
+    "ctaLead": "Pošalji problem i dijagnostikujemo ga na licu mesta sa kalibrisanim instrumentima.",
+    "cta": "Pošalji problem"
+  },
   "Blog": {
     "kicker": "Blog",
     "title": "Stvari koje svako treba da zna o struji.",
@@ -439,6 +502,10 @@
     "Blog": {
       "title": "DIY saveti & edukacija o struji",
       "description": "Praktični članci o najčešćim kvarovima, sigurnoj DIY proveri i prepoznavanju opasnih instalacija."
+    },
+    "Tools": {
+      "title": "Alati za moderne električare",
+      "description": "Profesionalna oprema za dijagnostiku i popravku elektro instalacija — merni instrumenti, ručni alati i pametni sistemi."
     },
     "Keywords": {
       "k1": "električar",

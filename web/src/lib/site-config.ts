@@ -28,6 +28,7 @@ export type NavItemId =
   | "services"
   | "emergency"
   | "blog"
+  | "tools"
   | "pricing"
   | "contact";
 
@@ -35,6 +36,7 @@ export const navigation: { id: NavItemId; href: string }[] = [
   { id: "services", href: "#services" },
   { id: "emergency", href: "#emergency" },
   { id: "blog", href: "/blog" },
+  { id: "tools", href: "/alati" },
   { id: "pricing", href: "#pricing" },
   { id: "contact", href: "#contact" },
 ];
