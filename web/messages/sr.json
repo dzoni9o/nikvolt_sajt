@@ -420,19 +420,19 @@
     "apps": {
       "ponude": {
         "title": "Ponude",
-        "description": "Generisanje i slanje profesionalnih ponuda klijentima u par klikova."
+        "description": "Proračun materijala i kreiranje ponuda klijentima."
       },
       "tabla": {
         "title": "Tabla",
-        "description": "Vizualizacija i planiranje rasporeda elektro table — pre nego što se krene sa radom."
+        "description": "Vizualizacija elektro table."
       },
       "dnevnik": {
         "title": "Dnevnik",
-        "description": "Evidencija izlazaka na teren, urađenih radova i napomena po lokaciji."
+        "description": "Dnevnik rada."
       },
       "calculator": {
         "title": "Kalkulator",
-        "description": "Okvirni proračun materijala i ukupne cene radova za standardne intervencije."
+        "description": "Kalkulator preseka kabla za potrošače."
       }
     },
     "items": {

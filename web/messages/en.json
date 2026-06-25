@@ -420,19 +420,19 @@
     "apps": {
       "ponude": {
         "title": "Quotes",
-        "description": "Generate and send professional quotes to clients in a few clicks."
+        "description": "Material calculation and client quote builder."
       },
       "tabla": {
         "title": "Panel",
-        "description": "Visualise and plan the distribution panel layout before starting work."
+        "description": "Distribution panel visualiser."
       },
       "dnevnik": {
         "title": "Log",
-        "description": "Track site visits, completed work, and notes by location."
+        "description": "Work diary."
       },
       "calculator": {
         "title": "Calculator",
-        "description": "Rough material and total cost estimates for standard jobs."
+        "description": "Cable cross-section calculator for loads."
       }
     },
     "items": {
