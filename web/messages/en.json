@@ -414,6 +414,27 @@
     "hand": "Hand tools",
     "safety": "Safety equipment",
     "smart": "Smart home",
+    "appsHeading": "Web apps",
+    "appsLead": "In-house tools available directly in the browser.",
+    "appsOpen": "Open app",
+    "apps": {
+      "ponude": {
+        "title": "Quotes",
+        "description": "Generate and send professional quotes to clients in a few clicks."
+      },
+      "tabla": {
+        "title": "Panel",
+        "description": "Visualise and plan the distribution panel layout before starting work."
+      },
+      "dnevnik": {
+        "title": "Log",
+        "description": "Track site visits, completed work, and notes by location."
+      },
+      "calculator": {
+        "title": "Calculator",
+        "description": "Rough material and total cost estimates for standard jobs."
+      }
+    },
     "items": {
       "multimeter": {
         "title": "Digital multimeter",

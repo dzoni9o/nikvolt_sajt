@@ -10,8 +10,36 @@ import {
   Wifi,
   Wrench,
   ArrowRight,
+  ExternalLink,
+  FileText,
+  LayoutGrid,
+  BookOpen,
+  Calculator,
 } from "lucide-react";
 import { routing } from "@/i18n/routing";
+
+const webApps = [
+  {
+    key: "ponude",
+    href: "https://ponude.nikvolt.com/",
+    icon: <FileText className="h-6 w-6" />,
+  },
+  {
+    key: "tabla",
+    href: "https://tabla.nikvolt.com/",
+    icon: <LayoutGrid className="h-6 w-6" />,
+  },
+  {
+    key: "dnevnik",
+    href: "https://dnevnik.nikvolt.com/",
+    icon: <BookOpen className="h-6 w-6" />,
+  },
+  {
+    key: "calculator",
+    href: "https://calculator.nikvolt.com/",
+    icon: <Calculator className="h-6 w-6" />,
+  },
+];
 
 export async function generateMetadata({
   params,
@@ -126,7 +154,41 @@ export default async function ToolsPage({
         ))}
       </div>
 
-      <div className="mt-20 rounded-3xl border border-border bg-card p-8 md:p-12">
+      <section className="mt-20">
+        <h2 className="mb-1 text-xs font-semibold uppercase tracking-widest text-ink-soft">
+          {t("appsHeading")}
+        </h2>
+        <p className="mb-8 text-sm text-ink-soft">{t("appsLead")}</p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {webApps.map((app) => (
+            <a
+              key={app.key}
+              href={app.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/5 text-foreground">
+                {app.icon}
+              </span>
+              <div className="flex-1">
+                <h3 className="font-semibold text-foreground">
+                  {t(`apps.${app.key}.title` as Parameters<typeof t>[0])}
+                </h3>
+                <p className="mt-1 text-sm text-ink-soft">
+                  {t(`apps.${app.key}.description` as Parameters<typeof t>[0])}
+                </p>
+              </div>
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground/60 transition-colors group-hover:text-foreground">
+                {t("appsOpen")}
+                <ExternalLink className="h-3.5 w-3.5" />
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <div className="mt-14 rounded-3xl border border-border bg-card p-8 md:p-12">
         <h2 className="font-display text-2xl font-bold text-foreground sm:text-3xl">
           {t("ctaTitle")}
         </h2>

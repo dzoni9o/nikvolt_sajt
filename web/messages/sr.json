@@ -414,6 +414,27 @@
     "hand": "Ručni alati",
     "safety": "Zaštitna oprema",
     "smart": "Pametna kuća",
+    "appsHeading": "Web aplikacije",
+    "appsLead": "Interne alatke dostupne direktno u pregledaču.",
+    "appsOpen": "Otvori aplikaciju",
+    "apps": {
+      "ponude": {
+        "title": "Ponude",
+        "description": "Generisanje i slanje profesionalnih ponuda klijentima u par klikova."
+      },
+      "tabla": {
+        "title": "Tabla",
+        "description": "Vizualizacija i planiranje rasporeda elektro table — pre nego što se krene sa radom."
+      },
+      "dnevnik": {
+        "title": "Dnevnik",
+        "description": "Evidencija izlazaka na teren, urađenih radova i napomena po lokaciji."
+      },
+      "calculator": {
+        "title": "Kalkulator",
+        "description": "Okvirni proračun materijala i ukupne cene radova za standardne intervencije."
+      }
+    },
     "items": {
       "multimeter": {
         "title": "Digitalni multimetar",
