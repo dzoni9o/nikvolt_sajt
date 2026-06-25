@@ -11,35 +11,12 @@ import {
   Wrench,
   ArrowRight,
   ExternalLink,
-  FileText,
+  MapPin,
   LayoutGrid,
   BookOpen,
   Calculator,
 } from "lucide-react";
 import { routing } from "@/i18n/routing";
-
-const webApps = [
-  {
-    key: "ponude",
-    href: "https://ponude.nikvolt.com/",
-    icon: <FileText className="h-6 w-6" />,
-  },
-  {
-    key: "tabla",
-    href: "https://tabla.nikvolt.com/",
-    icon: <LayoutGrid className="h-6 w-6" />,
-  },
-  {
-    key: "dnevnik",
-    href: "https://dnevnik.nikvolt.com/",
-    icon: <BookOpen className="h-6 w-6" />,
-  },
-  {
-    key: "calculator",
-    href: "https://calculator.nikvolt.com/",
-    icon: <Calculator className="h-6 w-6" />,
-  },
-];
 
 export async function generateMetadata({
   params,
@@ -61,6 +38,87 @@ export async function generateMetadata({
     },
   };
 }
+
+type AppDesign = {
+  bg: string;
+  bgGrid: boolean;
+  text: string;
+  textSoft: string;
+  accent: string;
+  iconBg: string;
+  border: string;
+};
+
+type WebApp = {
+  key: "ponude" | "tabla" | "dnevnik" | "calculator";
+  href: string;
+  subdomain: string;
+  icon: ReactNode;
+  design: AppDesign;
+};
+
+const webApps: WebApp[] = [
+  {
+    key: "ponude",
+    href: "https://ponude.nikvolt.com/",
+    subdomain: "ponude.nikvolt.com",
+    icon: <MapPin className="h-6 w-6" />,
+    design: {
+      bg: "#eae4d2",
+      bgGrid: true,
+      text: "#1a2415",
+      textSoft: "#4d5f47",
+      accent: "#8a6200",
+      iconBg: "rgba(50,90,55,0.12)",
+      border: "rgba(60,95,60,0.18)",
+    },
+  },
+  {
+    key: "tabla",
+    href: "https://tabla.nikvolt.com/",
+    subdomain: "tabla.nikvolt.com",
+    icon: <LayoutGrid className="h-6 w-6" />,
+    design: {
+      bg: "#20251b",
+      bgGrid: false,
+      text: "#f4ecd8",
+      textSoft: "rgba(244,236,216,0.52)",
+      accent: "#ffcf21",
+      iconBg: "rgba(255,207,33,0.12)",
+      border: "rgba(235,224,190,0.1)",
+    },
+  },
+  {
+    key: "dnevnik",
+    href: "https://dnevnik.nikvolt.com/",
+    subdomain: "dnevnik.nikvolt.com",
+    icon: <BookOpen className="h-6 w-6" />,
+    design: {
+      bg: "#2d3528",
+      bgGrid: false,
+      text: "#e8e0cc",
+      textSoft: "rgba(232,224,204,0.52)",
+      accent: "#ffcf21",
+      iconBg: "rgba(255,207,33,0.1)",
+      border: "rgba(232,224,204,0.08)",
+    },
+  },
+  {
+    key: "calculator",
+    href: "https://calculator.nikvolt.com/",
+    subdomain: "calculator.nikvolt.com",
+    icon: <Calculator className="h-6 w-6" />,
+    design: {
+      bg: "#faf9f5",
+      bgGrid: false,
+      text: "#050505",
+      textSoft: "#5a554f",
+      accent: "#8a6c00",
+      iconBg: "rgba(0,0,0,0.06)",
+      border: "rgba(0,0,0,0.08)",
+    },
+  },
+];
 
 type ToolItem = {
   key: string;
@@ -92,7 +150,7 @@ const smartTools: ToolItem[] = [
 ];
 
 type Category = {
-  labelKey: string;
+  labelKey: "measuring" | "hand" | "safety" | "smart";
   items: ToolItem[];
 };
 
@@ -124,71 +182,117 @@ export default async function ToolsPage({
         <p className="mt-5 text-base text-ink-soft sm:text-lg">{t("lead")}</p>
       </header>
 
-      <div className="mt-16 space-y-14">
-        {categories.map((cat) => (
-          <section key={cat.labelKey}>
-            <h2 className="mb-6 text-xs font-semibold uppercase tracking-widest text-ink-soft">
-              {t(cat.labelKey as "measuring" | "hand" | "safety" | "smart")}
-            </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {cat.items.map((item) => (
-                <div
-                  key={item.key}
-                  className="flex gap-4 rounded-2xl border border-border bg-card p-5"
+      {/* App cards — hero */}
+      <div className="mt-12 grid gap-4 sm:grid-cols-2">
+        {webApps.map((app) => (
+          <a
+            key={app.key}
+            href={app.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col overflow-hidden rounded-3xl transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl"
+            style={{
+              backgroundColor: app.design.bg,
+              border: `1px solid ${app.design.border}`,
+              ...(app.design.bgGrid
+                ? {
+                    backgroundImage:
+                      "linear-gradient(rgba(50,90,55,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(50,90,55,0.09) 1px, transparent 1px)",
+                    backgroundSize: "28px 28px",
+                  }
+                : {}),
+            }}
+          >
+            <div className="flex min-h-[272px] flex-col gap-0 p-7 sm:p-8">
+              {/* Top row */}
+              <div className="flex items-start justify-between">
+                <span
+                  className="flex h-11 w-11 items-center justify-center rounded-xl"
+                  style={{
+                    backgroundColor: app.design.iconBg,
+                    color: app.design.text,
+                  }}
                 >
-                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-foreground/5 text-foreground">
-                    {item.icon}
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-foreground">
-                      {t(`items.${item.key}.title` as Parameters<typeof t>[0])}
-                    </h3>
-                    <p className="mt-1 text-sm text-ink-soft">
-                      {t(`items.${item.key}.description` as Parameters<typeof t>[0])}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
+                  {app.icon}
+                </span>
+                <span
+                  className="rounded-full px-2.5 py-1 font-mono text-[10px] font-medium tracking-wide"
+                  style={{
+                    backgroundColor: app.design.iconBg,
+                    color: app.design.textSoft,
+                  }}
+                >
+                  {app.subdomain}
+                </span>
+              </div>
 
-      <section className="mt-20">
-        <h2 className="mb-1 text-xs font-semibold uppercase tracking-widest text-ink-soft">
-          {t("appsHeading")}
-        </h2>
-        <p className="mb-8 text-sm text-ink-soft">{t("appsLead")}</p>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {webApps.map((app) => (
-            <a
-              key={app.key}
-              href={app.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-md"
-            >
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-foreground/5 text-foreground">
-                {app.icon}
-              </span>
-              <div className="flex-1">
-                <h3 className="font-semibold text-foreground">
+              {/* Spacer */}
+              <div className="flex-1" />
+
+              {/* Name + description */}
+              <div>
+                <h2
+                  className="font-display text-2xl font-bold leading-tight sm:text-3xl"
+                  style={{ color: app.design.text }}
+                >
                   {t(`apps.${app.key}.title` as Parameters<typeof t>[0])}
-                </h3>
-                <p className="mt-1 text-sm text-ink-soft">
+                </h2>
+                <p
+                  className="mt-2 text-sm leading-relaxed"
+                  style={{ color: app.design.textSoft }}
+                >
                   {t(`apps.${app.key}.description` as Parameters<typeof t>[0])}
                 </p>
               </div>
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground/60 transition-colors group-hover:text-foreground">
+
+              {/* Link */}
+              <div
+                className="mt-5 flex items-center gap-1.5 text-sm font-semibold transition-all duration-150 group-hover:gap-2.5"
+                style={{ color: app.design.accent }}
+              >
                 {t("appsOpen")}
                 <ExternalLink className="h-3.5 w-3.5" />
-              </span>
-            </a>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {/* Physical tools — secondary */}
+      <div className="mt-20 border-t border-border pt-16">
+        <div className="space-y-14">
+          {categories.map((cat) => (
+            <section key={cat.labelKey}>
+              <h2 className="mb-6 text-xs font-semibold uppercase tracking-widest text-ink-soft">
+                {t(cat.labelKey)}
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {cat.items.map((item) => (
+                  <div
+                    key={item.key}
+                    className="flex gap-4 rounded-2xl border border-border bg-card p-5"
+                  >
+                    <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-foreground/5 text-foreground">
+                      {item.icon}
+                    </span>
+                    <div>
+                      <h3 className="font-semibold text-foreground">
+                        {t(`items.${item.key}.title` as Parameters<typeof t>[0])}
+                      </h3>
+                      <p className="mt-1 text-sm text-ink-soft">
+                        {t(`items.${item.key}.description` as Parameters<typeof t>[0])}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
-      </section>
+      </div>
 
-      <div className="mt-14 rounded-3xl border border-border bg-card p-8 md:p-12">
+      {/* CTA */}
+      <div className="mt-20 rounded-3xl border border-border bg-card p-8 md:p-12">
         <h2 className="font-display text-2xl font-bold text-foreground sm:text-3xl">
           {t("ctaTitle")}
         </h2>
