@@ -21,7 +21,7 @@ export const site = {
     instagram: "https://instagram.com/nikvolt_elektroinstalacije",
   },
   yearsExperience: 14,
-  jobsCompleted: 2300,
+  jobsCompleted: 900,
 };
 
 export type NavItemId =
