@@ -98,9 +98,9 @@ async function HeroVisual() {
         </div>
         <div className="space-y-4 p-5">
           <div className="grid grid-cols-3 gap-2">
-            <PhotoTile label={t("photoTabla")} tone="warn" src="/photos/razvodna-tabla.jpg" />
-            <PhotoTile label={t("photoUticnica")} tone="ok" />
-            <PhotoTile label={t("photoKabl")} tone="bad" />
+            <PhotoTile label={t("photoTabla")} tone="warn" src="/photos/tabla-stara.jpg" />
+            <PhotoTile label={t("photoUticnica")} tone="ok" src="/photos/uticnica.jpg" />
+            <PhotoTile label={t("photoKabl")} tone="bad" src="/photos/pregoreo-kabl.jpg" />
           </div>
 
           <div className="rounded-2xl border border-border bg-paper/70 p-4">
