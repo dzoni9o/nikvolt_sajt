@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { ArrowRight, Phone, ShieldCheck, Camera, Clock4, CheckCircle2 } from "lucide-react";
@@ -163,7 +162,8 @@ function PhotoTile({ label, tone, src }: { label: string; tone: "ok" | "warn" | 
   return (
     <div className={`relative aspect-[4/5] overflow-hidden rounded-xl bg-gradient-to-br ${palette[tone]}`}>
       {src ? (
-        <Image src={src} alt={label} fill className="object-cover" sizes="120px" />
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={src} alt={label} className="absolute inset-0 h-full w-full object-cover" />
       ) : (
         <div className="absolute inset-0 grid place-items-center">
           <svg viewBox="0 0 24 24" className="h-7 w-7 text-foreground/40" fill="none" stroke="currentColor" strokeWidth="1.5">
