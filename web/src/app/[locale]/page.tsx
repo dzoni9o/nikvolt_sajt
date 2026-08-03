@@ -6,7 +6,6 @@ import { FaultAssessmentForm } from "@/components/forms/fault-assessment";
 import { Services } from "@/components/sections/services";
 import { Pricing } from "@/components/sections/pricing";
 import { BlogTeaser } from "@/components/sections/blog-teaser";
-import { Reviews } from "@/components/sections/reviews";
 import { About } from "@/components/sections/about";
 import { Contact } from "@/components/sections/contact";
 import { JsonLd } from "@/components/site/json-ld";
@@ -28,7 +27,6 @@ export default async function Home({
       <Services />
       <Pricing />
       <BlogTeaser />
-      <Reviews />
       <About />
       <Contact />
     </>
