@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { ArrowRight, Phone, ShieldCheck, Camera, Clock4, CheckCircle2 } from "lucide-react";
@@ -98,7 +99,7 @@ async function HeroVisual() {
         </div>
         <div className="space-y-4 p-5">
           <div className="grid grid-cols-3 gap-2">
-            <PhotoTile label={t("photoTabla")} tone="warn" />
+            <PhotoTile label={t("photoTabla")} tone="warn" src="/photos/razvodna-tabla.jpg" />
             <PhotoTile label={t("photoUticnica")} tone="ok" />
             <PhotoTile label={t("photoKabl")} tone="bad" />
           </div>
@@ -153,7 +154,7 @@ async function HeroVisual() {
   );
 }
 
-function PhotoTile({ label, tone }: { label: string; tone: "ok" | "warn" | "bad" }) {
+function PhotoTile({ label, tone, src }: { label: string; tone: "ok" | "warn" | "bad"; src?: string }) {
   const palette: Record<typeof tone, string> = {
     ok: "from-foreground/5 to-foreground/10",
     warn: "from-brand/30 to-brand/10",
@@ -161,13 +162,17 @@ function PhotoTile({ label, tone }: { label: string; tone: "ok" | "warn" | "bad"
   };
   return (
     <div className={`relative aspect-[4/5] overflow-hidden rounded-xl bg-gradient-to-br ${palette[tone]}`}>
-      <div className="absolute inset-0 grid place-items-center">
-        <svg viewBox="0 0 24 24" className="h-7 w-7 text-foreground/40" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <rect x="3" y="5" width="18" height="14" rx="2" />
-          <circle cx="9" cy="11" r="1.6" />
-          <path d="m3 17 6-5 5 4 4-3 3 2" />
-        </svg>
-      </div>
+      {src ? (
+        <Image src={src} alt={label} fill className="object-cover" sizes="120px" />
+      ) : (
+        <div className="absolute inset-0 grid place-items-center">
+          <svg viewBox="0 0 24 24" className="h-7 w-7 text-foreground/40" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <circle cx="9" cy="11" r="1.6" />
+            <path d="m3 17 6-5 5 4 4-3 3 2" />
+          </svg>
+        </div>
+      )}
       <span className="absolute bottom-1.5 left-1.5 rounded-md bg-background/80 px-1.5 py-0.5 text-[10px] font-medium text-foreground backdrop-blur">{label}</span>
     </div>
   );
