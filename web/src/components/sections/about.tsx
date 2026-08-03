@@ -72,7 +72,6 @@ export async function About() {
                 value={`${f.number(site.jobsCompleted)}+`}
               />
               <Stat label={t("statsResponse")} value={tHero("responseTime")} />
-              <Stat label={t("statsRecurring")} value={t("statsRecurringValue")} />
             </dl>
             <div className="mt-8 rounded-2xl border border-background/10 bg-background/5 p-4 text-sm">
               <p className="text-background/80">{t("quote")}</p>
