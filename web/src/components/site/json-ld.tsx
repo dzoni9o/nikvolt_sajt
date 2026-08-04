@@ -35,7 +35,7 @@ export async function JsonLd() {
       ratingValue: "4.9",
       reviewCount: "180",
     },
-    sameAs: [site.socials.instagram],
+    sameAs: [site.socials.instagram, site.socials.tiktok],
   };
 
   return (

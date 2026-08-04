@@ -19,6 +19,7 @@ export const site = {
   ],
   socials: {
     instagram: "https://instagram.com/nikvolt_elektroinstalacije",
+    tiktok: "https://www.tiktok.com/@nikvolt_elektro",
   },
   yearsExperience: 14,
   jobsCompleted: 900,
