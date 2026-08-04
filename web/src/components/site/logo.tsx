@@ -77,11 +77,18 @@ export function Logo({
         gap: resolvedVariant === "stacked" ? size * 0.25 : size * 0.4,
         letterSpacing: "-0.045em",
         fontSize: size * 1.25,
-        color: tone === "light" ? COLORS.paper : COLORS.ink,
+        color: tone === "light" ? COLORS.paper : "var(--ink)",
       }}
     >
       <span className="transition-transform duration-200 group-hover:rotate-[-6deg]">
-        <Mark size={size} tone={tone} />
+        {tone === "dark" ? (
+          <>
+            <span className="dark:hidden"><Mark size={size} tone="dark" /></span>
+            <span className="hidden dark:inline"><Mark size={size} tone="light" /></span>
+          </>
+        ) : (
+          <Mark size={size} tone={tone} />
+        )}
       </span>
       {resolvedVariant !== "mark" && (
         <span>

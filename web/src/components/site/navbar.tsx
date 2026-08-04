@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Phone, MessageCircle, Menu, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
+import { ThemeToggle } from "./theme-toggle";
 import { LocaleSwitcher } from "./locale-switcher";
 import { navigation, site } from "@/lib/site-config";
 import {
@@ -57,6 +58,7 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle className="hidden md:inline-flex" />
           <LocaleSwitcher className="hidden md:inline-flex" />
           <a
             href={`tel:${site.phoneTel}`}
@@ -139,7 +141,10 @@ export function Navbar() {
                 >
                   <MessageCircle className="h-4 w-4" /> {tCta("whatsapp")}
                 </a>
-                <LocaleSwitcher className="mt-2 self-start" />
+                <div className="mt-2 flex items-center gap-2">
+                  <ThemeToggle />
+                  <LocaleSwitcher />
+                </div>
               </div>
             </SheetContent>
           </Sheet>
