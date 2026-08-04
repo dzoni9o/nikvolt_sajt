@@ -30,11 +30,6 @@ export async function JsonLd() {
       opens: "00:00",
       closes: "23:59",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "13",
-    },
     sameAs: [site.socials.instagram, site.socials.tiktok],
   };
 

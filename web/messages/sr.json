@@ -221,20 +221,6 @@
     "all": "Svi članci",
     "readingTime": "{minutes, plural, one {# minut čitanja} few {# minuta čitanja} other {# minuta čitanja}}"
   },
-  "Reviews": {
-    "kicker": "Recenzije",
-    "title1": "Popravke istog dana.",
-    "title2": "Potvrđeno od ljudi iz {city}a.",
-    "rating": "4,9 / 5",
-    "ratingSource": "· na osnovu Google recenzija",
-    "via": "via {source}",
-    "items": {
-      "r1": "Poslala slike izgorele utičnice u nedelju — za 20 minuta sam dobila procenu i isti dan su izašli.",
-      "r2": "Pronašli povremeno iskakanje osigurača koje tri električara pre njih nisu mogla. Bez nepotrebnog dodavanja, prava merenja.",
-      "r3": "Tablu su uradili pregledno, svaki osigura; obeležen. Ponuda i konačan račun se poklapaju do dinara.",
-      "r4": "Pametnu kuću ugradili bez razbijanja ijedne pločice. Tačno znaju koji Shelly modul ide gde."
-    }
-  },
   "About": {
     "kicker": "O nama",
     "title": "Četrnaest godina iznad nečije table — najčešće tačno pre nego što nešto pregori.",
@@ -243,10 +229,6 @@
       "licensed": {
         "title": "Licencirani električar",
         "body": "Upisan u Inženjersku komoru, sertifikat dostupan na zahtev."
-      },
-      "insurance": {
-        "title": "Osiguranje od odgovornosti",
-        "body": "Polisa do 5.000.000 RSD po incidentu — možeš da je tražiš na uvid."
       },
       "instruments": {
         "title": "Kalibrisani instrumenti",

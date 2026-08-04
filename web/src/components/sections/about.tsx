@@ -1,10 +1,9 @@
-import { ShieldCheck, Award, Wrench, MapPin } from "lucide-react";
+import { Award, Wrench, MapPin } from "lucide-react";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { site } from "@/lib/site-config";
 
 const credentials = [
   { id: "licensed", icon: Award },
-  { id: "insurance", icon: ShieldCheck },
   { id: "instruments", icon: Wrench },
 ] as const;
 

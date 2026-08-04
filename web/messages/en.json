@@ -221,20 +221,6 @@
     "all": "All articles",
     "readingTime": "{minutes, plural, one {# min read} other {# min read}}"
   },
-  "Reviews": {
-    "kicker": "Reviews",
-    "title1": "Same-day repairs.",
-    "title2": "Confirmed by people in {city}.",
-    "rating": "4.9 / 5",
-    "ratingSource": "· based on Google reviews",
-    "via": "via {source}",
-    "items": {
-      "r1": "Sent photos of a burnt outlet on a Sunday — within 20 minutes I had an estimate and they came the same day.",
-      "r2": "They found an intermittent breaker trip three other electricians couldn't. No upselling, real measurements.",
-      "r3": "Panel done cleanly, every circuit labeled. The quote and final invoice match to the dinar.",
-      "r4": "Smart home installed without breaking a single tile. They know exactly which Shelly module goes where."
-    }
-  },
   "About": {
     "kicker": "About us",
     "title": "Fourteen years above someone's panel — usually right before something burns out.",
@@ -243,10 +229,6 @@
       "licensed": {
         "title": "Licensed electrician",
         "body": "Member of the Chamber of Engineers, certificate available on request."
-      },
-      "insurance": {
-        "title": "Liability insurance",
-        "body": "Up to 5,000,000 RSD per incident — you can ask to see the policy."
       },
       "instruments": {
         "title": "Calibrated instruments",
