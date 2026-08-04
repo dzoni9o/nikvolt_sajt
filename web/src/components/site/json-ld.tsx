@@ -33,7 +33,7 @@ export async function JsonLd() {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
-      reviewCount: "180",
+      reviewCount: "13",
     },
     sameAs: [site.socials.instagram, site.socials.tiktok],
   };
