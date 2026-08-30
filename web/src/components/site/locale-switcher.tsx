@@ -1,8 +1,10 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { routing, type Locale } from "@/i18n/routing";
+import { routing, type StaticAppPathname, type Locale } from "@/i18n/routing";
+import type { SlugMap } from "@/lib/mdx";
 import { Globe } from "lucide-react";
 import { useTransition } from "react";
 
@@ -12,12 +14,54 @@ const nativeLabels: Record<Locale, string> = {
   ru: "Русский",
 };
 
-export function LocaleSwitcher({ className }: { className?: string }) {
+/** Where to land when the current entry has no translation in the target locale. */
+const INDEX_FALLBACK: Record<string, StaticAppPathname> = {
+  "/blog/[slug]": "/blog",
+  "/usluge/[slug]": "/usluge",
+  "/lokacije/[slug]": "/lokacije",
+};
+
+export function LocaleSwitcher({
+  className,
+  slugMap = {},
+}: {
+  className?: string;
+  slugMap?: SlugMap;
+}) {
   const t = useTranslations("LocaleSwitcher");
   const locale = useLocale() as Locale;
   const pathname = usePathname();
+  const params = useParams();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+
+  function switchTo(next: Locale) {
+    const currentSlug = typeof params.slug === "string" ? params.slug : undefined;
+
+    // Static route — the pathname template is the same in every locale.
+    if (!currentSlug) {
+      router.replace({ pathname: pathname as StaticAppPathname }, { locale: next });
+      return;
+    }
+
+    const translatedSlug = slugMap[pathname]?.[currentSlug]?.[next];
+
+    // No translation of this entry: land on the section index rather than on a
+    // 404, or on the same text in the wrong language.
+    if (!translatedSlug) {
+      const fallback = INDEX_FALLBACK[pathname];
+      router.replace({ pathname: fallback ?? "/" }, { locale: next });
+      return;
+    }
+
+    router.replace(
+      {
+        pathname: pathname as "/blog/[slug]",
+        params: { slug: translatedSlug },
+      },
+      { locale: next },
+    );
+  }
 
   return (
     <label
@@ -33,7 +77,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
         disabled={isPending}
         onChange={(e) => {
           const next = e.target.value as Locale;
-          startTransition(() => router.replace(pathname, { locale: next }));
+          startTransition(() => switchTo(next));
         }}
         className="cursor-pointer appearance-none bg-transparent pr-1 font-medium outline-none"
       >

@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import { assessHref } from "@/lib/site-config";
 import { ArrowRight } from "lucide-react";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { servicesConfig } from "@/lib/content";
@@ -18,7 +19,7 @@ export async function Services() {
               {t("title")}
             </h2>
           </div>
-          <Link href="#assess" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:underline underline-offset-4 decoration-brand decoration-2">
+          <Link href={assessHref} className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:underline underline-offset-4 decoration-brand decoration-2">
             {t("ctaTop")} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -29,7 +30,7 @@ export async function Services() {
             return (
               <Link
                 key={s.id}
-                href="#assess"
+                href={assessHref}
                 className="group relative flex flex-col gap-4 rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-foreground/30 hover:shadow-md"
               >
                 <div className="flex items-center justify-between">

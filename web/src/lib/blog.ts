@@ -1,44 +1,36 @@
-import fs from "node:fs";
-import path from "node:path";
-import matter from "gray-matter";
+import {
+  getEntries,
+  getEntry,
+  getTranslations,
+  staticParamsFor,
+  type BlogEntry,
+  type Translation,
+} from "@/lib/mdx";
 
-export type BlogFrontmatter = {
-  title: string;
-  description: string;
-  slug: string;
-  category: string;
-  readingTime: number;
-  date: string;
-  cover: string;
-  tags: string[];
-};
+/**
+ * Thin locale-aware wrapper over the generic MDX loader. Kept so blog pages
+ * read naturally; all the real work (frontmatter validation, caching, which
+ * locales a post exists in) lives in src/lib/mdx.ts.
+ */
 
-export type BlogPost = BlogFrontmatter & {
-  content: string;
-};
+export type BlogPost = BlogEntry;
 
-const CONTENT_DIR = path.join(process.cwd(), "src", "content", "blog");
-
-export function getAllPosts(): BlogPost[] {
-  const files = fs
-    .readdirSync(CONTENT_DIR)
-    .filter((f) => f.endsWith(".mdx"));
-
-  const posts = files.map((file) => {
-    const raw = fs.readFileSync(path.join(CONTENT_DIR, file), "utf-8");
-    const { data, content } = matter(raw);
-    const fm = data as BlogFrontmatter;
-    return { ...fm, content };
-  });
-
-  return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
+export function getAllPosts(locale: string): BlogPost[] {
+  return getEntries("blog", locale);
 }
 
-export function getPostBySlug(slug: string): BlogPost | null {
-  const all = getAllPosts();
-  return all.find((p) => p.slug === slug) ?? null;
+export function getPostBySlug(locale: string, slug: string): BlogPost | null {
+  return getEntry("blog", locale, slug);
 }
 
-export function getCategories(): string[] {
-  return Array.from(new Set(getAllPosts().map((p) => p.category)));
+export function getCategories(locale: string): string[] {
+  return Array.from(new Set(getAllPosts(locale).map((p) => p.category)));
+}
+
+export function getPostLocales(key: string): Translation[] {
+  return getTranslations("blog", key);
+}
+
+export function getPostParams(): { locale: string; slug: string }[] {
+  return staticParamsFor("blog");
 }

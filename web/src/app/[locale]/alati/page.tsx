@@ -298,7 +298,7 @@ export default async function ToolsPage({
         </h2>
         <p className="mt-3 max-w-xl text-base text-ink-soft">{t("ctaLead")}</p>
         <Link
-          href="/#assess"
+          href={{ pathname: "/", hash: "assess" }}
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-opacity hover:opacity-80"
         >
           {t("cta")}

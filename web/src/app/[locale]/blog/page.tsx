@@ -4,6 +4,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
 import { getAllPosts, getCategories } from "@/lib/blog";
+import { alternatesForRoute } from "@/lib/seo";
 import { CoverArt } from "@/components/blog/cover-art";
 import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site-config";
@@ -16,16 +17,10 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
   const t = await getTranslations({ locale, namespace: "Meta.Blog" });
-  const languages = Object.fromEntries(
-    routing.locales.map((l) => [l, `/${l}/blog`]),
-  );
   return {
     title: t("title"),
     description: t("description"),
-    alternates: {
-      canonical: `/${locale}/blog`,
-      languages: { ...languages, "x-default": `/${routing.defaultLocale}/blog` },
-    },
+    alternates: alternatesForRoute("/blog", locale),
   };
 }
 
@@ -37,8 +32,8 @@ export default async function BlogIndex({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Blog");
-  const posts = getAllPosts();
-  const categories = getCategories();
+  const posts = getAllPosts(locale);
+  const categories = getCategories(locale);
   const [feature, ...rest] = posts;
 
   return (
@@ -64,7 +59,7 @@ export default async function BlogIndex({
 
       {feature && (
         <Link
-          href={`/blog/${feature.slug}`}
+          href={{ pathname: "/blog/[slug]", params: { slug: feature.slug } }}
           className="group mt-10 grid overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md md:grid-cols-2"
         >
           <CoverArt cover={feature.cover} className="aspect-[16/10] md:aspect-auto md:h-full" />
@@ -91,7 +86,7 @@ export default async function BlogIndex({
         {rest.map((p) => (
           <Link
             key={p.slug}
-            href={`/blog/${p.slug}`}
+            href={{ pathname: "/blog/[slug]", params: { slug: p.slug } }}
             className="group overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md"
           >
             <CoverArt cover={p.cover} className="aspect-[16/10]" />

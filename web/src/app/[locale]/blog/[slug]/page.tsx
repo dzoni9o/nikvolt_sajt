@@ -9,37 +9,34 @@ import {
   getTranslations,
   setRequestLocale,
 } from "next-intl/server";
-import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { getAllPosts, getPostBySlug, getPostParams, getPostLocales } from "@/lib/blog";
 import { CoverArt } from "@/components/blog/cover-art";
 import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site-config";
+import { alternatesForEntry } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
 export function generateStaticParams() {
-  return getAllPosts().flatMap((p) =>
-    routing.locales.map((locale) => ({ locale, slug: p.slug })),
-  );
+  // Only real files: a post that has no Russian translation gets no /ru URL,
+  // rather than a Russian URL serving Serbian prose.
+  return getPostParams();
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(locale, slug);
   if (!post) return {};
-  const languages = Object.fromEntries(
-    routing.locales.map((l) => [l, `/${l}/blog/${slug}`]),
-  );
+
   return {
     title: post.title,
     description: post.description,
-    alternates: {
-      canonical: `/${locale}/blog/${slug}`,
-      languages: {
-        ...languages,
-        "x-default": `/${routing.defaultLocale}/blog/${slug}`,
-      },
-    },
+    alternates: alternatesForEntry(
+      "/blog/[slug]",
+      getPostLocales(post.key),
+      locale,
+    ),
     openGraph: {
       type: "article",
       title: post.title,
@@ -53,14 +50,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(locale, slug);
   if (!post) notFound();
 
   const t = await getTranslations("Blog");
   const tSidebar = await getTranslations("Blog.sidebar");
   const f = await getFormatter();
 
-  const others = getAllPosts().filter((p) => p.slug !== post.slug).slice(0, 3);
+  const others = getAllPosts(locale)
+    .filter((p) => p.slug !== post.slug)
+    .slice(0, 3);
 
   return (
     <article className="pb-16">
@@ -104,7 +103,7 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
             <p className="mt-2 text-sm text-foreground">{tSidebar("lead")}</p>
             <div className="mt-4 flex flex-col gap-2">
-              <Link href="/#assess" className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-4 py-3 text-sm font-semibold text-background">
+              <Link href={{ pathname: "/", hash: "assess" }} className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-4 py-3 text-sm font-semibold text-background">
                 <Send className="h-4 w-4" /> {tSidebar("send")}
               </Link>
               <a href={`tel:${site.phoneTel}`} className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-4 py-3 text-sm font-semibold text-foreground">
@@ -136,7 +135,7 @@ export default async function BlogPostPage({ params }: Props) {
           {others.map((p) => (
             <Link
               key={p.slug}
-              href={`/blog/${p.slug}`}
+              href={{ pathname: "/blog/[slug]", params: { slug: p.slug } }}
               className="group overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md"
             >
               <CoverArt cover={p.cover} className="aspect-[16/10]" />

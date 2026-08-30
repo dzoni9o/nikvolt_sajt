@@ -1,0 +1,74 @@
+---
+title: "Politika privatnosti"
+description: "Koje podatke prikupljamo kroz formu za procenu kvara, gde se čuvaju, koliko dugo i kako se brišu."
+slug: "privatnost"
+key: "privacy"
+updated: "2026-08-30"
+---
+
+Ova stranica opisuje kako **nik volt** postupa sa podacima koje ostaviš na ovom sajtu. Pisana je da bude tačna, ne da bude duga.
+
+## Ko je rukovalac podacima
+
+nik volt, Beograd, Srbija. Kontakt za sva pitanja u vezi sa podacima: **kontakt@nikvolt.com** ili telefonom na **+381 60 353 9985**.
+
+## Šta prikupljamo i zašto
+
+### Kada popuniš formu za procenu kvara
+
+Da bismo uopšte mogli da damo procenu i izađemo na teren, tražimo:
+
+| Podatak | Zašto nam treba |
+|---|---|
+| Ime | Da znamo kome se obraćamo |
+| Broj telefona | Jedini način da javimo procenu i dogovorimo termin |
+| Lokacija objekta | Da procenimo izlazak i vreme dolaska |
+| Tip objekta (stan, kuća, lokal, kancelarija) | Utiče na tip instalacije i procenu |
+| Opis i kategorija kvara | Sama procena |
+| Hitnost | Redosled izlazaka |
+| Fotografije kvara | Procena bez dolaska — suština usluge |
+
+Uz to se automatski beleži **kriptografski otisak (hash) tvoje IP adrese**. Sama IP adresa se ne čuva. Otisak služi isključivo za prepoznavanje zloupotrebe forme i ne može se vratiti u originalnu IP adresu.
+
+Pravni osnov: preduzimanje radnji na tvoj zahtev pre zaključenja ugovora, i naš legitimni interes da forma ne bude zloupotrebljena.
+
+### Kada samo čitaš sajt
+
+Merimo posete preko **Vercel Analytics** i **Vercel Speed Insights**. Ta merenja su agregatna i bez kolačića — ne postavljamo kolačić za praćenje, ne pravimo profil posetioca i ne prepoznajemo te između poseta. Zato ovaj sajt i nema iskačući banner za kolačiće.
+
+Jedini kolačić koji postavljamo je `NEXT_LOCALE`, koji pamti da li si izabrao srpski, engleski ili ruski. On je funkcionalan i ne prati te.
+
+## Kome se podaci prosleđuju
+
+Koristimo tri obrađivača, svaki za tačno jednu stvar:
+
+- **Supabase** — baza i skladište gde se čuvaju prijava i fotografije.
+- **Resend** — slanje e-pošte kojom nas sistem obaveštava o novoj prijavi.
+- **hCaptcha** — provera da formu nije poslao robot. hCaptcha pri toj proveri obrađuje tvoju IP adresu po sopstvenoj politici privatnosti.
+- **Vercel** — hosting sajta i pomenuta agregatna analitika.
+
+Podatke ne prodajemo, ne razmenjujemo i ne koristimo za oglašavanje. Nikome ih ne prosleđujemo osim gore navedenih obrađivača i, ako to zakon izričito naloži, nadležnom organu.
+
+## Koliko dugo čuvamo
+
+- **Prijave i fotografije:** dok traje obrada upita i posao koji iz njega proistekne, a najduže **24 meseca** od poslednje komunikacije. Posle toga se brišu.
+- **Prijave označene kao spam:** brišu se u roku od 30 dana.
+- **Hash IP adrese:** briše se zajedno sa prijavom.
+
+## Tvoja prava
+
+Imaš pravo da tražiš pristup svojim podacima, ispravku, brisanje, ograničenje obrade i prenosivost, kao i da uložiš prigovor na obradu. Dovoljno je da pišeš na **kontakt@nikvolt.com** — odgovaramo u roku od 30 dana.
+
+Brisanje tražiš jednom porukom i ne moraš da obrazlažeš zašto. Jedini izuzetak su podaci koje smo dužni da čuvamo po propisima o računovodstvu ako je posao već fakturisan.
+
+Ako smatraš da tvoje podatke obrađujemo protivno propisima, možeš se obratiti **Povereniku za informacije od javnog značaja i zaštitu podataka o ličnosti** Republike Srbije.
+
+## Bezbednost
+
+Sajt radi isključivo preko HTTPS-a. Pristup bazi prijava ima samo nalog vlasnika, zaštićen lozinkom, i pristup se ostvaruje kroz posebnu prijavu koja nije javno dostupna. Fotografije se čuvaju u skladištu koje nije javno indeksirano.
+
+Nijedan sistem nije neprobojan i ne tvrdimo suprotno. Ako do incidenta ipak dođe, obavestićemo pogođene bez odlaganja.
+
+## Izmene
+
+Datum poslednje izmene stoji na vrhu strane. Sve ranije verzije su vidljive u istoriji izmena javnog repozitorijuma ovog sajta.

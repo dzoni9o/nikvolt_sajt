@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import { assessHref } from "@/lib/site-config";
 import { ArrowRight, Info } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { pricingRowIds } from "@/lib/content";
@@ -20,7 +21,7 @@ export async function Pricing() {
           </h2>
           <p className="mt-4 max-w-md text-base text-ink-soft">{t("lead")}</p>
           <Link
-            href="#assess"
+            href={assessHref}
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:-translate-y-0.5 transition-transform"
           >
             {t("cta")} <ArrowRight className="h-4 w-4" />

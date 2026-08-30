@@ -1,10 +1,21 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import "../globals.css";
 import { supabaseServer, SupabaseNotConfiguredError } from "@/lib/supabase/server";
+import { fontVariables } from "@/lib/fonts";
+
+// Root layout for the admin area. The public site has its own root layout at
+// src/app/[locale]/layout.tsx; keeping them separate is what lets the public
+// routes prerender statically while /uvid stays fully dynamic.
 
 export const metadata: Metadata = {
   title: "Uvid",
   robots: { index: false, follow: false, nocache: true },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default async function UvidLayout({
@@ -29,7 +40,8 @@ export default async function UvidLayout({
   }
 
   return (
-    <div className="min-h-screen bg-paper">
+    <html lang="sr-Latn" className={`${fontVariables} h-full antialiased`}>
+      <body className="min-h-screen bg-paper text-foreground">
       <header className="sticky top-0 z-30 border-b border-border bg-paper/95 backdrop-blur">
         <div className="container-page flex h-14 items-center justify-between">
           <Link href="/uvid" className="text-sm font-bold tracking-tight">
@@ -55,7 +67,8 @@ export default async function UvidLayout({
       <main className="container-page py-8">
         {configError ? <ConfigNeeded /> : children}
       </main>
-    </div>
+      </body>
+    </html>
   );
 }
 

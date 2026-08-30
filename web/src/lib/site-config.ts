@@ -1,3 +1,5 @@
+import type { StaticAppPathname } from "@/i18n/routing";
+
 export const site = {
   name: "nik volt",
   city: "Beograd",
@@ -33,11 +35,25 @@ export type NavItemId =
   | "pricing"
   | "contact";
 
-export const navigation: { id: NavItemId; href: string }[] = [
-  { id: "services", href: "#services" },
-  { id: "emergency", href: "#emergency" },
+/**
+ * Anchors are written as { pathname: "/", hash } rather than bare "#pricing"
+ * so they also work from /blog, /usluge and the rest — a bare hash on a
+ * subpage links to nothing.
+ */
+export type NavHref =
+  | StaticAppPathname
+  | { pathname: StaticAppPathname; hash: string };
+
+export const navigation: { id: NavItemId; href: NavHref }[] = [
+  // Services now have real indexable pages, so the nav points at those rather
+  // than at the homepage anchor.
+  { id: "services", href: "/usluge" },
+  { id: "emergency", href: { pathname: "/", hash: "emergency" } },
   { id: "blog", href: "/blog" },
   { id: "tools", href: "/alati" },
-  { id: "pricing", href: "#pricing" },
-  { id: "contact", href: "#contact" },
+  { id: "pricing", href: { pathname: "/", hash: "pricing" } },
+  { id: "contact", href: { pathname: "/", hash: "contact" } },
 ];
+
+/** The homepage fault-assessment form — the primary CTA target sitewide. */
+export const assessHref = { pathname: "/", hash: "assess" } as const;

@@ -1,37 +1,63 @@
 import type { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/blog";
-import { site } from "@/lib/site-config";
+import { getAllKeys, getEntries, getTranslations } from "@/lib/mdx";
 import { routing } from "@/i18n/routing";
+import { sitemapForEntry, sitemapForRoute } from "@/lib/seo";
 
-const localizedPath = (locale: string, path: string) =>
-  `${site.url}/${locale}${path === "/" ? "" : path}`;
-
-const buildAlternates = (path: string) => ({
-  languages: Object.fromEntries(
-    routing.locales.map((l) => [l, localizedPath(l, path)]),
-  ),
-});
-
+/**
+ * Every URL is produced from next-intl's pathname table and from files that
+ * actually exist, so localized segments stay correct and no entry is listed in
+ * a locale it has not been translated into.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const posts = getAllPosts();
-  const paths: { path: string; lastModified: Date; priority: number }[] = [
-    { path: "/", lastModified: now, priority: 1 },
-    { path: "/blog", lastModified: now, priority: 0.8 },
-    ...posts.map((p) => ({
-      path: `/blog/${p.slug}`,
-      lastModified: new Date(p.date),
-      priority: 0.6,
-    })),
+
+  // Newest post date drives lastModified for the blog index.
+  const latestPost = routing.locales
+    .flatMap((l) => getEntries("blog", l))
+    .map((p) => p.date)
+    .sort()
+    .at(-1);
+
+  const staticRoutes: MetadataRoute.Sitemap = [
+    ...sitemapForRoute("/", { lastModified: now, changeFrequency: "weekly", priority: 1 }),
+    ...sitemapForRoute("/usluge", { changeFrequency: "monthly", priority: 0.9 }),
+    ...sitemapForRoute("/lokacije", { changeFrequency: "monthly", priority: 0.8 }),
+    ...sitemapForRoute("/blog", {
+      lastModified: latestPost ? new Date(latestPost) : now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    }),
+    ...sitemapForRoute("/alati", { changeFrequency: "monthly", priority: 0.5 }),
+    ...sitemapForRoute("/privatnost", { changeFrequency: "yearly", priority: 0.1 }),
+    ...sitemapForRoute("/uslovi", { changeFrequency: "yearly", priority: 0.1 }),
   ];
 
-  return paths.flatMap(({ path, lastModified, priority }) =>
-    routing.locales.map((locale) => ({
-      url: localizedPath(locale, path),
-      lastModified,
-      changeFrequency: path === "/" ? ("weekly" as const) : ("monthly" as const),
-      priority,
-      alternates: buildAlternates(path),
-    })),
+  const services = getAllKeys("usluge").flatMap((key) =>
+    sitemapForEntry("/usluge/[slug]", getTranslations("usluge", key), {
+      changeFrequency: "monthly",
+      priority: 0.9,
+    }),
   );
+
+  const locations = getAllKeys("lokacije").flatMap((key) =>
+    sitemapForEntry("/lokacije/[slug]", getTranslations("lokacije", key), {
+      changeFrequency: "monthly",
+      priority: 0.7,
+    }),
+  );
+
+  const posts = getAllKeys("blog").flatMap((key) => {
+    const translations = getTranslations("blog", key);
+    const dates = translations
+      .map((t) => getEntries("blog", t.locale).find((p) => p.slug === t.slug)?.date)
+      .filter((d): d is string => Boolean(d))
+      .sort();
+    return sitemapForEntry("/blog/[slug]", translations, {
+      lastModified: dates.at(-1) ? new Date(dates.at(-1)!) : now,
+      changeFrequency: "yearly",
+      priority: 0.6,
+    });
+  });
+
+  return [...staticRoutes, ...services, ...locations, ...posts];
 }

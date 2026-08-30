@@ -1,12 +1,13 @@
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { getAllPosts } from "@/lib/blog";
 import { CoverArt } from "@/components/blog/cover-art";
 
 export async function BlogTeaser() {
   const t = await getTranslations("BlogTeaser");
-  const posts = getAllPosts().slice(0, 3);
+  const locale = await getLocale();
+  const posts = getAllPosts(locale).slice(0, 3);
   return (
     <section id="blog-teaser" className="container-page py-20 md:py-28">
       <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
@@ -27,7 +28,7 @@ export async function BlogTeaser() {
         {posts.map((p) => (
           <Link
             key={p.slug}
-            href={`/blog/${p.slug}`}
+            href={{ pathname: "/blog/[slug]", params: { slug: p.slug } }}
             className="group overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md"
           >
             <CoverArt cover={p.cover} className="aspect-[16/10]" />

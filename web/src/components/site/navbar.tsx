@@ -8,7 +8,8 @@ import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 import { LocaleSwitcher } from "./locale-switcher";
-import { navigation, site } from "@/lib/site-config";
+import type { SlugMap } from "@/lib/mdx";
+import { navigation, site, assessHref } from "@/lib/site-config";
 import {
   Sheet,
   SheetContent,
@@ -19,7 +20,7 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 
-export function Navbar() {
+export function Navbar({ slugMap }: { slugMap: SlugMap }) {
   const t = useTranslations("Nav");
   const tCta = useTranslations("Cta");
   const tBrand = useTranslations("Brand");
@@ -47,7 +48,7 @@ export function Navbar() {
           <nav className="hidden lg:flex items-center gap-1">
             {navigation.map((item) => (
               <Link
-                key={item.href}
+                key={item.id}
                 href={item.href}
                 className="rounded-md px-3 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-muted hover:text-foreground"
               >
@@ -59,7 +60,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle className="hidden md:inline-flex" />
-          <LocaleSwitcher className="hidden md:inline-flex" />
+          <LocaleSwitcher className="hidden md:inline-flex" slugMap={slugMap} />
           <a
             href={`tel:${site.phoneTel}`}
             className="hidden md:inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-foreground hover:bg-muted"
@@ -77,7 +78,7 @@ export function Navbar() {
             <MessageCircle className="h-4 w-4" />
           </a>
           <Link
-            href="#assess"
+            href={assessHref}
             className="group hidden sm:inline-flex items-center gap-2 rounded-full border border-foreground bg-foreground px-4 py-2 text-sm font-semibold text-background shadow-sm transition-all hover:bg-brand hover:text-brand-foreground hover:border-brand hover:shadow-cta hover:-translate-y-px"
           >
             {tCta("sendProblem")}
@@ -100,7 +101,7 @@ export function Navbar() {
               <nav className="mt-6 flex flex-col gap-1">
                 {navigation.map((item) => (
                   <SheetClose
-                    key={item.href}
+                    key={item.id}
                     render={
                       <Link
                         href={item.href}
@@ -118,7 +119,7 @@ export function Navbar() {
                 <SheetClose
                   render={
                     <Link
-                      href="#assess"
+                      href={assessHref}
                       className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground"
                     >
                       {tCta("sendProblem")}
@@ -143,7 +144,7 @@ export function Navbar() {
                 </a>
                 <div className="mt-2 flex items-center gap-2">
                   <ThemeToggle />
-                  <LocaleSwitcher />
+                  <LocaleSwitcher slugMap={slugMap} />
                 </div>
               </div>
             </SheetContent>

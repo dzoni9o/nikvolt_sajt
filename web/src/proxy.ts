@@ -9,7 +9,9 @@ import { routing } from "@/i18n/routing";
  * Three responsibilities:
  *  1. Locale routing for the public site (sr/en/ru) via next-intl, with a
  *     geo override that forces /sr for visitors from Serbia regardless of
- *     their browser's Accept-Language.
+ *     their browser's Accept-Language. Note the public layouts read the locale
+ *     from the URL segment, not from a header set here — that is deliberate,
+ *     since reading headers in a layout would force dynamic rendering.
  *  2. Refresh Supabase auth cookies on /uvid requests.
  *  3. Optimistic redirect for /uvid when there's no session.
  */
@@ -37,9 +39,6 @@ function visitorCountry(request: NextRequest): string | null {
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isUvid = pathname === "/uvid" || pathname.startsWith("/uvid/");
-
-  // Always forward the pathname so the root layout can derive the html lang.
-  request.headers.set("x-pathname", pathname);
 
   if (!isUvid) {
     // Geo override: visitors from Serbia get Serbian, ignoring Accept-Language.

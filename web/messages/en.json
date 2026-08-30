@@ -172,14 +172,22 @@
         "label": "Diagnostics",
         "note": "deducted from the repair price"
       },
-      "outlet": { "label": "Outlet replacement" },
-      "fuse": { "label": "Breaker replacement" },
-      "callout": { "label": "Call-out" },
+      "outlet": {
+        "label": "Outlet replacement"
+      },
+      "fuse": {
+        "label": "Breaker replacement"
+      },
+      "callout": {
+        "label": "Call-out"
+      },
       "panel": {
         "label": "Panel rebuild",
         "note": "depends on circuits and protection"
       },
-      "newPoint": { "label": "New installation per point" }
+      "newPoint": {
+        "label": "New installation per point"
+      }
     },
     "amounts": {
       "diagnostika": "from 2,000 RSD",
@@ -338,9 +346,18 @@
       "other": "Other"
     },
     "urgency": {
-      "not-urgent": { "label": "Not urgent", "hint": "1–2 days" },
-      "today": { "label": "Today", "hint": "same day" },
-      "urgent": { "label": "Urgent", "hint": "within an hour" }
+      "not-urgent": {
+        "label": "Not urgent",
+        "hint": "1–2 days"
+      },
+      "today": {
+        "label": "Today",
+        "hint": "same day"
+      },
+      "urgent": {
+        "label": "Urgent",
+        "hint": "within an hour"
+      }
     },
     "submit": "Send request",
     "submitting": "Sending",
@@ -516,5 +533,9 @@
       "k5": "panel replacement",
       "k6": "outlet replacement"
     }
+  },
+  "Legal": {
+    "kicker": "Legal",
+    "updated": "Last updated: {date}"
   }
 }

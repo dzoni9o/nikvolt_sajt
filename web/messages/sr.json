@@ -172,14 +172,22 @@
         "label": "Dijagnostika",
         "note": "umanjuje cenu popravke"
       },
-      "outlet": { "label": "Zamena utičnice" },
-      "fuse": { "label": "Zamena osigurača" },
-      "callout": { "label": "Izlazak na teren" },
+      "outlet": {
+        "label": "Zamena utičnice"
+      },
+      "fuse": {
+        "label": "Zamena osigurača"
+      },
+      "callout": {
+        "label": "Izlazak na teren"
+      },
       "panel": {
         "label": "Prerada elektro table",
         "note": "zavisi od broja kola i zaštite"
       },
-      "newPoint": { "label": "Nova instalacija po tački" }
+      "newPoint": {
+        "label": "Nova instalacija po tački"
+      }
     },
     "amounts": {
       "diagnostika": "po proceni od 2.000 RSD",
@@ -338,9 +346,18 @@
       "other": "Ostalo"
     },
     "urgency": {
-      "not-urgent": { "label": "Nije hitno", "hint": "1–2 dana" },
-      "today": { "label": "Danas", "hint": "isti dan" },
-      "urgent": { "label": "Hitno", "hint": "u roku od sat" }
+      "not-urgent": {
+        "label": "Nije hitno",
+        "hint": "1–2 dana"
+      },
+      "today": {
+        "label": "Danas",
+        "hint": "isti dan"
+      },
+      "urgent": {
+        "label": "Hitno",
+        "hint": "u roku od sat"
+      }
     },
     "submit": "Pošalji zahtev",
     "submitting": "Šaljem",
@@ -516,5 +533,9 @@
       "k5": "zamena elektro table",
       "k6": "zamena utičnice"
     }
+  },
+  "Legal": {
+    "kicker": "Pravno",
+    "updated": "Poslednja izmena: {date}"
   }
 }

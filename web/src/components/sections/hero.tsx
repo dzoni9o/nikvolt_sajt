@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { ArrowRight, Phone, ShieldCheck, Camera, Clock4, CheckCircle2 } from "lucide-react";
-import { site } from "@/lib/site-config";
+import { site, assessHref } from "@/lib/site-config";
 
 export async function Hero() {
   const t = await getTranslations("Hero");
@@ -52,7 +52,7 @@ export async function Hero() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
-                href="#assess"
+                href={assessHref}
                 className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground bg-foreground px-6 py-4 text-base font-semibold text-background shadow-cta transition-all hover:-translate-y-0.5 hover:bg-brand hover:text-brand-foreground hover:border-brand"
               >
                 {tCta("sendProblem")}

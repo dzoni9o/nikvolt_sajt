@@ -48,7 +48,7 @@ export async function Footer() {
             <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{t("siteHeading")}</h3>
             <ul className="mt-4 space-y-2 text-sm">
               {navigation.map((item) => (
-                <li key={item.href}>
+                <li key={item.id}>
                   <Link href={item.href} className="text-foreground/90 hover:text-foreground">
                     {tNav(item.id)}
                   </Link>
@@ -89,8 +89,8 @@ export async function Footer() {
             })}
           </p>
           <div className="flex gap-5">
-            <Link href="/privacy" className="hover:text-foreground">{t("privacy")}</Link>
-            <Link href="/terms" className="hover:text-foreground">{t("terms")}</Link>
+            <Link href="/privatnost" className="hover:text-foreground">{t("privacy")}</Link>
+            <Link href="/uslovi" className="hover:text-foreground">{t("terms")}</Link>
           </div>
         </div>
       </div>
