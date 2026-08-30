@@ -10,6 +10,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { LocaleSwitcher } from "./locale-switcher";
 import type { SlugMap } from "@/lib/mdx";
 import { navigation, site, assessHref } from "@/lib/site-config";
+import { ContactLink } from "@/components/site/contact-link";
 import {
   Sheet,
   SheetContent,
@@ -61,22 +62,22 @@ export function Navbar({ slugMap }: { slugMap: SlugMap }) {
         <div className="flex items-center gap-2">
           <ThemeToggle className="hidden md:inline-flex" />
           <LocaleSwitcher className="hidden md:inline-flex" slugMap={slugMap} />
-          <a
-            href={`tel:${site.phoneTel}`}
+          <ContactLink
+            channel="phone"
+            source="navbar"
             className="hidden md:inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-foreground hover:bg-muted"
           >
             <Phone className="h-4 w-4" />
             {site.phoneDisplay}
-          </a>
-          <a
-            href={site.whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
+          </ContactLink>
+          <ContactLink
+            channel="whatsapp"
+            source="navbar"
             className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:bg-muted"
-            aria-label={tCta("whatsapp")}
+            ariaLabel={tCta("whatsapp")}
           >
             <MessageCircle className="h-4 w-4" />
-          </a>
+          </ContactLink>
           <Link
             href={assessHref}
             className="group hidden sm:inline-flex items-center gap-2 rounded-full border border-foreground bg-foreground px-4 py-2 text-sm font-semibold text-background shadow-sm transition-all hover:bg-brand hover:text-brand-foreground hover:border-brand hover:shadow-cta hover:-translate-y-px"
@@ -127,21 +128,21 @@ export function Navbar({ slugMap }: { slugMap: SlugMap }) {
                     </Link>
                   }
                 />
-                <a
-                  href={`tel:${site.phoneTel}`}
+                <ContactLink
+                  channel="phone"
+                  source="navbar"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold"
                 >
                   <Phone className="h-4 w-4" />{" "}
                   {tCta("callWithNumber", { phone: site.phoneDisplay })}
-                </a>
-                <a
-                  href={site.whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                </ContactLink>
+                <ContactLink
+                  channel="whatsapp"
+                  source="navbar"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold"
                 >
                   <MessageCircle className="h-4 w-4" /> {tCta("whatsapp")}
-                </a>
+                </ContactLink>
                 <div className="mt-2 flex items-center gap-2">
                   <ThemeToggle />
                   <LocaleSwitcher slugMap={slugMap} />

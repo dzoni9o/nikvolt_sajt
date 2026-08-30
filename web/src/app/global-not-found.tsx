@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 import { fontVariables } from "@/lib/fonts";
 import { site } from "@/lib/site-config";
+import { ContactLink } from "@/components/site/contact-link";
 
 // With no single root layout (the public site and /uvid each have their own),
 // Next.js has nothing to compose a 404 from — global-not-found.tsx fills that
@@ -29,12 +30,13 @@ export default function GlobalNotFound() {
             električar, pozovi direktno — brže je od traženja po sajtu.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={`tel:${site.phoneTel}`}
+            <ContactLink
+              channel="phone"
+              source="not-found"
               className="inline-flex items-center justify-center rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background"
             >
               {site.phoneDisplay}
-            </a>
+            </ContactLink>
             <Link
               href="/sr"
               className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-semibold"

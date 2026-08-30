@@ -14,6 +14,7 @@ import { getAllPosts, getPostBySlug, getPostParams, getPostLocales } from "@/lib
 import { CoverArt } from "@/components/blog/cover-art";
 import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site-config";
+import { ContactLink } from "@/components/site/contact-link";
 import { alternatesForEntry } from "@/lib/seo";
 import { JsonLd } from "@/components/site/json-ld";
 import { blogPosting, breadcrumbs, graph } from "@/lib/schema";
@@ -127,9 +128,9 @@ export default async function BlogPostPage({ params }: Props) {
               <Link href={{ pathname: "/", hash: "assess" }} className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-4 py-3 text-sm font-semibold text-background">
                 <Send className="h-4 w-4" /> {tSidebar("send")}
               </Link>
-              <a href={`tel:${site.phoneTel}`} className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-4 py-3 text-sm font-semibold text-foreground">
+              <ContactLink channel="phone" source="blog-sidebar" className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-4 py-3 text-sm font-semibold text-foreground">
                 <Phone className="h-4 w-4" /> {site.phoneDisplay}
-              </a>
+              </ContactLink>
             </div>
           </div>
 

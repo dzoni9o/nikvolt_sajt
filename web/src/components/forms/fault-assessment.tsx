@@ -35,6 +35,8 @@ import {
 import { useLiveRisk, type RiskAssessment } from "@/lib/risk";
 import { propertyTypes, serviceCategories, urgencies } from "@/lib/content";
 import { site } from "@/lib/site-config";
+import { ContactLink } from "@/components/site/contact-link";
+import { trackAssessmentSubmitted } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 function buildSchema(messages: {
@@ -206,6 +208,9 @@ export function FaultAssessmentForm() {
       }
 
       setResult(json.assessment);
+      // The one conversion that matters most; recorded here rather than on the
+      // submit button so a failed request is never counted as a lead.
+      trackAssessmentSubmitted(values.urgency, values.category);
       toast.success(t("submitSuccess"), {
         description:
           json.assessment.level === "high"
@@ -477,13 +482,14 @@ export function FaultAssessmentForm() {
                   )}
 
                   <div className="flex flex-col-reverse items-stretch gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
-                    <a
-                      href={`tel:${site.phoneTel}`}
+                    <ContactLink
+                      channel="phone"
+                      source="assessment-form"
                       className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-4 py-3 text-sm font-semibold text-foreground hover:bg-muted"
                     >
                       <Phone className="h-4 w-4" />{" "}
                       {t("callInstead", { phone: site.phoneDisplay })}
-                    </a>
+                    </ContactLink>
                     <button
                       type="submit"
                       disabled={submitting || (!!hcaptchaSiteKey && !captchaToken)}
@@ -672,12 +678,13 @@ function SuccessPanel({ result, onReset }: { result: RiskAssessment; onReset: ()
 
       <div className="flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:justify-between">
         <button type="button" onClick={onReset} className="text-sm font-semibold text-ink-soft hover:text-foreground">{t("another")}</button>
-        <a
-          href={`tel:${site.phoneTel}`}
+        <ContactLink
+          channel="phone"
+          source="assessment-form"
           className="inline-flex items-center justify-center gap-2 rounded-full bg-emergency px-5 py-3 text-sm font-semibold text-emergency-foreground"
         >
           <Phone className="h-4 w-4" /> {t("callNow")}
-        </a>
+        </ContactLink>
       </div>
     </div>
   );

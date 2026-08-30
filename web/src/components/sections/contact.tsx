@@ -2,6 +2,7 @@ import { Phone, Mail, MapPin, Clock, MessageCircle, Zap } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Logo } from "@/components/site/logo";
 import { site } from "@/lib/site-config";
+import { ContactLink } from "@/components/site/contact-link";
 
 export async function Contact() {
   const t = await getTranslations("Contact");
@@ -20,34 +21,34 @@ export async function Contact() {
             <p className="mt-4 max-w-md text-base text-ink-soft">{t("lead")}</p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              <a href={`tel:${site.phoneTel}`} className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
+              <ContactLink channel="phone" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-foreground text-background"><Phone className="h-4 w-4" /></span>
                 <div>
                   <div className="text-xs font-semibold uppercase tracking-wider text-ink-soft">{t("phoneLabel")}</div>
                   <div className="text-sm font-semibold text-foreground">{site.phoneDisplay}</div>
                 </div>
-              </a>
-              <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
+              </ContactLink>
+              <ContactLink channel="whatsapp" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-emergency text-emergency-foreground"><MessageCircle className="h-4 w-4" /></span>
                 <div>
                   <div className="text-xs font-semibold uppercase tracking-wider text-ink-soft">{t("whatsappLabel")}</div>
                   <div className="text-sm font-semibold text-foreground">{t("openConversation")}</div>
                 </div>
-              </a>
-              <a href={site.viberLink} className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
+              </ContactLink>
+              <ContactLink channel="viber" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#665CAC] text-white"><MessageCircle className="h-4 w-4" /></span>
                 <div>
                   <div className="text-xs font-semibold uppercase tracking-wider text-ink-soft">{t("viberLabel")}</div>
                   <div className="text-sm font-semibold text-foreground">{t("openConversation")}</div>
                 </div>
-              </a>
-              <a href={`mailto:${site.email}`} className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
+              </ContactLink>
+              <ContactLink channel="email" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand text-brand-foreground"><Mail className="h-4 w-4" /></span>
                 <div>
                   <div className="text-xs font-semibold uppercase tracking-wider text-ink-soft">{t("emailLabel")}</div>
                   <div className="text-sm font-semibold text-foreground">{site.email}</div>
                 </div>
-              </a>
+              </ContactLink>
             </div>
 
             <div className="mt-8 rounded-2xl border border-border bg-card p-5">

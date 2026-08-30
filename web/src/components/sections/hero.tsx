@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { ArrowRight, Phone, ShieldCheck, Camera, Clock4, CheckCircle2 } from "lucide-react";
 import { site, assessHref } from "@/lib/site-config";
+import { ContactLink } from "@/components/site/contact-link";
 
 export async function Hero() {
   const t = await getTranslations("Hero");
@@ -58,13 +60,14 @@ export async function Hero() {
                 {tCta("sendProblem")}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
-              <a
-                href={`tel:${site.phoneTel}`}
+              <ContactLink
+                channel="phone"
+                source="hero"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-6 py-4 text-base font-semibold text-foreground hover:bg-muted"
               >
                 <Phone className="h-4 w-4" />{" "}
                 {tCta("callWithNumber", { phone: site.phoneDisplay })}
-              </a>
+              </ContactLink>
             </div>
 
             <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-ink-soft">
@@ -98,9 +101,9 @@ async function HeroVisual() {
         </div>
         <div className="space-y-4 p-5">
           <div className="grid grid-cols-3 gap-2">
-            <PhotoTile label={t("photoTabla")} tone="warn" src="/photos/tabla-stara.jpg" />
-            <PhotoTile label={t("photoUticnica")} tone="ok" src="/photos/uticnica.jpg" />
-            <PhotoTile label={t("photoKabl")} tone="bad" src="/photos/pregoreo-kabl.jpg" />
+            <PhotoTile label={t("photoTabla")} alt={t("photoTablaAlt")} tone="warn" src="/photos/tabla-stara.jpg" priority />
+            <PhotoTile label={t("photoUticnica")} alt={t("photoUticnicaAlt")} tone="ok" src="/photos/uticnica.jpg" />
+            <PhotoTile label={t("photoKabl")} alt={t("photoKablAlt")} tone="bad" src="/photos/pregoreo-kabl.jpg" />
           </div>
 
           <div className="rounded-2xl border border-border bg-paper/70 p-4">
@@ -153,7 +156,20 @@ async function HeroVisual() {
   );
 }
 
-function PhotoTile({ label, tone, src }: { label: string; tone: "ok" | "warn" | "bad"; src?: string }) {
+function PhotoTile({
+  label,
+  alt,
+  tone,
+  src,
+  priority,
+}: {
+  label: string;
+  /** Full sentence describing the photo, not the tile caption. */
+  alt?: string;
+  tone: "ok" | "warn" | "bad";
+  src?: string;
+  priority?: boolean;
+}) {
   const palette: Record<typeof tone, string> = {
     ok: "from-foreground/5 to-foreground/10",
     warn: "from-brand/30 to-brand/10",
@@ -162,8 +178,16 @@ function PhotoTile({ label, tone, src }: { label: string; tone: "ok" | "warn" | 
   return (
     <div className={`relative aspect-[4/5] overflow-hidden rounded-xl bg-gradient-to-br ${palette[tone]}`}>
       {src ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={src} alt={label} className="absolute inset-0 h-full w-full object-cover" />
+        <Image
+          src={src}
+          alt={alt ?? label}
+          fill
+          // Three tiles across roughly a third of the viewport on desktop, and
+          // a third of full width on mobile.
+          sizes="(min-width: 1024px) 180px, 30vw"
+          priority={priority}
+          className="object-cover"
+        />
       ) : (
         <div className="absolute inset-0 grid place-items-center">
           <svg viewBox="0 0 24 24" className="h-7 w-7 text-foreground/40" fill="none" stroke="currentColor" strokeWidth="1.5">

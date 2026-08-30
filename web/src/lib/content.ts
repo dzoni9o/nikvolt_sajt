@@ -79,39 +79,6 @@ export const pricingRowIds: PricingRowId[] = [
   "newPoint",
 ];
 
-export type GalleryItemId = "alu-to-cu" | "panel-rebuild" | "kitchen-rework";
-
-export const galleryConfig: {
-  id: GalleryItemId;
-  before: string;
-  after: string;
-}[] = [
-  {
-    id: "alu-to-cu",
-    before: "/gallery/alu-before.svg",
-    after: "/gallery/alu-after.svg",
-  },
-  {
-    id: "panel-rebuild",
-    before: "/gallery/panel-before.svg",
-    after: "/gallery/panel-after.svg",
-  },
-  {
-    id: "kitchen-rework",
-    before: "/gallery/kitchen-before.svg",
-    after: "/gallery/kitchen-after.svg",
-  },
-];
-
-export type ReviewId = "r1" | "r2" | "r3" | "r4";
-
-export const reviewsConfig: { id: ReviewId; author: string; source?: string }[] = [
-  { id: "r1", author: "Marija K.", source: "Google" },
-  { id: "r2", author: "Stefan P.", source: "Google" },
-  { id: "r3", author: "Ivana D." },
-  { id: "r4", author: "Aleksa M.", source: "Google" },
-];
-
 export const howItWorksSteps = ["01", "02", "03", "04"] as const;
 export type StepId = (typeof howItWorksSteps)[number];
 

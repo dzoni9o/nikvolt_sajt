@@ -2,6 +2,7 @@ import { Phone, AlertTriangle, ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { emergencyCardsConfig } from "@/lib/content";
 import { site } from "@/lib/site-config";
+import { ContactLink } from "@/components/site/contact-link";
 
 export async function Emergency() {
   const t = await getTranslations("Emergency");
@@ -25,23 +26,25 @@ export async function Emergency() {
               {t("lead", { city: site.city })}
             </p>
           </div>
-          <a
-            href={`tel:${site.phoneTel}`}
+          <ContactLink
+            channel="phone"
+            source="emergency-section"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-emergency px-6 py-3.5 text-base font-semibold text-emergency-foreground shadow-emergency transition-all hover:-translate-y-0.5"
           >
             <Phone className="h-4 w-4" />{" "}
             {tCta("callWithNumber", { phone: site.phoneDisplay })}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
+          </ContactLink>
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {emergencyCardsConfig.map((card) => {
             const Icon = card.icon;
             return (
-              <a
+              <ContactLink
                 key={card.id}
-                href={`tel:${site.phoneTel}`}
+                channel="phone"
+                source="emergency-section"
                 className="group relative flex items-start gap-4 overflow-hidden rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-emergency/40 hover:shadow-md"
               >
                 <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emergency-soft text-emergency">
@@ -61,7 +64,7 @@ export async function Emergency() {
                     <Phone className="h-3.5 w-3.5" /> {tCta("callNow")}
                   </span>
                 </div>
-              </a>
+              </ContactLink>
             );
           })}
         </div>

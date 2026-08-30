@@ -3,6 +3,7 @@ import { Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Logo } from "./logo";
 import { site, navigation } from "@/lib/site-config";
+import { ContactLink } from "@/components/site/contact-link";
 import { getEntries } from "@/lib/mdx";
 
 function InstagramIcon({ className }: { className?: string }) {
@@ -103,9 +104,9 @@ export async function Footer() {
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{t("contactHeading")}</h3>
             <ul className="mt-4 space-y-2.5 text-sm">
-              <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-ink-soft" /><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a></li>
-              <li className="flex items-center gap-2"><MessageCircle className="h-4 w-4 text-ink-soft" /><a href={site.whatsappLink} target="_blank" rel="noopener noreferrer">{tCta("whatsapp")}</a></li>
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-ink-soft" /><a href={`mailto:${site.email}`}>{site.email}</a></li>
+              <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-ink-soft" /><ContactLink channel="phone" source="footer">{site.phoneDisplay}</ContactLink></li>
+              <li className="flex items-center gap-2"><MessageCircle className="h-4 w-4 text-ink-soft" /><ContactLink channel="whatsapp" source="footer">{tCta("whatsapp")}</ContactLink></li>
+              <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-ink-soft" /><ContactLink channel="email" source="footer">{site.email}</ContactLink></li>
             </ul>
           </div>
 

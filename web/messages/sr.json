@@ -52,7 +52,10 @@
     "earliest": "Najraniji termin",
     "earliestValue": "Danas, 18:30",
     "insulationOk": "Spojevi su provereni",
-    "insulationNote": "Električar je licenciran"
+    "insulationNote": "Električar je licenciran",
+    "photoTablaAlt": "Stara razvodna tabla sa keramičkim osiguračima, pre zamene",
+    "photoUticnicaAlt": "Utičnica sa tragovima pregrevanja oko kontakata",
+    "photoKablAlt": "Pregoreo kabl sa nagorelom izolacijom na spoju"
   },
   "Emergency": {
     "kicker": "Hitno",
@@ -197,31 +200,6 @@
       "callout": "od 3.000 RSD",
       "panel": "po proceni",
       "newPoint": "od 1.800 RSD"
-    }
-  },
-  "Gallery": {
-    "kicker": "Pre / Posle",
-    "title": "Stvarne instalacije. Bez stock fotografija.",
-    "lead": "Pomeri klizač i uporedi šta smo zatekli sa onim što smo ostavili iza sebe.",
-    "before": "Pre",
-    "after": "Posle",
-    "sliderAria": "Povuci za poređenje",
-    "items": {
-      "alu-to-cu": {
-        "title": "Aluminijum → bakar",
-        "description": "Stara aluminijumska instalacija iz 70-ih zamenjena PP-Y 3×2,5 kablom uz novu zaštitu.",
-        "location": "Voždovac, dvosoban stan"
-      },
-      "panel-rebuild": {
-        "title": "Prerada table + FID",
-        "description": "Stari porcelanski osigurači zamenjeni FID/RCBO automatima, svako kolo obeleženo.",
-        "location": "Stari Grad, porodična kuća"
-      },
-      "kitchen-rework": {
-        "title": "Razdvojena kuhinjska kola",
-        "description": "Jedan preopterećen vod razdeljen na 3 zasebna kola sa pravilnom zaštitom.",
-        "location": "Novi Beograd, stan"
-      }
     }
   },
   "BlogTeaser": {

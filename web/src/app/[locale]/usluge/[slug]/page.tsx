@@ -26,6 +26,7 @@ import {
 } from "@/lib/schema";
 import { alternatesForEntry } from "@/lib/seo";
 import { assessHref, site } from "@/lib/site-config";
+import { ContactLink } from "@/components/site/contact-link";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -128,12 +129,13 @@ export default async function ServicePage({ params }: Props) {
           >
             <Send className="h-4 w-4" /> {t("sendProblem")}
           </Link>
-          <a
-            href={`tel:${site.phoneTel}`}
+          <ContactLink
+            channel="phone"
+            source="service-page"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-semibold text-foreground"
           >
             <Phone className="h-4 w-4" /> {site.phoneDisplay}
-          </a>
+          </ContactLink>
         </div>
 
         {entry.priceFrom && (

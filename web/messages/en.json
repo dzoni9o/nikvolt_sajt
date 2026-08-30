@@ -52,7 +52,10 @@
     "earliest": "Earliest slot",
     "earliestValue": "Today, 18:30",
     "insulationOk": "Insulation tested",
-    "insulationNote": "Calibrated megohmmeter · written record"
+    "insulationNote": "Calibrated megohmmeter · written record",
+    "photoTablaAlt": "An old consumer unit with ceramic fuses, before replacement",
+    "photoUticnicaAlt": "A socket outlet showing heat damage around the contacts",
+    "photoKablAlt": "A burnt-out cable with charred insulation at the joint"
   },
   "Emergency": {
     "kicker": "Emergency",
@@ -197,31 +200,6 @@
       "callout": "from 3,000 RSD",
       "panel": "by assessment",
       "newPoint": "from 1,800 RSD"
-    }
-  },
-  "Gallery": {
-    "kicker": "Before / After",
-    "title": "Real installs. No stock photos.",
-    "lead": "Drag the slider and compare what we found with what we left behind.",
-    "before": "Before",
-    "after": "After",
-    "sliderAria": "Drag to compare",
-    "items": {
-      "alu-to-cu": {
-        "title": "Aluminium → copper",
-        "description": "Old 1970s aluminium wiring replaced with PP-Y 3×2.5 cable and new protection.",
-        "location": "Voždovac, two-room flat"
-      },
-      "panel-rebuild": {
-        "title": "Panel rebuild + RCD",
-        "description": "Old porcelain fuses replaced with RCBO breakers, every circuit labeled.",
-        "location": "Stari Grad, family house"
-      },
-      "kitchen-rework": {
-        "title": "Split kitchen circuits",
-        "description": "One overloaded line split into 3 separate circuits with proper protection.",
-        "location": "Novi Beograd, flat"
-      }
     }
   },
   "BlogTeaser": {
