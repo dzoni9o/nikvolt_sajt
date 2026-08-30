@@ -1,12 +1,23 @@
 import { Link } from "@/i18n/navigation";
 import { assessHref } from "@/lib/site-config";
 import { ArrowRight } from "lucide-react";
-import { getFormatter, getTranslations } from "next-intl/server";
+import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { servicesConfig } from "@/lib/content";
+import { getEntryByKey } from "@/lib/mdx";
 
 export async function Services() {
   const t = await getTranslations("Services");
   const f = await getFormatter();
+  const locale = await getLocale();
+
+  // Each card now has a real destination. servicesConfig ids double as the MDX
+  // translation keys, so a card falls back to the form only if its page has
+  // not been written in this locale yet.
+  const cards = servicesConfig.map((s) => ({
+    ...s,
+    entry: getEntryByKey("usluge", locale, s.id),
+  }));
+
   return (
     <section id="services" className="bg-paper">
       <div className="container-page py-20 md:py-28">
@@ -25,12 +36,16 @@ export async function Services() {
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {servicesConfig.map((s) => {
+          {cards.map((s) => {
             const Icon = s.icon;
             return (
               <Link
                 key={s.id}
-                href={assessHref}
+                href={
+                  s.entry
+                    ? { pathname: "/usluge/[slug]", params: { slug: s.entry.slug } }
+                    : assessHref
+                }
                 className="group relative flex flex-col gap-4 rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-foreground/30 hover:shadow-md"
               >
                 <div className="flex items-center justify-between">
@@ -54,7 +69,7 @@ export async function Services() {
                   </p>
                 </div>
                 <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-foreground">
-                  {t("cardCta")}
+                  {s.entry ? t("cardMore") : t("cardCta")}
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </Link>

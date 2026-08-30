@@ -2,6 +2,7 @@ import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { mdxComponents } from "@/components/mdx-components";
 import { ArrowLeft, ArrowRight, Phone, Send } from "lucide-react";
 import { hasLocale } from "next-intl";
 import {
@@ -14,6 +15,8 @@ import { CoverArt } from "@/components/blog/cover-art";
 import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site-config";
 import { alternatesForEntry } from "@/lib/seo";
+import { JsonLd } from "@/components/site/json-ld";
+import { blogPosting, breadcrumbs, graph } from "@/lib/schema";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -61,8 +64,26 @@ export default async function BlogPostPage({ params }: Props) {
     .filter((p) => p.slug !== post.slug)
     .slice(0, 3);
 
+  const href = { pathname: "/blog/[slug]" as const, params: { slug: post.slug } };
+  const data = graph([
+    blogPosting({
+      locale,
+      title: post.title,
+      description: post.description,
+      href,
+      datePublished: post.date,
+      keywords: post.tags,
+    }),
+    breadcrumbs(locale, [
+      { name: site.name, href: "/" },
+      { name: t("kicker"), href: "/blog" },
+      { name: post.title, href },
+    ]),
+  ]);
+
   return (
     <article className="pb-16">
+      <JsonLd data={data} />
       <div className="container-page pt-10">
         <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-soft hover:text-foreground">
           <ArrowLeft className="h-4 w-4" /> {t("allArticles")}
@@ -93,7 +114,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       <div className="container-page mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px]">
         <div className="prose-electric max-w-none">
-          <MDXRemote source={post.content} />
+          <MDXRemote source={post.content} components={mdxComponents} />
         </div>
 
         <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">

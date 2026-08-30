@@ -1,0 +1,46 @@
+---
+title: "Pametna kuća"
+description: "Shelly, Sonoff i Zigbee uređaji ugrađeni u postojeću instalaciju — bez razbijanja zidova i bez zavisnosti od jednog oblaka."
+slug: "pametna-kuca"
+key: "smart-home"
+h1: "Pametna kuća bez razbijanja zidova"
+faq:
+  - q: "Moram li da menjam instalaciju za pametnu kuću?"
+    a: "U većini slučajeva ne. Shelly i slični moduli staju iza postojećeg prekidača ili u razvodnu kutiju i rade sa instalacijom koja već postoji. Ograničenje je nula: modul je traži iza prekidača, a u starijim stanovima je često nema."
+  - q: "Šta ako mi padne internet?"
+    a: "Zato biramo uređaje koji rade i lokalno. Prekidač na zidu mora da pali svetlo i kad je ruter isključen — to je uslov, ne opcija. Automatika prestaje, osnovna funkcija ostaje."
+  - q: "Wi-Fi ili Zigbee?"
+    a: "Wi-Fi za pojedinačne module iza prekidača, Zigbee kada ima mnogo senzora — Zigbee ne opterećuje ruter i baterije u senzorima traju znatno duže. Često se kombinuje."
+  - q: "Da li mogu sve da spojim u jednu aplikaciju?"
+    a: "Da, preko Home Assistant-a ili sličnog. Bez toga završiš sa pet aplikacija za pet proizvođača, što je najčešći razlog da ljudi odustanu od pametne kuće posle par meseci."
+relatedLocations: ["novi-beograd", "vracar"]
+relatedPosts: []
+---
+
+Pametna kuća u postojećem stanu nije nova instalacija nego dodavanje modula na onu koja već radi.
+
+## Šta je stvarno moguće bez štemovanja
+
+**Rasveta** — modul iza prekidača, zidni prekidač i dalje radi normalno, plus daljinsko i automatika.
+
+**Roletne** — modul u kutiji rolo motora, uz tajmer i po potrebi senzor sunca.
+
+**Bojler i grejanje** — merenje potrošnje i uključivanje po rasporedu. Ovo je jedina stavka koja se sama isplati u razumnom roku.
+
+**Senzori** — dim, curenje vode ispod mašine, temperatura, otvaranje vrata. Senzor curenja pored veš mašine je jedna od retkih stvari u kući koja košta malo a sprečava skupu štetu.
+
+## Šta pre svega proveravamo
+
+**Da li iza prekidača ima nulu.** Većina modula je traži. U beogradskim stanovima iz sedamdesetih i osamdesetih je najčešće nema, pa se ide na modul u razvodnoj kutiji ili na baterijski zidni taster.
+
+**Ima li mesta u kutiji.** Modul je mali ali nije nevidljiv; u plitkim starim kutijama ponekad treba dublja.
+
+**Kakav je Wi-Fi domet do te tačke.** Modul zazidan iza metalne kutije u hodniku je uređaj koji se stalno gubi sa mreže.
+
+## Pravilo koje ne kršimo
+
+Sve mora da radi i bez interneta. Zidni prekidač pali svetlo, roletna se spušta, bojler greje. Automatika je dodatak, ne uslov.
+
+---
+
+Reci koje prostorije te zanimaju i pošalji sliku jednog otvorenog prekidača — po tome se odmah vidi ima li nule i koliko je posao jednostavan.

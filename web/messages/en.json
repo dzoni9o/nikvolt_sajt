@@ -8,10 +8,10 @@
     "services": "Services",
     "emergency": "Common faults",
     "blog": "DIY tips",
-    "gallery": "Gallery",
     "tools": "Tools",
     "pricing": "Pricing",
-    "contact": "Contact"
+    "contact": "Contact",
+    "areas": "Areas"
   },
   "LocaleSwitcher": {
     "label": "Language",
@@ -155,7 +155,8 @@
         "title": "Grounding",
         "description": "Earth resistance check with a calibrated instrument and a written record."
       }
-    }
+    },
+    "cardMore": "See details"
   },
   "Pricing": {
     "kicker": "Indicative prices",
@@ -525,17 +526,78 @@
       "title": "Tools for modern electricians",
       "description": "Professional equipment for diagnosing and repairing electrical installations — measuring instruments, hand tools, and smart systems."
     },
-    "Keywords": {
-      "k1": "electrician",
-      "k2": "Belgrade electrician",
-      "k3": "emergency electrician",
-      "k4": "fault diagnostics",
-      "k5": "panel replacement",
-      "k6": "outlet replacement"
+    "Services": {
+      "title": "Electrical services in Belgrade — prices and scope",
+      "description": "Outlet and fuse replacement, consumer unit rebuilds, fault diagnostics, earthing, new installations. Indicative prices and what each job includes."
+    },
+    "Areas": {
+      "title": "Electrician by district in Belgrade",
+      "description": "Novi Beograd, Zemun, Voždovac, Vračar, Stari Grad — typical faults by building type and response time for each district."
     }
   },
   "Legal": {
     "kicker": "Legal",
     "updated": "Last updated: {date}"
+  },
+  "Faq": {
+    "kicker": "Common questions",
+    "title": "What people ask before they call.",
+    "items": {
+      "price": {
+        "q": "How much is a call-out?",
+        "a": "A call-out starts at 3,000 RSD and is deducted from the repair price if we do the work during that same visit. Send photos first and in most cases you get an indicative price before anyone sets off."
+      },
+      "response": {
+        "q": "How quickly can you come?",
+        "a": "We usually reply within 30 minutes. For genuine emergencies — a burning smell, a hot panel, sparking — we come out the same day, and within a couple of hours across most of Belgrade."
+      },
+      "warranty": {
+        "q": "Do you warrant the work?",
+        "a": "Yes, on everything we carry out. The warranty covers our work; installed materials carry their manufacturer's warranty. Every job ends with measurements and photo documentation, so there is a record of what was done and how."
+      },
+      "photos": {
+        "q": "Why do you ask for photos first?",
+        "a": "Because a photo of the panel immediately shows the number of circuits, the type of protection, and whether the wiring is aluminium or copper. Those three things move the price more than anything else, so instead of guessing over the phone you get a range before anyone comes out."
+      },
+      "payment": {
+        "q": "How do I pay?",
+        "a": "Cash or bank transfer, once the job is done. We quote before starting — no work begins until the price is accepted."
+      },
+      "area": {
+        "q": "Do you travel outside the centre?",
+        "a": "We cover all of Belgrade. Novi Beograd, Zemun, Voždovac, Vračar and Stari Grad have the shortest response times, but we go further out too — it just adds to the arrival time."
+      }
+    }
+  },
+  "ServicePage": {
+    "allServices": "All services",
+    "sendProblem": "Send your problem",
+    "priceFrom": "From {amount} RSD",
+    "faqTitle": "Common questions",
+    "whereTitle": "Where we do this",
+    "readTitle": "Read before you call",
+    "otherTitle": "Other services"
+  },
+  "ServicesIndex": {
+    "kicker": "Services",
+    "title": "Electrical services in {city}",
+    "lead": "From a single outlet to a complete installation. Every service has its own page with an indicative price, what the job involves, and answers to the questions we get most.",
+    "cta": "Send your problem for an estimate",
+    "fromPrice": "From {amount} RSD",
+    "more": "See details"
+  },
+  "LocationPage": {
+    "allAreas": "All areas",
+    "sendProblem": "Send photos of the problem",
+    "responseTime": "Response time: {time}",
+    "servicesTitle": "Most requested in {area}",
+    "otherAreasTitle": "Other areas",
+    "areasTitle": "Where we work",
+    "faqTitle": "Common questions"
+  },
+  "AreasIndex": {
+    "kicker": "Coverage",
+    "title": "Electrician by district in {city}",
+    "lead": "Housing stock differs from district to district, and so do the faults. Each page says what is typical for that part of the city and how fast we get there."
   }
 }

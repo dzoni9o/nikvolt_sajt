@@ -8,10 +8,10 @@
     "services": "Usluge",
     "emergency": "Najčešći kvarovi",
     "blog": "DIY saveti",
-    "gallery": "Galerija",
     "tools": "Alati",
     "pricing": "Cene",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "areas": "Lokacije"
   },
   "LocaleSwitcher": {
     "label": "Jezik",
@@ -155,7 +155,8 @@
         "title": "Uzemljenje",
         "description": "Provera otpora uzemljenja kalibrisanim instrumentom, sa zapisnikom."
       }
-    }
+    },
+    "cardMore": "Pogledaj detalje"
   },
   "Pricing": {
     "kicker": "Okvirne cene",
@@ -525,17 +526,78 @@
       "title": "Alati za moderne električare",
       "description": "Profesionalna oprema za dijagnostiku i popravku elektro instalacija — merni instrumenti, ručni alati i pametni sistemi."
     },
-    "Keywords": {
-      "k1": "električar",
-      "k2": "električar Beograd",
-      "k3": "hitan električar",
-      "k4": "dijagnostika kvarova",
-      "k5": "zamena elektro table",
-      "k6": "zamena utičnice"
+    "Services": {
+      "title": "Elektro usluge u Beogradu — cene i opis radova",
+      "description": "Zamena utičnica i osigurača, prerada elektro table, dijagnostika kvarova, uzemljenje, nova instalacija. Okvirne cene i šta je uključeno."
+    },
+    "Areas": {
+      "title": "Električar po opštinama u Beogradu",
+      "description": "Novi Beograd, Zemun, Voždovac, Vračar, Stari Grad — tipični kvarovi po tipu zgrade i vreme izlaska za svaku opštinu."
     }
   },
   "Legal": {
     "kicker": "Pravno",
     "updated": "Poslednja izmena: {date}"
+  },
+  "Faq": {
+    "kicker": "Česta pitanja",
+    "title": "Ono što nas pitaju pre nego što pozovu.",
+    "items": {
+      "price": {
+        "q": "Koliko košta izlazak na teren?",
+        "a": "Izlazak je od 3.000 RSD i odbija se od cene popravke ako radove odradimo u toj istoj poseti. Ako pošalješ slike unapred, u većini slučajeva ti kažemo okvirnu cenu pre nego što krenemo."
+      },
+      "response": {
+        "q": "Koliko brzo možete da dođete?",
+        "a": "Na poruku odgovaramo najčešće za manje od 30 minuta. Za hitne kvarove — miris paljevine, topla tabla, varničenje — izlazimo istog dana, a u većem delu Beograda u roku od par sati."
+      },
+      "warranty": {
+        "q": "Dajete li garanciju na radove?",
+        "a": "Da, na sve izvedene radove. Garancija pokriva ono što smo mi radili; za ugrađeni materijal važi garancija proizvođača. Svaki posao završavamo merenjima i foto-dokumentacijom, tako da postoji zapis šta je i kako urađeno."
+      },
+      "photos": {
+        "q": "Zašto tražite slike pre dolaska?",
+        "a": "Zato što se na slici table odmah vidi broj strujnih kola, tip zaštite i da li je razvod aluminijumski ili bakarni. To su tri stvari koje najviše pomeraju cenu, pa umesto nagađanja telefonom dobiješ raspon pre nego što iko izađe."
+      },
+      "payment": {
+        "q": "Kako se plaća?",
+        "a": "Gotovinom ili prenosom na račun, po završenom poslu. Cenu kažemo pre početka radova — ne počinjemo dok ponuda nije prihvaćena."
+      },
+      "area": {
+        "q": "Da li izlazite van užeg centra?",
+        "a": "Pokrivamo ceo Beograd. Novi Beograd, Zemun, Voždovac, Vračar i Stari Grad imaju najkraće vreme izlaska, ali izlazimo i dalje — samo se vreme dolaska produži."
+      }
+    }
+  },
+  "ServicePage": {
+    "allServices": "Sve usluge",
+    "sendProblem": "Pošalji problem",
+    "priceFrom": "Od {amount} RSD",
+    "faqTitle": "Česta pitanja",
+    "whereTitle": "Gde radimo ovu uslugu",
+    "readTitle": "Pročitaj pre nego što pozoveš",
+    "otherTitle": "Ostale usluge"
+  },
+  "ServicesIndex": {
+    "kicker": "Usluge",
+    "title": "Elektro usluge u {city}u",
+    "lead": "Od jedne utičnice do kompletne instalacije. Svaka usluga ima svoju stranicu sa okvirnom cenom, opisom posla i odgovorima na pitanja koja najčešće dobijamo.",
+    "cta": "Pošalji problem i dobij procenu",
+    "fromPrice": "Od {amount} RSD",
+    "more": "Pogledaj detalje"
+  },
+  "LocationPage": {
+    "allAreas": "Sve lokacije",
+    "sendProblem": "Pošalji slike problema",
+    "responseTime": "Vreme izlaska: {time}",
+    "servicesTitle": "Najtraženije na {area}",
+    "otherAreasTitle": "Ostale lokacije",
+    "areasTitle": "Gde radimo",
+    "faqTitle": "Česta pitanja"
+  },
+  "AreasIndex": {
+    "kicker": "Područje rada",
+    "title": "Električar po opštinama u {city}u",
+    "lead": "Stambeni fond se razlikuje od opštine do opštine, pa se razlikuju i kvarovi. Na svakoj stranici piše šta je tipično za taj deo grada i za koliko stižemo."
   }
 }

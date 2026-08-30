@@ -1,8 +1,9 @@
 import { Link } from "@/i18n/navigation";
 import { Phone, Mail, Clock, MessageCircle } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Logo } from "./logo";
 import { site, navigation } from "@/lib/site-config";
+import { getEntries } from "@/lib/mdx";
 
 function InstagramIcon({ className }: { className?: string }) {
   return (
@@ -27,10 +28,17 @@ export async function Footer() {
   const tNav = await getTranslations("Nav");
   const tHours = await getTranslations("Hours");
   const tCta = await getTranslations("Cta");
+  const locale = await getLocale();
+
+  // The footer is the main crawl path to the service and location pages: it is
+  // on every page, so one hop from anywhere reaches all of them.
+  const services = getEntries("usluge", locale);
+  const areas = getEntries("lokacije", locale);
+
   return (
     <footer className="mt-24 border-t border-border bg-paper">
       <div className="container-page py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="space-y-4">
             <Logo size={28} />
             <p className="max-w-xs text-sm text-ink-soft">{t("tagline")}</p>
@@ -57,6 +65,38 @@ export async function Footer() {
               <li>
                 <Link href="/blog" className="text-foreground/90 hover:text-foreground">{t("blog")}</Link>
               </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{tNav("services")}</h3>
+            <ul className="mt-4 space-y-2 text-sm">
+              {services.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={{ pathname: "/usluge/[slug]", params: { slug: s.slug } }}
+                    className="text-foreground/90 hover:text-foreground"
+                  >
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{tNav("areas")}</h3>
+            <ul className="mt-4 space-y-2 text-sm">
+              {areas.map((a) => (
+                <li key={a.slug}>
+                  <Link
+                    href={{ pathname: "/lokacije/[slug]", params: { slug: a.slug } }}
+                    className="text-foreground/90 hover:text-foreground"
+                  >
+                    {a.area}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

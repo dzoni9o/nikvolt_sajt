@@ -3,8 +3,23 @@ import type { StaticAppPathname } from "@/i18n/routing";
 export const site = {
   name: "nik volt",
   city: "Beograd",
+  region: "Beograd",
   country: "Srbija",
   url: "https://nikvolt.com",
+
+  // --- Local SEO fields ---
+  // Google's local pack leans heavily on a consistent name/address/phone across
+  // the site, the Business Profile and every directory listing. Fill these in
+  // and keep them byte-identical to the Business Profile.
+  // TODO(nikola): unesi adresu radionice i koordinate iz Google Business
+  // Profile-a. Dok su prazni, ne emituju se u JSON-LD — bolje ništa nego
+  // podatak koji se ne poklapa sa profilom.
+  streetAddress: "",
+  postalCode: "",
+  geo: null as { lat: number; lng: number } | null,
+  googleBusinessProfile: "",
+  /** schema.org priceRange. "$$" reads as mid-market, matching the price table. */
+  priceRange: "$$",
   phone: "+381603539985",
   phoneDisplay: "+381 60 353 9985",
   phoneTel: "+381603539985",
