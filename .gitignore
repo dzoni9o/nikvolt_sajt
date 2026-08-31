@@ -1,2 +1,14 @@
-.next/
+# dependencies
 node_modules/
+
+# build output
+.next/
+*.tsbuildinfo
+
+# environment
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store

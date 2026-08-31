@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# nik volt — sajt
 
-## Getting Started
+Next.js 16 (App Router) + React 19 + TypeScript + Tailwind v4. Deploy na Vercel.
 
-First, run the development server:
+Javni sajt je statički prerenderovan na tri jezika (`sr` podrazumevani, `en`, `ru`). Admin deo za prijave (`/uvid`) je dinamički i iza prijave.
+
+## Pokretanje
 
 ```bash
+npm install
+cp .env.example .env.local   # pa popuni vrednosti
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Sajt radi i bez popunjenih varijabli — forma za procenu kvara i `/uvid` tada prikazuju poruku da konfiguracija nedostaje, ostalo je netaknuto.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build    # pada ako MDX frontmatter nije ispravan
+npm run lint
+npm run start    # produkcijski server nad build-om
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Kako je složeno
 
-## Learn More
+| Šta | Gde |
+|---|---|
+| Rute i lokalizovani URL segmenti | `src/i18n/routing.ts` |
+| Sadržaj (blog, usluge, lokacije, pravno) | `src/content/<kolekcija>/<jezik>/<slug>.mdx` |
+| Učitavanje i validacija sadržaja | `src/lib/mdx.ts` |
+| Canonical, hreflang, sitemap | `src/lib/seo.ts` |
+| JSON-LD | `src/lib/schema.ts` |
+| Praćenje konverzija | `src/lib/analytics.ts`, `src/components/site/contact-link.tsx` |
+| OG slike | `src/lib/og.tsx` + `opengraph-image.tsx` rute |
+| Prijave sa forme | `src/app/api/submissions/route.ts` → Supabase + Resend |
 
-To learn more about Next.js, take a look at the following resources:
+## Sadržaj i SEO
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Dodavanje tekstova, stranica usluga i opština, pravila za slugove i prevode, kao i keyword mapa — u [`../docs/seo/`](../docs/seo/README.md).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Prevodi UI stringova su u `messages/{sr,en,ru}.json`. Referenca za i18n je [`../docs/i18n.md`](../docs/i18n.md).
 
-## Deploy on Vercel
+## Poznato
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`src/components/forms/fault-assessment.tsx` prijavljuje jedno lint upozorenje: `form.watch()` iz react-hook-form nije kompatibilan sa React Compiler-om, pa se komponenta preskače pri optimizaciji. Ostavljeno namerno — prepravka reaktivne logike jedine forme kroz koju stižu poslovi nosi rizik, a dobitak je nula za korisnika.

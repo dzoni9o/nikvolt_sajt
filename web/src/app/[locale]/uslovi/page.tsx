@@ -20,7 +20,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: doc?.title,
     description: doc?.description,
     alternates: alternatesForRoute("/uslovi", locale),
-    robots: { index: false, follow: true },
   };
 }
 

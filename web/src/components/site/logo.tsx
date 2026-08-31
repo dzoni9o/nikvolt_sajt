@@ -1,4 +1,10 @@
-import Link from "next/link";
+"use client";
+
+import { useTranslations } from "next-intl";
+// next/link would send every logo click to bare "/", which the proxy then has
+// to redirect through locale detection — an extra hop, and an English reader
+// can land back on Serbian. The i18n Link keeps the visitor in their locale.
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 type Tone = "dark" | "light";
@@ -63,11 +69,12 @@ export function Logo({
   mark?: boolean;
 }) {
   const resolvedVariant: Variant = mark ? "mark" : variant;
+  const t = useTranslations("Ally");
 
   return (
     <Link
       href="/"
-      aria-label="nik volt — početna"
+      aria-label={t("homeLink", { name: "nik volt" })}
       className={cn(
         "nw-logo group inline-flex items-center font-bold leading-none lowercase",
         resolvedVariant === "stacked" ? "flex-col" : "flex-row",

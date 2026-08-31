@@ -9,6 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { JsonLd } from "@/components/site/json-ld";
 import { FaqList } from "@/components/sections/faq";
+import { areaNames } from "@/lib/areas";
 import {
   getEntries,
   getEntry,
@@ -67,12 +68,14 @@ export default async function LocationPage({ params }: Props) {
   );
 
   const data = graph([
-    // areaServed is narrowed to this municipality: the page is about it, and a
-    // LocalBusiness node claiming all of Belgrade here would say nothing.
+    // areaServed stays the full coverage list. The business node is addressed by
+    // one @id across the whole site, so narrowing it here would leave a single
+    // entity claiming two different service areas depending on which page you
+    // read. The local focus is already carried by the H1, breadcrumb and copy.
     localBusiness({
       locale,
       description: entry.description,
-      areaServed: [entry.area],
+      areaServed: areaNames(locale),
     }),
     faqPage(entry.faq),
     breadcrumbs(locale, [

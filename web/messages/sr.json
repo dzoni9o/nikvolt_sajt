@@ -577,5 +577,9 @@
     "kicker": "Područje rada",
     "title": "Električar po opštinama u {city}u",
     "lead": "Stambeni fond se razlikuje od opštine do opštine, pa se razlikuju i kvarovi. Na svakoj stranici piše šta je tipično za taj deo grada i za koliko stižemo."
+  },
+  "Ally": {
+    "themeToggle": "Promeni temu",
+    "homeLink": "{name} — početna strana"
   }
 }

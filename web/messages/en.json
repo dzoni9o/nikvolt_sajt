@@ -577,5 +577,9 @@
     "kicker": "Coverage",
     "title": "Electrician by district in {city}",
     "lead": "Housing stock differs from district to district, and so do the faults. Each page says what is typical for that part of the city and how fast we get there."
+  },
+  "Ally": {
+    "themeToggle": "Toggle theme",
+    "homeLink": "{name} — home"
   }
 }

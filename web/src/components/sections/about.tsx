@@ -1,5 +1,7 @@
 import { Award, Wrench, MapPin } from "lucide-react";
-import { getFormatter, getTranslations } from "next-intl/server";
+import { getFormatter, getLocale, getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
+import { getEntries } from "@/lib/mdx";
 import { site } from "@/lib/site-config";
 
 const credentials = [
@@ -11,6 +13,12 @@ export async function About() {
   const t = await getTranslations("About");
   const tHero = await getTranslations("Hero");
   const f = await getFormatter();
+  const locale = await getLocale();
+
+  // Sourced from the location pages rather than site.coverage, so the coverage
+  // claimed here and the pages that back it up can never drift apart — and so
+  // the homepage links into all five of them.
+  const areas = getEntries("lokacije", locale);
 
   return (
     <section id="about" className="container-page py-20 md:py-28">
@@ -52,8 +60,15 @@ export async function About() {
               <MapPin className="h-4 w-4" /> {t("coverageTitle")}
             </h3>
             <ul className="mt-3 flex flex-wrap gap-2">
-              {site.coverage.map((c) => (
-                <li key={c} className="rounded-full border border-border bg-paper px-3 py-1.5 text-xs font-medium text-foreground">{c}</li>
+              {areas.map((a) => (
+                <li key={a.slug}>
+                  <Link
+                    href={{ pathname: "/lokacije/[slug]", params: { slug: a.slug } }}
+                    className="inline-block rounded-full border border-border bg-paper px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-muted"
+                  >
+                    {a.area}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>

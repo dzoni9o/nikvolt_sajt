@@ -20,8 +20,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: doc?.title,
     description: doc?.description,
     alternates: alternatesForRoute("/privatnost", locale),
-    // Legal boilerplate has no business competing for queries.
-    robots: { index: false, follow: true },
   };
 }
 
