@@ -4,6 +4,7 @@
 
 - [`keyword-map.md`](./keyword-map.md) — koja stranica cilja koji upit, kadenca pisanja i šta pratiti
 - [`gbp-checklist.md`](./gbp-checklist.md) — Google Business Profile, recenzije i lokalni katalozi (nije kod)
+- [`search-console.md`](./search-console.md) — uvođenje sajta u Google indeks, redosled i šta pratiti (nije kod)
 
 ## Kako je sajt složen
 
