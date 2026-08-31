@@ -1,0 +1,36 @@
+---
+title: "Stepenišni automat"
+description: "Relej koji drži svetlo u hodniku upaljeno određeno vreme pa ga sam gasi, i zašto se sa LED sijalicama ponaša drugačije nego pre."
+slug: "stepenisni-automat"
+key: "stepenisni-automat"
+h1: "Zašto se svetlo u hodniku samo gasi?"
+shortAnswer: "Zato što na tom kolu stoji stepenišni automat: relej u tabli koji posle pritiska na taster drži svetlo upaljeno određeno vreme, pa ga sam isključuje."
+group: "Instalacija"
+seeAlso: ["naizmenicni-prekidac", "elektro-tabla", "senzor-pokreta"]
+---
+
+Standardno rešenje za zajedničke hodnike i stepeništa, i jedna od retkih stvari u zgradi koja radi decenijama bez ijedne intervencije, pa je zato niko i ne poznaje.
+
+## Kako radi
+
+Na zidu nisu prekidači nego tasteri: pritisneš, otpustiš, i taster se sam vraća. Svi tasteri u ulazu vode na jedan uređaj u [tabli](/pojmovnik/elektro-tabla).
+
+Taj uređaj uključi svetlo i pokrene odbrojavanje, obično od jednog do nekoliko minuta. Kad vreme istekne, isključi ga. Novi pritisak bilo gde u ulazu vraća odbrojavanje na početak.
+
+Prednost nad [naizmeničnim prekidačima](/pojmovnik/naizmenicni-prekidac) je što broj mesta sa kojih se pali nije ograničen: deset tastera na deset spratova ide na isti par žica.
+
+## Zašto se sa LED-om ponaša drugačije
+
+Stariji automati troše malu struju kroz samu svetiljku i kad je ugašena, da bi napajali svoju elektroniku. Sa sijalicom sa žarnom niti to je bilo nevidljivo.
+
+LED sijalica ume da radi i na toj sitnoj struji, pa svetlo tinja i kad je automat isključio kolo. Ista pojava kao kod prekidača sa lampicom, opisana u tekstu [zašto treperi sijalica](/blog/zasto-treperi-sijalica).
+
+Rešava se automatom sa zasebnim priključkom nule, koji struju za sebe uzima odatle umesto kroz svetiljku.
+
+## Kad ne valja
+
+Ako svetlo gori znatno duže nego što bi trebalo ili se ne gasi uopšte, kontakt u releju je zavaren, što je uobičajen kraj njegovog veka.
+
+Ako gasne prebrzo, vreme se najčešće može podesiti na samom uređaju, malim točkićem.
+
+Ovo je oprema u zajedničkom delu, pa se zamena naručuje preko upravnika, kao i sve ostalo na [zajedničkoj vertikali](/pojmovnik/zajednicka-vertikala). U stanu se isti princip koristi retko, jer je tamo praktičniji [senzor pokreta](/pojmovnik/senzor-pokreta) ili obična ugradnja rasvete, o čemu na stranici o [rasveti](/usluge/rasveta).
