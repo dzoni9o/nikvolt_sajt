@@ -12,6 +12,7 @@
 | Učitavanje sadržaja, validacija frontmattera, prevodi | `web/src/lib/mdx.ts` |
 | Canonical, hreflang, sitemap URL-ovi | `web/src/lib/seo.ts` |
 | JSON-LD graditelji | `web/src/lib/schema.ts` |
+| Graf linkova i backlinkovi | `web/src/lib/mdx.ts` (`buildLinkGraph`), `web/scripts/check-links.mjs` |
 | Lokalizovani URL segmenti | `web/src/i18n/routing.ts` |
 | Praćenje konverzija | `web/src/lib/analytics.ts`, `web/src/components/site/contact-link.tsx` |
 | OG slike | `web/src/lib/og.tsx` + `opengraph-image.tsx` rute |
@@ -24,7 +25,9 @@ Novi tekst, usluga ili opština je jedan MDX fajl po jeziku:
 web/src/content/<kolekcija>/<jezik>/<slug>.mdx
 ```
 
-Kolekcije su `blog`, `usluge`, `lokacije`, `pravno`. Jezici su `sr`, `en`, `ru`.
+Kolekcije su `blog`, `usluge`, `lokacije`, `pojmovnik`, `pravno`. Jezici su `sr`, `en`, `ru`.
+
+Pojmovnik je srpski samo. Nav stavka i indeks se prikazuju samo tamo gde ima sadržaja, pa `/en/glossary` vraća 404 umesto prazne stranice.
 
 Dva pravila koja build proverava i obara se ako se prekrše:
 
@@ -47,10 +50,13 @@ next-intl to renderuje kao `/sr/usluge/…`, `/en/services/…`, `/ru/uslugi/…
 
 ```bash
 cd web
-npm run build     # pada ako frontmatter nije ispravan ili slug ne odgovara imenu fajla
+npm run check:links   # graf linkova — pokvareni, siročad, gustina
+npm run build         # pokreće check:links kao prebuild, pa pada i na to
 npm run lint
-npm run start     # pa proveriti sitemap, hreflang i JSON-LD
+npm run start         # pa proveriti sitemap, hreflang i JSON-LD
 ```
+
+`check:links` obara build ako link vodi nikuda, ako neka stranica nema nijedan dolazni link iz teksta, ili ako ima manje od 3 linka u telu. Cilj je da se sa svake stranice može dalje kroz rečenicu, a ne samo kroz meni — a to se održava proverom, ne dobrom voljom.
 
 Korisne provere na pokrenutom serveru:
 

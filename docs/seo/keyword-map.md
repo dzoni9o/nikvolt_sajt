@@ -52,12 +52,46 @@ Sve ciljaju obrazac **„električar + opština"**, namera hitna do komercijalna
 | `/sr/elektricar/vozdovac` | električar Voždovac |
 | `/sr/elektricar/vracar` | električar Vračar |
 | `/sr/elektricar/stari-grad` | električar Stari grad |
+| `/sr/elektricar/cukarica` | električar Čukarica |
+| `/sr/elektricar/palilula` | električar Palilula |
+| `/sr/elektricar/rakovica` | električar Rakovica |
+| `/sr/elektricar/savski-venac` | električar Savski venac |
+| `/sr/elektricar/zvezdara` | električar Zvezdara |
 
 **Rizik koji ove stranice nose:** ako budu iste rečenice sa promenjenim imenom opštine, Google ih tretira kao *doorway* stranice — ignoriše ih ili kažnjava. Zato svaka ima sadržaj koji postoji samo tamo: blokovska gradnja i trofazni šporeti na Novom Beogradu, tkaninska izolacija i zaštićeni objekti na Starom gradu, nemereni uzemljivači u zemunskim kućama, dvostruki stambeni fond na Voždovcu, međuratne zgrade i prekinuta nula na Vračaru.
 
 **Pravilo za buduće opštine:** nova stranica se pravi tek kad postoji bar tri konkretne stvari koje važe za tu opštinu a ne za ostale. Ako ih nema, bolje je da stranica ne postoji.
 
+**Prigradske opštine namerno nisu uzete.** Barajevo, Grocka, Lazarevac, Mladenovac, Obrenovac, Sopot i Surčin bi dodali sedam stranica i nešto saobraćaja, ali stranica koja obećava izlazak u Mladenovac donosi pozive koji se odbijaju — a odbijeni pozivi kvare i profil i reputaciju. Ako se domet stvarno proširi, stranice se dodaju tada.
+
 ---
+
+## Pojmovnik
+
+Osamnaest pojmova pod `/sr/pojmovnik/`, ciljaju obrazac **„šta je …"** — informativna namera, ali sa najvišom stopom zadržavanja na sajtu jer svaki pojam vodi u sledeći.
+
+| Pojam | Primarni upit |
+|---|---|
+| fid-sklopka | šta je FID sklopka |
+| automatski-osiguraci | šta je automatski osigurač |
+| uzemljenje | šta je uzemljenje |
+| kratak-spoj | šta je kratak spoj |
+| presek-kabla | presek kabla mm2 |
+| suko-uticnica | šuko utičnica |
+| elektro-tabla | šta je elektro tabla |
+| jednofazno-i-trofazno | razlika jednofazno trofazno |
+| kilovat-sat | kako se čita brojilo |
+| prenaponska-zastita | prenaponska zaštita |
+| struja-curenja | struja curenja |
+| razvodna-kutija | razvodna kutija |
+| faza-nula-zastitni | faza nula zaštitni provodnik |
+| karakteristika-osiguraca | osigurač B ili C |
+| naizmenicni-prekidac | naizmenični prekidač |
+| ip-zastita | IP44 IP65 |
+| dimer | dimer za LED |
+| led-drajver | LED drajver |
+
+Samo srpski. Ruski ekspat koji traži „электрик Земун" je mušterija; onaj koji traži „что такое УЗО" će pročitati ruski sajt.
 
 ## Blog
 
@@ -68,6 +102,16 @@ Sve ciljaju obrazac **„električar + opština"**, namera hitna do komercijalna
 | `/sr/blog/kako-proveriti-uticnicu` | kako proveriti utičnicu | informativna | `/usluge/zamena-uticnica` |
 | `/sr/blog/lose-uzemljenje` | loše uzemljenje simptomi | informativna | `/usluge/uzemljenje` |
 | `/sr/blog/opasna-instalacija-znaci` | opasna elektroinstalacija | hitna | `/usluge/dijagnostika-kvarova` |
+| `/sr/blog/zasto-treperi-sijalica` | zašto treperi sijalica | informativna | `/usluge/rasveta` |
+| `/sr/blog/zasto-se-greje-uticnica` | zašto se greje utičnica | hitna | `/usluge/zamena-uticnica` |
+| `/sr/blog/zasto-pucaju-sijalice` | zašto pucaju sijalice | informativna | `/usluge/rasveta` |
+| `/sr/blog/nestala-struja-u-delu-stana` | nestala struja u delu stana | hitna | `/usluge/dijagnostika-kvarova` |
+| `/sr/blog/koliko-trosi-bojler` | koliko troši bojler | informativna | `/usluge/dijagnostika-kvarova` |
+| `/sr/blog/koliko-trosi-klima` | koliko troši klima | informativna | `/usluge/dijagnostika-kvarova` |
+| `/sr/blog/zasto-klima-izbacuje-osiguraca` | klima izbacuje osigurač | komercijalna | `/usluge/zamena-osiguraca` |
+| `/sr/blog/koliko-uticnica-po-sobi` | koliko utičnica po sobi | informativna | `/usluge/nova-elektroinstalacija` |
+| `/sr/blog/udar-struje-prva-pomoc` | strujni udar prva pomoć | hitna | `/usluge/dijagnostika-kvarova` |
+| `/sr/blog/zasto-adapter-zuji` | adapter zuji | informativna | `/usluge/dijagnostika-kvarova` |
 
 Svaki tekst ima `service:` u frontmatteru — to je veza ka usluzi koju cilja i ona se koristi i za interno linkovanje.
 
@@ -87,15 +131,31 @@ Obrasci koji donose pozive, po redu isplativosti:
 ### Sledeći kandidati
 
 - Koliko košta elektroinstalacija u stanu od 60 m²
-- Zašto se greje utičnica
 - Aluminijumska instalacija — kada se mora menjati
-- Šta uraditi kad nestane struja samo u jednom delu stana
 - Koliko košta ugradnja klime — elektro deo
-- Kako se čita elektro tabla
+- Zašto zvoni na vratima ne radi
+- Koliko traje elektro instalacija i kada zvati koga
+- Šta pregledati pri kupovini stana
 
 Pre pisanja proveriti u ovoj tabeli da upit već nije pokriven. Ako jeste — dopuniti postojeći tekst umesto pisanja novog.
 
 ---
+
+## Povezivanje
+
+Cilj je da čovek koji dođe na bilo koju stranicu može dalje **kroz tekst**, ne kroz meni. To se ne održava dobrom voljom nego proverom.
+
+`web/scripts/check-links.mjs` je vezan na `prebuild` i obara build ako:
+
+- link vodi na stranicu koja ne postoji u tom jeziku
+- stranica nema nijedan dolazni link iz nečijeg teksta (siroče)
+- stranica ima manje od 3 linka u svom telu
+
+Uz to, `buildLinkGraph()` gradi obrnuti indeks pa svaka stranica dole prikazuje „Pominje se u". Ta lista je izvedena iz stvarnih linkova, ne iz ručno održavanog polja, pa ne može da zastari.
+
+Trenutno: 266 linkova u telu, prosek 5 po stranici, svih 53 stranice sa sadržajem dohvatljive sa početne u najviše tri klika kroz sam tekst.
+
+**Pri pisanju novog teksta:** najmanje tri linka u telu, i bar jedna postojeća stranica mora da dobije link ka novoj. Inače build ne prolazi.
 
 ## Šta pratiti
 
