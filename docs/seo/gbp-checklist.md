@@ -15,20 +15,35 @@ Google upoređuje ime, adresu i telefon (**NAP**) sa sajtom i sa svim katalozima
 | Ime | `nik volt` — malim slovima, razmak, bez dodataka tipa „elektroinstalacije Beograd" |
 | Telefon | `+381 60 353 9985` |
 | Sajt | `https://nikvolt.com` |
-| Adresa | ista kao ona koju treba uneti u `web/src/lib/site-config.ts` |
+| Adresa | **sakrivena** — vidi ispod |
+| Poštanski broj | `11000` |
 
 **Dopunjavanje ključnih reči u ime profila je kršenje Google smernica** i razlog za suspenziju profila. Ne raditi.
 
+### Adresa se ne objavljuje
+
+Ovo je posao koji se obavlja kod klijenta, bez izloga i bez radnje u koju neko dolazi. U Google terminologiji to je **service-area business**, i za njega važi drugačije pravilo: adresa se unosi samo zato da bi Google potvrdio da postojiš, pa se odmah **sakriva**.
+
+U profilu to izgleda ovako:
+
+1. Info → Address → unesi stvarnu adresu (potrebna je za verifikaciju kartom ili video pozivom)
+2. Odmah zatim uključi **„I deliver goods and services to my customers"** i sakrij adresu
+3. Service area → unesi opštine, ne poluprečnik u kilometrima
+
+Ako adresa ostane vidljiva, Google je tretira kao mesto na koje ljudi dolaze. To vodi u dve neprijatnosti: kućna adresa postane javna, a profil počne da se rangira samo za okolinu te tačke umesto za celo područje rada.
+
+**Service area treba da se poklopi sa opštinama koje sajt pokriva**, jer sajt istu listu šalje kroz `areaServed` u JSON-LD-u. Trenutno je to deset gradskih opština: Čukarica, Novi Beograd, Palilula, Rakovica, Savski venac, Stari grad, Voždovac, Vračar, Zemun, Zvezdara. Lista se u kodu izvodi iz stranica opština (`web/src/lib/areas.ts`), pa se sama drži u koraku kad se doda nova.
+
 ### Šta posle toga ide u kod
 
-Kada se adresa i koordinate potvrde na profilu, unose se u `web/src/lib/site-config.ts`:
+U `web/src/lib/site-config.ts` je `postalCode` već popunjen, a `streetAddress` namerno ostaje prazan, jer se adresa nigde ne objavljuje. Ostaju dve stavke:
 
 ```ts
-streetAddress: "",            // ulica i broj sa GBP-a, slovo u slovo
-postalCode: "",               // npr. "11000"
-geo: null,                    // { lat: 44.xxxx, lng: 20.xxxx } — iz URL-a mape
+geo: null,                    // opciono: { lat: 44.xxxx, lng: 20.xxxx }
 googleBusinessProfile: "",    // javni link profila
 ```
+
+Link se uzima u Google Maps, na samom profilu, dugmetom **Share → Copy link**.
 
 Dok su prazni, ne emituju se u JSON-LD. To je namerno: podatak koji se ne poklapa sa profilom šteti više nego podatak koji nedostaje.
 

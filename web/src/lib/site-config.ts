@@ -9,14 +9,22 @@ export const site = {
 
   // --- Local SEO fields ---
   // Google's local pack leans heavily on a consistent name/address/phone across
-  // the site, the Business Profile and every directory listing. Fill these in
-  // and keep them byte-identical to the Business Profile.
-  // TODO(nikola): unesi adresu radionice i koordinate iz Google Business
-  // Profile-a. Dok su prazni, ne emituju se u JSON-LD — bolje ništa nego
-  // podatak koji se ne poklapa sa profilom.
+  // the site, the Business Profile and every directory listing.
+  //
+  // This is a service-area business: the work happens at the customer's
+  // address, there is no shopfront, and no street address is published.
+  // streetAddress therefore stays empty on purpose — schema.org allows a
+  // PostalAddress without one, and areaServed (see src/lib/areas.ts, derived
+  // from the municipality pages) carries the coverage instead. The Business
+  // Profile must be configured the same way, with the address hidden.
   streetAddress: "",
-  postalCode: "",
+  postalCode: "11000",
+  // TODO(nikola): koordinate su opcione za service-area posao i emituju se
+  // samo ako se popune. Ako ih uneseš, uzmi ih sa Business Profile-a, ne sa
+  // mape napamet.
   geo: null as { lat: number; lng: number } | null,
+  // TODO(nikola): nalepi ovde link profila (Google Maps → Share → Copy link).
+  // Dok je prazan, ne emituje se ni u sameAs ni u hasMap.
   googleBusinessProfile: "",
   /** schema.org priceRange. "$$" reads as mid-market, matching the price table. */
   priceRange: "$$",
