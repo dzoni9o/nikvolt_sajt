@@ -43,13 +43,40 @@ Ako ideš na Domain, ovu promenljivu uopšte ne moraš da diraš.
 
 ## 2. Predaja sitemapa
 
-Sitemaps → unesi `sitemap.xml` → Submit.
+Sitemap se ne šalje nikome mejlom i ne predaje se nikakvoj firmi ni servisu.
+Upisuje se u alat same pretraživačke mašine, a to je za Google Search Console.
+Fajl ostaje da stoji na sajtu; Googlu se samo kaže gde je.
+
+Zapravo je već i rečeno: `robots.txt` na sajtu sadrži liniju
+`Sitemap: https://nikvolt.com/sitemap.xml`, i Google je čita sam. Upis u konzolu
+je brži i, za razliku od `robots.txt`, daje izveštaj o tome šta je prihvaćeno.
+
+Klikovi, kad si već ulogovan i nalog je potvrđen:
+
+1. Levo meni → **Indexing** → **Sitemaps**
+2. U polju **Add a new sitemap** već stoji `https://nikvolt.com/`, dopiši samo
+   `sitemap.xml`
+3. **SUBMIT**
 
 Status posle nekoliko sati treba da bude **Success** i **Discovered URLs: 169**.
 Ako piše „Couldn't fetch", nije problem u sitemapu nego u tački 0.
 
 Sitemap se generiše iz fajlova (`web/src/app/sitemap.ts`), pa se sam ažurira sa
 svakim deployom. Predaje se **jednom** i nikad više.
+
+### Bing, usput
+
+Isti fajl vredi upisati i u [Bing Webmaster Tools](https://www.bing.com/webmasters).
+Pri otvaranju naloga postoji dugme **Import from Google Search Console**, koje
+prenese i potvrdu vlasništva i sitemap odjednom. Deset minuta posla.
+
+Bing nosi malo saobraćaja u Srbiji, ali ga koriste ChatGPT i Copilot kad
+pretražuju web, pa se preko njega upada u odgovore asistenata. Za sajt
+napravljen od kratkih pitanja i odgovora to nije zanemarljivo.
+
+Drugim pretraživačima se ne predaje ništa. Yandex ima svoj alat, ali za majstora
+u Beogradu ne vredi vremena. Servisi tipa „prijavi sajt na 500 pretraživača" su
+prevara i ne treba ih dirati.
 
 ## 3. Prvo ubrzanje: ručno traženje indeksiranja
 
