@@ -11,7 +11,8 @@
     "tools": "Tools",
     "pricing": "Pricing",
     "contact": "Contact",
-    "areas": "Areas"
+    "areas": "Areas",
+    "glossary": "Glossary"
   },
   "LocaleSwitcher": {
     "label": "Language",
@@ -469,7 +470,6 @@
     "kicker": "Blog",
     "title": "Things every {city} apartment should know about electricity.",
     "lead": "Diagnostics, safe DIY, and the warning signs we see every week. Written to be skim-readable while standing in front of a panel.",
-    "all": "All",
     "featured": "Featured",
     "minRead": "{minutes, plural, one {# min} other {# min}}",
     "readingTime": "{minutes, plural, one {# min read} other {# min read}}",
@@ -482,7 +482,8 @@
       "send": "Send your problem",
       "tags": "Tags"
     },
-    "readNext": "Read next"
+    "readNext": "Read next",
+    "toGlossary": "Glossary"
   },
   "JsonLd": {
     "businessType": "Electrician"
@@ -511,6 +512,10 @@
     "Areas": {
       "title": "Electrician by district in Belgrade",
       "description": "Novi Beograd, Zemun, Voždovac, Vračar, Stari Grad — typical faults by building type and response time for each district."
+    },
+    "Glossary": {
+      "title": "Glossary — electricity explained plainly",
+      "description": "What an RCD, earthing, a short circuit and cable cross-section actually are. Short answers without the jargon."
     }
   },
   "Legal": {
@@ -581,5 +586,23 @@
   "Ally": {
     "themeToggle": "Toggle theme",
     "homeLink": "{name} — home"
+  },
+  "Glossary": {
+    "kicker": "Glossary",
+    "title": "Electricity, explained plainly",
+    "lead": "Short answers to the questions people actually ask.",
+    "groups": "Term groups",
+    "read": "Read"
+  },
+  "TermPage": {
+    "allTerms": "Whole glossary",
+    "seeAlso": "See also",
+    "moreInGroup": "More in: {group}",
+    "ctaTitle": "Now you know what it is. Need somebody to do it?",
+    "ctaLead": "Send photos or call — you get an estimate before anyone travels.",
+    "ctaServices": "All services"
+  },
+  "Backlinks": {
+    "title": "Mentioned in"
   }
 }

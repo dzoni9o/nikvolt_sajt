@@ -8,6 +8,7 @@ import { ArrowLeft, ArrowRight, Clock, Phone, Send } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { JsonLd } from "@/components/site/json-ld";
+import { Backlinks } from "@/components/site/backlinks";
 import { FaqList } from "@/components/sections/faq";
 import { areaNames } from "@/lib/areas";
 import {
@@ -163,6 +164,8 @@ export default async function LocationPage({ params }: Props) {
           </div>
         </section>
       )}
+
+      <Backlinks locale={locale} collection="lokacije" slug={entry.slug} />
 
       {otherAreas.length > 0 && (
         <section className="container-page mt-16">

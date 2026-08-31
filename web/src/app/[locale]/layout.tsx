@@ -13,6 +13,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { routing, ogLocaleFor, htmlLangFor } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
 import { buildSlugMap } from "@/lib/mdx";
+import { navigationFor } from "@/lib/navigation";
 import { site } from "@/lib/site-config";
 import { alternatesForRoute } from "@/lib/seo";
 
@@ -109,7 +110,7 @@ export default async function LocaleLayout({
       <body className="min-h-full flex flex-col bg-paper text-foreground">
         <ThemeProvider>
           <NextIntlClientProvider>
-            <Navbar slugMap={buildSlugMap()} />
+            <Navbar slugMap={buildSlugMap()} navItems={navigationFor(locale)} />
             <main className="flex-1">{children}</main>
             <Footer />
             <StickyMobileCTA />

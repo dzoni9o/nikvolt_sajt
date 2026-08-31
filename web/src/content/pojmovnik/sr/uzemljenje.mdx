@@ -1,0 +1,45 @@
+---
+title: "Uzemljenje"
+description: "Šta je uzemljenje, zašto bez njega FID ne radi kako treba i kako se dokazuje da je ispravno."
+slug: "uzemljenje"
+key: "uzemljenje-pojam"
+h1: "Šta je uzemljenje?"
+shortAnswer: "Put kojim struja u kvaru odlazi u zemlju umesto kroz čoveka — i jedina zaštita koja radi kad kućište uređaja dođe pod napon."
+group: "Zaštita"
+seeAlso: ["faza-nula-zastitni", "fid-sklopka", "prenaponska-zastita"]
+---
+
+Treća žica u instalaciji, žuto-zelena. Ne učestvuje u radu nijednog uređaja — u normalnom pogonu kroz nju ne teče ništa.
+
+Postoji samo za jedan trenutak: kad nešto pođe naopako.
+
+## Šta se dešava u kvaru
+
+Zamisli veš mašinu kojoj je izolacija popustila i faza dodirnula metalno kućište. Kućište je sad pod naponom.
+
+**Bez uzemljenja:** ništa se ne dešava. Mašina radi normalno. Napon na kućištu čeka. Prvi ko je dodirne postane put kojim struja ide u zemlju.
+
+**Sa uzemljenjem:** struja odmah otiče kroz žuto-zelenu žicu. Taj tok je velik i trenutan, pa [osigurač](/pojmovnik/automatski-osiguraci) isključi kolo za milisekunde. Mašina prestane da radi, a niko ništa ne primeti osim što je „iskočio osigurač".
+
+Cela razlika je u tome da li struja ima put koji nije čovek.
+
+## Zašto bez uzemljenja ni FID ne pomaže
+
+Ovo je kontraintuitivno i vredi razumeti.
+
+[FID sklopka](/pojmovnik/fid-sklopka) reaguje na razliku između odlazne i povratne struje. Ako kućište dođe pod napon a nema uzemljenja, **ništa ne otiče** — nema razlike, FID miruje.
+
+Sklopka će reagovati tek kad neko dodirne kućište, jer tek tada nastane odvod. Reagovaće brzo i verovatno spasti tog čoveka, ali je do tog trenutka instalacija izgledala potpuno ispravno.
+
+Zato uzemljenje i FID nisu alternativa jedno drugom nego par.
+
+## Kako se zna da je ispravno
+
+Ne po tome što žica postoji. Ona može biti tu a nigde vezana — to je najčešći nalaz u stanovima gde je neko „sređivao" instalaciju.
+
+Dokazuje se merenjem: otpor rasipanja uzemljivača, otpor petlje kvara i kontinuitet zaštitnog provodnika po kolima. Rezultat je zapisnik sa brojevima. Kako to izgleda i koliko traje piše na stranici o [proveri uzemljenja](/usluge/uzemljenje), a simptomi lošeg uzemljenja u tekstu [kako prepoznati loše uzemljenje](/blog/lose-uzemljenje).
+
+## Šta se ne sme
+
+- **Vezivati na vodovodnu cev.** Nekad je bila praksa. Danas nije — dovoljno je da neko u nizu zameni deo za PVC i uzemljenje nestane bez ijednog vidljivog znaka.
+- **Spajati zaštitni sa nulom u utičnici.** Radi dok sve funkcioniše. Kad nula pukne, celo kućište dođe pod napon.

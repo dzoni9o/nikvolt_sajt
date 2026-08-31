@@ -72,11 +72,26 @@ const legalFrontmatter = baseFrontmatter.extend({
   updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "updated must be YYYY-MM-DD"),
 });
 
+const termFrontmatter = baseFrontmatter.extend({
+  h1: z.string().min(1),
+  /**
+   * One sentence that answers the question outright. Shown above the body and
+   * used as the DefinedTerm description — somebody who only reads this line
+   * should already have their answer.
+   */
+  shortAnswer: z.string().min(1),
+  /** Grouping on the glossary index, e.g. "Zaštita", "Instalacija". */
+  group: z.string().min(1),
+  /** Translation keys of closely related terms, shown as "vidi i". */
+  seeAlso: z.array(z.string()).default([]),
+});
+
 const schemas = {
   blog: blogFrontmatter,
   usluge: serviceFrontmatter,
   lokacije: locationFrontmatter,
   pravno: legalFrontmatter,
+  pojmovnik: termFrontmatter,
 } as const;
 
 export type Collection = keyof typeof schemas;
@@ -91,6 +106,7 @@ export type BlogEntry = Entry<"blog">;
 export type ServiceEntry = Entry<"usluge">;
 export type LocationEntry = Entry<"lokacije">;
 export type LegalEntry = Entry<"pravno">;
+export type TermEntry = Entry<"pojmovnik">;
 
 export type FaqItem = z.infer<typeof faqItem>;
 
@@ -227,6 +243,7 @@ const ROUTE_FOR_COLLECTION: Partial<Record<Collection, string>> = {
   blog: "/blog/[slug]",
   usluge: "/usluge/[slug]",
   lokacije: "/lokacije/[slug]",
+  pojmovnik: "/pojmovnik/[slug]",
 };
 
 export function buildSlugMap(): SlugMap {
@@ -244,4 +261,113 @@ export function buildSlugMap(): SlugMap {
     map[route] = byRoute;
   }
   return map;
+}
+
+// ---------------------------------------------------------------------------
+// Link graph
+// ---------------------------------------------------------------------------
+
+/**
+ * Internal links are written in MDX in their route-id form —
+ * /usluge/<slug>, /lokacije/<slug>, /blog/<slug>, /pojmovnik/<slug> — which
+ * src/components/mdx-components.tsx turns into a localized next-intl Link.
+ * The same shape is what this parser looks for.
+ */
+const BODY_LINK = /\]\(\/(blog|usluge|lokacije|pojmovnik)\/([a-z0-9-]+)\)/g;
+
+const LINKABLE: Collection[] = ["blog", "usluge", "lokacije", "pojmovnik"];
+
+export type PageId = string; // "<collection>/<slug>"
+
+export type LinkGraph = {
+  /** Page → pages it links to from its body. */
+  outbound: Map<PageId, PageId[]>;
+  /** Page → pages whose body links to it. */
+  inbound: Map<PageId, PageId[]>;
+  /** Body links whose target does not exist in this locale. */
+  broken: { from: PageId; to: PageId }[];
+};
+
+const pageId = (collection: string, slug: string): PageId =>
+  `${collection}/${slug}`;
+
+const graphCache = new Map<string, LinkGraph>();
+
+/**
+ * Build the in-body link graph for one locale.
+ *
+ * This is what makes "every page reachable from the prose" checkable rather
+ * than aspirational: the backlink lists on each page and scripts/check-links.mjs
+ * both read from here, so the site's real structure and the structure we claim
+ * cannot drift apart.
+ */
+export function buildLinkGraph(locale: string): LinkGraph {
+  const cached = graphCache.get(locale);
+  if (cached) return cached;
+
+  const exists = new Set<PageId>();
+  for (const collection of LINKABLE) {
+    for (const entry of readCollection(collection, locale)) {
+      exists.add(pageId(collection, entry.slug));
+    }
+  }
+
+  const outbound = new Map<PageId, PageId[]>();
+  const inbound = new Map<PageId, PageId[]>();
+  const broken: { from: PageId; to: PageId }[] = [];
+
+  for (const collection of LINKABLE) {
+    for (const entry of readCollection(collection, locale)) {
+      const from = pageId(collection, entry.slug);
+      const targets = new Set<PageId>();
+
+      for (const match of entry.content.matchAll(BODY_LINK)) {
+        const to = pageId(match[1], match[2]);
+        if (to === from) continue; // a page linking to itself is not a hop
+        if (!exists.has(to)) {
+          broken.push({ from, to });
+          continue;
+        }
+        targets.add(to);
+      }
+
+      outbound.set(from, [...targets]);
+      for (const to of targets) {
+        inbound.set(to, [...(inbound.get(to) ?? []), from]);
+      }
+    }
+  }
+
+  // Every page gets an entry, so callers never have to guard for undefined.
+  for (const id of exists) {
+    if (!outbound.has(id)) outbound.set(id, []);
+    if (!inbound.has(id)) inbound.set(id, []);
+  }
+
+  const result = { outbound, inbound, broken };
+  graphCache.set(locale, result);
+  return result;
+}
+
+export type Backlink = {
+  collection: Collection;
+  slug: string;
+  title: string;
+};
+
+/** Pages whose prose points at this one — the "mentioned in" list. */
+export function getBacklinks(
+  locale: string,
+  collection: Collection,
+  slug: string,
+): Backlink[] {
+  const { inbound } = buildLinkGraph(locale);
+  return (inbound.get(pageId(collection, slug)) ?? [])
+    .map((id) => {
+      const [c, s] = id.split("/") as [Collection, string];
+      const entry = getEntry(c, locale, s);
+      return entry ? { collection: c, slug: s, title: entry.title } : null;
+    })
+    .filter((x): x is Backlink => x !== null)
+    .sort((a, b) => a.title.localeCompare(b.title, "sr-Latn"));
 }

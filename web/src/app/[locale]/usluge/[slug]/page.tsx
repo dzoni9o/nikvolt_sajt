@@ -8,6 +8,7 @@ import { ArrowLeft, ArrowRight, MapPin, Phone, Send } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { JsonLd } from "@/components/site/json-ld";
+import { Backlinks } from "@/components/site/backlinks";
 import { FaqList } from "@/components/sections/faq";
 import { areaNames } from "@/lib/areas";
 import {
@@ -203,6 +204,8 @@ export default async function ServicePage({ params }: Props) {
           </div>
         </section>
       )}
+
+      <Backlinks locale={locale} collection="usluge" slug={entry.slug} />
 
       {otherServices.length > 0 && (
         <section className="container-page mt-20">

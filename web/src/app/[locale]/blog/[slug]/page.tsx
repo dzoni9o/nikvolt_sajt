@@ -17,6 +17,7 @@ import { site } from "@/lib/site-config";
 import { ContactLink } from "@/components/site/contact-link";
 import { alternatesForEntry } from "@/lib/seo";
 import { JsonLd } from "@/components/site/json-ld";
+import { Backlinks } from "@/components/site/backlinks";
 import { blogPosting, breadcrumbs, graph } from "@/lib/schema";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -148,6 +149,8 @@ export default async function BlogPostPage({ params }: Props) {
           )}
         </aside>
       </div>
+
+      <Backlinks locale={locale} collection="blog" slug={post.slug} />
 
       <section className="container-page mt-20">
         <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-foreground sm:text-3xl">

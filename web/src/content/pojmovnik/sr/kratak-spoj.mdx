@@ -1,0 +1,44 @@
+---
+title: "Kratak spoj"
+description: "Šta se tačno dešava pri kratkom spoju, zašto je opasan i zašto osigurač mora da isključi za milisekunde."
+slug: "kratak-spoj"
+key: "kratak-spoj"
+h1: "Šta je kratak spoj?"
+shortAnswer: "Direktan dodir faze i nule bez potrošača između njih — struja skoči na stotine ampera i kabl se pregreje za trenutak, pa zaštita mora isključiti odmah."
+group: "Zaštita"
+seeAlso: ["automatski-osiguraci", "karakteristika-osiguraca", "presek-kabla"]
+---
+
+## Šta se dešava
+
+Struju u kolu ograničava potrošač. Sijalica, mašina, punjač — svaki od njih ima otpor i on određuje koliko struje protekne.
+
+Kad se [faza i nula](/pojmovnik/faza-nula-zastitni) dodirnu direktno, tog otpora nema. Ostaje samo otpor samog kabla, koji je vrlo mali.
+
+Po Omovom zakonu to znači ogromnu struju — umesto nekoliko ampera, stotine. Kabl koji je projektovan za 16 A odjednom provodi 300 A.
+
+## Zašto je opasan
+
+Kabl se pri tome ne greje postepeno nego trenutno. Izolacija se topi u delu sekunde, a na mestu spoja nastaje varnica temperature nekoliko hiljada stepeni.
+
+Zbog toga [osigurač](/pojmovnik/automatski-osiguraci) mora da isključi **za milisekunde**, ne za sekunde. Za to služi elektromagnetni okidač u njemu, a koliko je brz određuje [karakteristika B ili C](/pojmovnik/karakteristika-osiguraca).
+
+## Šta ga izaziva
+
+- prignječen kabl — najčešće zavrtanj ili ekser kroz zid
+- voda koja je došla do spoja
+- popustila izolacija na starom kablu, obično posle dugog pregrevanja
+- pogrešno vezan uređaj ili zamenjene žice pri intervenciji
+- glodari — u podrumima i tavanima češće nego što se misli
+
+## Kako se prepoznaje
+
+Osigurač isključi **odmah**, ne posle minuta rada. Često se čuje pucanj i oseti miris. Ako se osigurač vrati a odmah opet iskoči sa svim isključenim iz utičnica, kvar je u samoj instalaciji.
+
+Tada se ne pokušava dalje. Traženje mesta kratkog spoja u zidu radi se merenjem i deljenjem kola na deonice — to je posao [dijagnostike](/usluge/dijagnostika-kvarova), a ne štemovanja naslepo.
+
+## Nije isto što i preopterećenje
+
+Kod preopterećenja je previše uređaja na jednom kolu — struja je veća od dozvoljene, ali reda veličine normalne. Osigurač isključi posle nekog vremena, termičkim delom.
+
+Kod kratkog spoja je struja višestruko veća i isključenje je trenutno. Ista sprava, dva različita mehanizma unutra.

@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     }),
+    ...sitemapForRoute("/pojmovnik", { changeFrequency: "monthly", priority: 0.7 }),
     ...sitemapForRoute("/alati", { changeFrequency: "monthly", priority: 0.5 }),
     ...sitemapForRoute("/privatnost", { changeFrequency: "yearly", priority: 0.1 }),
     ...sitemapForRoute("/uslovi", { changeFrequency: "yearly", priority: 0.1 }),
@@ -46,6 +47,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
+  const terms = getAllKeys("pojmovnik").flatMap((key) =>
+    sitemapForEntry("/pojmovnik/[slug]", getTranslations("pojmovnik", key), {
+      changeFrequency: "yearly",
+      priority: 0.6,
+    }),
+  );
+
   const posts = getAllKeys("blog").flatMap((key) => {
     const translations = getTranslations("blog", key);
     const dates = translations
@@ -59,5 +67,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  return [...staticRoutes, ...services, ...locations, ...posts];
+  return [...staticRoutes, ...services, ...locations, ...terms, ...posts];
 }

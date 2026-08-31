@@ -11,7 +11,8 @@
     "tools": "Alati",
     "pricing": "Cene",
     "contact": "Kontakt",
-    "areas": "Lokacije"
+    "areas": "Lokacije",
+    "glossary": "Pojmovnik"
   },
   "LocaleSwitcher": {
     "label": "Jezik",
@@ -469,7 +470,6 @@
     "kicker": "Blog",
     "title": "Stvari koje svako treba da zna o struji.",
     "lead": "Dijagnostika, sigurni DIY koraci i upozoravajući znaci koje viđamo svake nedelje. Pisano da se brzo pročita dok stojiš ispred table.",
-    "all": "Sve",
     "featured": "Izdvojeno",
     "minRead": "{minutes, plural, one {# minut} few {# minuta} other {# minuta}}",
     "readingTime": "{minutes, plural, one {# minut čitanja} few {# minuta čitanja} other {# minuta čitanja}}",
@@ -482,7 +482,8 @@
       "send": "Pošalji problem",
       "tags": "Tagovi"
     },
-    "readNext": "Pročitaj još"
+    "readNext": "Pročitaj još",
+    "toGlossary": "Pojmovnik"
   },
   "JsonLd": {
     "businessType": "Electrician"
@@ -511,6 +512,10 @@
     "Areas": {
       "title": "Električar po opštinama u Beogradu",
       "description": "Novi Beograd, Zemun, Voždovac, Vračar, Stari Grad — tipični kvarovi po tipu zgrade i vreme izlaska za svaku opštinu."
+    },
+    "Glossary": {
+      "title": "Pojmovnik — struja objašnjena ljudski",
+      "description": "Šta je FID sklopka, uzemljenje, kratak spoj, presek kabla. Kratki i jasni odgovori bez stručnog žargona."
     }
   },
   "Legal": {
@@ -581,5 +586,23 @@
   "Ally": {
     "themeToggle": "Promeni temu",
     "homeLink": "{name} — početna strana"
+  },
+  "Glossary": {
+    "kicker": "Pojmovnik",
+    "title": "Struja, objašnjena ljudski",
+    "lead": "Kratki odgovori na pitanja koja se stvarno postavljaju — šta je FID sklopka, šta znači presek kabla, zašto se osigurač bira po kablu a ne po uređaju. Svaki pojam vodi dalje.",
+    "groups": "Grupe pojmova",
+    "read": "Pročitaj"
+  },
+  "TermPage": {
+    "allTerms": "Ceo pojmovnik",
+    "seeAlso": "Vidi i",
+    "moreInGroup": "Još iz grupe: {group}",
+    "ctaTitle": "Sad znaš šta je. Treba ti neko da to i uradi?",
+    "ctaLead": "Pošalji slike ili pozovi — procenu daješ pre nego što iko izađe na teren.",
+    "ctaServices": "Sve usluge"
+  },
+  "Backlinks": {
+    "title": "Pominje se u"
   }
 }

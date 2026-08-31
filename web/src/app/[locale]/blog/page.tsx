@@ -4,6 +4,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
 import { getAllPosts, getCategories } from "@/lib/blog";
+import { getEntries } from "@/lib/mdx";
 import { alternatesForRoute } from "@/lib/seo";
 import { CoverArt } from "@/components/blog/cover-art";
 import { routing } from "@/i18n/routing";
@@ -34,6 +35,7 @@ export default async function BlogIndex({
   const t = await getTranslations("Blog");
   const posts = getAllPosts(locale);
   const categories = getCategories(locale);
+  const hasGlossary = getEntries("pojmovnik", locale).length > 0;
   const [feature, ...rest] = posts;
 
   return (
@@ -48,13 +50,25 @@ export default async function BlogIndex({
         <p className="mt-5 text-base text-ink-soft sm:text-lg">{t("lead")}</p>
       </header>
 
-      <div className="mt-10 flex flex-wrap gap-2">
-        <span className="rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold text-background">
-          {t("all")}
-        </span>
+      {/* Categories used to be inert <span>s. They now describe what is here and
+          hand the reader the glossary, which is the other half of the material. */}
+      <div className="mt-10 flex flex-wrap items-center gap-2">
         {categories.map((c) => (
-          <span key={c} className="rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold text-ink-soft">{c}</span>
+          <span
+            key={c}
+            className="rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold text-ink-soft"
+          >
+            {c}
+          </span>
         ))}
+        {hasGlossary && (
+          <Link
+            href="/pojmovnik"
+            className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold text-background"
+          >
+            {t("toGlossary")} <ArrowRight className="h-3 w-3" />
+          </Link>
+        )}
       </div>
 
       {feature && (

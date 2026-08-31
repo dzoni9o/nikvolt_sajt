@@ -46,6 +46,7 @@ export type NavItemId =
   | "services"
   | "emergency"
   | "blog"
+  | "glossary"
   | "tools"
   | "pricing"
   | "contact";
@@ -65,6 +66,7 @@ export const navigation: { id: NavItemId; href: NavHref }[] = [
   { id: "services", href: "/usluge" },
   { id: "emergency", href: { pathname: "/", hash: "emergency" } },
   { id: "blog", href: "/blog" },
+  { id: "glossary", href: "/pojmovnik" },
   { id: "tools", href: "/alati" },
   { id: "pricing", href: { pathname: "/", hash: "pricing" } },
   { id: "contact", href: { pathname: "/", hash: "contact" } },

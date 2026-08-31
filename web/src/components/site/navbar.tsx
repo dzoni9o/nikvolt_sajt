@@ -9,7 +9,7 @@ import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 import { LocaleSwitcher } from "./locale-switcher";
 import type { SlugMap } from "@/lib/mdx";
-import { navigation, site, assessHref } from "@/lib/site-config";
+import { site, assessHref, type NavItemId, type NavHref } from "@/lib/site-config";
 import { ContactLink } from "@/components/site/contact-link";
 import {
   Sheet,
@@ -21,7 +21,13 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 
-export function Navbar({ slugMap }: { slugMap: SlugMap }) {
+export function Navbar({
+  slugMap,
+  navItems,
+}: {
+  slugMap: SlugMap;
+  navItems: { id: NavItemId; href: NavHref }[];
+}) {
   const t = useTranslations("Nav");
   const tCta = useTranslations("Cta");
   const tBrand = useTranslations("Brand");
@@ -47,7 +53,7 @@ export function Navbar({ slugMap }: { slugMap: SlugMap }) {
         <div className="flex items-center gap-8">
           <Logo size={26} />
           <nav className="hidden lg:flex items-center gap-1">
-            {navigation.map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.id}
                 href={item.href}
@@ -100,7 +106,7 @@ export function Navbar({ slugMap }: { slugMap: SlugMap }) {
                 </SheetTitle>
               </SheetHeader>
               <nav className="mt-6 flex flex-col gap-1">
-                {navigation.map((item) => (
+                {navItems.map((item) => (
                   <SheetClose
                     key={item.id}
                     render={

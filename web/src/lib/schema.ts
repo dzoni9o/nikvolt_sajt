@@ -189,3 +189,29 @@ export function graph(nodes: (Json | null | undefined)[]): string {
     "@graph": nodes.filter(Boolean),
   });
 }
+
+/**
+ * A glossary entry. DefinedTerm is what tells Google this page answers "what is
+ * X" outright, which is also the shape assistants quote from.
+ */
+export function definedTerm(opts: {
+  locale: string;
+  name: string;
+  description: string;
+  href: SeoHref;
+}): Json {
+  const url = urlFor(opts.href, opts.locale);
+  return {
+    "@type": "DefinedTerm",
+    "@id": `${url}#term`,
+    name: opts.name,
+    description: opts.description,
+    url,
+    inDefinedTermSet: {
+      "@type": "DefinedTermSet",
+      "@id": `${site.url}/#pojmovnik`,
+      name: "nik volt — pojmovnik",
+      url: urlFor("/pojmovnik", opts.locale),
+    },
+  };
+}

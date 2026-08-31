@@ -2,7 +2,8 @@ import { Link } from "@/i18n/navigation";
 import { Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Logo } from "./logo";
-import { site, navigation } from "@/lib/site-config";
+import { site } from "@/lib/site-config";
+import { navigationFor } from "@/lib/navigation";
 import { ContactLink } from "@/components/site/contact-link";
 import { getEntries } from "@/lib/mdx";
 
@@ -33,13 +34,15 @@ export async function Footer() {
 
   // The footer is the main crawl path to the service and location pages: it is
   // on every page, so one hop from anywhere reaches all of them.
+  const navItems = navigationFor(locale);
   const services = getEntries("usluge", locale);
+  const terms = getEntries("pojmovnik", locale).slice(0, 8);
   const areas = getEntries("lokacije", locale);
 
   return (
     <footer className="mt-24 border-t border-border bg-paper">
       <div className="container-page py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6">
           <div className="space-y-4">
             <Logo size={28} />
             <p className="max-w-xs text-sm text-ink-soft">{t("tagline")}</p>
@@ -56,7 +59,7 @@ export async function Footer() {
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{t("siteHeading")}</h3>
             <ul className="mt-4 space-y-2 text-sm">
-              {navigation.map((item) => (
+              {navItems.map((item) => (
                 <li key={item.id}>
                   <Link href={item.href} className="text-foreground/90 hover:text-foreground">
                     {tNav(item.id)}
@@ -84,6 +87,24 @@ export async function Footer() {
               ))}
             </ul>
           </div>
+
+          {terms.length > 0 && (
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{tNav("glossary")}</h3>
+              <ul className="mt-4 space-y-2 text-sm">
+                {terms.map((x) => (
+                  <li key={x.slug}>
+                    <Link
+                      href={{ pathname: "/pojmovnik/[slug]", params: { slug: x.slug } }}
+                      className="text-foreground/90 hover:text-foreground"
+                    >
+                      {x.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{tNav("areas")}</h3>

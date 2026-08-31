@@ -26,6 +26,7 @@ export type ContactSource =
   | "service-page"
   | "location-page"
   | "blog-sidebar"
+  | "glossary"
   | "assessment-form"
   | "not-found";
 

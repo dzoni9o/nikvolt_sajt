@@ -40,6 +40,20 @@ export const pathnames = {
     en: "/electrician/[slug]",
     ru: "/elektrik/[slug]",
   },
+
+  // Glossary. Serbian-only content for now — the routes exist in every locale
+  // so the pathname types stay uniform, but the pages only render where entries
+  // exist, so /en/glossary is a 404 rather than an empty shell.
+  "/pojmovnik": {
+    sr: "/pojmovnik",
+    en: "/glossary",
+    ru: "/slovar",
+  },
+  "/pojmovnik/[slug]": {
+    sr: "/pojmovnik/[slug]",
+    en: "/glossary/[slug]",
+    ru: "/slovar/[slug]",
+  },
   "/privatnost": {
     sr: "/privatnost",
     en: "/privacy",

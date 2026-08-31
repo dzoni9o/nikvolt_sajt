@@ -1,0 +1,42 @@
+---
+title: "Struja curenja"
+description: "Zašto svaki uređaj malo propušta, koliko je to normalno i kada zbir tih curenja obori FID sklopku."
+slug: "struja-curenja"
+key: "struja-curenja"
+h1: "Šta je struja curenja?"
+shortAnswer: "Sitna količina struje koja iz instalacije odlazi u zemlju umesto da se vrati kroz nulu — svaki uređaj je malo pravi, a zbir može da obori FID."
+group: "Zaštita"
+seeAlso: ["fid-sklopka", "uzemljenje", "kratak-spoj"]
+---
+
+Naziva se i odvodna struja. Zvuči kao kvar, a najvećim delom nije.
+
+## Zašto postoji i kad je normalna
+
+Skoro svaki savremeni uređaj ima na ulazu filter protiv smetnji — mali kondenzatori između faze i uzemljenja. Njihov posao je da propuste smetnje u zemlju umesto u mrežu.
+
+Nusprodukt je da kroz njih stalno curi malo struje. To je po projektu, ne po kvaru.
+
+Koliko:
+
+- ruter, punjač, TV — reda desetina miliampera
+- veš mašina, sudo mašina — do 1 mA po uređaju
+- LED drajveri i invertorske klime — često najviše od svih
+
+## Kad postane problem
+
+[FID sklopka](/pojmovnik/fid-sklopka) isključuje na 30 mA. Ona ne zna da razlikuje curenje kroz filter od curenja kroz čoveka — vidi samo razliku.
+
+Zato se zbir svih normalnih curenja u stanu sabira. Kad priđe pragu, dovoljan je jedan uređaj više i sklopka pada, iako ništa nije neispravno. To se prepoznaje po tome što FID iskače naizgled nasumično, češće uveče kad je više stvari uključeno.
+
+Rešenje nije „jača" sklopka nego **razdvajanje instalacije na više FID-ova**, tako da svaki pokriva manji deo i manji zbir. To se radi u okviru [prerade elektro table](/usluge/elektro-table).
+
+## Kad jeste kvar
+
+Curenje postane kvar kad ne dolazi iz filtera nego iz popuštene izolacije:
+
+- grejač bojlera koji je upio vlagu — curi tek kad se zagreje
+- vlažna spoljna instalacija — curi posle kiše
+- nagorela izolacija u zidu — curi sve više kroz mesece
+
+Razlika između normalnog zbira i stvarnog kvara ne vidi se golim okom. Meri se, po kolima, i to je pola posla [dijagnostike](/usluge/dijagnostika-kvarova). Kako sam da suziš izbor pre nego što pozoveš, opisano je u tekstu [zašto FID stalno iskače](/blog/zasto-fid-iskace).
