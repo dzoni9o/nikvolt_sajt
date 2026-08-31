@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { mdxComponents } from "@/components/mdx-components";
+import { MdxBody } from "@/components/mdx-body";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft, ArrowRight, Phone } from "lucide-react";
@@ -107,7 +106,7 @@ export default async function TermPage({ params }: Props) {
       </header>
 
       <div className="container-page prose-electric mt-10 max-w-3xl">
-        <MDXRemote source={entry.content} components={mdxComponents} />
+        <MdxBody source={entry.content} />
       </div>
 
       {seeAlso.length > 0 && (

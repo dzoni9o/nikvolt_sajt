@@ -1,8 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { mdxComponents } from "@/components/mdx-components";
+import { MdxBody } from "@/components/mdx-body";
 import { ArrowLeft, ArrowRight, Phone, Send } from "lucide-react";
 import { hasLocale } from "next-intl";
 import {
@@ -116,7 +115,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       <div className="container-page mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px]">
         <div className="prose-electric max-w-none">
-          <MDXRemote source={post.content} components={mdxComponents} />
+          <MdxBody source={post.content} />
         </div>
 
         <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">

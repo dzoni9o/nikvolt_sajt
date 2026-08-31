@@ -1,4 +1,4 @@
-import { getEntries } from "@/lib/mdx";
+import { localesWith } from "@/lib/mdx";
 import { navigation } from "@/lib/site-config";
 
 /**
@@ -9,6 +9,6 @@ import { navigation } from "@/lib/site-config";
  * a 404 are worse than a shorter menu.
  */
 export function navigationFor(locale: string) {
-  const hasGlossary = getEntries("pojmovnik", locale).length > 0;
+  const hasGlossary = localesWith("pojmovnik").includes(locale);
   return navigation.filter((item) => item.id !== "glossary" || hasGlossary);
 }

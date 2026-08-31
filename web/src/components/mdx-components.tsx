@@ -21,6 +21,7 @@ const DYNAMIC_SEGMENTS: Record<string, AppPathname> = {
   usluge: "/usluge/[slug]",
   lokacije: "/lokacije/[slug]",
   blog: "/blog/[slug]",
+  pojmovnik: "/pojmovnik/[slug]",
 };
 
 const STATIC_ROUTES = new Set<string>([
@@ -28,6 +29,7 @@ const STATIC_ROUTES = new Set<string>([
   "/usluge",
   "/lokacije",
   "/blog",
+  "/pojmovnik",
   "/alati",
   "/privatnost",
   "/uslovi",
@@ -68,4 +70,13 @@ function MdxLink({ href = "", ...props }: ComponentPropsWithoutRef<"a">) {
   return <a href={href} {...props} />;
 }
 
-export const mdxComponents = { a: MdxLink };
+/** A price table must scroll inside itself on a phone, not scroll the page. */
+function MdxTable(props: ComponentPropsWithoutRef<"table">) {
+  return (
+    <div className="-mx-1 overflow-x-auto px-1">
+      <table {...props} />
+    </div>
+  );
+}
+
+export const mdxComponents = { a: MdxLink, table: MdxTable };

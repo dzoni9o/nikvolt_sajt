@@ -55,12 +55,19 @@ function build(
   };
 }
 
-/** Canonical + hreflang for a static route that exists in every locale. */
+/**
+ * Canonical + hreflang for a static route.
+ *
+ * `locales` narrows the declaration for a route that does not render
+ * everywhere — the glossary is Serbian-only, and claiming an /en/glossary that
+ * answers 404 is worse than declaring no alternate at all.
+ */
 export function alternatesForRoute(
   href: StaticAppPathname,
   locale: string,
+  locales: readonly string[] = routing.locales,
 ): Metadata["alternates"] {
-  return build(locale, new Map(routing.locales.map((l) => [l, href])));
+  return build(locale, new Map(locales.map((l) => [l, href])));
 }
 
 /**
@@ -112,12 +119,16 @@ function sitemapRows(
   }));
 }
 
-/** One sitemap row per locale for a static route. */
+/**
+ * One sitemap row per locale for a static route. `locales` narrows it to the
+ * locales where the route actually renders — see alternatesForRoute.
+ */
 export function sitemapForRoute(
   href: StaticAppPathname,
   options: Parameters<typeof sitemapRows>[1] = {},
+  locales: readonly string[] = routing.locales,
 ): MetadataRoute.Sitemap {
-  return sitemapRows(new Map(routing.locales.map((l) => [l, href])), options);
+  return sitemapRows(new Map(locales.map((l) => [l, href])), options);
 }
 
 /** One sitemap row per locale that actually has this entry. */

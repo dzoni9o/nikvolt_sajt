@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllKeys, getEntries, getTranslations } from "@/lib/mdx";
+import { getAllKeys, getEntries, getTranslations, localesWith } from "@/lib/mdx";
 import { routing } from "@/i18n/routing";
 import { sitemapForEntry, sitemapForRoute } from "@/lib/seo";
 
@@ -27,7 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     }),
-    ...sitemapForRoute("/pojmovnik", { changeFrequency: "monthly", priority: 0.7 }),
+    // The glossary index renders only where terms exist, so /en/glossary and
+    // /ru/slovar answer 404. Listing them would submit dead URLs to Google.
+    // Same condition as navigationFor() in src/lib/navigation.ts.
+    ...sitemapForRoute(
+      "/pojmovnik",
+      { changeFrequency: "monthly", priority: 0.7 },
+      localesWith("pojmovnik"),
+    ),
     ...sitemapForRoute("/alati", { changeFrequency: "monthly", priority: 0.5 }),
     ...sitemapForRoute("/privatnost", { changeFrequency: "yearly", priority: 0.1 }),
     ...sitemapForRoute("/uslovi", { changeFrequency: "yearly", priority: 0.1 }),

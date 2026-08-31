@@ -219,6 +219,19 @@ export function getAllKeys(collection: Collection): string[] {
   return [...keys].sort();
 }
 
+/**
+ * Locales that actually have content in a collection.
+ *
+ * A collection need not be translated everywhere — the glossary is Serbian
+ * only. Navigation, hreflang and the sitemap all have to agree on where a
+ * section index exists, or the site advertises URLs that answer 404.
+ */
+export function localesWith(collection: Collection): string[] {
+  return routing.locales.filter(
+    (locale) => readCollection(collection, locale).length > 0,
+  );
+}
+
 /** { locale, slug } pairs for generateStaticParams — only real files. */
 export function staticParamsFor(collection: Collection): {
   locale: string;

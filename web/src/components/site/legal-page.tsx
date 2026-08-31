@@ -1,5 +1,4 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { mdxComponents } from "@/components/mdx-components";
+import { MdxBody } from "@/components/mdx-body";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { getEntryByKey } from "@/lib/mdx";
@@ -40,7 +39,7 @@ export async function LegalPage({
       </header>
 
       <div className="prose-electric mt-12 max-w-3xl">
-        <MDXRemote source={doc.content} components={mdxComponents} />
+        <MdxBody source={doc.content} />
       </div>
     </article>
   );

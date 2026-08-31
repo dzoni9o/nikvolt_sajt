@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { JsonLd } from "@/components/site/json-ld";
-import { getEntries } from "@/lib/mdx";
+import { getEntries, localesWith } from "@/lib/mdx";
 import { breadcrumbs, graph } from "@/lib/schema";
 import { alternatesForRoute } from "@/lib/seo";
 import { site } from "@/lib/site-config";
@@ -18,9 +18,7 @@ type Props = { params: Promise<{ locale: string }> };
  * and an empty index at /en/glossary would be a thin page advertising nothing.
  */
 export function generateStaticParams() {
-  return routing.locales
-    .filter((locale) => getEntries("pojmovnik", locale).length > 0)
-    .map((locale) => ({ locale }));
+  return localesWith("pojmovnik").map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -30,7 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("title"),
     description: t("description"),
-    alternates: alternatesForRoute("/pojmovnik", locale),
+    // Narrowed the same way as the sitemap: no hreflang pointing at a 404.
+    alternates: alternatesForRoute("/pojmovnik", locale, localesWith("pojmovnik")),
   };
 }
 
