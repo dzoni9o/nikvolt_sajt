@@ -1,0 +1,40 @@
+---
+title: "Short circuit"
+description: "What happens during a short circuit, why the current reaches hundreds of amps, and why protection has to act in milliseconds."
+slug: "short-circuit"
+key: "kratak-spoj"
+h1: "What is a short circuit?"
+shortAnswer: "Live and neutral touching directly, with no appliance between them. Current jumps to hundreds of amps and the cable overheats instantly, so protection must disconnect at once."
+group: "Protection"
+seeAlso: ["automatski-osiguraci", "presek-kabla", "elektro-tabla"]
+---
+
+## What happens
+
+The current in a circuit is limited by whatever is using it. A lamp, a machine, a charger: each has resistance, and that resistance sets how much flows.
+
+When live and neutral meet directly, that resistance is gone. What remains is the resistance of the cable itself, which is very small.
+
+By Ohm's law that means an enormous current: hundreds of amps instead of a few. A cable designed for 16 A suddenly carries 300 A.
+
+## Why it is dangerous
+
+The cable does not warm up gradually, it heats instantly. Insulation melts in a fraction of a second, and at the point of contact an arc forms at several thousand degrees.
+
+That is why a [breaker](/pojmovnik/circuit-breaker) has to disconnect **in milliseconds** rather than seconds. The magnetic trip inside it does that job.
+
+## What causes it
+
+A cable crushed by a screw or a nail driven into a wall. Water reaching a joint. Insulation that has given way on old cable, usually after long overheating. A device wired incorrectly, or conductors swapped during a repair. Rodents, in cellars and lofts, more often than people expect.
+
+## How to recognise it
+
+The breaker trips **immediately**, not after minutes of running. There is often a bang and a smell. If you reset it and it trips again at once with everything unplugged, the fault is in the fixed wiring.
+
+At that point you stop. Locating a short inside a wall is done by measurement, splitting the circuit into sections until the fault is narrowed to a few metres. That is [fault diagnostics](/usluge/fault-diagnostics), not chasing it with a chisel.
+
+## Not the same as overload
+
+Overload means too many appliances on one circuit. The current is above what is allowed but still of a normal order, and the breaker disconnects after some time, through its thermal part.
+
+In a short circuit the current is many times greater and the disconnection is instant. Same device, two different mechanisms inside it.

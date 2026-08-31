@@ -1,0 +1,36 @@
+---
+title: "Circuit breaker"
+description: "What a breaker actually protects, why fitting a larger one makes things worse, and the two mechanisms inside it."
+slug: "circuit-breaker"
+key: "automatski-osiguraci"
+h1: "What does a circuit breaker protect?"
+shortAnswer: "The cable in the wall, not the appliance. It cuts the circuit when more current flows through it than the cable can carry without overheating."
+group: "Protection"
+seeAlso: ["presek-kabla", "fid-sklopka", "kratak-spoj"]
+---
+
+This is the row of small switches in the consumer unit, one per circuit, each marked with a number and a letter such as B16.
+
+## What it is actually protecting
+
+Not your television and not your washing machine. The breaker exists to protect the cable buried in the wall.
+
+Every cable has a current it can carry indefinitely without its insulation cooking. The breaker is chosen to match that figure, which is why the number on it follows the [cable cross-section](/pojmovnik/cable-size) and not the appliance plugged in at the far end.
+
+## Why a bigger one makes things worse
+
+When a breaker keeps tripping, the common instinct is to fit a larger one. It works, in the sense that the tripping stops.
+
+What has actually happened is that the cable is now unprotected. It carries more current than it was sized for, warms up along its whole length, and the insulation ages faster than anyone can see. The tripping was the symptom; removing the symptom left the cause running.
+
+A breaker that trips is information. The fix is finding the reason, which normally means [fault diagnostics](/usluge/fault-diagnostics) or adding a circuit.
+
+## Two mechanisms inside
+
+The **thermal** part is a bimetallic strip that bends when too much current flows through it for too long. It is slow, and it answers sustained overload.
+
+The **magnetic** part is a coil that trips instantly on a [short circuit](/pojmovnik/short-circuit), within milliseconds. Which of the two acts, and how fast, is set by the letter on the breaker.
+
+## What it does not do
+
+A breaker does **not** react when a person touches a live conductor. The current through a body is too small to trigger it and entirely enough to kill. That is what the [RCD](/pojmovnik/rcd) is for, and it is why a consumer unit needs both.

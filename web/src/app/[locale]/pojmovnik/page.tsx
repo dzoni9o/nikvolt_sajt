@@ -4,7 +4,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
+import { htmlLangFor, routing } from "@/i18n/routing";
 import { JsonLd } from "@/components/site/json-ld";
 import { getEntries, localesWith } from "@/lib/mdx";
 import { breadcrumbs, graph } from "@/lib/schema";
@@ -14,8 +14,9 @@ import { site } from "@/lib/site-config";
 type Props = { params: Promise<{ locale: string }> };
 
 /**
- * Only locales that actually have terms. The glossary is Serbian-only for now,
- * and an empty index at /en/glossary would be a thin page advertising nothing.
+ * Only locales that actually have terms. Serbian carries the full set; en and
+ * ru have the terms a foreign resident actually searches for. A locale with no
+ * terms gets no index at all, since an empty one would advertise nothing.
  */
 export function generateStaticParams() {
   return localesWith("pojmovnik").map((locale) => ({ locale }));
@@ -44,8 +45,10 @@ export default async function GlossaryIndex({ params }: Props) {
   const tNav = await getTranslations("Nav");
 
   // Grouped so the index reads like a table of contents rather than a wall.
+  // Collated in the reader's own language: the groups are written in it, and
+  // Cyrillic sorted by Serbian-Latin rules comes out in the wrong order.
   const groups = [...new Set(terms.map((x) => x.group))].sort((a, b) =>
-    a.localeCompare(b, "sr-Latn"),
+    a.localeCompare(b, htmlLangFor(locale)),
   );
 
   const data = graph([

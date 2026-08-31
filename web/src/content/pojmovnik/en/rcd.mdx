@@ -1,0 +1,40 @@
+---
+title: "RCD (residual current device)"
+description: "What an RCD does, how it differs from a breaker, and why it is the only protection that reacts to current passing through a person."
+slug: "rcd"
+key: "fid-sklopka"
+h1: "What is an RCD?"
+shortAnswer: "A device in the consumer unit that cuts the supply when it detects current leaking to earth. It is the only protection that reacts when current passes through a person."
+group: "Protection"
+seeAlso: ["automatski-osiguraci", "uzemljenje-pojam", "elektro-tabla"]
+---
+
+Locally it is called a FID sklopka. Catalogues also call it an RCD or a residual current circuit breaker. All three mean the same device.
+
+## How it works
+
+The RCD measures how much current goes out into the circuit and how much comes back. In a healthy circuit those two numbers match, down to the last milliamp.
+
+When some of it leaves by another route, a difference appears. If that difference passes 30 mA, the device disconnects in under 30 milliseconds.
+
+Those numbers are not arbitrary. They sit below the threshold at which current through the chest causes the heart to stop. An RCD is not built to protect the appliance; it is built to protect the person.
+
+## Why it does not replace a breaker
+
+A [circuit breaker](/pojmovnik/circuit-breaker) watches current flowing through the circuit and cuts it when there is too much, which protects the cable in the wall from overheating.
+
+When somebody touches a live conductor, the current through them is far too small for a breaker to notice and quite large enough to kill. The breaker does nothing at all in that case.
+
+The RCD watches current that leaves the circuit. It does not care about total load; it only cares whether everything that went out came back. Neither device replaces the other, and a consumer unit needs both.
+
+## The test button
+
+Every RCD has a button marked **T**, and its only purpose is testing. Press it once a month and the device must trip.
+
+If it does not, it is faulty. What then sits in the board looks like protection while protecting nobody, which is worse than knowing you have none.
+
+## If it keeps tripping
+
+It usually is not tripping without reason. Something really is leaking, most often a water heater element, a washing machine, or damp in outdoor wiring. That is worked through step by step in [why your RCD keeps tripping](/blog/why-rcd-trips).
+
+What is never done is bridging it out or fitting a less sensitive one. In flats built before the eighties there is often no RCD at all, and adding one is the single most worthwhile change to make, usually as part of a [consumer unit upgrade](/usluge/consumer-units).
