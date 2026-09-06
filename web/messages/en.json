@@ -612,7 +612,6 @@
     "brand": "Trading name",
     "reg": "Company registration number",
     "tax": "Tax ID (PIB)",
-    "seat": "Registered office",
     "contact": "Contact",
     "noVat": "Not registered for VAT. Prices on this site are final; no further tax is added."
   }

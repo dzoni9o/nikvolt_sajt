@@ -35,11 +35,11 @@ export const site = {
    * Pun registrovani naziv. Kod preduzetnika sadrži lično ime, pa stoji samo
    * na pravnim stranicama, ne i u futeru.
    */
-  legalName: "",
+  legalName: "NIKOLA MILANOVIĆ PR POSTAVLJANJE ELEKTRIČNIH INSTALACIJA NIKVOLT DONJI VRATARI",
   /** Matični broj, osam cifara. */
-  registrationNumber: "",
+  registrationNumber: "68708940",
   /** PIB, devet cifara. */
-  taxNumber: "",
+  taxNumber: "115873702",
   /**
    * Nije u sistemu PDV-a, pa su cene na sajtu konačne. Odatle i izostanak
    * vatID u JSON-LD-u: PIB je poreski broj, ali nije PDV broj dok subjekt

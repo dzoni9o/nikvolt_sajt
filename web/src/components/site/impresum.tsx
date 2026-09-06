@@ -23,15 +23,16 @@ import { site } from "@/lib/site-config";
 async function Rows() {
   const t = await getTranslations("Impresum");
 
+  // No address row on purpose. This is a service-area business, the registered
+  // seat is a private residence, and the registered name already carries the
+  // place. An address here would either be untrue (the Belgrade one, which is
+  // where the work happens rather than where the business is registered) or
+  // private. Don't add one back without asking Nikola.
   const rows: { label: string; value: string }[] = [
     ...(site.legalName ? [{ label: t("legalName"), value: site.legalName }] : []),
     { label: t("brand"), value: site.name },
     { label: t("reg"), value: site.registrationNumber },
     { label: t("tax"), value: site.taxNumber },
-    {
-      label: t("seat"),
-      value: [site.postalCode, site.city, site.country].filter(Boolean).join(", "),
-    },
     { label: t("contact"), value: `${site.phoneDisplay} · ${site.email}` },
   ];
 
