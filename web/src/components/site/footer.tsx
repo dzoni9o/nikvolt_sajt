@@ -143,13 +143,26 @@ export async function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-ink-soft md:flex-row md:items-center">
-          <p>
-            {t("copyright", {
-              year: new Date().getFullYear(),
-              name: site.name,
-              city: site.city,
-            })}
-          </p>
+          <div className="space-y-1">
+            <p>
+              {t("copyright", {
+                year: new Date().getFullYear(),
+                name: site.name,
+                city: site.city,
+              })}
+            </p>
+            {/* Identifikacija privrednog subjekta. Registrovani naziv namerno
+                nije ovde: kod preduzetnika sadrži lično ime, pa stoji na
+                pravnim stranicama. Bez oba broja se red ne renderuje. */}
+            {site.registrationNumber && site.taxNumber ? (
+              <p>
+                {t("legal", {
+                  reg: site.registrationNumber,
+                  tax: site.taxNumber,
+                })}
+              </p>
+            ) : null}
+          </div>
           <div className="flex gap-5">
             <Link href="/privatnost" className="hover:text-foreground">{t("privacy")}</Link>
             <Link href="/uslovi" className="hover:text-foreground">{t("terms")}</Link>

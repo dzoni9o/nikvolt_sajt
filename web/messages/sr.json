@@ -256,6 +256,7 @@
     "hoursHeading": "Radno vreme",
     "blog": "Blog",
     "copyright": "© {year} {name}. Licencirani električar — {city}.",
+    "legal": "Matični broj {reg} · PIB {tax}",
     "privacy": "Politika privatnosti",
     "terms": "Uslovi korišćenja"
   },
@@ -604,5 +605,15 @@
   },
   "Backlinks": {
     "title": "Pominje se u"
+  },
+  "Impresum": {
+    "title": "Podaci o pružaocu usluge",
+    "legalName": "Registrovani naziv",
+    "brand": "Poslovno ime",
+    "reg": "Matični broj",
+    "tax": "PIB",
+    "seat": "Sedište",
+    "contact": "Kontakt",
+    "noVat": "Nije u sistemu PDV-a. Cene na sajtu su konačne i na njih se ne obračunava dodatni porez."
   }
 }

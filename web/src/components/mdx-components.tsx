@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { Link } from "@/i18n/navigation";
 import type { AppPathname } from "@/i18n/routing";
+import { Impresum, ImpresumPodaci } from "@/components/site/impresum";
 
 /**
  * Components handed to MDXRemote.
@@ -79,4 +80,16 @@ function MdxTable(props: ComponentPropsWithoutRef<"table">) {
   );
 }
 
-export const mdxComponents = { a: MdxLink, table: MdxTable };
+/**
+ * Authors write <Impresum /> or <ImpresumPodaci /> in the legal pages, which
+ * keeps the business identifiers in site-config instead of copied into six
+ * translated files. Two names rather than one component with a prop: MDX here
+ * does not forward attribute expressions, so a `heading={false}` was silently
+ * ignored.
+ */
+export const mdxComponents = {
+  a: MdxLink,
+  table: MdxTable,
+  Impresum,
+  ImpresumPodaci,
+};

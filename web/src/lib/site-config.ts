@@ -26,6 +26,26 @@ export const site = {
   // TODO(nikola): nalepi ovde link profila (Google Maps → Share → Copy link).
   // Dok je prazan, ne emituje se ni u sameAs ni u hasMap.
   googleBusinessProfile: "",
+
+  // --- Identifikacija privrednog subjekta ---
+  // Isto pravilo kao gore: prazno polje se ne renderuje nigde, ni u futeru, ni
+  // na pravnim stranicama, ni u JSON-LD-u. Bolje ništa nego pogrešan broj.
+  // TODO(nikola): unesi iz rešenja APR-a.
+  /**
+   * Pun registrovani naziv. Kod preduzetnika sadrži lično ime, pa stoji samo
+   * na pravnim stranicama, ne i u futeru.
+   */
+  legalName: "",
+  /** Matični broj, osam cifara. */
+  registrationNumber: "",
+  /** PIB, devet cifara. */
+  taxNumber: "",
+  /**
+   * Nije u sistemu PDV-a, pa su cene na sajtu konačne. Odatle i izostanak
+   * vatID u JSON-LD-u: PIB je poreski broj, ali nije PDV broj dok subjekt
+   * nije u sistemu.
+   */
+  vatRegistered: false,
   /** schema.org priceRange. "$$" reads as mid-market, matching the price table. */
   priceRange: "$$",
   phone: "+381603539985",

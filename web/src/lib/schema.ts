@@ -33,6 +33,21 @@ export function localBusiness(opts: {
     "@type": "Electrician",
     "@id": BUSINESS_ID,
     name: site.name,
+    // schema.org razlikuje poslovno ime od registrovanog. Brend je "nik volt";
+    // legalName je ono što stoji u APR-u, i emituje se samo ako je unet.
+    ...(site.legalName ? { legalName: site.legalName } : {}),
+    // PIB kao taxID. vatID se namerno ne emituje: subjekt nije u sistemu PDV-a,
+    // pa PIB ovde nije PDV broj i tvrdnja bi bila netačna.
+    ...(site.taxNumber ? { taxID: site.taxNumber } : {}),
+    ...(site.registrationNumber
+      ? {
+          identifier: {
+            "@type": "PropertyValue",
+            name: "Matični broj",
+            value: site.registrationNumber,
+          },
+        }
+      : {}),
     description: opts.description,
     url: urlFor("/", opts.locale),
     telephone: site.phoneTel,
