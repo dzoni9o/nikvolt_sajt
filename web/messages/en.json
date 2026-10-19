@@ -87,7 +87,8 @@
         "title": "Electric shock",
         "description": "You felt a shock from a device, switch, or light fitting."
       }
-    }
+    },
+    "more": "What counts as urgent and what waits"
   },
   "HowItWorks": {
     "kicker": "How it works",

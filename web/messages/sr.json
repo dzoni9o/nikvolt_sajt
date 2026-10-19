@@ -87,7 +87,8 @@
         "title": "Udar struje",
         "description": "Osetio si strujni udar sa uređaja, prekidača ili sijalice."
       }
-    }
+    },
+    "more": "Šta jeste hitno a šta čeka jutro"
   },
   "HowItWorks": {
     "kicker": "Kako funkcioniše",

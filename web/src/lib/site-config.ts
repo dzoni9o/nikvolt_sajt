@@ -86,13 +86,25 @@ export type NavItemId =
  */
 export type NavHref =
   | StaticAppPathname
-  | { pathname: StaticAppPathname; hash: string };
+  | { pathname: StaticAppPathname; hash: string }
+  | { pathname: "/usluge/[slug]"; params: { slug: string } };
 
-export const navigation: { id: NavItemId; href: NavHref }[] = [
+/**
+ * A nav entry is either a fixed href, or a service named by its translation
+ * key. The second form exists because service slugs are localized: only
+ * navigationFor() knows the locale, so only it can turn the key into a URL.
+ */
+export type NavItem =
+  | { id: NavItemId; href: NavHref }
+  | { id: NavItemId; serviceKey: string };
+
+export const navigation: NavItem[] = [
   // Services now have real indexable pages, so the nav points at those rather
   // than at the homepage anchor.
   { id: "services", href: "/usluge" },
-  { id: "emergency", href: { pathname: "/", hash: "emergency" } },
+  // Emergencies are the highest-intent thing this business sells, so the nav
+  // leads to the page that can rank for it rather than to a homepage section.
+  { id: "emergency", serviceKey: "emergency-callout" },
   { id: "blog", href: "/blog" },
   { id: "glossary", href: "/pojmovnik" },
   { id: "tools", href: "/alati" },

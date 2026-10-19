@@ -1,11 +1,14 @@
 import { Phone, AlertTriangle, ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { emergencyCardsConfig } from "@/lib/content";
+import { Link } from "@/i18n/navigation";
+import { getEntryByKey } from "@/lib/mdx";
 import { site } from "@/lib/site-config";
 import { ContactLink } from "@/components/site/contact-link";
 
-export async function Emergency() {
+export async function Emergency({ locale }: { locale: string }) {
   const t = await getTranslations("Emergency");
+  const emergencyPage = getEntryByKey("usluge", locale, "emergency-callout");
   const tCta = await getTranslations("Cta");
   return (
     <section id="emergency" className="relative isolate">
@@ -25,6 +28,20 @@ export async function Emergency() {
             <p className="mt-3 max-w-lg text-base text-ink-soft">
               {t("lead", { city: site.city })}
             </p>
+            {/* For the reader who is not in a hurry: the full page explains
+                what counts as urgent and what safely waits for morning. */}
+            {emergencyPage ? (
+              <Link
+                href={{
+                  pathname: "/usluge/[slug]",
+                  params: { slug: emergencyPage.slug },
+                }}
+                className="group mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground underline-offset-4 hover:underline"
+              >
+                {t("more")}
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            ) : null}
           </div>
           <ContactLink
             channel="phone"

@@ -36,7 +36,7 @@ export default async function Home({
     <>
       <JsonLd data={data} />
       <Hero />
-      <Emergency />
+      <Emergency locale={locale} />
       <HowItWorks />
       <FaultAssessmentForm />
       <Services />
