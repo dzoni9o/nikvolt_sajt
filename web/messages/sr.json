@@ -574,7 +574,7 @@
     "allAreas": "Sve lokacije",
     "sendProblem": "Pošalji slike problema",
     "responseTime": "Vreme izlaska: {time}",
-    "servicesTitle": "Najtraženije na {area}",
+    "servicesTitle": "Najtraženije u opštini {area}",
     "otherAreasTitle": "Ostale lokacije",
     "areasTitle": "Gde radimo",
     "faqTitle": "Česta pitanja"
