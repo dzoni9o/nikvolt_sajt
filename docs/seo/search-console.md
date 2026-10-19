@@ -1,6 +1,6 @@
 # Google Search Console — kako uvesti sajt u indeks
 
-Sajt ima 169 URL-ova, sitemap, canonical i hreflang na svakoj stranici. Ništa
+Sajt ima 172 URL-a, sitemap, canonical i hreflang na svakoj stranici. Ništa
 od toga Google ne vidi dok se ne otvori nalog i ne preda sitemap.
 
 Ovo nije kod. Sve se radi na [search.google.com/search-console](https://search.google.com/search-console),
@@ -148,12 +148,15 @@ Za lokalnog majstora, Google Business Profile donosi više poziva nego organski
 rezultati. Sajt i profil rade zajedno: profil daje lokalni paket, sajt daje
 dubinu i potvrdu. Redosled je u [`gbp-checklist.md`](./gbp-checklist.md).
 
-Uz to, u `web/src/lib/site-config.ts` i dalje stoje prazna polja
-`streetAddress`, `postalCode`, `geo` i `googleBusinessProfile`. Dok su prazna,
-namerno se ne emituju u JSON-LD, jer je bolje ništa nego podatak koji se ne
-poklapa sa profilom. Kad se popune tačno onako kako stoje na profilu, sajt
-počne da šalje Googlu istu adresu sa dva mesta, a to je signal koji lokalni
-paket stvarno koristi.
+Uz to, u `web/src/lib/site-config.ts` stoje prazna polja `geo` i
+`googleBusinessProfile`. Dok su prazna, namerno se ne emituju u JSON-LD, jer je
+bolje ništa nego podatak koji se ne poklapa sa profilom. Kad se popune tačno
+onako kako stoje na profilu, sajt počne da šalje Googlu isti podatak sa dva
+mesta, a to je signal koji lokalni paket stvarno koristi.
+
+`streetAddress` ostaje prazan i to nije nedovršeno. Nikvolt je terenska
+delatnost bez pulta na koji mušterija dolazi, a upisano sedište je privatan
+stan. U JSON-LD stoji samo grad i poštanski broj, uz `areaServed` po opštinama.
 
 ## 7. Čega se kloniti
 
@@ -169,3 +172,56 @@ gubitak istorije. Ako mora, radi se sa 301 redirekcijom i to je kod, ne konzola.
 
 **Ne paničiti prvih mesec dana.** Prazna konzola u prvoj nedelji je normalno
 stanje, a ne kvar.
+
+## 8. Polazne brojke, 19. oktobar 2026.
+
+Prvi izvoz iz konzole, tri meseca podataka. Zapisano ovde da bi za mesec dana
+postojalo nešto sa čim se poredi, jer bez polazne brojke svaka promena izgleda
+kao napredak.
+
+Ceo sajt: **95 klikova, 6.515 prikaza, prosečna pozicija 6,4.** Pozicija je
+dobra, klikova nema — problem je naslov u rezultatu, ne rang.
+
+Šest stranica kojima su tog dana prepravljeni `title` i `description`:
+
+| Stranica | Prikazi | CTR | Pozicija |
+| --- | --- | --- | --- |
+| `/blog/udar-struje-prva-pomoc` | 744 | 0,4% | 6,5 |
+| `/pojmovnik/faza-nula-zastitni` | 693 | 0,6% | 6,9 |
+| `/pojmovnik/ip-zastita` | 443 | 0% | 7,4 |
+| `/blog/koliko-trosi-bojler` | 337 | 0,6% | 6,5 |
+| `/pojmovnik/prenaponska-zastita` | 210 | 0,5% | 10,7 |
+| `/pojmovnik/presek-kabla` | 158 | 1,27% | — |
+
+Za poređenje, dve stranice koje nisu dirane jer im CTR već radi:
+`zasto-se-greje-uticnica` 62 prikaza i **4,8%**, `zasto-klima-izbacuje-osiguraca`
+72 prikaza i **4,2%**. To je nivo kojem tih šest teži. Obrazac je jasan: gde je
+upit definicija, Google odgovori u rezultatu i čovek ne klikne; gde je upit
+simptom, čovek uđe.
+
+**Kalkulator preseka kabla**, `calculator.nikvolt.com`: 19 klikova, 292 prikaza,
+**6,51% CTR**. Deset puta iznad proseka sajta, a do tog dana nije bio linkovan
+ni sa jedne stranice koja rangira — samo sa `/alati`, koji ima 21 prikaz. Link
+je tog dana dodat u telo šest stranica. Meri se broj klikova na poddomen i broj
+njegovih prikaza.
+
+**Stranice opština**: osam stranica, 91 prikaz, **nula klikova**. Četiri su
+prepravljene nekoliko dana ranije, pa su ove brojke starije od teksta koji sada
+stoji na njima. Prvo merenje koje nešto znači je tek sledeći izvoz.
+
+**Komercijalni upiti praktično ne postoje**: pet upita, 39 prikaza, nula klikova
+za ceo kvartal. „Električar Beograd" se ne pojavljuje uopšte. „Električar
+mirijevo" je pozicija 1,24, ali sa 17 prikaza za tri meseca — to nije pobeda
+nego termin koji niko ne kuca, a pozivi iz Mirijeva dolaze preko Business
+profila, ne preko sajta.
+
+### Kako se ponavlja merenje
+
+Performance → Pages, opseg 3 meseca, Export → CSV. Isti opseg i isti izvoz
+svaki put, inače se brojke ne porede. Gleda se samo CTR tih šest stranica,
+klikovi na kalkulator i da li su se opštine pomerile sa nule.
+
+Jedna napomena na kraju: CTR na jednoj stranici skače i bez ikakve promene, jer
+zavisi od toga šta je Google tog meseca prikazao iznad nje. Zato se ne gleda
+jedna stranica nego sve šest zajedno, i ne posle dve nedelje nego posle mesec
+dana.
