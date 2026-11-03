@@ -1,9 +1,12 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, Phone, ShieldCheck, Camera, Clock4, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Phone, ShieldCheck, Clock4, CheckCircle2 } from "lucide-react";
 import { site, assessHref } from "@/lib/site-config";
 import { ContactLink } from "@/components/site/contact-link";
+// Statički uvoz, a ne putanja u stringu: odatle Next sam zna širinu, visinu i
+// blurDataURL, pa nema skoka u rasporedu dok se slika učitava.
+import tablaPosle from "../../../public/photos/tabla-posle.jpg";
 
 export async function Hero() {
   const t = await getTranslations("Hero");
@@ -77,127 +80,40 @@ export async function Hero() {
             </ul>
           </div>
 
-          <HeroVisual />
+          <HeroPhoto />
         </div>
       </div>
     </section>
   );
 }
 
-async function HeroVisual() {
+/**
+ * Ovde je ranije stajala maketa aplikacije: prozor sa tačkicama kao na macOS-u,
+ * kartica „Procena" i u njoj izmišljena cena i izmišljen termin. Izgledalo je
+ * kao stvarna ponuda, a nije bilo ništa — zato je sklonjeno, iz istog razloga
+ * zbog kog su ranije uklonjene lažne recenzije iz JSON-LD-a. Na njenom mestu
+ * stoji fotografija stvarnog posla.
+ */
+async function HeroPhoto() {
   const t = await getTranslations("Hero");
   return (
-    <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-      <div
-        aria-hidden
-        className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-brand/30 via-transparent to-emergency/20 blur-2xl"
-      />
-      <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-xl">
-        <div className="flex items-center gap-2 border-b border-border bg-paper/60 px-4 py-3">
-          <span className="h-2.5 w-2.5 rounded-full bg-emergency/80" />
-          <span className="h-2.5 w-2.5 rounded-full bg-brand" />
-          <span className="h-2.5 w-2.5 rounded-full bg-foreground/30" />
-          <span className="ml-3 text-xs font-medium text-ink-soft">{t("visualHeader")}</span>
-        </div>
-        <div className="space-y-4 p-5">
-          <div className="grid grid-cols-3 gap-2">
-            <PhotoTile label={t("photoTabla")} alt={t("photoTablaAlt")} tone="warn" src="/photos/tabla-stara.jpg" priority />
-            <PhotoTile label={t("photoUticnica")} alt={t("photoUticnicaAlt")} tone="ok" src="/photos/uticnica.jpg" />
-            <PhotoTile label={t("photoKabl")} alt={t("photoKablAlt")} tone="bad" src="/photos/pregoreo-kabl.jpg" />
-          </div>
-
-          <div className="rounded-2xl border border-border bg-paper/70 p-4">
-            <div className="flex items-center gap-2 text-xs font-medium text-ink-soft">
-              <Camera className="h-3.5 w-3.5" /> {t("symptoms")}
-            </div>
-            <div className="mt-2 flex flex-wrap gap-1.5">
-              {[t("symSparking"), t("symBurning"), t("symHotPanel")].map((c) => (
-                <span key={c} className="rounded-full border border-emergency/30 bg-emergency-soft px-2.5 py-1 text-xs font-medium text-emergency">
-                  {c}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-foreground/10 bg-foreground p-4 text-background">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <div className="text-[11px] font-semibold uppercase tracking-widest text-background/60">{t("estimateLabel")}</div>
-                <div className="mt-1.5 text-base font-semibold leading-tight">{t("estimateText")}</div>
-              </div>
-              <span className="shrink-0 rounded-full bg-emergency px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-emergency-foreground">{t("riskHigh")}</span>
-            </div>
-            <div className="mt-3 grid grid-cols-2 gap-2">
-              <div className="rounded-lg bg-background/10 p-2.5">
-                <div className="text-[11px] uppercase tracking-wider text-background/60">{t("indicative")}</div>
-                <div className="text-sm font-semibold">{t("indicativeRange")}</div>
-              </div>
-              <div className="rounded-lg bg-background/10 p-2.5">
-                <div className="text-[11px] uppercase tracking-wider text-background/60">{t("earliest")}</div>
-                <div className="text-sm font-semibold">{t("earliestValue")}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute -bottom-5 -left-5 hidden rotate-[-4deg] rounded-2xl border border-border bg-card p-3 shadow-lg sm:block">
-        <div className="flex items-center gap-3">
-          <div className="grid h-9 w-9 place-items-center rounded-lg bg-brand text-brand-foreground">
-            <ShieldCheck className="h-4 w-4" />
-          </div>
-          <div>
-            <div className="text-xs font-semibold text-foreground">{t("insulationOk")}</div>
-            <div className="text-[11px] text-ink-soft">{t("insulationNote")}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PhotoTile({
-  label,
-  alt,
-  tone,
-  src,
-  priority,
-}: {
-  label: string;
-  /** Full sentence describing the photo, not the tile caption. */
-  alt?: string;
-  tone: "ok" | "warn" | "bad";
-  src?: string;
-  priority?: boolean;
-}) {
-  const palette: Record<typeof tone, string> = {
-    ok: "from-foreground/5 to-foreground/10",
-    warn: "from-brand/30 to-brand/10",
-    bad: "from-emergency/35 to-emergency/10",
-  };
-  return (
-    <div className={`relative aspect-[4/5] overflow-hidden rounded-xl bg-gradient-to-br ${palette[tone]}`}>
-      {src ? (
+    <figure className="relative mx-auto m-0 w-full max-w-md lg:max-w-none">
+      <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-xl">
+        {/* Bez priority: u ovom rasporedu slika na telefonu pada ispod
+            preloma, a telefon je 77% poseta. Eager bi ga naterao da je
+            preuzme pre nego što je vidi, a LCP tamo je ionako naslov. */}
         <Image
-          src={src}
-          alt={alt ?? label}
-          fill
-          // Three tiles across roughly a third of the viewport on desktop, and
-          // a third of full width on mobile.
-          sizes="(min-width: 1024px) 180px, 30vw"
-          priority={priority}
-          className="object-cover"
+          src={tablaPosle}
+          alt={t("photoAlt")}
+          placeholder="blur"
+          // Puna širina na telefonu, pola mreže od 80rem na desktopu.
+          sizes="(min-width: 1024px) 36rem, 100vw"
+          className="h-auto w-full object-cover"
         />
-      ) : (
-        <div className="absolute inset-0 grid place-items-center">
-          <svg viewBox="0 0 24 24" className="h-7 w-7 text-foreground/40" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <rect x="3" y="5" width="18" height="14" rx="2" />
-            <circle cx="9" cy="11" r="1.6" />
-            <path d="m3 17 6-5 5 4 4-3 3 2" />
-          </svg>
-        </div>
-      )}
-      <span className="absolute bottom-1.5 left-1.5 rounded-md bg-background/80 px-1.5 py-0.5 text-[10px] font-medium text-foreground backdrop-blur">{label}</span>
-    </div>
+      </div>
+      <figcaption className="mt-3 text-sm text-ink-soft">
+        {t("photoCaption")}
+      </figcaption>
+    </figure>
   );
 }

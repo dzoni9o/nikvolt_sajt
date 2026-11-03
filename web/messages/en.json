@@ -37,26 +37,12 @@
     "badgeLicensed": "Licensed · insured",
     "badgeSameDay": "Same-day visits",
     "badgeJobs": "{count, plural, one {# completed job} other {# completed jobs}}+",
-    "visualHeader": "Send your problem",
-    "photoTabla": "Panel",
-    "photoUticnica": "Outlet",
-    "photoKabl": "Burnt cable",
-    "symptoms": "Symptoms",
-    "symSparking": "Sparking",
-    "symBurning": "Burning smell",
-    "symHotPanel": "Hot panel",
-    "estimateLabel": "Assessment",
-    "estimateText": "High risk · likely arc on the kitchen circuit",
-    "riskHigh": "High",
-    "indicative": "Indicative",
-    "indicativeRange": "8,500 – 14,000 RSD",
-    "earliest": "Earliest slot",
-    "earliestValue": "Today, 18:30",
-    "insulationOk": "Insulation tested",
-    "insulationNote": "Calibrated megohmmeter · written record",
-    "photoTablaAlt": "An old consumer unit with ceramic fuses, before replacement",
-    "photoUticnicaAlt": "A socket outlet showing heat damage around the contacts",
-    "photoKablAlt": "A burnt-out cable with charred insulation at the joint"
+    "photoAlt": "New consumer unit with circuit breakers and an RCD, after replacement",
+    "photoCaption": "The panel after replacement — circuit breakers and an RCD"
+  },
+  "Foto": {
+    "pre": "Before",
+    "posle": "After"
   },
   "Emergency": {
     "kicker": "Emergency",
@@ -204,6 +190,41 @@
       "newPoint": "from 1,800 RSD"
     }
   },
+  "Radovi": {
+    "title": "What the work looks like",
+    "lead": "Photographs from real call-outs. Nothing taken off the internet.",
+    "pre": "Before",
+    "posle": "After",
+    "parAltPre": "Old consumer unit with three rows of ceramic screw fuses and hand-written labels",
+    "parAltPosle": "New consumer unit with three rows of circuit breakers and an RCD",
+    "parOpis": "The same board in the same flat. Ceramic fuses and no RCD on the left; a breaker per circuit and RCD protection on the right.",
+    "slike": {
+      "dnevna-soba-rasveta": {
+        "alt": "Living room with recessed ceiling spots and a linear wall light",
+        "opis": "Lighting laid out before the ceiling was closed"
+      },
+      "zlebovi-i-kutije": {
+        "alt": "Chased channels in a wall with conduit and back boxes, before plastering",
+        "opis": "A new installation, before the wall is closed up"
+      },
+      "led-traka-dvoriste": {
+        "alt": "Warm LED strip set into the joint of a concrete garden wall at dusk",
+        "opis": "LED strip set into a garden wall"
+      },
+      "kafic-rasveta": {
+        "alt": "Café with track lighting, pendants and a wall light",
+        "opis": "A café — track lighting and pendants"
+      },
+      "profesionalna-kuhinja": {
+        "alt": "Commercial kitchen wiring run in surface trunking above the counters",
+        "opis": "Commercial kitchen, wiring in surface trunking"
+      },
+      "kanalice-na-zidu": {
+        "alt": "Switches and surface trunking on a stone-clad wall",
+        "opis": "Trunking and switches on a stone wall"
+      }
+    }
+  },
   "BlogTeaser": {
     "kicker": "DIY & education",
     "title": "Read before you call. Or call us straight away. Both work.",
@@ -229,7 +250,9 @@
     "statsYears": "Years of experience",
     "statsJobs": "Completed jobs",
     "statsResponse": "Average response time",
-    "quote": "“Show me the panel before you give a quote.” That's the whole philosophy. If we don't see it, we don't price it."
+    "quote": "“Show me the panel before you give a quote.” That's the whole philosophy. If we don't see it, we don't price it.",
+    "photoAlt": "An electrician in a work shirt laying cable in a dug trench in a garden",
+    "photoCaption": "Laying a supply in a trench. The work does not stop at the flat door."
   },
   "Contact": {
     "kicker": "Contact",

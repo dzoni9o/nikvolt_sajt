@@ -111,7 +111,13 @@ export default async function BlogPostPage({ params }: Props) {
         <p className="mt-4 text-pretty text-lg text-ink-soft sm:text-xl">{post.description}</p>
       </header>
 
-      <CoverArt cover={post.cover} className="container-page mt-10 aspect-[16/8] !p-0" />
+      <CoverArt
+        cover={post.cover}
+        photo={post.photo}
+        alt={post.photoAlt}
+        sizes="(min-width: 1024px) 60rem, 100vw"
+        className="container-page mt-10 aspect-[16/8] !p-0"
+      />
 
       <div className="container-page mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px]">
         <div className="prose-electric max-w-none">
@@ -162,7 +168,7 @@ export default async function BlogPostPage({ params }: Props) {
               href={{ pathname: "/blog/[slug]", params: { slug: p.slug } }}
               className="group overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md"
             >
-              <CoverArt cover={p.cover} className="aspect-[16/10]" />
+              <CoverArt cover={p.cover} photo={p.photo} sizes="(min-width: 768px) 22rem, 100vw" className="aspect-[16/10]" />
               <div className="p-5">
                 <div className="text-[11px] font-semibold uppercase tracking-widest text-ink-soft">{p.category}</div>
                 <h3 className="mt-2 text-base font-semibold leading-snug text-foreground">{p.title}</h3>

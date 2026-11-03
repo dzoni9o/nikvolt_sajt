@@ -31,7 +31,7 @@ export async function BlogTeaser() {
             href={{ pathname: "/blog/[slug]", params: { slug: p.slug } }}
             className="group overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md"
           >
-            <CoverArt cover={p.cover} className="aspect-[16/10]" />
+            <CoverArt cover={p.cover} photo={p.photo} sizes="(min-width: 768px) 22rem, 100vw" className="aspect-[16/10]" />
             <div className="p-5">
               <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
                 <span>{p.category}</span>

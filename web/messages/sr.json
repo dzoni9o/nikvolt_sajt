@@ -37,26 +37,12 @@
     "badgeLicensed": "Licencirano · osigurano",
     "badgeSameDay": "Izlazak istog dana",
     "badgeJobs": "{count, plural, one {# završena intervencija} few {# završene intervencije} other {# završenih intervencija}}+",
-    "visualHeader": "Pošalji problem",
-    "photoTabla": "Tabla",
-    "photoUticnica": "Utičnica",
-    "photoKabl": "Pregoreo kabl",
-    "symptoms": "Simptomi",
-    "symSparking": "Varničenje",
-    "symBurning": "Miris paljevine",
-    "symHotPanel": "Topao prekidač",
-    "estimateLabel": "Procena",
-    "estimateText": "Visok rizik · verovatno loš spoj u prekidaču",
-    "riskHigh": "Visok",
-    "indicative": "Okvirno",
-    "indicativeRange": "8.500 – 14.000 RSD",
-    "earliest": "Najraniji termin",
-    "earliestValue": "Danas, 18:30",
-    "insulationOk": "Spojevi su provereni",
-    "insulationNote": "Električar je licenciran",
-    "photoTablaAlt": "Stara razvodna tabla sa keramičkim osiguračima, pre zamene",
-    "photoUticnicaAlt": "Utičnica sa tragovima pregrevanja oko kontakata",
-    "photoKablAlt": "Pregoreo kabl sa nagorelom izolacijom na spoju"
+    "photoAlt": "Nova razvodna tabla sa automatskim osiguračima i FID sklopkom, posle zamene",
+    "photoCaption": "Tabla posle zamene — automatski osigurači i FID sklopka"
+  },
+  "Foto": {
+    "pre": "Pre",
+    "posle": "Posle"
   },
   "Emergency": {
     "kicker": "Hitno",
@@ -204,6 +190,41 @@
       "newPoint": "od 1.800 RSD"
     }
   },
+  "Radovi": {
+    "title": "Kako to izgleda",
+    "lead": "Fotografije sa stvarnih izlazaka. Nema preuzetih slika sa interneta.",
+    "pre": "Pre",
+    "posle": "Posle",
+    "parAltPre": "Stara razvodna tabla sa tri reda keramičkih osigurača i rukom pisanim nalepnicama",
+    "parAltPosle": "Nova razvodna tabla sa tri reda automatskih osigurača i FID sklopkom",
+    "parOpis": "Ista tabla u istom stanu. Levo keramički osigurači i nijedna FID sklopka, desno automatski osigurač po kolu i FID zaštita.",
+    "slike": {
+      "dnevna-soba-rasveta": {
+        "alt": "Dnevna soba sa ugradnim spotovima u spuštenom plafonu i linijskom zidnom lampom",
+        "opis": "Rasveta u stanu, raspoređena pre zatvaranja plafona"
+      },
+      "zlebovi-i-kutije": {
+        "alt": "Izdubljeni žlebovi u zidu sa bužirima i razvodnim kutijama, pre malterisanja",
+        "opis": "Nova instalacija, pre nego što zid bude zatvoren"
+      },
+      "led-traka-dvoriste": {
+        "alt": "Žuta LED traka ugrađena u spoj betonskog zida i poklopne ploče, u sumrak",
+        "opis": "LED traka u dvorišnom zidu"
+      },
+      "kafic-rasveta": {
+        "alt": "Kafić sa šinskom rasvetom, visilicama i zidnom svetiljkom",
+        "opis": "Lokal — šinska rasveta i visilice"
+      },
+      "profesionalna-kuhinja": {
+        "alt": "Instalacija u profesionalnoj kuhinji, kablovi u nadgradnim kanalicama iznad pultova",
+        "opis": "Profesionalna kuhinja, instalacija u kanalicama"
+      },
+      "kanalice-na-zidu": {
+        "alt": "Prekidači i nadgradna kanalica na zidu obloženom kamenom",
+        "opis": "Kanalica i prekidači na kamenom zidu"
+      }
+    }
+  },
   "BlogTeaser": {
     "kicker": "DIY & edukacija",
     "title": "Pročitaj pre nego što pozoveš. Ili nas direktno zovi. Oba su u redu.",
@@ -229,7 +250,9 @@
     "statsYears": "Godina iskustva",
     "statsJobs": "Završenih intervencija",
     "statsResponse": "Prosečno vreme odziva",
-    "quote": "„Pokaži mi tablu pre nego što daš ponudu.“ Cela filozofija. Ako ne vidimo, ne dajemo cenu."
+    "quote": "„Pokaži mi tablu pre nego što daš ponudu.“ Cela filozofija. Ako ne vidimo, ne dajemo cenu.",
+    "photoAlt": "Električar u radnoj majici polaže kabl u iskopan rov u dvorištu",
+    "photoCaption": "Polaganje voda u rov. Posao se ne završava u stanu."
   },
   "Contact": {
     "kicker": "Kontakt",

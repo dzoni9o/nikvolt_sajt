@@ -5,6 +5,7 @@ import { HowItWorks } from "@/components/sections/how-it-works";
 import { FaultAssessmentForm } from "@/components/forms/fault-assessment";
 import { Services } from "@/components/sections/services";
 import { Pricing } from "@/components/sections/pricing";
+import { Radovi } from "@/components/sections/radovi";
 import { Faq, homepageFaqItems } from "@/components/sections/faq";
 import { BlogTeaser } from "@/components/sections/blog-teaser";
 import { About } from "@/components/sections/about";
@@ -41,6 +42,7 @@ export default async function Home({
       <FaultAssessmentForm />
       <Services />
       <Pricing />
+      <Radovi />
       <Faq locale={locale} />
       <BlogTeaser />
       <About />

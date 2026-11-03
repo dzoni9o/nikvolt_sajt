@@ -1,8 +1,10 @@
+import Image from "next/image";
 import { Award, Wrench, MapPin } from "lucide-react";
 import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getEntries } from "@/lib/mdx";
 import { site } from "@/lib/site-config";
+import nikolaNaTerenu from "../../../public/photos/nikola-na-terenu.jpg";
 
 const credentials = [
   { id: "licensed", icon: Award },
@@ -33,6 +35,21 @@ export async function About() {
           <p className="mt-5 max-w-xl text-base text-ink-soft sm:text-lg">
             {t("lead")}
           </p>
+
+          {/* Jedina slika na sajtu sa čovekom na njoj. Stoji ovde, uz tekst u
+              prvom licu, jer tu radi više nego bilo gde drugde. */}
+          <figure className="mt-7 m-0 max-w-md">
+            <Image
+              src={nikolaNaTerenu}
+              alt={t("photoAlt")}
+              placeholder="blur"
+              sizes="(min-width: 1024px) 28rem, 100vw"
+              className="h-auto w-full rounded-2xl border border-border"
+            />
+            <figcaption className="mt-2 text-sm text-ink-soft">
+              {t("photoCaption")}
+            </figcaption>
+          </figure>
 
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {credentials.map((c) => {

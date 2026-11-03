@@ -2,6 +2,7 @@ import type { ComponentPropsWithoutRef } from "react";
 import { Link } from "@/i18n/navigation";
 import type { AppPathname } from "@/i18n/routing";
 import { Impresum, ImpresumPodaci } from "@/components/site/impresum";
+import { Foto, PrePosle } from "@/components/site/foto";
 
 /**
  * Components handed to MDXRemote.
@@ -86,10 +87,15 @@ function MdxTable(props: ComponentPropsWithoutRef<"table">) {
  * translated files. Two names rather than one component with a prop: MDX here
  * does not forward attribute expressions, so a `heading={false}` was silently
  * ignored.
+ *
+ * <Foto> and <PrePosle> put a real job photo in the body of an article. Same
+ * rule applies: every prop is a plain string, no braces.
  */
 export const mdxComponents = {
   a: MdxLink,
   table: MdxTable,
   Impresum,
   ImpresumPodaci,
+  Foto,
+  PrePosle,
 };

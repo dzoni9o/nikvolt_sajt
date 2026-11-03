@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { photos, type PhotoName } from "@/lib/photos";
 
 const PALETTE: Record<string, { from: string; to: string; accent: string }> = {
   rcd: { from: "oklch(0.96 0.05 90)", to: "oklch(0.86 0.12 75)", accent: "oklch(0.18 0.02 260)" },
@@ -8,7 +10,43 @@ const PALETTE: Record<string, { from: string; to: string; accent: string }> = {
   default: { from: "oklch(0.96 0.02 90)", to: "oklch(0.85 0.04 80)", accent: "oklch(0.18 0.02 260)" },
 };
 
-export function CoverArt({ cover, className }: { cover: string; className?: string }) {
+/**
+ * Naslovnica članka. Kad u frontmatteru stoji `photo`, prikazuje se prava
+ * fotografija; `cover` ostaje kao rezerva za članke za koje slike još nema,
+ * pa se ništa ne lomi dok se zbirka dopunjava.
+ *
+ * `alt` se namerno izostavlja na karticama: naslov stoji odmah uz sliku, pa bi
+ * ga čitač ekrana pročitao dvaput. Na samoj stranici članka, gde je slika veća
+ * i nosi sadržaj, prosleđuje se pravi opis.
+ */
+export function CoverArt({
+  cover,
+  photo,
+  alt,
+  sizes,
+  className,
+}: {
+  cover: string;
+  photo?: string;
+  alt?: string;
+  sizes?: string;
+  className?: string;
+}) {
+  if (photo && photo in photos) {
+    const name = photo as PhotoName;
+    return (
+      <div className={cn("relative overflow-hidden rounded-2xl", className)}>
+        <Image
+          src={`/photos/${name}.jpg`}
+          alt={alt ?? ""}
+          fill
+          sizes={sizes ?? "(min-width: 768px) 24rem, 100vw"}
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
   const p = PALETTE[cover] ?? PALETTE.default;
   return (
     <div className={cn("relative overflow-hidden rounded-2xl", className)}>

@@ -76,7 +76,7 @@ export default async function BlogIndex({
           href={{ pathname: "/blog/[slug]", params: { slug: feature.slug } }}
           className="group mt-10 grid overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md md:grid-cols-2"
         >
-          <CoverArt cover={feature.cover} className="aspect-[16/10] md:aspect-auto md:h-full" />
+          <CoverArt cover={feature.cover} photo={feature.photo} sizes="(min-width: 768px) 32rem, 100vw" className="aspect-[16/10] md:aspect-auto md:h-full" />
           <div className="flex flex-col justify-center gap-4 p-8 md:p-10">
             <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
               <span>{t("featured")}</span>
@@ -103,7 +103,7 @@ export default async function BlogIndex({
             href={{ pathname: "/blog/[slug]", params: { slug: p.slug } }}
             className="group overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md"
           >
-            <CoverArt cover={p.cover} className="aspect-[16/10]" />
+            <CoverArt cover={p.cover} photo={p.photo} sizes="(min-width: 768px) 22rem, 100vw" className="aspect-[16/10]" />
             <div className="p-5">
               <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
                 <span>{p.category}</span>
