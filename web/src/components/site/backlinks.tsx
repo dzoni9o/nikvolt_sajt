@@ -35,7 +35,7 @@ export async function Backlinks({
   return (
     <section className="container-page mt-16">
       <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+        <h2 className="text-sm font-semibold text-ink-soft">
           {t("title")}
         </h2>
         <ul className="mt-4 flex flex-wrap gap-2">
@@ -43,7 +43,7 @@ export async function Backlinks({
             <li key={`${l.collection}/${l.slug}`}>
               <Link
                 href={{ pathname: ROUTE[l.collection], params: { slug: l.slug } }}
-                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-paper px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-paper px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
               >
                 {l.title}
                 <ArrowUpRight className="h-3.5 w-3.5 text-ink-soft" />

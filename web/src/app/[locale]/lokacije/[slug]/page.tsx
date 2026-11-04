@@ -102,14 +102,14 @@ export default async function LocationPage({ params }: Props) {
       </div>
 
       <header className="container-page mt-6 max-w-3xl">
-        <h1 className="font-display text-balance text-4xl font-bold leading-tight tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl">
+        <h1 className="font-display text-balance text-3xl font-bold leading-tight text-foreground sm:text-4xl">
           {entry.h1}
         </h1>
         <p className="mt-5 text-pretty text-lg text-ink-soft sm:text-xl">
           {entry.description}
         </p>
 
-        <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground">
+        <p className="mt-6 inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium text-foreground">
           <Clock className="h-4 w-4 text-ink-soft" />
           {t("responseTime", { time: entry.responseTime })}
         </p>
@@ -118,13 +118,13 @@ export default async function LocationPage({ params }: Props) {
           <ContactLink
             channel="phone"
             source="location-page"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-6 py-3.5 text-sm font-semibold text-background"
           >
             <Phone className="h-4 w-4" /> {site.phoneDisplay}
           </ContactLink>
           <Link
             href={assessHref}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-semibold text-foreground"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-6 py-3.5 text-sm font-semibold text-foreground"
           >
             <Send className="h-4 w-4" /> {t("sendProblem")}
           </Link>
@@ -137,7 +137,7 @@ export default async function LocationPage({ params }: Props) {
 
       {entry.faq.length > 0 && (
         <section className="container-page mt-16 max-w-3xl">
-          <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-foreground sm:text-3xl">
+          <h2 className="font-display text-xl font-bold text-foreground sm:text-2xl">
             {t("faqTitle")}
           </h2>
           <FaqList items={entry.faq} />
@@ -146,7 +146,7 @@ export default async function LocationPage({ params }: Props) {
 
       {featured.length > 0 && (
         <section className="container-page mt-16">
-          <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-foreground sm:text-3xl">
+          <h2 className="font-display text-xl font-bold text-foreground sm:text-2xl">
             {t("servicesTitle", { area: entry.area })}
           </h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -157,7 +157,7 @@ export default async function LocationPage({ params }: Props) {
                 className="group inline-flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-5 py-4 text-sm font-semibold text-foreground hover:bg-muted"
               >
                 {s.title}
-                <ArrowRight className="h-4 w-4 shrink-0 text-ink-soft transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight className="h-4 w-4 shrink-0 text-ink-soft" />
               </Link>
             ))}
           </div>
@@ -168,7 +168,7 @@ export default async function LocationPage({ params }: Props) {
 
       {otherAreas.length > 0 && (
         <section className="container-page mt-16">
-          <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-foreground sm:text-3xl">
+          <h2 className="font-display text-xl font-bold text-foreground sm:text-2xl">
             {t("otherAreasTitle")}
           </h2>
           <div className="mt-6 flex flex-wrap gap-2">
@@ -176,7 +176,7 @@ export default async function LocationPage({ params }: Props) {
               <Link
                 key={l.slug}
                 href={{ pathname: "/lokacije/[slug]", params: { slug: l.slug } }}
-                className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
+                className="rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
               >
                 {l.area}
               </Link>

@@ -12,10 +12,7 @@ export async function BlogTeaser() {
     <section id="blog-teaser" className="container-page py-20 md:py-28">
       <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
         <div className="max-w-xl">
-          <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-            {t("kicker")}
-          </p>
-          <h2 className="mt-3 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
             {t("title")}
           </h2>
         </div>
@@ -29,11 +26,11 @@ export async function BlogTeaser() {
           <Link
             key={p.slug}
             href={{ pathname: "/blog/[slug]", params: { slug: p.slug } }}
-            className="group overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md"
+            className="group overflow-hidden rounded-3xl border border-border bg-card"
           >
             <CoverArt cover={p.cover} photo={p.photo} sizes="(min-width: 768px) 22rem, 100vw" className="aspect-[16/10]" />
             <div className="p-5">
-              <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
+              <div className="flex items-center gap-2 text-xs font-semibold text-ink-soft">
                 <span>{p.category}</span>
                 <span>·</span>
                 <span>{t("readingTime", { minutes: p.readingTime })}</span>

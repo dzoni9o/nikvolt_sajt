@@ -238,22 +238,11 @@ export function FaultAssessmentForm() {
   }
 
   return (
-    <section id="assess" className="relative isolate scroll-mt-24">
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(900px 500px at 80% 0%, oklch(0.78 0.17 75 / 0.18), transparent 60%), radial-gradient(700px 400px at 0% 100%, oklch(0.62 0.22 28 / 0.12), transparent 60%)",
-        }}
-      />
+    <section id="assess" className="scroll-mt-24">
       <div className="container-page py-20 md:py-28">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div className="lg:pr-4">
-            <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-              {t("kicker")}
-            </p>
-            <h2 className="mt-3 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
+            <h2 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
               {t("title1")}
               <br />
               {t("title2")}
@@ -281,7 +270,7 @@ export function FaultAssessmentForm() {
             <div className="mt-10 rounded-2xl border border-border bg-card p-5">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+                  <div className="text-sm font-semibold text-ink-soft">
                     {t("liveRiskKicker")}
                   </div>
                   <div className="mt-1 text-sm font-semibold text-foreground">{livePreview.callout}</div>
@@ -293,11 +282,7 @@ export function FaultAssessmentForm() {
           </div>
 
           <div className="relative">
-            <div
-              aria-hidden
-              className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-brand/30 via-transparent to-emergency/15 blur-2xl"
-            />
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-xl">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-card">
               {result ? (
                 <SuccessPanel result={result} onReset={reset} />
               ) : (
@@ -347,7 +332,7 @@ export function FaultAssessmentForm() {
                               key={key}
                               onClick={() => field.onChange(key)}
                               className={cn(
-                                "rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
+                                "rounded-lg border px-3.5 py-1.5 text-sm font-medium transition-colors",
                                 field.value === key
                                   ? "border-foreground bg-foreground text-background"
                                   : "border-border bg-background text-foreground hover:bg-muted",
@@ -485,7 +470,7 @@ export function FaultAssessmentForm() {
                     <ContactLink
                       channel="phone"
                       source="assessment-form"
-                      className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-4 py-3 text-sm font-semibold text-foreground hover:bg-muted"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-4 py-3 text-sm font-semibold text-foreground hover:bg-muted"
                     >
                       <Phone className="h-4 w-4" />{" "}
                       {t("callInstead", { phone: site.phoneDisplay })}
@@ -493,7 +478,7 @@ export function FaultAssessmentForm() {
                     <button
                       type="submit"
                       disabled={submitting || (!!hcaptchaSiteKey && !captchaToken)}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background shadow-cta transition-all hover:-translate-y-0.5 hover:bg-brand hover:text-brand-foreground disabled:opacity-70 disabled:hover:bg-foreground disabled:hover:text-background"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:bg-brand hover:text-brand-foreground disabled:opacity-70 disabled:hover:bg-foreground disabled:hover:text-background"
                     >
                       {submitting ? (
                         <>
@@ -626,7 +611,7 @@ function RiskPill({ level }: { level: RiskAssessment["level"] }) {
       : "bg-muted text-foreground";
   const label = t(level);
   return (
-    <span className={cn("rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider", cls)}>
+    <span className={cn("rounded-lg px-2.5 py-1 text-[11px] font-bold", cls)}>
       {label} {t("riskLabel")}
     </span>
   );
@@ -643,7 +628,7 @@ function SuccessPanel({ result, onReset }: { result: RiskAssessment; onReset: ()
     <div className="space-y-6 p-6 sm:p-8">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-foreground/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-foreground">
+          <div className="inline-flex items-center gap-1.5 rounded-lg bg-foreground/10 px-2.5 py-1 text-[11px] font-semibold text-foreground">
             <CheckCircle2 className="h-3.5 w-3.5" /> {t("sent")}
           </div>
           <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{callout}</h3>
@@ -655,7 +640,7 @@ function SuccessPanel({ result, onReset }: { result: RiskAssessment; onReset: ()
 
       {result.reasonKeys.length > 0 && (
         <div className="rounded-2xl border border-border bg-paper p-4">
-          <div className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{t("whyHeading")}</div>
+          <div className="text-sm font-semibold text-ink-soft">{t("whyHeading")}</div>
           <ul className="mt-2 space-y-1.5 text-sm text-foreground">
             {result.reasonKeys.map((k) => (
               <li key={k} className="flex items-start gap-2">
@@ -668,7 +653,7 @@ function SuccessPanel({ result, onReset }: { result: RiskAssessment; onReset: ()
       )}
 
       <div className="rounded-2xl bg-foreground p-5 text-background">
-        <div className="text-xs font-semibold uppercase tracking-widest text-background/60">{t("nextHeading")}</div>
+        <div className="text-sm font-semibold text-background/60">{t("nextHeading")}</div>
         <ol className="mt-3 space-y-2 text-sm">
           <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" /> {t("next1")}</li>
           <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" /> {t("next2")}</li>
@@ -681,7 +666,7 @@ function SuccessPanel({ result, onReset }: { result: RiskAssessment; onReset: ()
         <ContactLink
           channel="phone"
           source="assessment-form"
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-emergency px-5 py-3 text-sm font-semibold text-emergency-foreground"
+          className="inline-flex items-center justify-center gap-2 rounded-lg bg-emergency px-5 py-3 text-sm font-semibold text-emergency-foreground"
         >
           <Phone className="h-4 w-4" /> {t("callNow")}
         </ContactLink>

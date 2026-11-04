@@ -12,34 +12,19 @@ export async function Hero() {
   const t = await getTranslations("Hero");
   const tCta = await getTranslations("Cta");
   return (
-    <section className="relative isolate overflow-hidden">
-      <div className="absolute inset-0 -z-10 grid-bg [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_75%)]" />
-      <div
-        aria-hidden
-        className="absolute -top-32 right-[-10%] -z-10 h-[520px] w-[520px] rounded-full opacity-70 blur-3xl"
-        style={{ background: "radial-gradient(closest-side, rgba(255, 214, 10, 0.55), transparent 70%)" }}
-      />
-      <div
-        aria-hidden
-        className="absolute bottom-[-30%] left-[-15%] -z-10 h-[600px] w-[600px] rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(closest-side, oklch(0.62 0.22 28 / 0.35), transparent 70%)" }}
-      />
-
+    <section>
       <div className="container-page pt-12 pb-16 md:pt-20 md:pb-24 lg:pt-28">
         <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div className="max-w-2xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1.5 text-xs font-medium text-ink-soft backdrop-blur">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emergency opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emergency" />
-              </span>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-1.5 text-sm text-ink-soft">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-emergency" />
               {t("availability", {
                 city: site.city,
                 responseTime: t("responseTime"),
               })}
             </div>
 
-            <h1 className="font-display text-balance text-[2.6rem] leading-[1.02] font-bold tracking-[-0.02em] text-foreground sm:text-6xl lg:text-[4.25rem]">
+            <h1 className="font-display text-balance text-[2rem] leading-[1.1] font-bold text-foreground sm:text-4xl lg:text-5xl">
               {t("h1Lead", { city: site.city })}{" "}
               <span className="relative inline-block">
                 <span className="relative z-10">{t("h1Highlight")}</span>
@@ -58,15 +43,15 @@ export async function Hero() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href={assessHref}
-                className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground bg-foreground px-6 py-4 text-base font-semibold text-background shadow-cta transition-all hover:-translate-y-0.5 hover:bg-brand hover:text-brand-foreground hover:border-brand"
+                className="group inline-flex items-center justify-center gap-2 rounded-lg border border-foreground bg-foreground px-6 py-4 text-base font-semibold text-background hover:bg-brand hover:text-brand-foreground hover:border-brand"
               >
                 {tCta("sendProblem")}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
               <ContactLink
                 channel="phone"
                 source="hero"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-6 py-4 text-base font-semibold text-foreground hover:bg-muted"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-background px-6 py-4 text-base font-semibold text-foreground hover:bg-muted"
               >
                 <Phone className="h-4 w-4" />{" "}
                 {tCta("callWithNumber", { phone: site.phoneDisplay })}
@@ -98,7 +83,7 @@ async function HeroPhoto() {
   const t = await getTranslations("Hero");
   return (
     <figure className="relative mx-auto m-0 w-full max-w-md lg:max-w-none">
-      <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-xl">
+      <div className="overflow-hidden rounded-3xl border border-border bg-card">
         {/* Bez priority: u ovom rasporedu slika na telefonu pada ispod
             preloma, a telefon je 77% poseta. Eager bi ga naterao da je
             preuzme pre nego što je vidi, a LCP tamo je ionako naslov. */}

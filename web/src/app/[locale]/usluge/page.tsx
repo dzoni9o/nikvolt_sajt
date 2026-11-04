@@ -54,16 +54,13 @@ export default async function ServicesIndex({ params }: Props) {
       <JsonLd data={data} />
 
       <header className="max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-          {t("kicker")}
-        </p>
-        <h1 className="mt-3 font-display text-balance text-4xl font-bold tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl">
+        <h1 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
           {t("title", { city: site.city })}
         </h1>
         <p className="mt-5 text-base text-ink-soft sm:text-lg">{t("lead")}</p>
         <Link
           href={assessHref}
-          className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background"
+          className="mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-6 py-3.5 text-sm font-semibold text-background"
         >
           {t("cta")} <ArrowRight className="h-4 w-4" />
         </Link>
@@ -74,7 +71,7 @@ export default async function ServicesIndex({ params }: Props) {
           <Link
             key={s.slug}
             href={{ pathname: "/usluge/[slug]", params: { slug: s.slug } }}
-            className="group flex flex-col rounded-3xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-md"
+            className="group flex flex-col rounded-3xl border border-border bg-card p-6"
           >
             <h2 className="text-lg font-semibold leading-snug text-foreground">
               {s.title}
@@ -84,7 +81,7 @@ export default async function ServicesIndex({ params }: Props) {
               {s.priceFrom
                 ? t("fromPrice", { amount: s.priceFrom.toLocaleString("sr-Latn") })
                 : t("more")}
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="h-3.5 w-3.5" />
             </span>
           </Link>
         ))}

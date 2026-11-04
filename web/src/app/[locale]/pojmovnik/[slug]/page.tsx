@@ -92,15 +92,12 @@ export default async function TermPage({ params }: Props) {
       </div>
 
       <header className="container-page mt-6 max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-          {entry.group}
-        </p>
-        <h1 className="mt-3 font-display text-balance text-4xl font-bold leading-tight tracking-[-0.02em] text-foreground sm:text-5xl">
+        <h1 className="mt-3 font-display text-balance text-3xl font-bold leading-tight text-foreground sm:text-4xl">
           {entry.h1}
         </h1>
         {/* The one-line answer sits above the fold on purpose: most readers came
             for exactly this sentence and should not have to hunt for it. */}
-        <p className="mt-6 border-l-4 border-brand bg-brand-soft/40 py-4 pl-5 pr-4 text-pretty text-lg font-medium text-foreground sm:text-xl">
+        <p className="mt-6 border-l-[3px] border-brand py-1 pl-4 text-pretty text-lg font-medium text-foreground sm:text-xl">
           {entry.shortAnswer}
         </p>
       </header>
@@ -111,7 +108,7 @@ export default async function TermPage({ params }: Props) {
 
       {seeAlso.length > 0 && (
         <section className="container-page mt-14 max-w-3xl">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+          <h2 className="text-sm font-semibold text-ink-soft">
             {t("seeAlso")}
           </h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -119,7 +116,7 @@ export default async function TermPage({ params }: Props) {
               <Link
                 key={x.slug}
                 href={{ pathname: "/pojmovnik/[slug]", params: { slug: x.slug } }}
-                className="group rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                className="group rounded-2xl border border-border bg-card p-5"
               >
                 <h3 className="text-base font-semibold text-foreground">{x.title}</h3>
                 <p className="mt-1.5 line-clamp-2 text-sm text-ink-soft">
@@ -135,7 +132,7 @@ export default async function TermPage({ params }: Props) {
 
       {sameGroup.length > 0 && (
         <section className="container-page mt-14">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+          <h2 className="text-sm font-semibold text-ink-soft">
             {t("moreInGroup", { group: entry.group })}
           </h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -143,7 +140,7 @@ export default async function TermPage({ params }: Props) {
               <Link
                 key={x.slug}
                 href={{ pathname: "/pojmovnik/[slug]", params: { slug: x.slug } }}
-                className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
+                className="rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
               >
                 {x.title}
               </Link>
@@ -168,7 +165,7 @@ export default async function TermPage({ params }: Props) {
             </ContactLink>
             <Link
               href="/usluge"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-background/30 px-5 py-3 text-sm font-semibold"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-background/30 px-5 py-3 text-sm font-semibold"
             >
               {t("ctaServices")} <ArrowRight className="h-4 w-4" />
             </Link>

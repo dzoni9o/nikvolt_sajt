@@ -31,7 +31,7 @@ export async function Radovi() {
 
   return (
     <section id="radovi" className="container-page py-20 md:py-28">
-      <h2 className="font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl">
+      <h2 className="font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
         {t("title")}
       </h2>
       <p className="mt-3 max-w-xl text-base text-ink-soft sm:text-lg">

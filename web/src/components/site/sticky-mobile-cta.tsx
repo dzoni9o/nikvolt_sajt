@@ -13,14 +13,14 @@ export function StickyMobileCTA() {
           <ContactLink
             channel="phone"
             source="sticky-mobile"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-4 py-3 text-sm font-semibold text-background"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-4 py-3 text-sm font-semibold text-background"
           >
             <Phone className="h-4 w-4" /> {t("callNow")}
           </ContactLink>
           <ContactLink
             channel="whatsapp"
             source="sticky-mobile"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-emergency px-4 py-3 text-sm font-semibold text-emergency-foreground"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-emergency px-4 py-3 text-sm font-semibold text-emergency-foreground"
           >
             <MessageCircle className="h-4 w-4" /> {t("whatsapp")}
           </ContactLink>

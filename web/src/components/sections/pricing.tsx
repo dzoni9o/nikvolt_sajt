@@ -10,10 +10,7 @@ export async function Pricing() {
     <section id="pricing" className="container-page py-20 md:py-28">
       <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-            {t("kicker")}
-          </p>
-          <h2 className="mt-3 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
             {t("title1")}
             <br />
             <span className="text-ink-soft">{t("title2Lead")}</span>{" "}
@@ -22,7 +19,7 @@ export async function Pricing() {
           <p className="mt-4 max-w-md text-base text-ink-soft">{t("lead")}</p>
           <Link
             href={assessHref}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:-translate-y-0.5 transition-transform"
+            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-transform"
           >
             {t("cta")} <ArrowRight className="h-4 w-4" />
           </Link>
@@ -32,10 +29,10 @@ export async function Pricing() {
           <table className="w-full divide-y divide-border text-left">
             <thead className="bg-paper">
               <tr>
-                <th scope="col" className="px-5 py-3 text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
+                <th scope="col" className="px-5 py-3 text-xs font-semibold text-ink-soft">
                   {t("tableService")}
                 </th>
-                <th scope="col" className="px-5 py-3 text-right text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
+                <th scope="col" className="px-5 py-3 text-right text-xs font-semibold text-ink-soft">
                   {t("tablePriceFrom")}
                 </th>
               </tr>

@@ -41,10 +41,7 @@ export default async function BlogIndex({
   return (
     <div className="container-page py-16 md:py-24">
       <header className="max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-          {t("kicker")}
-        </p>
-        <h1 className="mt-3 font-display text-balance text-4xl font-bold tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl">
+        <h1 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
           {t("title", { city: site.city })}
         </h1>
         <p className="mt-5 text-base text-ink-soft sm:text-lg">{t("lead")}</p>
@@ -56,7 +53,7 @@ export default async function BlogIndex({
         {categories.map((c) => (
           <span
             key={c}
-            className="rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold text-ink-soft"
+            className="rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-semibold text-ink-soft"
           >
             {c}
           </span>
@@ -64,7 +61,7 @@ export default async function BlogIndex({
         {hasGlossary && (
           <Link
             href="/pojmovnik"
-            className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold text-background"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-foreground px-3 py-1.5 text-xs font-semibold text-background"
           >
             {t("toGlossary")} <ArrowRight className="h-3 w-3" />
           </Link>
@@ -74,11 +71,11 @@ export default async function BlogIndex({
       {feature && (
         <Link
           href={{ pathname: "/blog/[slug]", params: { slug: feature.slug } }}
-          className="group mt-10 grid overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md md:grid-cols-2"
+          className="group mt-10 grid overflow-hidden rounded-3xl border border-border bg-card md:grid-cols-2"
         >
           <CoverArt cover={feature.cover} photo={feature.photo} sizes="(min-width: 768px) 32rem, 100vw" className="aspect-[16/10] md:aspect-auto md:h-full" />
           <div className="flex flex-col justify-center gap-4 p-8 md:p-10">
-            <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
+            <div className="flex items-center gap-2 text-xs font-semibold text-ink-soft">
               <span>{t("featured")}</span>
               <span>·</span>
               <span>{feature.category}</span>
@@ -90,7 +87,7 @@ export default async function BlogIndex({
             </h2>
             <p className="max-w-md text-base text-ink-soft">{feature.description}</p>
             <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground">
-              {t("read")} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              {t("read")} <ArrowRight className="h-4 w-4" />
             </span>
           </div>
         </Link>
@@ -101,11 +98,11 @@ export default async function BlogIndex({
           <Link
             key={p.slug}
             href={{ pathname: "/blog/[slug]", params: { slug: p.slug } }}
-            className="group overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md"
+            className="group overflow-hidden rounded-3xl border border-border bg-card"
           >
             <CoverArt cover={p.cover} photo={p.photo} sizes="(min-width: 768px) 22rem, 100vw" className="aspect-[16/10]" />
             <div className="p-5">
-              <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
+              <div className="flex items-center gap-2 text-xs font-semibold text-ink-soft">
                 <span>{p.category}</span>
                 <span>·</span>
                 <span>{t("minRead", { minutes: p.readingTime })}</span>

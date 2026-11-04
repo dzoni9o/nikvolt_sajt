@@ -11,18 +11,14 @@ export async function Emergency({ locale }: { locale: string }) {
   const emergencyPage = getEntryByKey("usluge", locale, "emergency-callout");
   const tCta = await getTranslations("Cta");
   return (
-    <section id="emergency" className="relative isolate">
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-emergency/[0.04] via-emergency/[0.02] to-transparent"
-      />
+    <section id="emergency">
       <div className="container-page py-20 md:py-24">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emergency/30 bg-emergency-soft px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emergency">
+            <div className="inline-flex items-center gap-2 rounded-lg border border-emergency/30 bg-emergency-soft px-3 py-1 text-xs font-semibold text-emergency">
               <AlertTriangle className="h-3.5 w-3.5" /> {t("kicker")}
             </div>
-            <h2 className="mt-4 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
               {t("title")}
             </h2>
             <p className="mt-3 max-w-lg text-base text-ink-soft">
@@ -39,18 +35,18 @@ export async function Emergency({ locale }: { locale: string }) {
                 className="group mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground underline-offset-4 hover:underline"
               >
                 {t("more")}
-                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             ) : null}
           </div>
           <ContactLink
             channel="phone"
             source="emergency-section"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-emergency px-6 py-3.5 text-base font-semibold text-emergency-foreground shadow-emergency transition-all hover:-translate-y-0.5"
+            className="group inline-flex items-center justify-center gap-2 rounded-lg bg-emergency px-6 py-3.5 text-base font-semibold text-emergency-foreground"
           >
             <Phone className="h-4 w-4" />{" "}
             {tCta("callWithNumber", { phone: site.phoneDisplay })}
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            <ArrowRight className="h-4 w-4" />
           </ContactLink>
         </div>
 
@@ -62,7 +58,7 @@ export async function Emergency({ locale }: { locale: string }) {
                 key={card.id}
                 channel="phone"
                 source="emergency-section"
-                className="group relative flex items-start gap-4 overflow-hidden rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-emergency/40 hover:shadow-md"
+                className="group relative flex items-start gap-4 overflow-hidden rounded-2xl border border-border bg-card p-5 hover:border-emergency/40"
               >
                 <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emergency-soft text-emergency">
                   <Icon className="h-5 w-5" />
@@ -72,7 +68,7 @@ export async function Emergency({ locale }: { locale: string }) {
                     <h3 className="text-base font-semibold text-foreground">
                       {t(`cards.${card.id}.title`)}
                     </h3>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-ink-soft transition-all group-hover:translate-x-0.5 group-hover:text-emergency" />
+                    <ArrowRight className="h-4 w-4 shrink-0 text-ink-soft transition-all group-hover:text-emergency" />
                   </div>
                   <p className="mt-1 text-sm text-ink-soft">
                     {t(`cards.${card.id}.description`)}

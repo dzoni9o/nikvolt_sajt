@@ -12,40 +12,37 @@ export async function Contact() {
       <div className="container-page py-20 md:py-28">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-              {t("kicker")}
-            </p>
-            <h2 className="mt-3 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
+            <h2 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
               {t("title")}
             </h2>
             <p className="mt-4 max-w-md text-base text-ink-soft">{t("lead")}</p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              <ContactLink channel="phone" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
+              <ContactLink channel="phone" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-transform">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-foreground text-background"><Phone className="h-4 w-4" /></span>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-ink-soft">{t("phoneLabel")}</div>
+                  <div className="text-xs font-semibold text-ink-soft">{t("phoneLabel")}</div>
                   <div className="text-sm font-semibold text-foreground">{site.phoneDisplay}</div>
                 </div>
               </ContactLink>
-              <ContactLink channel="whatsapp" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
+              <ContactLink channel="whatsapp" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-transform">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-emergency text-emergency-foreground"><MessageCircle className="h-4 w-4" /></span>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-ink-soft">{t("whatsappLabel")}</div>
+                  <div className="text-xs font-semibold text-ink-soft">{t("whatsappLabel")}</div>
                   <div className="text-sm font-semibold text-foreground">{t("openConversation")}</div>
                 </div>
               </ContactLink>
-              <ContactLink channel="viber" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
+              <ContactLink channel="viber" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-transform">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#665CAC] text-white"><MessageCircle className="h-4 w-4" /></span>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-ink-soft">{t("viberLabel")}</div>
+                  <div className="text-xs font-semibold text-ink-soft">{t("viberLabel")}</div>
                   <div className="text-sm font-semibold text-foreground">{t("openConversation")}</div>
                 </div>
               </ContactLink>
-              <ContactLink channel="email" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 hover:-translate-y-0.5 transition-transform">
+              <ContactLink channel="email" source="contact-section" className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-transform">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand text-brand-foreground"><Mail className="h-4 w-4" /></span>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-ink-soft">{t("emailLabel")}</div>
+                  <div className="text-xs font-semibold text-ink-soft">{t("emailLabel")}</div>
                   <div className="text-sm font-semibold text-foreground">{site.email}</div>
                 </div>
               </ContactLink>
@@ -76,17 +73,7 @@ async function BrandPanel() {
   const tFooter = await getTranslations("Footer");
   const tHours = await getTranslations("Hours");
   return (
-    <div className="relative h-full min-h-[420px] overflow-hidden rounded-3xl border border-border bg-foreground p-10 text-background shadow-xl">
-      <div
-        aria-hidden
-        className="absolute -top-24 -right-20 h-[360px] w-[360px] rounded-full opacity-50 blur-3xl"
-        style={{ background: "radial-gradient(closest-side, rgba(255, 214, 10, 0.55), transparent 70%)" }}
-      />
-      <div
-        aria-hidden
-        className="absolute -bottom-32 -left-20 h-[360px] w-[360px] rounded-full opacity-30 blur-3xl"
-        style={{ background: "radial-gradient(closest-side, oklch(0.62 0.22 28 / 0.55), transparent 70%)" }}
-      />
+    <div className="relative h-full min-h-[420px] overflow-hidden rounded-3xl border border-border bg-foreground p-10 text-background">
 
       <div className="relative flex h-full flex-col justify-between gap-10">
         <div className="flex justify-center pt-6 sm:pt-10">
@@ -102,15 +89,15 @@ async function BrandPanel() {
 
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-2xl border border-background/10 bg-background/5 p-4 text-left backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-background/60">
+              <div className="flex items-center gap-2 text-xs font-semibold text-background/70">
                 <Zap className="h-3.5 w-3.5 text-brand" /> {tHours("alwaysDay")}
               </div>
-              <div className="mt-2 font-display text-3xl font-bold tabular-nums text-background">
+              <div className="mt-2 font-display text-2xl font-bold tabular-nums text-background">
                 {tHours("alwaysHours")}
               </div>
             </div>
             <div className="rounded-2xl border border-background/10 bg-background/5 p-4 text-left backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-background/60">
+              <div className="flex items-center gap-2 text-xs font-semibold text-background/70">
                 <MapPin className="h-3.5 w-3.5 text-brand" /> {t("mapAreaLabel")}
               </div>
               <div className="mt-2 text-sm font-semibold text-background">

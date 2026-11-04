@@ -23,10 +23,7 @@ export async function Services() {
       <div className="container-page py-20 md:py-28">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-              {t("kicker")}
-            </p>
-            <h2 className="mt-3 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
+            <h2 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
               {t("title")}
             </h2>
           </div>
@@ -46,14 +43,14 @@ export async function Services() {
                     ? { pathname: "/usluge/[slug]", params: { slug: s.entry.slug } }
                     : assessHref
                 }
-                className="group relative flex flex-col gap-4 rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-foreground/30 hover:shadow-md"
+                className="group relative flex flex-col gap-4 rounded-2xl border border-border bg-card p-5 hover:border-foreground/30"
               >
                 <div className="flex items-center justify-between">
                   <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand-soft text-foreground">
                     <Icon className="h-5 w-5" />
                   </div>
                   {s.fromAmount !== undefined && (
-                    <span className="rounded-full bg-muted px-2.5 py-1 text-[11px] font-semibold text-ink-soft">
+                    <span className="rounded-lg bg-muted px-2.5 py-1 text-[11px] font-semibold text-ink-soft">
                       {t("fromPrice", {
                         amount: f.number(s.fromAmount),
                       })}
@@ -70,7 +67,7 @@ export async function Services() {
                 </div>
                 <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-foreground">
                   {s.entry ? t("cardMore") : t("cardCta")}
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </Link>
             );

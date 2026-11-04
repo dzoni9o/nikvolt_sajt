@@ -19,10 +19,10 @@ export default function GlobalNotFound() {
     <html lang="sr-Latn" className={`${fontVariables} h-full antialiased`}>
       <body className="min-h-full bg-paper text-foreground">
         <main className="container-page flex min-h-screen flex-col items-center justify-center py-24 text-center">
-          <p className="font-mono text-sm font-semibold uppercase tracking-widest text-ink-soft">
+          <p className="font-mono text-sm font-semibold text-ink-soft">
             404
           </p>
-          <h1 className="mt-4 font-display text-4xl font-bold tracking-[-0.02em] sm:text-5xl">
+          <h1 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
             Ova stranica ne postoji.
           </h1>
           <p className="mt-4 max-w-md text-base text-ink-soft">
@@ -33,13 +33,13 @@ export default function GlobalNotFound() {
             <ContactLink
               channel="phone"
               source="not-found"
-              className="inline-flex items-center justify-center rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background"
+              className="inline-flex items-center justify-center rounded-lg bg-foreground px-6 py-3 text-sm font-semibold text-background"
             >
               {site.phoneDisplay}
             </ContactLink>
             <Link
               href="/sr"
-              className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-semibold"
+              className="inline-flex items-center justify-center rounded-lg border border-border px-6 py-3 text-sm font-semibold"
             >
               Nazad na početnu
             </Link>

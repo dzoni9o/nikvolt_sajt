@@ -173,10 +173,7 @@ export default async function ToolsPage({
   return (
     <div className="container-page py-16 md:py-24">
       <header className="max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-          {t("kicker")}
-        </p>
-        <h1 className="mt-3 font-display text-balance text-4xl font-bold tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl">
+        <h1 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
           {t("title")}
         </h1>
         <p className="mt-5 text-base text-ink-soft sm:text-lg">{t("lead")}</p>
@@ -190,7 +187,7 @@ export default async function ToolsPage({
             href={app.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col overflow-hidden rounded-3xl transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl"
+            className="group flex flex-col overflow-hidden rounded-3xl transition-all duration-200 hover:shadow-2xl"
             style={{
               backgroundColor: app.design.bg,
               border: `1px solid ${app.design.border}`,
@@ -216,7 +213,7 @@ export default async function ToolsPage({
                   {app.icon}
                 </span>
                 <span
-                  className="rounded-full px-2.5 py-1 font-mono text-[10px] font-medium tracking-wide"
+                  className="rounded-lg px-2.5 py-1 font-mono text-[10px] font-medium tracking-wide"
                   style={{
                     backgroundColor: app.design.iconBg,
                     color: app.design.textSoft,
@@ -263,7 +260,7 @@ export default async function ToolsPage({
         <div className="space-y-14">
           {categories.map((cat) => (
             <section key={cat.labelKey}>
-              <h2 className="mb-6 text-xs font-semibold uppercase tracking-widest text-ink-soft">
+              <h2 className="mb-6 text-sm font-semibold text-ink-soft">
                 {t(cat.labelKey)}
               </h2>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -299,7 +296,7 @@ export default async function ToolsPage({
         <p className="mt-3 max-w-xl text-base text-ink-soft">{t("ctaLead")}</p>
         <Link
           href={{ pathname: "/", hash: "assess" }}
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-opacity hover:opacity-80"
+          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-opacity hover:opacity-80"
         >
           {t("cta")}
           <ArrowRight className="h-4 w-4" />

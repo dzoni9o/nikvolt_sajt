@@ -67,7 +67,7 @@ export async function Impresum() {
 
   return (
     <div className="not-prose my-8">
-      <h2 className="mb-4 font-display text-2xl font-bold tracking-[-0.02em] text-foreground">
+      <h2 className="mb-4 font-display text-2xl font-bold text-foreground">
         {t("title")}
       </h2>
       <Rows />

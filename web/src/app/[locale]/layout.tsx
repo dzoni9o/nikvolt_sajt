@@ -8,7 +8,6 @@ import "../globals.css";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
 import { StickyMobileCTA } from "@/components/site/sticky-mobile-cta";
-import { ThemeProvider } from "@/components/site/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { routing, ogLocaleFor, htmlLangFor } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
@@ -105,18 +104,15 @@ export default async function LocaleLayout({
     <html
       lang={htmlLangFor(locale)}
       className={`${fontVariables} h-full antialiased`}
-      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-paper text-foreground">
-        <ThemeProvider>
-          <NextIntlClientProvider>
-            <Navbar slugMap={buildSlugMap()} navItems={navigationFor(locale)} />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <StickyMobileCTA />
-            <Toaster richColors position="top-center" />
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <NextIntlClientProvider>
+          <Navbar slugMap={buildSlugMap()} navItems={navigationFor(locale)} />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <StickyMobileCTA />
+          <Toaster richColors position="top-center" />
+        </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
       </body>

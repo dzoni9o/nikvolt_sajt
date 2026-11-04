@@ -63,10 +63,7 @@ export default async function GlossaryIndex({ params }: Props) {
       <JsonLd data={data} />
 
       <header className="max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-          {t("kicker")}
-        </p>
-        <h1 className="mt-3 font-display text-balance text-4xl font-bold tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl">
+        <h1 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
           {t("title")}
         </h1>
         <p className="mt-5 text-base text-ink-soft sm:text-lg">{t("lead")}</p>
@@ -77,7 +74,7 @@ export default async function GlossaryIndex({ params }: Props) {
           <a
             key={g}
             href={`#${encodeURIComponent(g.toLowerCase())}`}
-            className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
+            className="rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
           >
             {g}
           </a>
@@ -90,7 +87,7 @@ export default async function GlossaryIndex({ params }: Props) {
           id={encodeURIComponent(group.toLowerCase())}
           className="mt-14 scroll-mt-24"
         >
-          <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-foreground sm:text-3xl">
+          <h2 className="font-display text-xl font-bold text-foreground sm:text-2xl">
             {group}
           </h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -100,7 +97,7 @@ export default async function GlossaryIndex({ params }: Props) {
                 <Link
                   key={x.slug}
                   href={{ pathname: "/pojmovnik/[slug]", params: { slug: x.slug } }}
-                  className="group flex flex-col rounded-3xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                  className="group flex flex-col rounded-3xl border border-border bg-card p-6"
                 >
                   <h3 className="text-lg font-semibold leading-snug text-foreground">
                     {x.title}
@@ -108,7 +105,7 @@ export default async function GlossaryIndex({ params }: Props) {
                   <p className="mt-2 flex-1 text-sm text-ink-soft">{x.shortAnswer}</p>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground">
                     {t("read")}
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </span>
                 </Link>
               ))}

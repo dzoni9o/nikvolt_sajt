@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 import { Phone, MessageCircle, Menu, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
-import { ThemeToggle } from "./theme-toggle";
 import { LocaleSwitcher } from "./locale-switcher";
 import type { SlugMap } from "@/lib/mdx";
 import { site, assessHref, type NavItemId, type NavHref } from "@/lib/site-config";
@@ -66,12 +65,11 @@ export function Navbar({
         </div>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle className="hidden md:inline-flex" />
           <LocaleSwitcher className="hidden md:inline-flex" slugMap={slugMap} />
           <ContactLink
             channel="phone"
             source="navbar"
-            className="hidden md:inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-foreground hover:bg-muted"
+            className="hidden md:inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-foreground hover:bg-muted"
           >
             <Phone className="h-4 w-4" />
             {site.phoneDisplay}
@@ -86,10 +84,10 @@ export function Navbar({
           </ContactLink>
           <Link
             href={assessHref}
-            className="group hidden sm:inline-flex items-center gap-2 rounded-full border border-foreground bg-foreground px-4 py-2 text-sm font-semibold text-background shadow-sm transition-all hover:bg-brand hover:text-brand-foreground hover:border-brand hover:shadow-cta hover:-translate-y-px"
+            className="group hidden sm:inline-flex items-center gap-2 rounded-lg border border-foreground bg-foreground px-4 py-2 text-sm font-semibold text-background shadow-sm transition-all hover:bg-brand hover:text-brand-foreground hover:border-brand"
           >
             {tCta("sendProblem")}
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            <ArrowRight className="h-4 w-4" />
           </Link>
 
           <Sheet>
@@ -137,7 +135,7 @@ export function Navbar({
                 <ContactLink
                   channel="phone"
                   source="navbar"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-5 py-3 text-sm font-semibold"
                 >
                   <Phone className="h-4 w-4" />{" "}
                   {tCta("callWithNumber", { phone: site.phoneDisplay })}
@@ -145,12 +143,11 @@ export function Navbar({
                 <ContactLink
                   channel="whatsapp"
                   source="navbar"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-5 py-3 text-sm font-semibold"
                 >
                   <MessageCircle className="h-4 w-4" /> {tCta("whatsapp")}
                 </ContactLink>
-                <div className="mt-2 flex items-center gap-2">
-                  <ThemeToggle />
+                <div className="mt-2">
                   <LocaleSwitcher slugMap={slugMap} />
                 </div>
               </div>

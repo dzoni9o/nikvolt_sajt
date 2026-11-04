@@ -57,7 +57,7 @@ export async function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{t("siteHeading")}</h3>
+            <h3 className="text-sm font-semibold text-ink-soft">{t("siteHeading")}</h3>
             <ul className="mt-4 space-y-2 text-sm">
               {navItems.map((item) => (
                 <li key={item.id}>
@@ -73,7 +73,7 @@ export async function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{tNav("services")}</h3>
+            <h3 className="text-sm font-semibold text-ink-soft">{tNav("services")}</h3>
             <ul className="mt-4 space-y-2 text-sm">
               {services.map((s) => (
                 <li key={s.slug}>
@@ -90,7 +90,7 @@ export async function Footer() {
 
           {terms.length > 0 && (
             <div>
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{tNav("glossary")}</h3>
+              <h3 className="text-sm font-semibold text-ink-soft">{tNav("glossary")}</h3>
               <ul className="mt-4 space-y-2 text-sm">
                 {terms.map((x) => (
                   <li key={x.slug}>
@@ -107,7 +107,7 @@ export async function Footer() {
           )}
 
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{tNav("areas")}</h3>
+            <h3 className="text-sm font-semibold text-ink-soft">{tNav("areas")}</h3>
             <ul className="mt-4 space-y-2 text-sm">
               {areas.map((a) => (
                 <li key={a.slug}>
@@ -123,7 +123,7 @@ export async function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{t("contactHeading")}</h3>
+            <h3 className="text-sm font-semibold text-ink-soft">{t("contactHeading")}</h3>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-ink-soft" /><ContactLink channel="phone" source="footer">{site.phoneDisplay}</ContactLink></li>
               <li className="flex items-center gap-2"><MessageCircle className="h-4 w-4 text-ink-soft" /><ContactLink channel="whatsapp" source="footer">{tCta("whatsapp")}</ContactLink></li>
@@ -132,7 +132,7 @@ export async function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-soft">{t("hoursHeading")}</h3>
+            <h3 className="text-sm font-semibold text-ink-soft">{t("hoursHeading")}</h3>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li className="flex items-center justify-between gap-3">
                 <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-ink-soft" />{tHours("alwaysDay")}</span>

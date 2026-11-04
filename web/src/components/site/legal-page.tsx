@@ -20,10 +20,7 @@ export async function LegalPage({
   return (
     <article className="container-page py-16 md:py-24">
       <header className="max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-          {t("kicker")}
-        </p>
-        <h1 className="mt-3 font-display text-balance text-4xl font-bold tracking-[-0.02em] text-foreground sm:text-5xl">
+        <h1 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
           {doc.title}
         </h1>
         <p className="mt-4 text-base text-ink-soft">{doc.description}</p>

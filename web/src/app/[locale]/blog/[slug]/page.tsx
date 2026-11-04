@@ -92,7 +92,7 @@ export default async function BlogPostPage({ params }: Props) {
       </div>
 
       <header className="container-page mt-6 max-w-3xl">
-        <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
+        <div className="flex items-center gap-2 text-xs font-semibold text-ink-soft">
           <span>{post.category}</span>
           <span>·</span>
           <span>{t("readingTime", { minutes: post.readingTime })}</span>
@@ -105,7 +105,7 @@ export default async function BlogPostPage({ params }: Props) {
             })}
           </time>
         </div>
-        <h1 className="mt-3 font-display text-balance text-4xl font-bold leading-tight tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl">
+        <h1 className="mt-3 font-display text-balance text-3xl font-bold leading-tight text-foreground sm:text-4xl">
           {post.title}
         </h1>
         <p className="mt-4 text-pretty text-lg text-ink-soft sm:text-xl">{post.description}</p>
@@ -126,15 +126,15 @@ export default async function BlogPostPage({ params }: Props) {
 
         <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">
           <div className="rounded-2xl border border-border bg-card p-5">
-            <div className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+            <div className="text-sm font-semibold text-ink-soft">
               {tSidebar("headline")}
             </div>
             <p className="mt-2 text-sm text-foreground">{tSidebar("lead")}</p>
             <div className="mt-4 flex flex-col gap-2">
-              <Link href={{ pathname: "/", hash: "assess" }} className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-4 py-3 text-sm font-semibold text-background">
+              <Link href={{ pathname: "/", hash: "assess" }} className="inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-4 py-3 text-sm font-semibold text-background">
                 <Send className="h-4 w-4" /> {tSidebar("send")}
               </Link>
-              <ContactLink channel="phone" source="blog-sidebar" className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-4 py-3 text-sm font-semibold text-foreground">
+              <ContactLink channel="phone" source="blog-sidebar" className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-4 py-3 text-sm font-semibold text-foreground">
                 <Phone className="h-4 w-4" /> {site.phoneDisplay}
               </ContactLink>
             </div>
@@ -142,12 +142,12 @@ export default async function BlogPostPage({ params }: Props) {
 
           {post.tags.length > 0 && (
             <div className="rounded-2xl border border-border bg-card p-5">
-              <div className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+              <div className="text-sm font-semibold text-ink-soft">
                 {tSidebar("tags")}
               </div>
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {post.tags.map((tg) => (
-                  <span key={tg} className="rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-foreground">{tg}</span>
+                  <span key={tg} className="rounded-lg bg-muted px-2.5 py-1 text-xs font-medium text-foreground">{tg}</span>
                 ))}
               </div>
             </div>
@@ -158,7 +158,7 @@ export default async function BlogPostPage({ params }: Props) {
       <Backlinks locale={locale} collection="blog" slug={post.slug} />
 
       <section className="container-page mt-20">
-        <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-foreground sm:text-3xl">
+        <h2 className="font-display text-xl font-bold text-foreground sm:text-2xl">
           {t("readNext")}
         </h2>
         <div className="mt-6 grid gap-6 md:grid-cols-3">
@@ -166,11 +166,11 @@ export default async function BlogPostPage({ params }: Props) {
             <Link
               key={p.slug}
               href={{ pathname: "/blog/[slug]", params: { slug: p.slug } }}
-              className="group overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-md"
+              className="group overflow-hidden rounded-3xl border border-border bg-card"
             >
               <CoverArt cover={p.cover} photo={p.photo} sizes="(min-width: 768px) 22rem, 100vw" className="aspect-[16/10]" />
               <div className="p-5">
-                <div className="text-[11px] font-semibold uppercase tracking-widest text-ink-soft">{p.category}</div>
+                <div className="text-xs font-semibold text-ink-soft">{p.category}</div>
                 <h3 className="mt-2 text-base font-semibold leading-snug text-foreground">{p.title}</h3>
                 <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground">
                   {t("read")} <ArrowRight className="h-3.5 w-3.5" />

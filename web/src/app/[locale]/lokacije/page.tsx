@@ -55,10 +55,7 @@ export default async function LocationsIndex({ params }: Props) {
       <JsonLd data={data} />
 
       <header className="max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-          {t("kicker")}
-        </p>
-        <h1 className="mt-3 font-display text-balance text-4xl font-bold tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl">
+        <h1 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
           {t("title", { city: site.city })}
         </h1>
         <p className="mt-5 text-base text-ink-soft sm:text-lg">{t("lead")}</p>
@@ -69,7 +66,7 @@ export default async function LocationsIndex({ params }: Props) {
           <Link
             key={a.slug}
             href={{ pathname: "/lokacije/[slug]", params: { slug: a.slug } }}
-            className="group flex flex-col rounded-3xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-md"
+            className="group flex flex-col rounded-3xl border border-border bg-card p-6"
           >
             <h2 className="text-lg font-semibold leading-snug text-foreground">
               {a.area}
@@ -78,7 +75,7 @@ export default async function LocationsIndex({ params }: Props) {
             <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
               <Clock className="h-3.5 w-3.5 text-ink-soft" />
               {tLoc("responseTime", { time: a.responseTime })}
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="h-3.5 w-3.5" />
             </span>
           </Link>
         ))}

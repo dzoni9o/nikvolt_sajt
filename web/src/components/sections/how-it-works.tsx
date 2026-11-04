@@ -6,10 +6,7 @@ export async function HowItWorks() {
   return (
     <section id="how-it-works" className="container-page py-20 md:py-28">
       <div className="max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
-          {t("kicker")}
-        </p>
-        <h2 className="mt-3 font-display text-balance text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl md:text-5xl">
+        <h2 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
           {t("title")}
         </h2>
         <p className="mt-4 text-base text-ink-soft sm:text-lg">{t("lead")}</p>
