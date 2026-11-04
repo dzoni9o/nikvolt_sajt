@@ -1,15 +1,12 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/sections/hero";
 import { Emergency } from "@/components/sections/emergency";
-import { HowItWorks } from "@/components/sections/how-it-works";
 import { FaultAssessmentForm } from "@/components/forms/fault-assessment";
 import { Services } from "@/components/sections/services";
 import { Pricing } from "@/components/sections/pricing";
 import { Radovi } from "@/components/sections/radovi";
 import { Faq, homepageFaqItems } from "@/components/sections/faq";
-import { BlogTeaser } from "@/components/sections/blog-teaser";
 import { About } from "@/components/sections/about";
-import { Contact } from "@/components/sections/contact";
 import { JsonLd } from "@/components/site/json-ld";
 import { areaNames } from "@/lib/areas";
 import { faqPage, graph, localBusiness, webSite } from "@/lib/schema";
@@ -36,17 +33,22 @@ export default async function Home({
   return (
     <>
       <JsonLd data={data} />
+      {/* Redosled prati čoveka koji je upravo ostao bez struje: prvo ko si i
+          kako te zove, pa šta mu se dešava, pa koliko košta, pa dokaz da je
+          posao stvaran, pa ko dolazi. Forma nije sklonjena nego spuštena ispod
+          svega toga — za tri meseca je donela dva do pet zahteva.
+
+          Izašle su tri sekcije, 4.033 px na telefonu: „Kako funkcioniše"
+          (renderovala se dvaput, jednom za telefon jednom za monitor), blog na
+          naslovnoj, i „Kontakt" koji je duplirao podnožje i zaglavlje. */}
       <Hero />
       <Emergency locale={locale} />
-      <HowItWorks />
-      <FaultAssessmentForm />
-      <Services />
       <Pricing />
       <Radovi />
-      <Faq locale={locale} />
-      <BlogTeaser />
       <About />
-      <Contact />
+      <Services />
+      <FaultAssessmentForm />
+      <Faq locale={locale} />
     </>
   );
 }

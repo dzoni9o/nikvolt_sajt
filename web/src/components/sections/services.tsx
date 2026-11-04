@@ -1,78 +1,71 @@
 import { Link } from "@/i18n/navigation";
-import { assessHref } from "@/lib/site-config";
-import { ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { servicesConfig } from "@/lib/content";
 import { getEntryByKey } from "@/lib/mdx";
+
+/**
+ * Šest redova umesto deset kartica.
+ *
+ * Ovo je bila najduža sekcija na naslovnoj — 2.472 px na telefonu — jer je
+ * deset kartica u mreži koja ide do pet kolona na telefonu postaje deset
+ * blokova jedan ispod drugog, svaki sa ikonicom u kvadratiću i opisom.
+ * Ostalih pet usluga nisu nestale: stoje na /usluge, u podnožju i u tekstu.
+ */
+const NA_NASLOVNOJ = [
+  "diagnostics",
+  "panels",
+  "new-installation",
+  "outlet-replacement",
+  "lighting",
+  "grounding",
+] as const;
 
 export async function Services() {
   const t = await getTranslations("Services");
   const f = await getFormatter();
   const locale = await getLocale();
 
-  // Each card now has a real destination. servicesConfig ids double as the MDX
-  // translation keys, so a card falls back to the form only if its page has
-  // not been written in this locale yet.
-  const cards = servicesConfig.map((s) => ({
-    ...s,
-    entry: getEntryByKey("usluge", locale, s.id),
-  }));
+  const rows = NA_NASLOVNOJ.map((id) => ({
+    id,
+    cfg: servicesConfig.find((s) => s.id === id),
+    entry: getEntryByKey("usluge", locale, id),
+  })).filter((r) => r.entry);
 
   return (
-    <section id="services" className="bg-paper">
-      <div className="container-page py-20 md:py-28">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div className="max-w-xl">
-            <h2 className="mt-3 font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
-              {t("title")}
-            </h2>
-          </div>
-          <Link href={assessHref} className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:underline underline-offset-4 decoration-brand decoration-2">
-            {t("ctaTop")} <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
+    <section id="services" className="border-b border-border">
+      <div className="container-page py-14 md:py-16">
+        <h2 className="font-display text-balance text-2xl font-bold text-foreground sm:text-3xl">
+          {t("title")}
+        </h2>
 
-        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {cards.map((s) => {
-            const Icon = s.icon;
-            return (
+        <ul className="mt-7 max-w-2xl">
+          {rows.map(({ id, cfg, entry }) => (
+            <li key={id} className="border-b border-border last:border-0">
               <Link
-                key={s.id}
-                href={
-                  s.entry
-                    ? { pathname: "/usluge/[slug]", params: { slug: s.entry.slug } }
-                    : assessHref
-                }
-                className="group relative flex flex-col gap-4 rounded-2xl border border-border bg-card p-5 hover:border-foreground/30"
+                href={{ pathname: "/usluge/[slug]", params: { slug: entry!.slug } }}
+                className="flex min-h-[52px] items-center gap-3 py-1 text-foreground"
               >
-                <div className="flex items-center justify-between">
-                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand-soft text-foreground">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  {s.fromAmount !== undefined && (
-                    <span className="rounded-lg bg-muted px-2.5 py-1 text-[11px] font-semibold text-ink-soft">
-                      {t("fromPrice", {
-                        amount: f.number(s.fromAmount),
-                      })}
-                    </span>
-                  )}
-                </div>
-                <div>
-                  <h3 className="text-base font-semibold text-foreground">
-                    {t(`items.${s.id}.title`)}
-                  </h3>
-                  <p className="mt-1 text-sm text-ink-soft">
-                    {t(`items.${s.id}.description`)}
-                  </p>
-                </div>
-                <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-foreground">
-                  {s.entry ? t("cardMore") : t("cardCta")}
-                  <ArrowRight className="h-3.5 w-3.5" />
+                <span className="flex-1 text-base font-semibold">
+                  {t(`items.${id}.title`)}
                 </span>
+                {cfg?.fromAmount !== undefined ? (
+                  <span className="text-sm text-ink-soft tabular-nums">
+                    {t("fromPrice", { amount: f.number(cfg.fromAmount) })}
+                  </span>
+                ) : null}
+                <ChevronRight className="h-4 w-4 shrink-0 text-ink-soft" aria-hidden />
               </Link>
-            );
-          })}
-        </div>
+            </li>
+          ))}
+        </ul>
+
+        <Link
+          href="/usluge"
+          className="mt-6 inline-block text-sm font-semibold text-foreground underline decoration-brand decoration-2 underline-offset-4"
+        >
+          {t("allServices", { count: servicesConfig.length })}
+        </Link>
       </div>
     </section>
   );

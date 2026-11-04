@@ -79,9 +79,6 @@ export const pricingRowIds: PricingRowId[] = [
   "newPoint",
 ];
 
-export const howItWorksSteps = ["01", "02", "03", "04"] as const;
-export type StepId = (typeof howItWorksSteps)[number];
-
 export type ServiceCategory =
   | "no-power"
   | "fuse-trip"

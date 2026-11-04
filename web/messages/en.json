@@ -29,17 +29,13 @@
     "call": "Call"
   },
   "Hero": {
-    "availability": "Available right now in {city} · response {responseTime}",
     "responseTime": "under 30 minutes",
     "h1Lead": "An electrician in {city}",
-    "h1Highlight": "without guesswork",
-    "h1Tail": "on price.",
-    "lead": "Send photos of the problem. Get a fault estimate, indicative price, and a visit slot — usually within an hour.",
-    "badgeLicensed": "Licensed · insured",
-    "badgeSameDay": "Same-day visits",
-    "badgeJobs": "{count, plural, one {# completed job} other {# completed jobs}}+",
+    "lead": "Same-day call-outs. I tell you what I see and what it costs before I touch a cable.",
     "photoAlt": "New consumer unit with circuit breakers and an RCD, after replacement",
-    "photoCaption": "The panel after replacement — circuit breakers and an RCD"
+    "photoCaption": "The panel after replacement — circuit breakers and an RCD",
+    "claims": "Licensed and insured · {years} years · over {jobs} call-outs · reply {responseTime}",
+    "orSendPhoto": "Or send a photo of the problem"
   },
   "Foto": {
     "pre": "Before",
@@ -76,29 +72,6 @@
       }
     },
     "more": "What counts as urgent and what waits"
-  },
-  "HowItWorks": {
-    "kicker": "How it works",
-    "title": "From a phone snap to a quiet panel.",
-    "lead": "Four steps. No back-and-forth and no surprises when we ring the doorbell.",
-    "steps": {
-      "01": {
-        "title": "Send photos and a short description",
-        "description": "Snap the panel, the outlet, whatever's smoking. Two minutes on your phone."
-      },
-      "02": {
-        "title": "Get an assessment and indicative price",
-        "description": "We tell you what's likely wrong, what it costs, and when we can come."
-      },
-      "03": {
-        "title": "Confirm and we arrive",
-        "description": "You confirm the slot. We arrive on time with the parts your fault needs."
-      },
-      "04": {
-        "title": "Fixed, measured, documented",
-        "description": "We test insulation and grounding. You get a photo record of what was done."
-      }
-    }
   },
   "Services": {
     "kicker": "Services",
@@ -148,7 +121,8 @@
         "description": "Earth resistance check with a calibrated instrument and a written record."
       }
     },
-    "cardMore": "See details"
+    "cardMore": "See details",
+    "allServices": "All {count} services"
   },
   "Pricing": {
     "kicker": "Indicative prices",
@@ -226,12 +200,6 @@
       }
     }
   },
-  "BlogTeaser": {
-    "kicker": "DIY & education",
-    "title": "Read before you call. Or call us straight away. Both work.",
-    "all": "All articles",
-    "readingTime": "{minutes, plural, one {# min read} other {# min read}}"
-  },
   "About": {
     "kicker": "About us",
     "title": "Fourteen years above someone's panel — usually right before something burns out.",
@@ -254,21 +222,6 @@
     "quote": "“Show me the panel before you give a quote.” That's the whole philosophy. If we don't see it, we don't price it.",
     "photoAlt": "An electrician in a work shirt laying cable in a dug trench in a garden",
     "photoCaption": "Laying a supply in a trench. The work does not stop at the flat door."
-  },
-  "Contact": {
-    "kicker": "Contact",
-    "title": "Pick the channel that fits your moment.",
-    "lead": "Phone for emergencies. WhatsApp or Viber for photos and a quote. Email if it can wait until tomorrow.",
-    "phoneLabel": "Phone",
-    "whatsappLabel": "WhatsApp",
-    "viberLabel": "Viber",
-    "emailLabel": "Email",
-    "openConversation": "Open chat",
-    "hoursTitle": "Working hours",
-    "workshopLabel": "Workshop",
-    "mapAreaLabel": "Service area",
-    "mapAreaCity": "{city} and surrounding municipalities",
-    "mapAreaNote": "Visits are typically scheduled within 60 minutes of confirmation."
   },
   "Hours": {
     "alwaysDay": "Every day",

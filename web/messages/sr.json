@@ -29,17 +29,13 @@
     "call": "Pozovi"
   },
   "Hero": {
-    "availability": "Dostupni odmah u {city}u · odgovor {responseTime}",
     "responseTime": "ispod 30 minuta",
     "h1Lead": "Električar u {city}u",
-    "h1Highlight": "bez nagađanja",
-    "h1Tail": "oko cene.",
-    "lead": "Pošalji slike problema. Dobijaš procenu rizika, okvirnu cenu popravke i vreme izlaska na teren — najčešće u roku od sat vremena.",
-    "badgeLicensed": "Licencirano · osigurano",
-    "badgeSameDay": "Izlazak istog dana",
-    "badgeJobs": "{count, plural, one {# završena intervencija} few {# završene intervencije} other {# završenih intervencija}}+",
+    "lead": "Izlazim isti dan. Kažem šta vidim i koliko košta pre nego što dotaknem kabl.",
     "photoAlt": "Nova razvodna tabla sa automatskim osiguračima i FID sklopkom, posle zamene",
-    "photoCaption": "Tabla posle zamene — automatski osigurači i FID sklopka"
+    "photoCaption": "Tabla posle zamene — automatski osigurači i FID sklopka",
+    "claims": "Licenciran i osiguran · {years} godina · preko {jobs} izlazaka · odgovor {responseTime}",
+    "orSendPhoto": "Ili pošalji sliku problema"
   },
   "Foto": {
     "pre": "Pre",
@@ -76,29 +72,6 @@
       }
     },
     "more": "Šta jeste hitno a šta čeka jutro"
-  },
-  "HowItWorks": {
-    "kicker": "Kako funkcioniše",
-    "title": "Od slike sa telefona do mirne table.",
-    "lead": "Četiri koraka. Bez nepotrebnog dopisivanja i bez iznenađenja kad zazvonimo na vrata.",
-    "steps": {
-      "01": {
-        "title": "Pošalji slike i kratak opis",
-        "description": "Slikaj tablu, utičnicu, ono što se dimi. Dva minuta na telefonu."
-      },
-      "02": {
-        "title": "Dobijaš procenu i okvirnu cenu",
-        "description": "Odgovaramo šta je verovatno problem, koliko košta i kad možemo da izađemo."
-      },
-      "03": {
-        "title": "Potvrdi i dolazimo",
-        "description": "Ti potvrdiš termin. Stižemo na vreme sa delovima koji odgovaraju tvom kvaru."
-      },
-      "04": {
-        "title": "Popravljeno, izmereno, dokumentovano",
-        "description": "Proveravamo izolaciju i uzemljenje. Dobijaš foto-zapisnik o tome šta je urađeno."
-      }
-    }
   },
   "Services": {
     "kicker": "Usluge",
@@ -148,7 +121,8 @@
         "description": "Provera otpora uzemljenja kalibrisanim instrumentom, sa zapisnikom."
       }
     },
-    "cardMore": "Pogledaj detalje"
+    "cardMore": "Pogledaj detalje",
+    "allServices": "Svih {count} usluga"
   },
   "Pricing": {
     "kicker": "Okvirne cene",
@@ -226,12 +200,6 @@
       }
     }
   },
-  "BlogTeaser": {
-    "kicker": "DIY & edukacija",
-    "title": "Pročitaj pre nego što pozoveš. Ili nas direktno zovi. Oba su u redu.",
-    "all": "Svi članci",
-    "readingTime": "{minutes, plural, one {# minut čitanja} few {# minuta čitanja} other {# minuta čitanja}}"
-  },
   "About": {
     "kicker": "O nama",
     "title": "Četrnaest godina iznad nečije table — najčešće tačno pre nego što nešto pregori.",
@@ -254,21 +222,6 @@
     "quote": "„Pokaži mi tablu pre nego što daš ponudu.“ Cela filozofija. Ako ne vidimo, ne dajemo cenu.",
     "photoAlt": "Električar u radnoj majici polaže kabl u iskopan rov u dvorištu",
     "photoCaption": "Polaganje voda u rov. Posao se ne završava u stanu."
-  },
-  "Contact": {
-    "kicker": "Kontakt",
-    "title": "Izaberi kanal koji ti najbolje odgovara u ovom trenutku.",
-    "lead": "Telefon za hitne slučajeve. WhatsApp ili Viber za slike i ponudu. Email ako može da čeka do sutra.",
-    "phoneLabel": "Telefon",
-    "whatsappLabel": "WhatsApp",
-    "viberLabel": "Viber",
-    "emailLabel": "Email",
-    "openConversation": "Otvori razgovor",
-    "hoursTitle": "Radno vreme",
-    "workshopLabel": "Radionica",
-    "mapAreaLabel": "Područje rada",
-    "mapAreaCity": "{city} i okolne opštine",
-    "mapAreaNote": "Izlasci se obično zakazuju u roku od 60 minuta od potvrde."
   },
   "Hours": {
     "alwaysDay": "Svaki dan",
