@@ -34,8 +34,10 @@
     "lead": "Same-day call-outs. I tell you what I see and what it costs before I touch a cable.",
     "photoAlt": "New consumer unit with two rows of circuit breakers",
     "photoCaption": "A new panel — a breaker for every circuit",
-    "claims": "Licensed and insured · {years} years · over {jobs} call-outs · reply {responseTime}",
-    "orSendPhoto": "Or send a photo of the problem"
+    "claimLicensed": "Licensed and insured",
+    "claimYears": "{years} years of experience",
+    "claimJobs": "Over {jobs} call-outs",
+    "claimResponse": "Reply {responseTime}"
   },
   "Foto": {
     "pre": "Before",

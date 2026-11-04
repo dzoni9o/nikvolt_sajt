@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone, MessageCircle, Camera } from "lucide-react";
 import { site, assessHref } from "@/lib/site-config";
 import { ContactLink } from "@/components/site/contact-link";
 // Statički uvoz, a ne putanja u stringu: odatle Next sam zna širinu, visinu i
@@ -55,7 +55,7 @@ export async function Hero() {
             {t("lead")}
           </p>
 
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-7 flex flex-col gap-3">
             {/* Telefon je prvo dugme, i jedino žuto na ovom ekranu. */}
             <ContactLink
               channel="phone"
@@ -65,6 +65,14 @@ export async function Hero() {
               <Phone className="h-5 w-5" />
               {site.phoneDisplay}
             </ContactLink>
+            {/* Slanje slike je pravo dugme, ne potpisani link u dnu. */}
+            <Link
+              href={assessHref}
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-6 py-4 text-base font-semibold text-background hover:opacity-90"
+            >
+              <Camera className="h-5 w-5" />
+              {tCta("sendProblem")}
+            </Link>
             <ContactLink
               channel="whatsapp"
               source="hero"
@@ -75,21 +83,26 @@ export async function Hero() {
             </ContactLink>
           </div>
 
-          <p className="mt-5 text-sm text-ink-soft">
-            {t("claims", {
-              years: site.yearsExperience,
-              jobs: site.jobsCompleted,
-              responseTime: t("responseTime"),
-            })}
-          </p>
-
-          {/* Forma nije sklonjena, samo je prestala da bude prvi potez. */}
-          <Link
-            href={assessHref}
-            className="mt-3 inline-block text-sm font-semibold text-foreground underline decoration-brand decoration-2 underline-offset-4"
-          >
-            {t("orSendPhoto")}
-          </Link>
+          {/* Četiri tvrdnje, svaka u svom redu. Ranije su stajale kao jedan
+              sivi red razdvojen tačkama, pa se nijedna nije videla. */}
+          <ul className="mt-6 space-y-2">
+            {[
+              t("claimLicensed"),
+              t("claimYears", { years: site.yearsExperience }),
+              t("claimJobs", { jobs: site.jobsCompleted }),
+              t("claimResponse", { responseTime: t("responseTime") }),
+            ].map((tvrdnja) => (
+              <li key={tvrdnja} className="flex items-start gap-3">
+                <span
+                  aria-hidden
+                  className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground"
+                />
+                <span className="text-base font-semibold text-foreground">
+                  {tvrdnja}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

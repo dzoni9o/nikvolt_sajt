@@ -34,8 +34,10 @@
     "lead": "Izlazim isti dan. Kažem šta vidim i koliko košta pre nego što dotaknem kabl.",
     "photoAlt": "Nova razvodna tabla sa dva reda automatskih osigurača",
     "photoCaption": "Nova tabla — svako kolo ima svoj osigurač",
-    "claims": "Licenciran i osiguran · {years} godina · preko {jobs} izlazaka · odgovor {responseTime}",
-    "orSendPhoto": "Ili pošalji sliku problema"
+    "claimLicensed": "Licenciran i osiguran",
+    "claimYears": "{years} godina iskustva",
+    "claimJobs": "Preko {jobs} izlazaka na teren",
+    "claimResponse": "Odgovor {responseTime}"
   },
   "Foto": {
     "pre": "Pre",
