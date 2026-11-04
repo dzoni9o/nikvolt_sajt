@@ -6,13 +6,13 @@
   },
   "Nav": {
     "services": "Услуги",
-    "emergency": "Частые поломки",
-    "blog": "Советы DIY",
+    "emergency": "Неисправности",
+    "blog": "Советы",
     "tools": "Инструменты",
     "pricing": "Цены",
-    "contact": "Контакты",
     "areas": "Районы",
-    "glossary": "Словарь по электрике"
+    "glossary": "Словарь по электрике",
+    "menu": "Главное меню"
   },
   "LocaleSwitcher": {
     "label": "Язык",
@@ -25,7 +25,8 @@
     "callNow": "Позвонить",
     "callWithNumber": "Позвонить {phone}",
     "openConversation": "Открыть чат",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "call": "Позвонить"
   },
   "Hero": {
     "availability": "Доступны прямо сейчас в {city} · ответ {responseTime}",
@@ -278,11 +279,12 @@
     "siteHeading": "Сайт",
     "contactHeading": "Контакты",
     "hoursHeading": "Часы работы",
-    "blog": "Блог",
     "copyright": "© {year} {name}. Лицензированный электрик — {city}.",
     "legal": "Рег. номер {reg} · Налоговый номер (PIB) {tax}",
     "privacy": "Политика конфиденциальности",
-    "terms": "Условия использования"
+    "terms": "Условия использования",
+    "allServices": "Все услуги",
+    "allAreas": "Все районы"
   },
   "Form": {
     "kicker": "Оценка",
@@ -420,18 +422,6 @@
     "appsLead": "Внутренние инструменты, доступные прямо в браузере.",
     "appsOpen": "Открыть приложение",
     "apps": {
-      "ponude": {
-        "title": "Расчёты",
-        "description": "Расчёт материалов и формирование предложений для клиентов."
-      },
-      "tabla": {
-        "title": "Щиток",
-        "description": "Визуализация электрощитка."
-      },
-      "dnevnik": {
-        "title": "Журнал",
-        "description": "Журнал выполненных работ."
-      },
       "calculator": {
         "title": "Калькулятор",
         "description": "Калькулятор сечения кабеля для нагрузок."

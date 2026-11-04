@@ -11,9 +11,6 @@ import {
   Wrench,
   ArrowRight,
   ExternalLink,
-  MapPin,
-  LayoutGrid,
-  BookOpen,
   Calculator,
 } from "lucide-react";
 import { routing } from "@/i18n/routing";
@@ -50,7 +47,7 @@ type AppDesign = {
 };
 
 type WebApp = {
-  key: "ponude" | "tabla" | "dnevnik" | "calculator";
+  key: "calculator";
   href: string;
   subdomain: string;
   icon: ReactNode;
@@ -58,51 +55,6 @@ type WebApp = {
 };
 
 const webApps: WebApp[] = [
-  {
-    key: "ponude",
-    href: "https://ponude.nikvolt.com/",
-    subdomain: "ponude.nikvolt.com",
-    icon: <MapPin className="h-6 w-6" />,
-    design: {
-      bg: "#eae4d2",
-      bgGrid: true,
-      text: "#1a2415",
-      textSoft: "#4d5f47",
-      accent: "#8a6200",
-      iconBg: "rgba(50,90,55,0.12)",
-      border: "rgba(60,95,60,0.18)",
-    },
-  },
-  {
-    key: "tabla",
-    href: "https://tabla.nikvolt.com/",
-    subdomain: "tabla.nikvolt.com",
-    icon: <LayoutGrid className="h-6 w-6" />,
-    design: {
-      bg: "#20251b",
-      bgGrid: false,
-      text: "#f4ecd8",
-      textSoft: "rgba(244,236,216,0.52)",
-      accent: "#ffcf21",
-      iconBg: "rgba(255,207,33,0.12)",
-      border: "rgba(235,224,190,0.1)",
-    },
-  },
-  {
-    key: "dnevnik",
-    href: "https://dnevnik.nikvolt.com/",
-    subdomain: "dnevnik.nikvolt.com",
-    icon: <BookOpen className="h-6 w-6" />,
-    design: {
-      bg: "#2d3528",
-      bgGrid: false,
-      text: "#e8e0cc",
-      textSoft: "rgba(232,224,204,0.52)",
-      accent: "#ffcf21",
-      iconBg: "rgba(255,207,33,0.1)",
-      border: "rgba(232,224,204,0.08)",
-    },
-  },
   {
     key: "calculator",
     href: "https://calculator.nikvolt.com/",
@@ -119,6 +71,7 @@ const webApps: WebApp[] = [
     },
   },
 ];
+
 
 type ToolItem = {
   key: string;

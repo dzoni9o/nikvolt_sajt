@@ -77,7 +77,7 @@ export type NavItemId =
   | "glossary"
   | "tools"
   | "pricing"
-  | "contact";
+  | "areas";
 
 /**
  * Anchors are written as { pathname: "/", hash } rather than bare "#pricing"
@@ -98,18 +98,25 @@ export type NavItem =
   | { id: NavItemId; href: NavHref }
   | { id: NavItemId; serviceKey: string };
 
+/**
+ * Šest stavki, redom po tome zbog čega ljudi dolaze.
+ *
+ * Tri natpisa su ranije lagala: "Najčešći kvarovi" je vodio na stranicu hitnih
+ * intervencija, "DIY saveti" na blog (električar ne poziva ljude da sami rade),
+ * a "Alati" je spisak njegovih instrumenata, ne alatke za posetioca — taj je
+ * izašao iz menija i ostao u podnožju. "Opštine" je dodat: deset stranica
+ * opština ranije nije bilo u meniju uopšte. "Kontakt" je izašao jer telefon
+ * sada stoji u zaglavlju na svakoj stranici.
+ */
 export const navigation: NavItem[] = [
-  // Services now have real indexable pages, so the nav points at those rather
-  // than at the homepage anchor.
-  { id: "services", href: "/usluge" },
   // Emergencies are the highest-intent thing this business sells, so the nav
   // leads to the page that can rank for it rather than to a homepage section.
   { id: "emergency", serviceKey: "emergency-callout" },
-  { id: "blog", href: "/blog" },
-  { id: "glossary", href: "/pojmovnik" },
-  { id: "tools", href: "/alati" },
+  { id: "services", href: "/usluge" },
   { id: "pricing", href: { pathname: "/", hash: "pricing" } },
-  { id: "contact", href: { pathname: "/", hash: "contact" } },
+  { id: "areas", href: "/lokacije" },
+  { id: "glossary", href: "/pojmovnik" },
+  { id: "blog", href: "/blog" },
 ];
 
 /** The homepage fault-assessment form — the primary CTA target sitewide. */

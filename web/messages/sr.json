@@ -6,13 +6,13 @@
   },
   "Nav": {
     "services": "Usluge",
-    "emergency": "Najčešći kvarovi",
-    "blog": "DIY saveti",
+    "emergency": "Kvarovi",
+    "blog": "Saveti",
     "tools": "Alati",
     "pricing": "Cene",
-    "contact": "Kontakt",
-    "areas": "Lokacije",
-    "glossary": "Pojmovnik struje"
+    "areas": "Opštine",
+    "glossary": "Pojmovnik struje",
+    "menu": "Glavni meni"
   },
   "LocaleSwitcher": {
     "label": "Jezik",
@@ -25,7 +25,8 @@
     "callNow": "Pozovi odmah",
     "callWithNumber": "Pozovi {phone}",
     "openConversation": "Otvori razgovor",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "call": "Pozovi"
   },
   "Hero": {
     "availability": "Dostupni odmah u {city}u · odgovor {responseTime}",
@@ -278,11 +279,12 @@
     "siteHeading": "Sajt",
     "contactHeading": "Kontakt",
     "hoursHeading": "Radno vreme",
-    "blog": "Blog",
     "copyright": "© {year} {name}. Licencirani električar — {city}.",
     "legal": "Matični broj {reg} · PIB {tax}",
     "privacy": "Politika privatnosti",
-    "terms": "Uslovi korišćenja"
+    "terms": "Uslovi korišćenja",
+    "allServices": "Sve usluge",
+    "allAreas": "Sve opštine"
   },
   "Form": {
     "kicker": "Procena",
@@ -420,18 +422,6 @@
     "appsLead": "Interne alatke dostupne direktno u pregledaču.",
     "appsOpen": "Otvori aplikaciju",
     "apps": {
-      "ponude": {
-        "title": "Ponude",
-        "description": "Proračun materijala i kreiranje ponuda klijentima."
-      },
-      "tabla": {
-        "title": "Tabla",
-        "description": "Vizualizacija elektro table."
-      },
-      "dnevnik": {
-        "title": "Dnevnik",
-        "description": "Dnevnik rada."
-      },
       "calculator": {
         "title": "Kalkulator",
         "description": "Kalkulator preseka kabla za potrošače."

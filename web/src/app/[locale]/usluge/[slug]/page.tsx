@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 import { MdxBody } from "@/components/mdx-body";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowLeft, ArrowRight, MapPin, Phone, Send } from "lucide-react";
+import { ArrowRight, MapPin, Phone, Send } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { JsonLd } from "@/components/site/json-ld";
+import { Breadcrumbs } from "@/components/site/breadcrumbs";
 import { Backlinks } from "@/components/site/backlinks";
 import { FaqList } from "@/components/sections/faq";
 import { areaNames } from "@/lib/areas";
@@ -105,13 +106,14 @@ export default async function ServicePage({ params }: Props) {
     <article className="pb-16">
       <JsonLd data={data} />
 
-      <div className="container-page pt-10">
-        <Link
-          href="/usluge"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-soft hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" /> {t("allServices")}
-        </Link>
+      <div className="container-page pt-8">
+        <Breadcrumbs
+          trail={[
+            { name: site.name, href: "/" },
+            { name: tNav("services"), href: "/usluge" },
+            { name: entry.title, href: { pathname: "/usluge/[slug]", params: { slug: entry.slug } } },
+          ]}
+        />
       </div>
 
       <header className="container-page mt-6 max-w-3xl">

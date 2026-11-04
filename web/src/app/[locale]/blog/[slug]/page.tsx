@@ -2,7 +2,7 @@ import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MdxBody } from "@/components/mdx-body";
-import { ArrowLeft, ArrowRight, Phone, Send } from "lucide-react";
+import { ArrowRight, Phone, Send } from "lucide-react";
 import { hasLocale } from "next-intl";
 import {
   getFormatter,
@@ -16,6 +16,7 @@ import { site } from "@/lib/site-config";
 import { ContactLink } from "@/components/site/contact-link";
 import { alternatesForEntry } from "@/lib/seo";
 import { JsonLd } from "@/components/site/json-ld";
+import { Breadcrumbs } from "@/components/site/breadcrumbs";
 import { Backlinks } from "@/components/site/backlinks";
 import { blogPosting, breadcrumbs, graph } from "@/lib/schema";
 
@@ -85,10 +86,14 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <article className="pb-16">
       <JsonLd data={data} />
-      <div className="container-page pt-10">
-        <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-soft hover:text-foreground">
-          <ArrowLeft className="h-4 w-4" /> {t("allArticles")}
-        </Link>
+      <div className="container-page pt-8">
+        <Breadcrumbs
+          trail={[
+            { name: site.name, href: "/" },
+            { name: t("kicker"), href: "/blog" },
+            { name: post.title, href: href },
+          ]}
+        />
       </div>
 
       <header className="container-page mt-6 max-w-3xl">
@@ -145,11 +150,9 @@ export default async function BlogPostPage({ params }: Props) {
               <div className="text-sm font-semibold text-ink-soft">
                 {tSidebar("tags")}
               </div>
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {post.tags.map((tg) => (
-                  <span key={tg} className="rounded-lg bg-muted px-2.5 py-1 text-xs font-medium text-foreground">{tg}</span>
-                ))}
-              </div>
+              <p className="mt-1.5 text-sm text-ink-soft">
+                {post.tags.join(" · ")}
+              </p>
             </div>
           )}
         </aside>

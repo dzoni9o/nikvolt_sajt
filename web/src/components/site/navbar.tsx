@@ -1,160 +1,72 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
-import { Phone, MessageCircle, Menu, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { getTranslations } from "next-intl/server";
+import { Phone, MessageCircle } from "lucide-react";
 import { Logo } from "./logo";
-import { LocaleSwitcher } from "./locale-switcher";
-import type { SlugMap } from "@/lib/mdx";
-import { site, assessHref, type NavItemId, type NavHref } from "@/lib/site-config";
+import { site, type NavItemId, type NavHref } from "@/lib/site-config";
 import { ContactLink } from "@/components/site/contact-link";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-  SheetClose,
-} from "@/components/ui/sheet";
-import { Separator } from "@/components/ui/separator";
 
-export function Navbar({
-  slugMap,
+/**
+ * Zaglavlje.
+ *
+ * Ranije je ovo bila klijentska komponenta sa scroll listenerom, prekidačem za
+ * temu, biračem jezika i hamburgerom iza koga je, ispod 1024 px, stajao **ceo**
+ * meni. Pošto 77% prikaza dolazi sa telefona, to je značilo da većina
+ * posetilaca nikad ne vidi nijednu stavku menija.
+ *
+ * Sada: logo i telefon u prvom redu, meni u drugom, vidljiv, pomera se prstom.
+ * Nema stanja, pa nema ni "use client" — zaglavlje se renderuje na serveru i ne
+ * šalje nijedan bajt JavaScripta.
+ */
+export async function Navbar({
   navItems,
 }: {
-  slugMap: SlugMap;
   navItems: { id: NavItemId; href: NavHref }[];
 }) {
-  const t = useTranslations("Nav");
-  const tCta = useTranslations("Cta");
-  const tBrand = useTranslations("Brand");
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const t = await getTranslations("Nav");
+  const tCta = await getTranslations("Cta");
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full border-b transition-[backdrop-filter,background-color,border-color] duration-300",
-        scrolled
-          ? "border-border bg-background/85 backdrop-blur-md"
-          : "border-transparent bg-background/0",
-      )}
-    >
-      <div className="container-page flex h-16 items-center justify-between gap-4 md:h-[72px]">
-        <div className="flex items-center gap-8">
-          <Logo size={26} />
-          <nav className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.id}
-                href={item.href}
-                className="rounded-md px-3 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-muted hover:text-foreground"
-              >
-                {t(item.id)}
-              </Link>
-            ))}
-          </nav>
-        </div>
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
+      <div className="container-page flex h-14 items-center justify-between gap-4">
+        <Logo size={24} />
 
         <div className="flex items-center gap-2">
-          <LocaleSwitcher className="hidden md:inline-flex" slugMap={slugMap} />
-          <ContactLink
-            channel="phone"
-            source="navbar"
-            className="hidden md:inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-foreground hover:bg-muted"
-          >
-            <Phone className="h-4 w-4" />
-            {site.phoneDisplay}
-          </ContactLink>
           <ContactLink
             channel="whatsapp"
             source="navbar"
-            className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:bg-muted"
+            className="hidden h-10 w-10 items-center justify-center rounded-lg border border-border text-foreground hover:bg-muted sm:inline-flex"
             ariaLabel={tCta("whatsapp")}
           >
             <MessageCircle className="h-4 w-4" />
           </ContactLink>
-          <Link
-            href={assessHref}
-            className="group hidden sm:inline-flex items-center gap-2 rounded-lg border border-foreground bg-foreground px-4 py-2 text-sm font-semibold text-background shadow-sm transition-all hover:bg-brand hover:text-brand-foreground hover:border-brand"
+          {/* Telefon je vidljiv na svakoj širini. To je ono zbog čega ljudi
+              dolaze na sajt električara. */}
+          <ContactLink
+            channel="phone"
+            source="navbar"
+            className="inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2.5 text-sm font-semibold text-background hover:bg-brand hover:text-brand-foreground"
           >
-            {tCta("sendProblem")}
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-
-          <Sheet>
-            <SheetTrigger
-              className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background"
-              aria-label={tBrand("menuOpen")}
-            >
-              <Menu className="h-5 w-5" />
-            </SheetTrigger>
-            <SheetContent side="right" className="flex w-[88vw] max-w-sm flex-col p-6">
-              <SheetHeader className="px-0">
-                <SheetTitle>
-                  <Logo size={28} />
-                </SheetTitle>
-              </SheetHeader>
-              <nav className="mt-6 flex flex-col gap-1">
-                {navItems.map((item) => (
-                  <SheetClose
-                    key={item.id}
-                    render={
-                      <Link
-                        href={item.href}
-                        className="flex items-center justify-between rounded-md px-3 py-3 text-base font-medium text-foreground hover:bg-muted"
-                      >
-                        {t(item.id)}
-                        <ArrowRight className="h-4 w-4 text-ink-soft" />
-                      </Link>
-                    }
-                  />
-                ))}
-              </nav>
-              <Separator className="my-6" />
-              <div className="flex flex-col gap-2">
-                <SheetClose
-                  render={
-                    <Link
-                      href={assessHref}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground"
-                    >
-                      {tCta("sendProblem")}
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  }
-                />
-                <ContactLink
-                  channel="phone"
-                  source="navbar"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-5 py-3 text-sm font-semibold"
-                >
-                  <Phone className="h-4 w-4" />{" "}
-                  {tCta("callWithNumber", { phone: site.phoneDisplay })}
-                </ContactLink>
-                <ContactLink
-                  channel="whatsapp"
-                  source="navbar"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-5 py-3 text-sm font-semibold"
-                >
-                  <MessageCircle className="h-4 w-4" /> {tCta("whatsapp")}
-                </ContactLink>
-                <div className="mt-2">
-                  <LocaleSwitcher slugMap={slugMap} />
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+            <Phone className="h-4 w-4" />
+            <span className="hidden sm:inline">{site.phoneDisplay}</span>
+            <span className="sm:hidden">{tCta("call")}</span>
+          </ContactLink>
         </div>
       </div>
+
+      <nav
+        aria-label={t("menu")}
+        className="border-t border-border [-ms-overflow-style:none] [scrollbar-width:none] overflow-x-auto [&::-webkit-scrollbar]:hidden"
+      >
+        <ul className="container-page flex items-center gap-5 whitespace-nowrap py-2.5 text-sm font-semibold">
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <Link href={item.href} className="text-ink-soft hover:text-foreground">
+                {t(item.id)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }

@@ -107,9 +107,9 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col bg-paper text-foreground">
         <NextIntlClientProvider>
-          <Navbar slugMap={buildSlugMap()} navItems={navigationFor(locale)} />
+          <Navbar navItems={navigationFor(locale)} />
           <main className="flex-1">{children}</main>
-          <Footer />
+          <Footer slugMap={buildSlugMap()} />
           <StickyMobileCTA />
           <Toaster richColors position="top-center" />
         </NextIntlClientProvider>

@@ -5,7 +5,8 @@ import { Logo } from "./logo";
 import { site } from "@/lib/site-config";
 import { navigationFor } from "@/lib/navigation";
 import { ContactLink } from "@/components/site/contact-link";
-import { getEntries } from "@/lib/mdx";
+import { getEntries, getEntryByKey, type SlugMap } from "@/lib/mdx";
+import { LocaleSwitcher } from "./locale-switcher";
 
 function InstagramIcon({ className }: { className?: string }) {
   return (
@@ -25,147 +26,117 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
-export async function Footer() {
+export async function Footer({ slugMap }: { slugMap: SlugMap }) {
   const t = await getTranslations("Footer");
   const tNav = await getTranslations("Nav");
   const tHours = await getTranslations("Hours");
   const tCta = await getTranslations("Cta");
   const locale = await getLocale();
 
-  // The footer is the main crawl path to the service and location pages: it is
-  // on every page, so one hop from anywhere reaches all of them.
   const navItems = navigationFor(locale);
-  const services = getEntries("usluge", locale);
-  const terms = getEntries("pojmovnik", locale).slice(0, 8);
-  const areas = getEntries("lokacije", locale);
+
+  // Podnožje je ranije nosilo 45 linkova: sve usluge, osam pojmova, svih deset
+  // opština. To je bio zid na dnu svake stranice, a na telefonu 2.000 px.
+  // Dugački spiskovi pripadaju indeksima; ovde stoji po pet najtraženijih i
+  // link na ceo spisak, pa je put do bilo koje stranice i dalje dva klika.
+  const services = ["panels", "emergency-callout", "new-installation", "outlet-replacement", "diagnostics"]
+    .map((key) => getEntryByKey("usluge", locale, key))
+    .filter((e) => e !== null && e !== undefined);
+  const areas = getEntries("lokacije", locale)
+    .filter((a) => ["zvezdara", "vracar", "novi-beograd", "zemun", "vozdovac"].includes(a.key))
+    .slice(0, 5);
 
   return (
-    <footer className="mt-24 border-t border-border bg-paper">
-      <div className="container-page py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6">
+    <footer className="mt-20 border-t border-border bg-secondary">
+      <div className="container-page py-12">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <Logo size={28} />
+            <Logo size={26} />
             <p className="max-w-xs text-sm text-ink-soft">{t("tagline")}</p>
             <div className="flex gap-2 pt-1">
-              <a href={site.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full border border-border hover:bg-muted">
+              <a href={site.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-lg border border-border hover:bg-muted">
                 <InstagramIcon className="h-4 w-4" />
               </a>
-              <a href={site.socials.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="grid h-9 w-9 place-items-center rounded-full border border-border hover:bg-muted">
+              <a href={site.socials.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="grid h-9 w-9 place-items-center rounded-lg border border-border hover:bg-muted">
                 <TikTokIcon className="h-4 w-4" />
               </a>
             </div>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-ink-soft">{t("siteHeading")}</h3>
-            <ul className="mt-4 space-y-2 text-sm">
+            <h3 className="text-sm font-semibold text-foreground">{t("siteHeading")}</h3>
+            <ul className="mt-3 space-y-2 text-sm">
               {navItems.map((item) => (
                 <li key={item.id}>
-                  <Link href={item.href} className="text-foreground/90 hover:text-foreground">
+                  <Link href={item.href} className="text-ink-soft hover:text-foreground">
                     {tNav(item.id)}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/blog" className="text-foreground/90 hover:text-foreground">{t("blog")}</Link>
+                <Link href="/alati" className="text-ink-soft hover:text-foreground">{tNav("tools")}</Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-ink-soft">{tNav("services")}</h3>
-            <ul className="mt-4 space-y-2 text-sm">
+            <h3 className="text-sm font-semibold text-foreground">{tNav("services")}</h3>
+            <ul className="mt-3 space-y-2 text-sm">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <Link
-                    href={{ pathname: "/usluge/[slug]", params: { slug: s.slug } }}
-                    className="text-foreground/90 hover:text-foreground"
-                  >
+                  <Link href={{ pathname: "/usluge/[slug]", params: { slug: s.slug } }} className="text-ink-soft hover:text-foreground">
                     {s.title}
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/usluge" className="font-semibold text-foreground hover:underline">{t("allServices")}</Link>
+              </li>
             </ul>
-          </div>
 
-          {terms.length > 0 && (
-            <div>
-              <h3 className="text-sm font-semibold text-ink-soft">{tNav("glossary")}</h3>
-              <ul className="mt-4 space-y-2 text-sm">
-                {terms.map((x) => (
-                  <li key={x.slug}>
-                    <Link
-                      href={{ pathname: "/pojmovnik/[slug]", params: { slug: x.slug } }}
-                      className="text-foreground/90 hover:text-foreground"
-                    >
-                      {x.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <div>
-            <h3 className="text-sm font-semibold text-ink-soft">{tNav("areas")}</h3>
-            <ul className="mt-4 space-y-2 text-sm">
+            <h3 className="mt-7 text-sm font-semibold text-foreground">{tNav("areas")}</h3>
+            <ul className="mt-3 space-y-2 text-sm">
               {areas.map((a) => (
                 <li key={a.slug}>
-                  <Link
-                    href={{ pathname: "/lokacije/[slug]", params: { slug: a.slug } }}
-                    className="text-foreground/90 hover:text-foreground"
-                  >
+                  <Link href={{ pathname: "/lokacije/[slug]", params: { slug: a.slug } }} className="text-ink-soft hover:text-foreground">
                     {a.area}
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/lokacije" className="font-semibold text-foreground hover:underline">{t("allAreas")}</Link>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-ink-soft">{t("contactHeading")}</h3>
-            <ul className="mt-4 space-y-2.5 text-sm">
+            <h3 className="text-sm font-semibold text-foreground">{t("contactHeading")}</h3>
+            <ul className="mt-3 space-y-2.5 text-sm">
               <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-ink-soft" /><ContactLink channel="phone" source="footer">{site.phoneDisplay}</ContactLink></li>
               <li className="flex items-center gap-2"><MessageCircle className="h-4 w-4 text-ink-soft" /><ContactLink channel="whatsapp" source="footer">{tCta("whatsapp")}</ContactLink></li>
               <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-ink-soft" /><ContactLink channel="email" source="footer">{site.email}</ContactLink></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-ink-soft">{t("hoursHeading")}</h3>
-            <ul className="mt-4 space-y-2.5 text-sm">
-              <li className="flex items-center justify-between gap-3">
-                <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-ink-soft" />{tHours("alwaysDay")}</span>
-                <span className="font-semibold text-foreground">{tHours("alwaysHours")}</span>
-              </li>
+              <li className="flex items-center gap-2 text-ink-soft"><Clock className="h-4 w-4" />{tHours("alwaysDay")} {tHours("alwaysHours")}</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-ink-soft md:flex-row md:items-center">
+        <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 text-sm text-ink-soft md:flex-row md:items-center">
           <div className="space-y-1">
-            <p>
-              {t("copyright", {
-                year: new Date().getFullYear(),
-                name: site.name,
-                city: site.city,
-              })}
-            </p>
+            <p>{t("copyright", { year: new Date().getFullYear(), name: site.name, city: site.city })}</p>
             {/* Identifikacija privrednog subjekta. Registrovani naziv namerno
                 nije ovde: kod preduzetnika sadrži lično ime, pa stoji na
                 pravnim stranicama. Bez oba broja se red ne renderuje. */}
             {site.registrationNumber && site.taxNumber ? (
-              <p>
-                {t("legal", {
-                  reg: site.registrationNumber,
-                  tax: site.taxNumber,
-                })}
-              </p>
+              <p>{t("legal", { reg: site.registrationNumber, tax: site.taxNumber })}</p>
             ) : null}
           </div>
-          <div className="flex gap-5">
+          <div className="flex flex-wrap items-center gap-5">
             <Link href="/privatnost" className="hover:text-foreground">{t("privacy")}</Link>
             <Link href="/uslovi" className="hover:text-foreground">{t("terms")}</Link>
+            {/* Birač jezika je bio u zaglavlju, na najboljem mestu na ekranu.
+                Srbija, Hrvatska i BiH nose 90% klikova; ruski je 254 prikaza i
+                2 klika za kvartal. Ovde mu je mesto. */}
+            <LocaleSwitcher slugMap={slugMap} />
           </div>
         </div>
       </div>

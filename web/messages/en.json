@@ -6,13 +6,13 @@
   },
   "Nav": {
     "services": "Services",
-    "emergency": "Common faults",
-    "blog": "DIY tips",
+    "emergency": "Faults",
+    "blog": "Advice",
     "tools": "Tools",
     "pricing": "Pricing",
-    "contact": "Contact",
     "areas": "Areas",
-    "glossary": "Electricity glossary"
+    "glossary": "Electricity glossary",
+    "menu": "Main menu"
   },
   "LocaleSwitcher": {
     "label": "Language",
@@ -25,7 +25,8 @@
     "callNow": "Call now",
     "callWithNumber": "Call {phone}",
     "openConversation": "Open chat",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "call": "Call"
   },
   "Hero": {
     "availability": "Available right now in {city} · response {responseTime}",
@@ -278,11 +279,12 @@
     "siteHeading": "Site",
     "contactHeading": "Contact",
     "hoursHeading": "Hours",
-    "blog": "Blog",
     "copyright": "© {year} {name}. Licensed electrician — {city}.",
     "legal": "Company reg. no. {reg} · Tax ID (PIB) {tax}",
     "privacy": "Privacy policy",
-    "terms": "Terms of use"
+    "terms": "Terms of use",
+    "allServices": "All services",
+    "allAreas": "All areas"
   },
   "Form": {
     "kicker": "Assessment",
@@ -420,18 +422,6 @@
     "appsLead": "In-house tools available directly in the browser.",
     "appsOpen": "Open app",
     "apps": {
-      "ponude": {
-        "title": "Quotes",
-        "description": "Material calculation and client quote builder."
-      },
-      "tabla": {
-        "title": "Panel",
-        "description": "Distribution panel visualiser."
-      },
-      "dnevnik": {
-        "title": "Log",
-        "description": "Work diary."
-      },
       "calculator": {
         "title": "Calculator",
         "description": "Cable cross-section calculator for loads."

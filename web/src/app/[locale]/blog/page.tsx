@@ -47,17 +47,11 @@ export default async function BlogIndex({
         <p className="mt-5 text-base text-ink-soft sm:text-lg">{t("lead")}</p>
       </header>
 
-      {/* Categories used to be inert <span>s. They now describe what is here and
-          hand the reader the glossary, which is the other half of the material. */}
-      <div className="mt-10 flex flex-wrap items-center gap-2">
-        {categories.map((c) => (
-          <span
-            key={c}
-            className="rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-semibold text-ink-soft"
-          >
-            {c}
-          </span>
-        ))}
+      {/* Kategorije su neklikabilne i ostaju takve — pravljenje arhive po
+          kategoriji znacilo bi nove URL-ove. Zato gube oblik dugmeta: pilula
+          koja ne radi nista je obecanje koje sajt ne ispunjava. */}
+      <div className="mt-10 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-sm text-ink-soft">
+        <span>{categories.join(" · ")}</span>
         {hasGlossary && (
           <Link
             href="/pojmovnik"
