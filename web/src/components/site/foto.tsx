@@ -16,6 +16,12 @@ import { photos, type PhotoName } from "@/lib/photos";
  * Dimenzije dolaze iz `src/lib/photos.ts`, koji piše `scripts/photos.mjs`, pa
  * se slika ne seče u pretpostavljeni odnos i ne ostavlja prazninu dok se
  * učitava.
+ *
+ * PRAVILO ZA `alt` I `opis`: opisuju samo ono što je nesporno vidljivo na
+ * slici. Nijedan uređaj se ne imenuje dok Nikola ne potvrdi šta je. Ovo je
+ * napisano posle greške u kojoj je potpis tvrdio da na tabli stoji FID
+ * sklopka, a na njoj je nije bilo — potpis je bio napisan za drugu
+ * fotografiju i ostao kad je slika zamenjena.
  */
 
 function isKnown(ime: string): ime is PhotoName {

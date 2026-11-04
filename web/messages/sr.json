@@ -32,8 +32,8 @@
     "responseTime": "ispod 30 minuta",
     "h1Lead": "Električar u {city}u",
     "lead": "Izlazim isti dan. Kažem šta vidim i koliko košta pre nego što dotaknem kabl.",
-    "photoAlt": "Nova razvodna tabla sa automatskim osiguračima i FID sklopkom, posle zamene",
-    "photoCaption": "Tabla posle zamene — automatski osigurači i FID sklopka",
+    "photoAlt": "Nova razvodna tabla sa dva reda automatskih osigurača",
+    "photoCaption": "Nova tabla — svako kolo ima svoj osigurač",
     "claims": "Licenciran i osiguran · {years} godina · preko {jobs} izlazaka · odgovor {responseTime}",
     "orSendPhoto": "Ili pošalji sliku problema"
   },
@@ -171,8 +171,8 @@
     "pre": "Pre",
     "posle": "Posle",
     "parAltPre": "Stara razvodna tabla sa tri reda keramičkih osigurača i rukom pisanim nalepnicama",
-    "parAltPosle": "Nova razvodna tabla sa tri reda automatskih osigurača i FID sklopkom",
-    "parOpis": "Ista tabla u istom stanu. Levo keramički osigurači i nijedna FID sklopka, desno automatski osigurač po kolu i FID zaštita.",
+    "parAltPosle": "Nova razvodna tabla sa tri reda automatskih osigurača",
+    "parOpis": "Ista tabla u istom stanu. Levo keramički osigurači, desno automatski osigurač po kolu.",
     "slike": {
       "dnevna-soba-rasveta": {
         "alt": "Dnevna soba sa ugradnim spotovima u spuštenom plafonu i linijskom zidnom lampom",

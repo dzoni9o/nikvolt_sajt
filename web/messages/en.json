@@ -32,8 +32,8 @@
     "responseTime": "under 30 minutes",
     "h1Lead": "An electrician in {city}",
     "lead": "Same-day call-outs. I tell you what I see and what it costs before I touch a cable.",
-    "photoAlt": "New consumer unit with circuit breakers and an RCD, after replacement",
-    "photoCaption": "The panel after replacement — circuit breakers and an RCD",
+    "photoAlt": "New consumer unit with two rows of circuit breakers",
+    "photoCaption": "A new panel — a breaker for every circuit",
     "claims": "Licensed and insured · {years} years · over {jobs} call-outs · reply {responseTime}",
     "orSendPhoto": "Or send a photo of the problem"
   },
@@ -171,8 +171,8 @@
     "pre": "Before",
     "posle": "After",
     "parAltPre": "Old consumer unit with three rows of ceramic screw fuses and hand-written labels",
-    "parAltPosle": "New consumer unit with three rows of circuit breakers and an RCD",
-    "parOpis": "The same board in the same flat. Ceramic fuses and no RCD on the left; a breaker per circuit and RCD protection on the right.",
+    "parAltPosle": "New consumer unit with three rows of circuit breakers",
+    "parOpis": "The same board in the same flat. Ceramic fuses on the left, a breaker per circuit on the right.",
     "slike": {
       "dnevna-soba-rasveta": {
         "alt": "Living room with recessed ceiling spots and a linear wall light",
