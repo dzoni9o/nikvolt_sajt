@@ -121,6 +121,10 @@
       "grounding": {
         "title": "Uzemljenje",
         "description": "Provera otpora uzemljenja kalibrisanim instrumentom, sa zapisnikom."
+      },
+      "ev-charger": {
+        "title": "Punjači za električni auto",
+        "description": "Wallbox na svom kolu, FID tipa B, snaga usklađena sa odobrenom."
       }
     },
     "cardMore": "Pogledaj detalje",

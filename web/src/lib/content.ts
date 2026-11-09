@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   Factory,
   CircuitBoard,
+  EvCharger,
   type LucideIcon,
 } from "lucide-react";
 
@@ -43,7 +44,8 @@ export type ServiceId =
   | "smart-home"
   | "diagnostics"
   | "industrial"
-  | "grounding";
+  | "grounding"
+  | "ev-charger";
 
 export const servicesConfig: {
   id: ServiceId;
@@ -60,6 +62,7 @@ export const servicesConfig: {
   { id: "diagnostics", icon: Wrench, fromAmount: 2000 },
   { id: "industrial", icon: Factory },
   { id: "grounding", icon: ShieldCheck },
+  { id: "ev-charger", icon: EvCharger },
 ];
 
 export type PricingRowId =

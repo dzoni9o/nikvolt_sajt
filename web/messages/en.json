@@ -121,6 +121,10 @@
       "grounding": {
         "title": "Grounding",
         "description": "Earth resistance check with a calibrated instrument and a written record."
+      },
+      "ev-charger": {
+        "title": "EV chargers",
+        "description": "Wallbox on its own circuit, type B RCD, power matched to your supply."
       }
     },
     "cardMore": "See details",
