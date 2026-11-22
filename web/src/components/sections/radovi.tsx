@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { Galerija } from "@/components/site/galerija";
 import { photos, type PhotoName } from "@/lib/photos";
 
 /**
@@ -13,14 +14,21 @@ import { photos, type PhotoName } from "@/lib/photos";
  * rasporedu dok se slike učitavaju.
  */
 
+/**
+ * Šest slika koje se NE pojavljuju u galeriji u heroju. Hero je dobio svojih
+ * šest, pa naslovna sada pokazuje dvanaest različitih poslova umesto da iste
+ * fotografije ponavlja dvaput u razmaku od četiri ekrana.
+ *
+ * „linijska-rasveta" je ista dnevna soba kao „dnevna-soba-rasveta" u heroju,
+ * samo iz drugog ugla — razmaknute su koliko se dalo da se ne čita kao jedan
+ * posao prikazan dvaput.
+ */
 const GRID: PhotoName[] = [
-  "dnevna-soba-rasveta",
-  "zlebovi-i-kutije",
-  "led-traka-dvoriste",
-  "kafic-rasveta",
-  "profesionalna-kuhinja",
-  // Ne „linijska-rasveta": to je ista dnevna soba kao prva slika u mreži, samo
-  // iz drugog ugla, pa je izgledalo kao da nema više od jednog posla.
+  "novo-kolo-u-zidu",
+  "utp-i-struja",
+  "kuhinja-u-radu",
+  "linijska-rasveta",
+  "led-ispod-elemenata",
   "kanalice-na-zidu",
 ];
 
@@ -73,22 +81,8 @@ export async function Radovi() {
         </figcaption>
       </figure>
 
-      <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3">
-        {GRID.map((ime) => (
-          <figure key={ime} className="m-0">
-            <Image
-              src={`/photos/${ime}.jpg`}
-              alt={t(`slike.${ime}.alt`)}
-              width={photos[ime].w}
-              height={photos[ime].h}
-              sizes="(min-width: 768px) 24rem, 45vw"
-              className="aspect-[4/3] w-full rounded-xl border border-border object-cover"
-            />
-            <figcaption className="mt-2 text-sm text-ink-soft">
-              {t(`slike.${ime}.opis`)}
-            </figcaption>
-          </figure>
-        ))}
+      <div className="mt-12">
+        <Galerija imena={GRID} varijanta="mreza" />
       </div>
     </section>
   );

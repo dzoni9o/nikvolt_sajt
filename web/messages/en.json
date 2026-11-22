@@ -32,8 +32,6 @@
     "responseTime": "under 30 minutes",
     "h1Lead": "An electrician in {city}",
     "lead": "Same-day call-outs. I tell you what I see and what it costs before I touch a cable.",
-    "photoAlt": "New consumer unit with two rows of circuit breakers",
-    "photoCaption": "A new panel — a breaker for every circuit",
     "claimLicensed": "Licensed and insured",
     "claimYears": "{years} years of experience",
     "claimJobs": "Over {jobs} call-outs",
@@ -42,6 +40,60 @@
   "Foto": {
     "pre": "Before",
     "posle": "After"
+  },
+  "Fotografije": {
+    "tabla-dva-reda": {
+      "alt": "New consumer unit with two rows of circuit breakers",
+      "opis": "A new panel — a breaker for every circuit"
+    },
+    "zlebovi-i-kutije": {
+      "alt": "Chased channels in a wall with conduit and back boxes, before plastering",
+      "opis": "A new installation, before the wall is closed up"
+    },
+    "dnevna-soba-rasveta": {
+      "alt": "Living room with recessed ceiling spots and a linear wall light",
+      "opis": "Lighting laid out before the ceiling was closed"
+    },
+    "led-traka-dvoriste": {
+      "alt": "Warm LED strip set into the joint of a concrete garden wall at dusk",
+      "opis": "LED strip set into a garden wall"
+    },
+    "kafic-rasveta": {
+      "alt": "Café with track lighting, pendants and a wall light",
+      "opis": "A café — track lighting and pendants"
+    },
+    "profesionalna-kuhinja": {
+      "alt": "Commercial kitchen wiring run in surface trunking above the counters",
+      "opis": "Commercial kitchen, wiring in surface trunking"
+    },
+    "novo-kolo-u-zidu": {
+      "alt": "A horizontal chase in a wall with conduit laid in and two back boxes",
+      "opis": "A new circuit to a socket, run from the board"
+    },
+    "utp-i-struja": {
+      "alt": "A wall chase holding blue network cables alongside back boxes",
+      "opis": "Network cable in its own chase, away from the mains"
+    },
+    "kuhinja-u-radu": {
+      "alt": "A kitchen mid-works: tiles stripped back and vertical chases holding cable",
+      "opis": "A kitchen mid-works — new runs in the chases"
+    },
+    "linijska-rasveta": {
+      "alt": "Living room with a long linear pendant above the seating area and recessed ceiling spots",
+      "opis": "A linear pendant over the seating area"
+    },
+    "led-ispod-elemenata": {
+      "alt": "LED strip in a profile under the kitchen wall units lighting the worktop",
+      "opis": "Strip in a profile under the wall units"
+    },
+    "kanalice-na-zidu": {
+      "alt": "Switches and surface trunking on a stone-clad wall",
+      "opis": "Trunking and switches on a stone wall"
+    }
+  },
+  "Galerija": {
+    "ariaLabel": "Photographs of the work — swipe left and right",
+    "hint": "Swipe · {count, plural, one {# photograph} other {# photographs}}"
   },
   "Emergency": {
     "kicker": "Emergency",
@@ -174,33 +226,7 @@
     "posle": "After",
     "parAltPre": "Old consumer unit with three rows of ceramic screw fuses and hand-written labels",
     "parAltPosle": "New consumer unit with three rows of circuit breakers",
-    "parOpis": "The same board in the same flat. Ceramic fuses on the left, a breaker per circuit on the right.",
-    "slike": {
-      "dnevna-soba-rasveta": {
-        "alt": "Living room with recessed ceiling spots and a linear wall light",
-        "opis": "Lighting laid out before the ceiling was closed"
-      },
-      "zlebovi-i-kutije": {
-        "alt": "Chased channels in a wall with conduit and back boxes, before plastering",
-        "opis": "A new installation, before the wall is closed up"
-      },
-      "led-traka-dvoriste": {
-        "alt": "Warm LED strip set into the joint of a concrete garden wall at dusk",
-        "opis": "LED strip set into a garden wall"
-      },
-      "kafic-rasveta": {
-        "alt": "Café with track lighting, pendants and a wall light",
-        "opis": "A café — track lighting and pendants"
-      },
-      "profesionalna-kuhinja": {
-        "alt": "Commercial kitchen wiring run in surface trunking above the counters",
-        "opis": "Commercial kitchen, wiring in surface trunking"
-      },
-      "kanalice-na-zidu": {
-        "alt": "Switches and surface trunking on a stone-clad wall",
-        "opis": "Trunking and switches on a stone wall"
-      }
-    }
+    "parOpis": "The same board in the same flat. Ceramic fuses on the left, a breaker per circuit on the right."
   },
   "About": {
     "kicker": "About us",

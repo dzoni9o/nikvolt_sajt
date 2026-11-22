@@ -32,8 +32,6 @@
     "responseTime": "ispod 30 minuta",
     "h1Lead": "Električar u {city}u",
     "lead": "Izlazim isti dan. Kažem šta vidim i koliko košta pre nego što dotaknem kabl.",
-    "photoAlt": "Nova razvodna tabla sa dva reda automatskih osigurača",
-    "photoCaption": "Nova tabla — svako kolo ima svoj osigurač",
     "claimLicensed": "Licenciran i osiguran",
     "claimYears": "{years} godina iskustva",
     "claimJobs": "Preko {jobs} izlazaka na teren",
@@ -42,6 +40,60 @@
   "Foto": {
     "pre": "Pre",
     "posle": "Posle"
+  },
+  "Fotografije": {
+    "tabla-dva-reda": {
+      "alt": "Nova razvodna tabla sa dva reda automatskih osigurača",
+      "opis": "Nova tabla — svako kolo ima svoj osigurač"
+    },
+    "zlebovi-i-kutije": {
+      "alt": "Izdubljeni žlebovi u zidu sa bužirima i razvodnim kutijama, pre malterisanja",
+      "opis": "Nova instalacija, pre nego što zid bude zatvoren"
+    },
+    "dnevna-soba-rasveta": {
+      "alt": "Dnevna soba sa ugradnim spotovima u spuštenom plafonu i linijskom zidnom lampom",
+      "opis": "Rasveta u stanu, raspoređena pre zatvaranja plafona"
+    },
+    "led-traka-dvoriste": {
+      "alt": "Žuta LED traka ugrađena u spoj betonskog zida i poklopne ploče, u sumrak",
+      "opis": "LED traka u dvorišnom zidu"
+    },
+    "kafic-rasveta": {
+      "alt": "Kafić sa šinskom rasvetom, visilicama i zidnom svetiljkom",
+      "opis": "Lokal — šinska rasveta i visilice"
+    },
+    "profesionalna-kuhinja": {
+      "alt": "Instalacija u profesionalnoj kuhinji, kablovi u nadgradnim kanalicama iznad pultova",
+      "opis": "Profesionalna kuhinja, instalacija u kanalicama"
+    },
+    "novo-kolo-u-zidu": {
+      "alt": "Vodoravni žleb u zidu sa položenim bužirom i dve instalacione kutije",
+      "opis": "Novo kolo do utičnice, vođeno iz table"
+    },
+    "utp-i-struja": {
+      "alt": "Zid sa žlebom u kome su plavi mrežni kablovi i instalacione kutije",
+      "opis": "Mrežni kabl u svom žlebu, odvojeno od jakih struja"
+    },
+    "kuhinja-u-radu": {
+      "alt": "Kuhinja u toku radova: oborene pločice i vertikalni žlebovi sa kablovima",
+      "opis": "Kuhinja u toku radova — novi vodovi u žlebovima"
+    },
+    "linijska-rasveta": {
+      "alt": "Dnevna soba sa dugačkom linijskom visilicom iznad sedećeg dela i ugradnim spotovima",
+      "opis": "Linijska visilica nad sedećim delom"
+    },
+    "led-ispod-elemenata": {
+      "alt": "LED traka u profilu ispod kuhinjskih visećih elemenata osvetljava radnu ploču",
+      "opis": "Traka u profilu ispod kuhinjskih elemenata"
+    },
+    "kanalice-na-zidu": {
+      "alt": "Prekidači i nadgradna kanalica na zidu obloženom kamenom",
+      "opis": "Kanalica i prekidači na kamenom zidu"
+    }
+  },
+  "Galerija": {
+    "ariaLabel": "Fotografije radova — prevuci levo i desno",
+    "hint": "Prevuci prstom · {count, plural, one {# fotografija} few {# fotografije} other {# fotografija}}"
   },
   "Emergency": {
     "kicker": "Hitno",
@@ -174,33 +226,7 @@
     "posle": "Posle",
     "parAltPre": "Stara razvodna tabla sa tri reda keramičkih osigurača i rukom pisanim nalepnicama",
     "parAltPosle": "Nova razvodna tabla sa tri reda automatskih osigurača",
-    "parOpis": "Ista tabla u istom stanu. Levo keramički osigurači, desno automatski osigurač po kolu.",
-    "slike": {
-      "dnevna-soba-rasveta": {
-        "alt": "Dnevna soba sa ugradnim spotovima u spuštenom plafonu i linijskom zidnom lampom",
-        "opis": "Rasveta u stanu, raspoređena pre zatvaranja plafona"
-      },
-      "zlebovi-i-kutije": {
-        "alt": "Izdubljeni žlebovi u zidu sa bužirima i razvodnim kutijama, pre malterisanja",
-        "opis": "Nova instalacija, pre nego što zid bude zatvoren"
-      },
-      "led-traka-dvoriste": {
-        "alt": "Žuta LED traka ugrađena u spoj betonskog zida i poklopne ploče, u sumrak",
-        "opis": "LED traka u dvorišnom zidu"
-      },
-      "kafic-rasveta": {
-        "alt": "Kafić sa šinskom rasvetom, visilicama i zidnom svetiljkom",
-        "opis": "Lokal — šinska rasveta i visilice"
-      },
-      "profesionalna-kuhinja": {
-        "alt": "Instalacija u profesionalnoj kuhinji, kablovi u nadgradnim kanalicama iznad pultova",
-        "opis": "Profesionalna kuhinja, instalacija u kanalicama"
-      },
-      "kanalice-na-zidu": {
-        "alt": "Prekidači i nadgradna kanalica na zidu obloženom kamenom",
-        "opis": "Kanalica i prekidači na kamenom zidu"
-      }
-    }
+    "parOpis": "Ista tabla u istom stanu. Levo keramički osigurači, desno automatski osigurač po kolu."
   },
   "About": {
     "kicker": "O nama",
